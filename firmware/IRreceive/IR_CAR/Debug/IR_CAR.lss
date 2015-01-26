@@ -1,0 +1,680 @@
+
+IR_CAR.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000334  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00000334  000003c8  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000027  00800060  00800060  000003c8  2**0
+                  ALLOC
+  3 .stab         000006cc  00000000  00000000  000003c8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  4 .stabstr      00000097  00000000  00000000  00000a94  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .comment      0000002f  00000000  00000000  00000b2b  2**0
+                  CONTENTS, READONLY
+  6 .debug_aranges 00000078  00000000  00000000  00000b5a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_info   000004e7  00000000  00000000  00000bd2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 000001e3  00000000  00000000  000010b9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   000002ec  00000000  00000000  0000129c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_frame  00000134  00000000  00000000  00001588  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_str    000001cc  00000000  00000000  000016bc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_loc    000003ba  00000000  00000000  00001888  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_ranges 00000068  00000000  00000000  00001c42  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	8b c0       	rjmp	.+278    	; 0x11a <__vector_1>
+   4:	20 c0       	rjmp	.+64     	; 0x46 <__bad_interrupt>
+   6:	1f c0       	rjmp	.+62     	; 0x46 <__bad_interrupt>
+   8:	1e c0       	rjmp	.+60     	; 0x46 <__bad_interrupt>
+   a:	1d c0       	rjmp	.+58     	; 0x46 <__bad_interrupt>
+   c:	1c c0       	rjmp	.+56     	; 0x46 <__bad_interrupt>
+   e:	1b c0       	rjmp	.+54     	; 0x46 <__bad_interrupt>
+  10:	1a c0       	rjmp	.+52     	; 0x46 <__bad_interrupt>
+  12:	c2 c0       	rjmp	.+388    	; 0x198 <__vector_9>
+  14:	18 c0       	rjmp	.+48     	; 0x46 <__bad_interrupt>
+  16:	17 c0       	rjmp	.+46     	; 0x46 <__bad_interrupt>
+  18:	16 c0       	rjmp	.+44     	; 0x46 <__bad_interrupt>
+  1a:	15 c0       	rjmp	.+42     	; 0x46 <__bad_interrupt>
+  1c:	14 c0       	rjmp	.+40     	; 0x46 <__bad_interrupt>
+  1e:	13 c0       	rjmp	.+38     	; 0x46 <__bad_interrupt>
+  20:	12 c0       	rjmp	.+36     	; 0x46 <__bad_interrupt>
+  22:	11 c0       	rjmp	.+34     	; 0x46 <__bad_interrupt>
+  24:	10 c0       	rjmp	.+32     	; 0x46 <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+
+00000032 <__do_clear_bss>:
+  32:	20 e0       	ldi	r18, 0x00	; 0
+  34:	a0 e6       	ldi	r26, 0x60	; 96
+  36:	b0 e0       	ldi	r27, 0x00	; 0
+  38:	01 c0       	rjmp	.+2      	; 0x3c <.do_clear_bss_start>
+
+0000003a <.do_clear_bss_loop>:
+  3a:	1d 92       	st	X+, r1
+
+0000003c <.do_clear_bss_start>:
+  3c:	a7 38       	cpi	r26, 0x87	; 135
+  3e:	b2 07       	cpc	r27, r18
+  40:	e1 f7       	brne	.-8      	; 0x3a <.do_clear_bss_loop>
+  42:	e1 d0       	rcall	.+450    	; 0x206 <main>
+  44:	75 c1       	rjmp	.+746    	; 0x330 <_exit>
+
+00000046 <__bad_interrupt>:
+  46:	dc cf       	rjmp	.-72     	; 0x0 <__vectors>
+
+00000048 <array_clear>:
+
+
+//어레이 클리어
+void array_clear(unsigned char* array, unsigned char size){
+	unsigned char i;
+	for (i = 0; i<size; i++){
+  48:	66 23       	and	r22, r22
+  4a:	41 f0       	breq	.+16     	; 0x5c <array_clear+0x14>
+  4c:	28 2f       	mov	r18, r24
+  4e:	e8 2f       	mov	r30, r24
+  50:	f9 2f       	mov	r31, r25
+		array[i] = 0;
+  52:	11 92       	st	Z+, r1
+
+
+//어레이 클리어
+void array_clear(unsigned char* array, unsigned char size){
+	unsigned char i;
+	for (i = 0; i<size; i++){
+  54:	8e 2f       	mov	r24, r30
+  56:	82 1b       	sub	r24, r18
+  58:	86 17       	cp	r24, r22
+  5a:	d8 f3       	brcs	.-10     	; 0x52 <array_clear+0xa>
+  5c:	08 95       	ret
+
+0000005e <bitarray_to_byte>:
+		//Uart_Putch(array[i]);
+	}
+}
+//배열의 크기가 8의 배수여야한다. 0과 1로만 구성되어 있어야한다. 아니면 수행 안됨
+//array를 byte로 변환하여 target_array에 집어넣음
+void bitarray_to_byte(unsigned char* array, unsigned char size, unsigned char* target_array, unsigned char target_size){
+  5e:	cf 93       	push	r28
+	unsigned char a = 0;
+	unsigned char i = 0;
+	unsigned char byte = 0;
+	//size가 8의 배수이면
+	if ((size % 8) == 0){
+  60:	36 2f       	mov	r19, r22
+  62:	37 70       	andi	r19, 0x07	; 7
+  64:	e9 f4       	brne	.+58     	; 0xa0 <bitarray_to_byte+0x42>
+		for (i = 0; i<size; i++){
+  66:	61 11       	cpse	r22, r1
+  68:	14 c0       	rjmp	.+40     	; 0x92 <bitarray_to_byte+0x34>
+  6a:	1a c0       	rjmp	.+52     	; 0xa0 <bitarray_to_byte+0x42>
+			byte = byte << 1;
+  6c:	99 0f       	add	r25, r25
+			byte = byte | array[i];
+  6e:	31 91       	ld	r19, Z+
+  70:	93 2b       	or	r25, r19
+			if (((i % 8) == 7) && target_size>a){
+  72:	38 2f       	mov	r19, r24
+  74:	37 70       	andi	r19, 0x07	; 7
+  76:	37 30       	cpi	r19, 0x07	; 7
+  78:	41 f4       	brne	.+16     	; 0x8a <bitarray_to_byte+0x2c>
+  7a:	72 17       	cp	r23, r18
+  7c:	30 f4       	brcc	.+12     	; 0x8a <bitarray_to_byte+0x2c>
+				target_array[a] = byte;
+  7e:	da 01       	movw	r26, r20
+  80:	a7 0f       	add	r26, r23
+  82:	b1 1d       	adc	r27, r1
+  84:	9c 93       	st	X, r25
+				a++;
+  86:	7f 5f       	subi	r23, 0xFF	; 255
+				byte = 0;
+  88:	9c 2f       	mov	r25, r28
+	unsigned char a = 0;
+	unsigned char i = 0;
+	unsigned char byte = 0;
+	//size가 8의 배수이면
+	if ((size % 8) == 0){
+		for (i = 0; i<size; i++){
+  8a:	8f 5f       	subi	r24, 0xFF	; 255
+  8c:	86 13       	cpse	r24, r22
+  8e:	ee cf       	rjmp	.-36     	; 0x6c <bitarray_to_byte+0xe>
+  90:	07 c0       	rjmp	.+14     	; 0xa0 <bitarray_to_byte+0x42>
+			byte = byte << 1;
+			byte = byte | array[i];
+  92:	e8 2f       	mov	r30, r24
+  94:	f9 2f       	mov	r31, r25
+  96:	91 91       	ld	r25, Z+
+		//Uart_Putch(array[i]);
+	}
+}
+//배열의 크기가 8의 배수여야한다. 0과 1로만 구성되어 있어야한다. 아니면 수행 안됨
+//array를 byte로 변환하여 target_array에 집어넣음
+void bitarray_to_byte(unsigned char* array, unsigned char size, unsigned char* target_array, unsigned char target_size){
+  98:	80 e0       	ldi	r24, 0x00	; 0
+  9a:	70 e0       	ldi	r23, 0x00	; 0
+			byte = byte << 1;
+			byte = byte | array[i];
+			if (((i % 8) == 7) && target_size>a){
+				target_array[a] = byte;
+				a++;
+				byte = 0;
+  9c:	c0 e0       	ldi	r28, 0x00	; 0
+  9e:	f5 cf       	rjmp	.-22     	; 0x8a <bitarray_to_byte+0x2c>
+			}
+		}
+	}
+}
+  a0:	cf 91       	pop	r28
+  a2:	08 95       	ret
+
+000000a4 <timer_set>:
+
+void timer_set(){
+	TCCR0 |= _BV(0);
+  a4:	83 b7       	in	r24, 0x33	; 51
+  a6:	81 60       	ori	r24, 0x01	; 1
+  a8:	83 bf       	out	0x33, r24	; 51
+	TCCR0 |= _BV(1);
+  aa:	83 b7       	in	r24, 0x33	; 51
+  ac:	82 60       	ori	r24, 0x02	; 2
+  ae:	83 bf       	out	0x33, r24	; 51
+	//64분주 4us
+	TCNT0 = 231;//256-231 =25
+  b0:	87 ee       	ldi	r24, 0xE7	; 231
+  b2:	82 bf       	out	0x32, r24	; 50
+	TIMSK = 0x01;//overflow 인터럽트 온
+  b4:	81 e0       	ldi	r24, 0x01	; 1
+  b6:	89 bf       	out	0x39, r24	; 57
+  b8:	08 95       	ret
+
+000000ba <ir_data_set>:
+
+volatile unsigned char uart_transmit_count=0;
+
+void ir_data_set(){
+	//주기가 700us에서 1600us이면 0으로 인식
+	if((period>=7)&&(period<=16)){
+  ba:	80 91 85 00 	lds	r24, 0x0085
+  be:	87 30       	cpi	r24, 0x07	; 7
+  c0:	80 f0       	brcs	.+32     	; 0xe2 <ir_data_set+0x28>
+  c2:	80 91 85 00 	lds	r24, 0x0085
+  c6:	81 31       	cpi	r24, 0x11	; 17
+  c8:	60 f4       	brcc	.+24     	; 0xe2 <ir_data_set+0x28>
+		ir_data[ir_code_count]=0;
+  ca:	e0 91 86 00 	lds	r30, 0x0086
+  ce:	f0 e0       	ldi	r31, 0x00	; 0
+  d0:	eb 59       	subi	r30, 0x9B	; 155
+  d2:	ff 4f       	sbci	r31, 0xFF	; 255
+  d4:	10 82       	st	Z, r1
+		ir_code_count++;
+  d6:	80 91 86 00 	lds	r24, 0x0086
+  da:	8f 5f       	subi	r24, 0xFF	; 255
+  dc:	80 93 86 00 	sts	0x0086, r24
+  e0:	08 95       	ret
+	}
+	//주기가 1700us에서 2600us이면 1로 인식
+	else if((period>=17)&&(period<=26)){
+  e2:	80 91 85 00 	lds	r24, 0x0085
+  e6:	81 31       	cpi	r24, 0x11	; 17
+  e8:	88 f0       	brcs	.+34     	; 0x10c <ir_data_set+0x52>
+  ea:	80 91 85 00 	lds	r24, 0x0085
+  ee:	8b 31       	cpi	r24, 0x1B	; 27
+  f0:	68 f4       	brcc	.+26     	; 0x10c <ir_data_set+0x52>
+		ir_data[ir_code_count]=1;
+  f2:	e0 91 86 00 	lds	r30, 0x0086
+  f6:	f0 e0       	ldi	r31, 0x00	; 0
+  f8:	eb 59       	subi	r30, 0x9B	; 155
+  fa:	ff 4f       	sbci	r31, 0xFF	; 255
+  fc:	81 e0       	ldi	r24, 0x01	; 1
+  fe:	80 83       	st	Z, r24
+		ir_code_count++;
+ 100:	80 91 86 00 	lds	r24, 0x0086
+ 104:	8f 5f       	subi	r24, 0xFF	; 255
+ 106:	80 93 86 00 	sts	0x0086, r24
+ 10a:	08 95       	ret
+	}
+	//그 외는 의미없는 데이터이므로
+	else
+	{
+		array_clear(ir_data,sizeof(ir_data));
+ 10c:	60 e2       	ldi	r22, 0x20	; 32
+ 10e:	85 e6       	ldi	r24, 0x65	; 101
+ 110:	90 e0       	ldi	r25, 0x00	; 0
+ 112:	9a df       	rcall	.-204    	; 0x48 <array_clear>
+		ir_code_count=0;
+ 114:	10 92 86 00 	sts	0x0086, r1
+ 118:	08 95       	ret
+
+0000011a <__vector_1>:
+	}
+}
+
+ISR(INT0_vect){
+ 11a:	1f 92       	push	r1
+ 11c:	0f 92       	push	r0
+ 11e:	0f b6       	in	r0, 0x3f	; 63
+ 120:	0f 92       	push	r0
+ 122:	11 24       	eor	r1, r1
+ 124:	2f 93       	push	r18
+ 126:	3f 93       	push	r19
+ 128:	4f 93       	push	r20
+ 12a:	5f 93       	push	r21
+ 12c:	6f 93       	push	r22
+ 12e:	7f 93       	push	r23
+ 130:	8f 93       	push	r24
+ 132:	9f 93       	push	r25
+ 134:	af 93       	push	r26
+ 136:	bf 93       	push	r27
+ 138:	ef 93       	push	r30
+ 13a:	ff 93       	push	r31
+	SREG &= ~_BV(7);
+ 13c:	8f b7       	in	r24, 0x3f	; 63
+ 13e:	8f 77       	andi	r24, 0x7F	; 127
+ 140:	8f bf       	out	0x3f, r24	; 63
+	ir_data_set();
+ 142:	bb df       	rcall	.-138    	; 0xba <ir_data_set>
+	//적외선 신호를 전부 받으면.
+	if(ir_code_count>sizeof(ir_data)-1){
+ 144:	80 91 86 00 	lds	r24, 0x0086
+ 148:	80 32       	cpi	r24, 0x20	; 32
+ 14a:	80 f0       	brcs	.+32     	; 0x16c <__vector_1+0x52>
+		//비트로 되어있는 신호를 byte로 바꿈
+		bitarray_to_byte(ir_data,sizeof(ir_data),code,sizeof(code));
+ 14c:	24 e0       	ldi	r18, 0x04	; 4
+ 14e:	41 e6       	ldi	r20, 0x61	; 97
+ 150:	50 e0       	ldi	r21, 0x00	; 0
+ 152:	60 e2       	ldi	r22, 0x20	; 32
+ 154:	85 e6       	ldi	r24, 0x65	; 101
+ 156:	90 e0       	ldi	r25, 0x00	; 0
+ 158:	82 df       	rcall	.-252    	; 0x5e <bitarray_to_byte>
+		//사용한 ir_data 초기화
+		array_clear(ir_data,sizeof(ir_data));
+ 15a:	60 e2       	ldi	r22, 0x20	; 32
+ 15c:	85 e6       	ldi	r24, 0x65	; 101
+ 15e:	90 e0       	ldi	r25, 0x00	; 0
+ 160:	73 df       	rcall	.-282    	; 0x48 <array_clear>
+		ir_code_count=0;
+ 162:	10 92 86 00 	sts	0x0086, r1
+		uart_transmit_count=1;
+ 166:	81 e0       	ldi	r24, 0x01	; 1
+ 168:	80 93 60 00 	sts	0x0060, r24
+	}
+	//외부인터럽트시마다 주기 초기화
+	period=0;	
+ 16c:	10 92 85 00 	sts	0x0085, r1
+	SREG |= _BV(7);
+ 170:	8f b7       	in	r24, 0x3f	; 63
+ 172:	80 68       	ori	r24, 0x80	; 128
+ 174:	8f bf       	out	0x3f, r24	; 63
+}
+ 176:	ff 91       	pop	r31
+ 178:	ef 91       	pop	r30
+ 17a:	bf 91       	pop	r27
+ 17c:	af 91       	pop	r26
+ 17e:	9f 91       	pop	r25
+ 180:	8f 91       	pop	r24
+ 182:	7f 91       	pop	r23
+ 184:	6f 91       	pop	r22
+ 186:	5f 91       	pop	r21
+ 188:	4f 91       	pop	r20
+ 18a:	3f 91       	pop	r19
+ 18c:	2f 91       	pop	r18
+ 18e:	0f 90       	pop	r0
+ 190:	0f be       	out	0x3f, r0	; 63
+ 192:	0f 90       	pop	r0
+ 194:	1f 90       	pop	r1
+ 196:	18 95       	reti
+
+00000198 <__vector_9>:
+ISR(TIMER0_OVF_vect){
+ 198:	1f 92       	push	r1
+ 19a:	0f 92       	push	r0
+ 19c:	0f b6       	in	r0, 0x3f	; 63
+ 19e:	0f 92       	push	r0
+ 1a0:	11 24       	eor	r1, r1
+ 1a2:	8f 93       	push	r24
+	SREG &= ~_BV(7);
+ 1a4:	8f b7       	in	r24, 0x3f	; 63
+ 1a6:	8f 77       	andi	r24, 0x7F	; 127
+ 1a8:	8f bf       	out	0x3f, r24	; 63
+	period+=1;
+ 1aa:	80 91 85 00 	lds	r24, 0x0085
+ 1ae:	8f 5f       	subi	r24, 0xFF	; 255
+ 1b0:	80 93 85 00 	sts	0x0085, r24
+	TCNT0=231;
+ 1b4:	87 ee       	ldi	r24, 0xE7	; 231
+ 1b6:	82 bf       	out	0x32, r24	; 50
+	SREG |= _BV(7);
+ 1b8:	8f b7       	in	r24, 0x3f	; 63
+ 1ba:	80 68       	ori	r24, 0x80	; 128
+ 1bc:	8f bf       	out	0x3f, r24	; 63
+}
+ 1be:	8f 91       	pop	r24
+ 1c0:	0f 90       	pop	r0
+ 1c2:	0f be       	out	0x3f, r0	; 63
+ 1c4:	0f 90       	pop	r0
+ 1c6:	1f 90       	pop	r1
+ 1c8:	18 95       	reti
+
+000001ca <int0_set>:
+
+void int0_set(){
+	PIND &= ~_BV(2);//INT0 입력설정
+ 1ca:	82 98       	cbi	0x10, 2	; 16
+	MCUCR |= _BV(1);
+ 1cc:	85 b7       	in	r24, 0x35	; 53
+ 1ce:	82 60       	ori	r24, 0x02	; 2
+ 1d0:	85 bf       	out	0x35, r24	; 53
+	MCUCR &= ~_BV(0);
+ 1d2:	85 b7       	in	r24, 0x35	; 53
+ 1d4:	8e 7f       	andi	r24, 0xFE	; 254
+ 1d6:	85 bf       	out	0x35, r24	; 53
+	GICR |= _BV(6);
+ 1d8:	8b b7       	in	r24, 0x3b	; 59
+ 1da:	80 64       	ori	r24, 0x40	; 64
+ 1dc:	8b bf       	out	0x3b, r24	; 59
+ 1de:	08 95       	ret
+
+000001e0 <Main_Init>:
+		PORTD &= ~_BV(0);
+	   // TODO:: Please write your application code 
+    }
+}
+void Main_Init(void){
+	SREG &= ~_BV(7);
+ 1e0:	8f b7       	in	r24, 0x3f	; 63
+ 1e2:	8f 77       	andi	r24, 0x7F	; 127
+ 1e4:	8f bf       	out	0x3f, r24	; 63
+	int0_set();
+ 1e6:	f1 df       	rcall	.-30     	; 0x1ca <int0_set>
+	//pwm1_set();
+	timer_set();
+ 1e8:	5d df       	rcall	.-326    	; 0xa4 <timer_set>
+	DDRD |= _BV(0);
+ 1ea:	88 9a       	sbi	0x11, 0	; 17
+	DDRB=0xff;
+ 1ec:	8f ef       	ldi	r24, 0xFF	; 255
+ 1ee:	87 bb       	out	0x17, r24	; 23
+	PORTB=0x00;
+ 1f0:	18 ba       	out	0x18, r1	; 24
+	
+	PORTB |= _BV(1);
+ 1f2:	c1 9a       	sbi	0x18, 1	; 24
+	PORTB |= _BV(2);
+ 1f4:	c2 9a       	sbi	0x18, 2	; 24
+	
+	period=0;
+ 1f6:	10 92 85 00 	sts	0x0085, r1
+	ir_code_count=0;
+ 1fa:	10 92 86 00 	sts	0x0086, r1
+	SREG |= _BV(7);
+ 1fe:	8f b7       	in	r24, 0x3f	; 63
+ 200:	80 68       	ori	r24, 0x80	; 128
+ 202:	8f bf       	out	0x3f, r24	; 63
+ 204:	08 95       	ret
+
+00000206 <main>:
+	
+	SREG |= _BV(7);
+}
+int main(void)
+{
+	Main_Init();
+ 206:	ec df       	rcall	.-40     	; 0x1e0 <Main_Init>
+	//Reset_AVR();
+	
+	DDRC = 0xff;
+ 208:	8f ef       	ldi	r24, 0xFF	; 255
+ 20a:	84 bb       	out	0x14, r24	; 20
+			//20DFC03F
+			//20DF00FF
+			//20DF807F
+			
+				//DA3034C9// 위
+				if(code[0] == 0x20 && code[1] == 0xdf &&code[2] == 0x40 &&code[3] == 0xbf){//전진
+ 20c:	c1 e6       	ldi	r28, 0x61	; 97
+ 20e:	d0 e0       	ldi	r29, 0x00	; 0
+ 210:	0f 2e       	mov	r0, r31
+ 212:	f2 e6       	ldi	r31, 0x62	; 98
+ 214:	ef 2e       	mov	r14, r31
+ 216:	f0 e0       	ldi	r31, 0x00	; 0
+ 218:	ff 2e       	mov	r15, r31
+ 21a:	f0 2d       	mov	r31, r0
+ 21c:	03 e6       	ldi	r16, 0x63	; 99
+ 21e:	10 e0       	ldi	r17, 0x00	; 0
+					PORTC |=_BV(5);
+					PORTC |=_BV(0);
+					_delay_ms(150);
+				}
+				//D4CD3353//오른쪽
+				if(code[0] == 0x20 && code[1] == 0xdf &&code[2] == 0x80 &&code[3] == 0x7f){//우회전
+ 220:	0f 2e       	mov	r0, r31
+ 222:	f4 e6       	ldi	r31, 0x64	; 100
+ 224:	cf 2e       	mov	r12, r31
+ 226:	f0 e0       	ldi	r31, 0x00	; 0
+ 228:	df 2e       	mov	r13, r31
+ 22a:	f0 2d       	mov	r31, r0
+    {		
+		//PORTC |=_BV(5);// 3+0 앞방향
+		//PORTC |=_BV(4);// 5+4 뒤방향
+		////
+		//
+		if(uart_transmit_count == 1){
+ 22c:	80 91 60 00 	lds	r24, 0x0060
+ 230:	81 30       	cpi	r24, 0x01	; 1
+ 232:	09 f0       	breq	.+2      	; 0x236 <main+0x30>
+ 234:	78 c0       	rjmp	.+240    	; 0x326 <main+0x120>
+			PORTD |= _BV(0);
+ 236:	90 9a       	sbi	0x12, 0	; 18
+			//_delay_ms(1000);
+			SREG &= ~_BV(7);
+ 238:	8f b7       	in	r24, 0x3f	; 63
+ 23a:	8f 77       	andi	r24, 0x7F	; 127
+ 23c:	8f bf       	out	0x3f, r24	; 63
+			//20DFC03F
+			//20DF00FF
+			//20DF807F
+			
+				//DA3034C9// 위
+				if(code[0] == 0x20 && code[1] == 0xdf &&code[2] == 0x40 &&code[3] == 0xbf){//전진
+ 23e:	88 81       	ld	r24, Y
+ 240:	80 32       	cpi	r24, 0x20	; 32
+ 242:	09 f0       	breq	.+2      	; 0x246 <main+0x40>
+ 244:	68 c0       	rjmp	.+208    	; 0x316 <main+0x110>
+ 246:	f7 01       	movw	r30, r14
+ 248:	80 81       	ld	r24, Z
+ 24a:	8f 3d       	cpi	r24, 0xDF	; 223
+ 24c:	09 f0       	breq	.+2      	; 0x250 <main+0x4a>
+ 24e:	63 c0       	rjmp	.+198    	; 0x316 <main+0x110>
+ 250:	f8 01       	movw	r30, r16
+ 252:	80 81       	ld	r24, Z
+ 254:	80 34       	cpi	r24, 0x40	; 64
+ 256:	c1 f4       	brne	.+48     	; 0x288 <main+0x82>
+ 258:	f6 01       	movw	r30, r12
+ 25a:	80 81       	ld	r24, Z
+ 25c:	8f 3b       	cpi	r24, 0xBF	; 191
+ 25e:	a1 f4       	brne	.+40     	; 0x288 <main+0x82>
+					//PORTB |=_BV(5);
+					//PORTB |=_BV(0);
+					
+					
+					PORTC |=_BV(5);//왼전진
+ 260:	ad 9a       	sbi	0x15, 5	; 21
+					PORTC |=_BV(4);//우전진
+ 262:	ac 9a       	sbi	0x15, 4	; 21
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 264:	ff ef       	ldi	r31, 0xFF	; 255
+ 266:	23 ec       	ldi	r18, 0xC3	; 195
+ 268:	89 e0       	ldi	r24, 0x09	; 9
+ 26a:	f1 50       	subi	r31, 0x01	; 1
+ 26c:	20 40       	sbci	r18, 0x00	; 0
+ 26e:	80 40       	sbci	r24, 0x00	; 0
+ 270:	e1 f7       	brne	.-8      	; 0x26a <main+0x64>
+ 272:	00 c0       	rjmp	.+0      	; 0x274 <main+0x6e>
+ 274:	00 00       	nop
+					_delay_ms(200);
+				}
+				//A4EB0BAD // 아래
+				if(code[0] == 0x20 && code[1] == 0xdf &&code[2] == 0xc0 &&code[3] == 0x3f){//후진
+ 276:	88 81       	ld	r24, Y
+ 278:	80 32       	cpi	r24, 0x20	; 32
+ 27a:	09 f0       	breq	.+2      	; 0x27e <main+0x78>
+ 27c:	4c c0       	rjmp	.+152    	; 0x316 <main+0x110>
+ 27e:	f7 01       	movw	r30, r14
+ 280:	80 81       	ld	r24, Z
+ 282:	8f 3d       	cpi	r24, 0xDF	; 223
+ 284:	09 f0       	breq	.+2      	; 0x288 <main+0x82>
+ 286:	47 c0       	rjmp	.+142    	; 0x316 <main+0x110>
+ 288:	f8 01       	movw	r30, r16
+ 28a:	80 81       	ld	r24, Z
+ 28c:	80 3c       	cpi	r24, 0xC0	; 192
+ 28e:	b1 f4       	brne	.+44     	; 0x2bc <main+0xb6>
+ 290:	f6 01       	movw	r30, r12
+ 292:	80 81       	ld	r24, Z
+ 294:	8f 33       	cpi	r24, 0x3F	; 63
+ 296:	91 f4       	brne	.+36     	; 0x2bc <main+0xb6>
+					//PORTB |=_BV(3);
+					//PORTB |=_BV(4);
+					
+					PORTC |=_BV(3);//왼전진
+ 298:	ab 9a       	sbi	0x15, 3	; 21
+					PORTC |=_BV(0);//우전진
+ 29a:	a8 9a       	sbi	0x15, 0	; 21
+ 29c:	ff ef       	ldi	r31, 0xFF	; 255
+ 29e:	23 ec       	ldi	r18, 0xC3	; 195
+ 2a0:	89 e0       	ldi	r24, 0x09	; 9
+ 2a2:	f1 50       	subi	r31, 0x01	; 1
+ 2a4:	20 40       	sbci	r18, 0x00	; 0
+ 2a6:	80 40       	sbci	r24, 0x00	; 0
+ 2a8:	e1 f7       	brne	.-8      	; 0x2a2 <main+0x9c>
+ 2aa:	00 c0       	rjmp	.+0      	; 0x2ac <main+0xa6>
+ 2ac:	00 00       	nop
+					_delay_ms(200);
+				}
+				//9F880A37 // 왼쪽
+				if(code[0] == 0x20 && code[1] == 0xdf &&code[2] == 0x00 &&code[3] == 0xff){//좌회전
+ 2ae:	88 81       	ld	r24, Y
+ 2b0:	80 32       	cpi	r24, 0x20	; 32
+ 2b2:	89 f5       	brne	.+98     	; 0x316 <main+0x110>
+ 2b4:	f7 01       	movw	r30, r14
+ 2b6:	80 81       	ld	r24, Z
+ 2b8:	8f 3d       	cpi	r24, 0xDF	; 223
+ 2ba:	69 f5       	brne	.+90     	; 0x316 <main+0x110>
+ 2bc:	f8 01       	movw	r30, r16
+ 2be:	80 81       	ld	r24, Z
+ 2c0:	81 11       	cpse	r24, r1
+ 2c2:	16 c0       	rjmp	.+44     	; 0x2f0 <main+0xea>
+ 2c4:	f6 01       	movw	r30, r12
+ 2c6:	80 81       	ld	r24, Z
+ 2c8:	8f 3f       	cpi	r24, 0xFF	; 255
+ 2ca:	91 f4       	brne	.+36     	; 0x2f0 <main+0xea>
+					//PORTB |=_BV(5);//왼전진
+					//PORTB |=_BV(4);//우전진
+					
+					PORTC |=_BV(5);
+ 2cc:	ad 9a       	sbi	0x15, 5	; 21
+					PORTC |=_BV(0);
+ 2ce:	a8 9a       	sbi	0x15, 0	; 21
+ 2d0:	ff ef       	ldi	r31, 0xFF	; 255
+ 2d2:	22 e5       	ldi	r18, 0x52	; 82
+ 2d4:	87 e0       	ldi	r24, 0x07	; 7
+ 2d6:	f1 50       	subi	r31, 0x01	; 1
+ 2d8:	20 40       	sbci	r18, 0x00	; 0
+ 2da:	80 40       	sbci	r24, 0x00	; 0
+ 2dc:	e1 f7       	brne	.-8      	; 0x2d6 <main+0xd0>
+ 2de:	00 c0       	rjmp	.+0      	; 0x2e0 <main+0xda>
+ 2e0:	00 00       	nop
+					_delay_ms(150);
+				}
+				//D4CD3353//오른쪽
+				if(code[0] == 0x20 && code[1] == 0xdf &&code[2] == 0x80 &&code[3] == 0x7f){//우회전
+ 2e2:	88 81       	ld	r24, Y
+ 2e4:	80 32       	cpi	r24, 0x20	; 32
+ 2e6:	b9 f4       	brne	.+46     	; 0x316 <main+0x110>
+ 2e8:	f7 01       	movw	r30, r14
+ 2ea:	80 81       	ld	r24, Z
+ 2ec:	8f 3d       	cpi	r24, 0xDF	; 223
+ 2ee:	99 f4       	brne	.+38     	; 0x316 <main+0x110>
+ 2f0:	f8 01       	movw	r30, r16
+ 2f2:	80 81       	ld	r24, Z
+ 2f4:	80 38       	cpi	r24, 0x80	; 128
+ 2f6:	79 f4       	brne	.+30     	; 0x316 <main+0x110>
+ 2f8:	f6 01       	movw	r30, r12
+ 2fa:	80 81       	ld	r24, Z
+ 2fc:	8f 37       	cpi	r24, 0x7F	; 127
+ 2fe:	59 f4       	brne	.+22     	; 0x316 <main+0x110>
+					//PORTB |=_BV(3);//왼전진
+					//PORTB |=_BV(0);//우전진
+					
+					PORTC |=_BV(3);
+ 300:	ab 9a       	sbi	0x15, 3	; 21
+					PORTC |=_BV(4);
+ 302:	ac 9a       	sbi	0x15, 4	; 21
+ 304:	ff ef       	ldi	r31, 0xFF	; 255
+ 306:	22 e5       	ldi	r18, 0x52	; 82
+ 308:	87 e0       	ldi	r24, 0x07	; 7
+ 30a:	f1 50       	subi	r31, 0x01	; 1
+ 30c:	20 40       	sbci	r18, 0x00	; 0
+ 30e:	80 40       	sbci	r24, 0x00	; 0
+ 310:	e1 f7       	brne	.-8      	; 0x30a <main+0x104>
+ 312:	00 c0       	rjmp	.+0      	; 0x314 <main+0x10e>
+ 314:	00 00       	nop
+					_delay_ms(150);
+				}
+			//}
+			array_clear(code,sizeof(code));
+ 316:	64 e0       	ldi	r22, 0x04	; 4
+ 318:	ce 01       	movw	r24, r28
+ 31a:	96 de       	rcall	.-724    	; 0x48 <array_clear>
+			uart_transmit_count=0;
+ 31c:	10 92 60 00 	sts	0x0060, r1
+			//PORTD |= _BV(0);
+			//_delay_ms(500);
+			SREG |= _BV(7);
+ 320:	8f b7       	in	r24, 0x3f	; 63
+ 322:	80 68       	ori	r24, 0x80	; 128
+ 324:	8f bf       	out	0x3f, r24	; 63
+			
+
+		}
+		PORTC &= 0x06;
+ 326:	85 b3       	in	r24, 0x15	; 21
+ 328:	86 70       	andi	r24, 0x06	; 6
+ 32a:	85 bb       	out	0x15, r24	; 21
+		
+		PORTD &= ~_BV(0);
+ 32c:	90 98       	cbi	0x12, 0	; 18
+	   // TODO:: Please write your application code 
+    }
+ 32e:	7e cf       	rjmp	.-260    	; 0x22c <main+0x26>
+
+00000330 <_exit>:
+ 330:	f8 94       	cli
+
+00000332 <__stop_program>:
+ 332:	ff cf       	rjmp	.-2      	; 0x332 <__stop_program>

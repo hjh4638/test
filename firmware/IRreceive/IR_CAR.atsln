@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "IR_CAR", "IR_CAR\IR_CAR.cproj", "{ABEDE1FD-E079-4D78-B78D-925C23B2714C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ABEDE1FD-E079-4D78-B78D-925C23B2714C}.Debug|AVR.ActiveCfg = Debug|AVR
+		{ABEDE1FD-E079-4D78-B78D-925C23B2714C}.Debug|AVR.Build.0 = Debug|AVR
+		{ABEDE1FD-E079-4D78-B78D-925C23B2714C}.Release|AVR.ActiveCfg = Release|AVR
+		{ABEDE1FD-E079-4D78-B78D-925C23B2714C}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

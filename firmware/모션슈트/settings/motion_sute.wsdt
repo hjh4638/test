@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<Workspace>
+  <ConfigDictionary>
+    
+  <CurrentConfigs><Project>motion_sute/Release</Project></CurrentConfigs></ConfigDictionary>
+  <Desktop>
+    <Static>
+      <Workspace>
+        <ColumnWidths>
+          
+          
+          
+          
+        <Column0>139</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+      </Workspace>
+      <Build>
+        
+        
+        
+        
+      <ColumnWidth0>20</ColumnWidth0><ColumnWidth1>915</ColumnWidth1><ColumnWidth2>244</ColumnWidth2><ColumnWidth3>61</ColumnWidth3></Build>
+    </Static>
+    <Windows>
+      
+      
+    <Wnd2>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-23107-19610</Identity>
+            <TabName>Workspace</TabName>
+            <Factory>Workspace</Factory>
+            <Session>
+              
+            <NodeDict><ExpandedNode>motion_sute</ExpandedNode><ExpandedNode>motion_sute/motion_sute.c</ExpandedNode></NodeDict></Session>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd2><Wnd3>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-11732-20642</Identity>
+            <TabName>Build</TabName>
+            <Factory>Build</Factory>
+            <Session/>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd3></Windows>
+    <Editor>
+      
+      
+      
+      
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\&#xACe0;&#xADC0;&#xD55C;\My Documents\C&#xC5B8;&#xC5B4;&#xAD00;&#xB828;\ATMEGA128 &#xAD6C;&#xC6B8;&#xB54C; &#xC4F0;&#xB294;&#xAC70;\motion_sute\motion_sute.c</Filename><XPos>0</XPos><YPos>57</YPos><SelStart>288</SelStart><SelEnd>288</SelEnd></Tab><ActiveTab>0</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\&#xACe0;&#xADC0;&#xD55C;\My Documents\C&#xC5B8;&#xC5B4;&#xAD00;&#xB828;\ATMEGA128 &#xAD6C;&#xC6B8;&#xB54C; &#xC4F0;&#xB294;&#xAC70;\motion_sute\uart.h</Filename><XPos>0</XPos><YPos>24</YPos><SelStart>1038</SelStart><SelEnd>1071</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\&#xACe0;&#xADC0;&#xD55C;\My Documents\C&#xC5B8;&#xC5B4;&#xAD00;&#xB828;\ATMEGA128 &#xAD6C;&#xC6B8;&#xB54C; &#xC4F0;&#xB294;&#xAC70;\motion_sute\motor_ax.c</Filename><XPos>0</XPos><YPos>6</YPos><SelStart>643</SelStart><SelEnd>657</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\&#xACe0;&#xADC0;&#xD55C;\My Documents\C&#xC5B8;&#xC5B4;&#xAD00;&#xB828;\ATMEGA128 &#xAD6C;&#xC6B8;&#xB54C; &#xC4F0;&#xB294;&#xAC70;\motion_sute\motor_ax.h</Filename><XPos>0</XPos><YPos>51</YPos><SelStart>2127</SelStart><SelEnd>2127</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\&#xACe0;&#xADC0;&#xD55C;\My Documents\C&#xC5B8;&#xC5B4;&#xAD00;&#xB828;\ATMEGA128 &#xAD6C;&#xC6B8;&#xB54C; &#xC4F0;&#xB294;&#xAC70;\motion_sute\uart.c</Filename><XPos>0</XPos><YPos>75</YPos><SelStart>2642</SelStart><SelEnd>2642</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\&#xACe0;&#xADC0;&#xD55C;\My Documents\C&#xC5B8;&#xC5B4;&#xAD00;&#xB828;\ATMEGA128 &#xAD6C;&#xC6B8;&#xB54C; &#xC4F0;&#xB294;&#xAC70;\motion_sute\Define.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Positions>
+      
+      
+      
+      
+      
+    <Top><Row0><Sizes><Toolbar-003bea20><key>iaridepm1</key></Toolbar-003bea20></Sizes></Row0></Top><Left><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>457</Bottom><Right>213</Right><x>-2</x><y>-2</y><xscreen>215</xscreen><yscreen>222</yscreen><sizeHorzCX>209961</sizeHorzCX><sizeHorzCY>307479</sizeHorzCY><sizeVertCX>209961</sizeVertCX><sizeVertCY>635734</sizeVertCY></Rect></Wnd2></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>220</Bottom><Right>1026</Right><x>-2</x><y>-2</y><xscreen>1028</xscreen><yscreen>222</yscreen><sizeHorzCX>1003906</sizeHorzCX><sizeHorzCY>307479</sizeHorzCY><sizeVertCX>209961</sizeVertCX><sizeVertCY>307479</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+  </Desktop>
+</Workspace>
+
+
