@@ -1,0 +1,33 @@
+C:\Users\PARK GYEONG MIN\Documents\Visual Studio 2010\Projects\SimonSays\obj\x86\Debug\SkeletonViewer.baml
+C:\Users\PARK GYEONG MIN\Documents\Visual Studio 2010\Projects\SimonSays\obj\x86\Debug\MainWindow.g.cs
+C:\Users\PARK GYEONG MIN\Documents\Visual Studio 2010\Projects\SimonSays\obj\x86\Debug\SkeletonViewer.g.cs
+C:\Users\PARK GYEONG MIN\Documents\Visual Studio 2010\Projects\SimonSays\obj\x86\Debug\App.g.cs
+C:\Users\PARK GYEONG MIN\Documents\Visual Studio 2010\Projects\SimonSays\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\PARK GYEONG MIN\Documents\Visual Studio 2010\Projects\SimonSays\obj\x86\Debug\BeginningKinect.Chapter5.SimonSays_MarkupCompile.cache
+C:\Users\PARK GYEONG MIN\Documents\Visual Studio 2010\Projects\SimonSays\obj\x86\Debug\BeginningKinect.Chapter5.SimonSays_MarkupCompile.lref
+C:\Users\PARK GYEONG MIN\Documents\Visual Studio 2010\Projects\SimonSays\bin\Debug\BeginningKinect.Chapter5.SimonSays.exe
+C:\Users\PARK GYEONG MIN\Documents\Visual Studio 2010\Projects\SimonSays\bin\Debug\BeginningKinect.Chapter5.SimonSays.pdb
+C:\Users\PARK GYEONG MIN\Documents\Visual Studio 2010\Projects\SimonSays\obj\x86\Debug\MainWindow.baml
+C:\Users\PARK GYEONG MIN\Documents\Visual Studio 2010\Projects\SimonSays\obj\x86\Debug\BeginningKinect.Chapter5.SimonSays.g.resources
+C:\Users\PARK GYEONG MIN\Documents\Visual Studio 2010\Projects\SimonSays\obj\x86\Debug\BeginningKinect.Chapter5.SimonSays.Properties.Resources.resources
+C:\Users\PARK GYEONG MIN\Documents\Visual Studio 2010\Projects\SimonSays\obj\x86\Debug\SimonSays.csproj.GenerateResource.Cache
+C:\Users\PARK GYEONG MIN\Documents\Visual Studio 2010\Projects\SimonSays\obj\x86\Debug\BeginningKinect.Chapter5.SimonSays.exe
+C:\Users\PARK GYEONG MIN\Documents\Visual Studio 2010\Projects\SimonSays\obj\x86\Debug\BeginningKinect.Chapter5.SimonSays.pdb
+C:\Users\PARK GYEONG MIN\Documents\Visual Studio 2010\Projects\SimonSays\obj\x86\Debug\SimonSays.csprojResolveAssemblyReference.cache
+C:\Users\apple\Documents\Visual Studio 2013\SimonSays\obj\x86\Debug\BeginningKinect.Chapter5.SimonSays.exe
+C:\Users\apple\Documents\Visual Studio 2013\SimonSays\obj\x86\Debug\BeginningKinect.Chapter5.SimonSays.pdb
+C:\Users\apple\Documents\Visual Studio 2013\SimonSays\bin\Debug\BeginningKinect.Chapter5.SimonSays.exe
+C:\Users\apple\Documents\Visual Studio 2013\SimonSays\bin\Debug\BeginningKinect.Chapter5.SimonSays.pdb
+C:\Users\apple\Documents\Visual Studio 2013\SimonSays\bin\Debug\Microsoft.Kinect.dll
+C:\Users\apple\Documents\Visual Studio 2013\SimonSays\obj\x86\Debug\SimonSays.csprojResolveAssemblyReference.cache
+C:\Users\apple\Documents\Visual Studio 2013\SimonSays\obj\x86\Debug\SkeletonViewer.baml
+C:\Users\apple\Documents\Visual Studio 2013\SimonSays\obj\x86\Debug\MainWindow.g.cs
+C:\Users\apple\Documents\Visual Studio 2013\SimonSays\obj\x86\Debug\SkeletonViewer.g.cs
+C:\Users\apple\Documents\Visual Studio 2013\SimonSays\obj\x86\Debug\App.g.cs
+C:\Users\apple\Documents\Visual Studio 2013\SimonSays\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\apple\Documents\Visual Studio 2013\SimonSays\obj\x86\Debug\BeginningKinect.Chapter5.SimonSays_MarkupCompile.cache
+C:\Users\apple\Documents\Visual Studio 2013\SimonSays\obj\x86\Debug\BeginningKinect.Chapter5.SimonSays_MarkupCompile.lref
+C:\Users\apple\Documents\Visual Studio 2013\SimonSays\obj\x86\Debug\MainWindow.baml
+C:\Users\apple\Documents\Visual Studio 2013\SimonSays\obj\x86\Debug\BeginningKinect.Chapter5.SimonSays.g.resources
+C:\Users\apple\Documents\Visual Studio 2013\SimonSays\obj\x86\Debug\BeginningKinect.Chapter5.SimonSays.Properties.Resources.resources
+C:\Users\apple\Documents\Visual Studio 2013\SimonSays\obj\x86\Debug\SimonSays.csproj.GenerateResource.Cache

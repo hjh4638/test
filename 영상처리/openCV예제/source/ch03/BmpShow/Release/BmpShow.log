@@ -1,0 +1,29 @@
+﻿빌드 시작: 2014-05-05 오후 11:05:06
+     1>2 노드의 "C:\Users\apple\Documents\Visual Studio 2013\imageEx\source\ch03\BmpShow\BmpShow.vcxproj" 프로젝트(Build 대상)입니다.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oy- /GL /D WIN32 /D _WINDOWS /D NDEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Release\BmpShow.pch" /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oy- /GL /D WIN32 /D _WINDOWS /D NDEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Release\BmpShow.pch" /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt BmpShow.cpp BmpShowDoc.cpp BmpShowView.cpp ChildFrm.cpp MainFrm.cpp
+         BmpShow.cpp
+         BmpShowDoc.cpp
+         BmpShowView.cpp
+         ChildFrm.cpp
+         MainFrm.cpp
+       ResourceCompile:
+         C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe /D NDEBUG /D _UNICODE /D UNICODE /D _AFXDLL /l"0x0412" /IRelease\ /nologo /fo"Release\BmpShow.res" BmpShow.rc 
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\apple\Documents\Visual Studio 2013\imageEx\source\ch03\BmpShow\Release\BmpShow.exe" /INCREMENTAL:NO /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\Include\Manifest\dpiaware.manifest" /DEBUG /PDB:"C:\Users\apple\Documents\Visual Studio 2013\imageEx\source\ch03\BmpShow\Release\BmpShow.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\apple\Documents\Visual Studio 2013\imageEx\source\ch03\BmpShow\Release\BmpShow.lib" /MACHINE:X86 /SAFESEH Release\BmpShow.res
+         Release\BmpShow.obj
+         Release\BmpShowDoc.obj
+         Release\BmpShowView.obj
+         Release\ChildFrm.obj
+         Release\MainFrm.obj
+         Release\stdafx.obj
+         코드를 생성하고 있습니다.
+         코드를 생성했습니다.
+         BmpShow.vcxproj -> C:\Users\apple\Documents\Visual Studio 2013\imageEx\source\ch03\BmpShow\Release\BmpShow.exe
+     1>"C:\Users\apple\Documents\Visual Studio 2013\imageEx\source\ch03\BmpShow\BmpShow.vcxproj" 프로젝트를 빌드했습니다(Build 대상).
+
+빌드했습니다.
+
+경과 시간: 00:00:02.82

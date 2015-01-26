@@ -1,0 +1,35 @@
+﻿빌드 시작: 2014-05-05 오후 11:13:29
+     1>2 노드의 "C:\Users\apple\Documents\Visual Studio 2013\imageEx\source\ch04\DibCreate\DibCreate.vcxproj" 프로젝트(Build 대상)입니다.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oy- /GL /D WIN32 /D _WINDOWS /D NDEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Release\DibCreate.pch" /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oy- /GL /D WIN32 /D _WINDOWS /D NDEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Release\DibCreate.pch" /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ChildFrm.cpp Dib.cpp DibBmp.cpp DibCreate.cpp DibCreateDoc.cpp DibCreateView.cpp MainFrm.cpp RGBBYTE.cpp
+         ChildFrm.cpp
+         Dib.cpp
+         DibBmp.cpp
+         DibCreate.cpp
+         DibCreateDoc.cpp
+         DibCreateView.cpp
+         MainFrm.cpp
+         RGBBYTE.cpp
+       ResourceCompile:
+         C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe /D NDEBUG /D _UNICODE /D UNICODE /D _AFXDLL /l"0x0412" /IRelease\ /nologo /fo"Release\DibCreate.res" DibCreate.rc 
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\apple\Documents\Visual Studio 2013\imageEx\source\ch04\DibCreate\Release\DibCreate.exe" /INCREMENTAL:NO /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\Include\Manifest\dpiaware.manifest" /DEBUG /PDB:"C:\Users\apple\Documents\Visual Studio 2013\imageEx\source\ch04\DibCreate\Release\DibCreate.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\apple\Documents\Visual Studio 2013\imageEx\source\ch04\DibCreate\Release\DibCreate.lib" /MACHINE:X86 /SAFESEH Release\DibCreate.res
+         Release\ChildFrm.obj
+         Release\Dib.obj
+         Release\DibBmp.obj
+         Release\DibCreate.obj
+         Release\DibCreateDoc.obj
+         Release\DibCreateView.obj
+         Release\MainFrm.obj
+         Release\RGBBYTE.obj
+         Release\stdafx.obj
+         코드를 생성하고 있습니다.
+         코드를 생성했습니다.
+         DibCreate.vcxproj -> C:\Users\apple\Documents\Visual Studio 2013\imageEx\source\ch04\DibCreate\Release\DibCreate.exe
+     1>"C:\Users\apple\Documents\Visual Studio 2013\imageEx\source\ch04\DibCreate\DibCreate.vcxproj" 프로젝트를 빌드했습니다(Build 대상).
+
+빌드했습니다.
+
+경과 시간: 00:00:02.37
