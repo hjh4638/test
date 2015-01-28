@@ -1,0 +1,247 @@
+	<!-- 벨트 조회 v-->
+	<select id="beltListInquiry" parameterClass="mil.af.L6S.component.SearchFilter" resultMap="beltListMap">
+		SELECT
+		    data.*,
+		    b.*
+		FROM
+		(
+			SELECT
+			    rownum as Rnum,
+				a.*
+			FROM
+			(
+			    SELECT
+			        *
+			    FROM
+			        lsms_belt_data 
+			    WHERE
+			        viewstate = 1
+				ORDER BY
+			        length(sn),
+			        sn
+		    )a
+		    <isNull property="pn">
+		    WHERE
+				<![CDATA[	           
+					rownum <= #pagination.itemSeqEnd#
+				]]>
+			</isNull>
+		)data,
+		 lsms_belt_contents b
+		<isNotNull property="pn">
+ 			WHERE
+ 				Rnum = #pn#			
+ 			AND
+ 				data.sn = b.sn(+)
+ 			ORDER BY
+  				edunum DESC
+	 	</isNotNull>    
+  		
+  		<isNull property="pn">
+			WHERE
+		    	data.sn = b.sn(+)
+		    <![CDATA[
+		    AND
+		    	Rnum >= #pagination.itemSeqBegin#
+		    ]]>
+			<isEmpty property="searchName"></isEmpty>
+	  		<isNotEmpty property="searchName">
+	  			AND
+	  				data.name = #searchName#
+	  		</isNotEmpty>
+	  		<isEmpty property="searchBelt"></isEmpty>
+	  		<isNotEmpty property="searchBelt">
+	  			AND
+	  				b.belt = #searchBelt#
+	  		</isNotEmpty>
+	  		<isEmpty property="searchEduNum"></isEmpty>
+	  		<isNotEmpty property="searchEduNum">
+	  			AND
+	  				b.eduNum LIKE #searchEduNum#||'%'
+	  		</isNotEmpty>
+	  		<isEmpty property="searchSosok"></isEmpty>
+	  		<isNotEmpty property="searchSosok">
+	  			AND
+	  				data.sosokName LIKE '%'||#searchSosok#||'%'
+	  				 
+	  		</isNotEmpty>
+
+		</isNull>
+	</select>	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+<div id="dialog" title="Search">
+	<p align="center">
+		<b>Do you wanna search datum?</b><br/>
+		<b>Please input some condition</b><br/>
+	</p>
+	<br/>
+	<form:form commandName="searchFilter" method="get" htmlEscape="true">
+		<table border="1" cellspacing="0" cellpadding="0" align="center">
+			<thead>
+				<tr height="30">
+					<th width="100" align="center">Belt Level</th>
+					<td width="350">
+						&nbsp;&nbsp;
+						<form:select path="searchBelt" onfocus="blur();">
+							<option value="">Total</option>
+							<option value="FEA">FEA</option>
+							<option value="GB">GB</option>
+							<option value="BB">BB</option>
+							<option value="MBB">MBB</option>
+						</form:select>
+					</td>
+				</tr>
+				<tr height="30">
+					<th width="100" align="center">Name</th>
+					<td width="350">
+						&nbsp;&nbsp;
+						<form:input path="searchName" value=""/>
+					</td>
+				</tr>
+				<tr height="30">
+					<th width="100" align="center">Session Number</th>
+					<td width="350">
+						&nbsp;&nbsp;
+						<form:input path="searchEduNum" value=""/>
+					</td>
+				</tr>
+				<tr height="30">
+					<th width="100" align="center">Position</th>
+					<td width="350">
+						&nbsp;&nbsp;
+						<form:input path="searchSosok" value=""/>
+					</td>
+				</tr>
+			</thead>
+		</table>
+	</form:form>
+</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- jQuery 1.6 Version & Ui-->
+	<script type="text/javascript" src="<c:url value='/js/jquery-1.5.1.min.js'/>"></script> 
+	<script type="text/javascript" src="<c:url value='/js/DateUtil.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='/js/Validation.js'/>"></script>  
+	<script type="text/javascript" src="<c:url value='/js/jquery.tools.min.js'/>"></script> 
+	<%-- <script type="text/javascript" src="<c:url value='/js/jquery-1.6.2.min.js'/>"></script>  --%>
+	<script type="text/javascript" src="<c:url value='/js/jquery-ui-1.8.16.custom.min.js'/>"></script>
+	<%-- <script type="text/javascript" src="<c:url value='/js/jquery.ui.datepicker-ko.js'/>"></script> --%>
+	<script type="text/javascript" src="<c:url value='/js/json.min.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='/js/util/common.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='/js/util/flash.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='/js/util/upload.js'/>"></script>
+	<!-- style -->
+	<link rel="stylesheet" type="text/css" href="<c:url value='/css/style.css' />" />
+	<link rel="stylesheet" type="text/css" href="<c:url value='/css/smoothness/jquery-ui-1.8.16.custom.css'/>" >
+	
+	
+	
+	
+	
+	
+	
+	<script type="text/javascript">
+	var totalname;
+	function getBase(th){
+		 var basecode=$(th).val();
+		 var length = basecode.length;
+		 var id;
+		 if(length == 3){
+			id="one";
+		 	$("#one").find("option").remove();
+		 	$("#two").find("option").remove();
+		 	$("#three").find("option").remove();
+		 }
+		 else if(length == 6){
+			 id="two";
+			 $("#two").find("option").remove();
+			 $("#three").find("option").remove();
+		 }
+		 else if(length == 9){
+			 id="three";
+			 $("#three").find("option").remove();
+		 }
+		$.ajax({
+			url:		'/L6S/subject/getBaseByAjax.do',
+			type:		'POST',
+			dataType:	'json',
+		 	data: {
+		 			basecode:basecode
+				},
+			success:function(data){
+		 		$("#"+id).append('<option value=""></option>');
+				$.each(data,function(key,value){
+					if(value==""){
+						$("#"+id).append('<option value="">없음</option>');
+					}
+					$("#"+id).append('<option value="'+value.basecode+'">'+value.basename+'</option>');
+				});
+			}
+		}); 
+	}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/********************************/
+/*******  Top Navigation  *******/
+/********************************/
+.belt_navigation_ul {
+	width: 798px;
+	height: 26px;
+	margin-top: 6px;
+}
+
+.belt_navigation_ul li {
+	float: left;
+	margin-left: 27px;	
+}
+
+.belt_navigation_ul li a {
+	float: left;
+	width: 150px;
+	height: 24px;
+	border: 1px solid black;
+	padding-top: 12px;
+	text-align: center;
+}

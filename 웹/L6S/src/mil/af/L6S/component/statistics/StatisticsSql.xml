@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "../../../../../../setting/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="StatisticsSql">
+<typeAlias alias="UserVO" type="mil.af.L6S.component.subject.UserVO" /> 
+<typeAlias alias="SubjectVO" type="mil.af.L6S.component.subject.SubjectVO" />
+<typeAlias alias="AdministratorVO" type="mil.af.L6S.component.admin.AdministratorVO" />
+<typeAlias alias="SubjectFormAndDataVO" type="mil.af.L6S.component.subject.SubjectFormAndDataVO" />
+<typeAlias alias="BaseVO" type="mil.af.L6S.component.subject.BaseVO" />
+
+<!--D,M,A,I,C 단계 진행현황  -->
+<select id="getStepCount" parameterClass="String" resultClass="SubjectFormAndDataVO">
+SELECT
+	 a.step step_view, count(*) fnd_count
+FROM
+	lsms_step a, lsms_subject b 
+WHERE
+    SUBSTR(TO_CHAR(a.register_day,'YYYY/MM/DD'),1,4) = #value#
+AND
+	b.is_expire is null
+AND
+	a.subject_code = b.subject_code
+GROUP BY
+	 step
+</select>
+<!--완료된 과제 갯수 -->
+<select id="getFinishSubjectCount" parameterClass="String" resultClass="Integer">
+SELECT 
+    count(*) fnd_count
+FROM 
+    lsms_approval a, lsms_subject b 
+WHERE 
+    a.app_type = 'E'
+AND 
+    a.is_complete = 1
+AND
+	b.is_expire is null
+AND
+	a.subject_code = b.subject_code
+AND
+	SUBSTR(TO_CHAR(a.create_time,'YYYY/MM/DD'),1,4) = #value#
+</select>
+
+<!--연도별 과제등급현황  --> 
+<select id="getSubjectSectionCount" parameterClass="String" resultClass="SubjectVO">
+SELECT
+     upper(subject_section) subject_section, count(*) subject_count
+FROM
+    lsms_subject
+WHERE
+    SUBSTR(TO_CHAR(register_day,'YYYY/MM/DD'),1,4) = #value#
+AND
+	is_expire is null     
+GROUP BY
+    subject_section
+</select>
+
+<!--분야별 과제 현황 --> 
+<select id="getSubjectFieldCount" parameterClass="String" resultClass="SubjectVO">
+SELECT
+    field_type,count(*) subject_count
+FROM
+    lsms_subject
+WHERE
+	SUBSTR(TO_CHAR(REGISTER_DAY,'YYYY/MM/DD'),1,4) = #value#
+AND
+	is_expire is null   
+GROUP BY
+    field_type
+ORDER BY
+	subject_count desc
+</select>
+
+<!--부대별 과제 현황 --> 
+<select id="getEachBaseCount" parameterClass="String" resultClass="SubjectVO">
+SELECT
+    a.base_name sosok_gragh, count subject_count
+FROM
+    lsms_base2 a,
+(
+SELECT
+    d.base_code base_code,count(*) count
+FROM
+    LSMS_SUBJECT c , LSMS_BASE2 d
+WHERE
+	c.is_expire is null
+AND
+(
+	SUBSTR(TO_CHAR(c.REGISTER_DAY,'YYYY/MM/DD'),1,4) = #value#
+AND(  
+     (substr(c.sosokcode,1,4) not in d.base_code
+AND
+    substr(c.sosokcode,1,6) in d.base_code)
+OR
+    (   
+    substr(c.sosokcode,1,4) in d.base_code    
+AND    
+    substr(c.sosokcode,1,6) not in 
+                                 (
+                                SELECT 
+                                    base_code
+                                FROM
+                                    LSMS.LSMS_BASE2 
+                                WHERE
+                                    base_code like 'A500__'
+                                    )
+    )
+)
+)
+GROUP BY
+    d.base_code
+)b
+WHERE
+    a.base_code = b.base_code
+
+ORDER BY
+    count desc
+</select>
+
+	<!-- Graph Datum -->
+	<!-- beltstate 조건 재설정 필요  -->
+	<select id="belt1Count" parameterClass="mil.af.L6S.component.SearchFilter" resultClass="mil.af.L6S.component.belt.BeltGraphVO">
+		SELECT
+		    DISTINCT(c.belt),
+		    NVL(a.count1,0) as count1,
+		    NVL(b.count2,0) as count2
+		FROM
+		    lsms_belt_contents c,
+		    (
+		        SELECT
+		            DISTINCT(belt),
+		            COUNT(belt) as count1
+		        FROM
+		            lsms_belt_contents
+		        WHERE
+		            beltstate IN (2,3)
+		        <isEqual property="year" compareValue="9999"></isEqual>
+		        <isNotEqual property="year" compareValue="9999" prepend="AND">
+		            SUBSTR(edunum,1,2) = SUBSTR(#year#,3,2)
+	            </isNotEqual>
+		        GROUP BY
+		            belt
+		    )a,
+		        (
+		        SELECT
+		            DISTINCT(belt),
+		            COUNT(belt) as count2
+		        FROM
+		            lsms_belt_contents
+		        WHERE
+		            beltstate IN (4,5)
+		        <isEqual property="year" compareValue="9999"></isEqual>
+		        <isNotEqual property="year" compareValue="9999" prepend="AND">
+		            SUBSTR(edunum,1,2) = SUBSTR(#year#,3,2)
+	            </isNotEqual>
+		        GROUP BY
+		            belt
+		    )b
+		WHERE
+		    c.belt = a.belt(+)
+        AND            
+            c.belt = b.belt(+)
+        ORDER BY
+        	CASE c.belt
+        		WHEN 'MBB' THEN '1'
+        		WHEN 'BB'  THEN '2'
+        		WHEN 'GB'  THEN '3'
+        		WHEN 'FEA' THEN '4'
+        	 	ELSE '100'
+        	 END
+        	
+	</select>
+	
+	<!-- 테이블에 들어갈 데이터 조회 -->
+	<select id="getTableDatum" parameterClass="mil.af.L6S.component.SearchFilter" resultClass="mil.af.L6S.component.belt.BeltTableVO">
+		SELECT
+		    code,
+		    belt,
+		    state,
+		    count(belt) as count
+		FROM
+		(
+		    SELECT
+		        (CASE SUBSTR(b.rankcode,1,1)
+		         WHEN 'C' THEN 'OFFICER'
+		         WHEN 'E' THEN 'WARRANT'
+		         WHEN 'G' THEN 'ENLISTED'
+		         ELSE 'ETC' 
+		         END) code, 
+		        (CASE a.beltstate
+		        WHEN 2 THEN 'FIN'
+		        WHEN 3 THEN 'FIN'
+		        WHEN 4 THEN 'CERT'
+		        WHEN 5 THEN 'CERT' END) state,
+		        a.belt
+		    FROM
+		        lsms_belt_contents a,
+		        avs11u0t b
+		    WHERE
+		        a.sn = b.userid
+		    AND
+		        a.beltstate IN (2, 3, 4, 5)
+		        <isEqual property="year" compareValue="9999"></isEqual>
+		        <isNotEqual property="year" compareValue="9999" prepend="AND">
+		            SUBSTR(edunum,1,2) = SUBSTR(#year#,3,2)
+	            </isNotEqual>
+		)
+		GROUP BY code, state, belt
+    </select>
+</sqlMap>

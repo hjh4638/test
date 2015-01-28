@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "../../../../../../setting/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="testUser">
+	<typeAlias alias="UserVO" type="mil.af.L6S.component.subject.UserVO" /> 
+	<typeAlias alias="SubjectVO" type="mil.af.L6S.component.subject.SubjectVO" />
+	<typeAlias alias="AdministratorVO" type="mil.af.L6S.component.admin.AdministratorVO" />
+	<typeAlias alias="SubjectFormAndDataVO" type="mil.af.L6S.component.subject.SubjectFormAndDataVO" />
+	<typeAlias alias="BaseVO" type="mil.af.L6S.component.subject.BaseVO" />
+	<typeAlias alias="SubjectExcelVO" type="mil.af.L6S.component.subject.SubjectExcelVO" />
+	<typeAlias alias="SubjectStep" type="mil.af.L6S.test.subject.SubjectStep" />
+	<typeAlias alias="ApprovalVO" type="mil.af.L6S.component.approvalLine.ApprovalVO" /> 
+	
+	<select id="getUser" resultClass="UserVO" parameterClass="String">
+	SELECT
+	    *
+	FROM
+	    avs11u0t
+	WHERE
+	    userid=#value#
+	</select>
+	<select id="getUserInProject" resultClass="UserVO" parameterClass="String">
+	SELECT 
+    *
+	FROM
+	    lsms_user join lsms_subject
+    USING(subject_code)
+	WHERE
+	    sn=#value#
+    AND 
+    	is_expire is null
+	</select>
+	<select id="getSubjectInfo" resultClass="SubjectVO" parameterClass="Integer">
+	SELECT *
+	FROM lsms_subject
+	WHERE subject_code = #value#
+	</select>
+	<select id="getSubjectDataInfo" resultClass="SubjectStep" parameterClass="Integer">
+	SELECT *
+	FROM lsms_step a join lsms_data b
+	USING(step_code)
+	WHERE subject_code =#value#
+	ORDER BY step_code
+	</select>
+	<select id="getSubjectAppInfo" resultClass="ApprovalVO" parameterClass="Integer">
+	SELECT *
+	FROM lsms_approval join lsms_approval_line
+	USING(app_id)
+	WHERE subject_code =#value#
+	ORDER BY app_seq
+	</select>
+</sqlMap>

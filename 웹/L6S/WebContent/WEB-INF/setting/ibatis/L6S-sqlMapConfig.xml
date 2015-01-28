@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN" "../dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+
+	<settings 
+		cacheModelsEnabled="true" 
+		enhancementEnabled="true"
+		lazyLoadingEnabled="true" 
+		maxRequests="512" 
+		maxSessions="512"
+		maxTransactions="512" 
+		useStatementNamespaces="true" 
+	/>
+	
+ 	<sqlMap resource="/mil/af/L6S/component/common/CommonSql.xml"/> 
+	<!-- <sqlMap resource="/mil/af/L6S/component/admin/TestSql.xml"/>  -->
+	<sqlMap resource="/mil/af/L6S/component/subject/SubjectSql.xml"/> 
+	<sqlMap resource="/mil/af/L6S/component/admin/AdministratorSql.xml"/>
+	<sqlMap resource="/mil/af/L6S/component/belt/BeltSql.xml"/>
+	<sqlMap resource="/mil/af/L6S/component/subject/BaseSql.xml"/>
+	<sqlMap resource="/mil/af/L6S/component/statistics/StatisticsSql.xml"/>    
+	<sqlMap resource="/mil/af/L6S/component/approvalLine/ApprovalSql.xml"/>    
+</sqlMapConfig>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "../../../../../../setting/dtd/sql-map-2.dtd" >
+<sqlMap namespace="commonSql">
+	
+	<!-- 부대에따른 명단 조회 -->
+	<resultMap id="user_map" class="mil.af.L6S.component.common.User">
+		<result property="sn" column="userid"/>
+		<result property="name" column="name"/>
+		<result property="rank" column="rankname"/>
+		<result property="positionName" column="fullass"/>
+		<result property="insasosok" column="insasosokname"/>
+		<result property="intrasosok" column="intrasosokname"/>
+	</resultMap>
+
+	<select id="selectUserData" parameterClass="String" resultMap="user_map">
+		SELECT
+			sosokcode, 
+	  		rankname ,
+	  		insasosokname,
+	  		intrasosokname, 
+	  		fullass, 
+	  		name, 
+	  		userid
+  		FROM
+  			avs11u0t
+		WHERE
+			userid = #value#
+	</select>
+
+	<!-- 권한조회Map -->
+	<resultMap id="authority_map" class="mil.af.L6S.component.admin.AdministratorVO">
+		<result property="code" column="base_code" />
+		<result property="name" column="base_name" />
+		<result property="sn" column="base_manager" />
+		<result property="quarter" column="base_quarter" />
+		<result property="authority" column="base_auth" />		
+	</resultMap>
+	
+	<!-- 권한 조회 -->
+	<select id="getAuthority" parameterClass="String" resultMap="authority_map">
+		SELECT
+		    *
+		FROM
+		    lsms_admin
+		WHERE
+		    base_manager = #value#
+	</select>
+
+	<!-- AVS11U0T 조회 맵 -->
+	<resultMap id="avs11u0t_map" class="mil.af.L6S.component.common.User">
+		<result property="sn" column="userid"/>
+		<result property="name" column="name"/>
+		<result property="rank" column="rankname"/>
+		<result property="insasosok" column="insasosokname"/>
+		<result property="intrasosok" column="intrasosokname"/>
+	</resultMap>
+
+	<!-- avs11u0t에서 이름을 통한 사람 조회 -->
+	<select id="selectAvs11u0tToName" parameterClass="mil.af.L6S.component.admin.AdministratorVO" resultMap="avs11u0t_map">
+	<![CDATA[
+		SELECT
+			*
+		FROM
+		    (
+		        SELECT
+		            a.*,
+		            ROWNUM AS rnum 
+		        FROM
+		            (
+		                SELECT
+						    userid,
+						    name,
+						    rankname,
+						    insasosokname,
+						    intrasosokname
+						FROM
+						    avs11u0t
+						WHERE
+						    name = #searchName#
+						ORDER BY
+						    rankcode	
+		            ) a
+		        WHERE rownum <= #pagination.itemSeqEnd#
+		    )
+		WHERE rnum >= #pagination.itemSeqBegin#   
+	]]>		
+	</select>
+	
+	<!-- avs11u0t에서 이름 개수 -->
+	<select id="getAvs11u0tToName" parameterClass="String" resultClass="Integer">
+		SELECT
+			COUNT(ROWNUM)
+		FROM
+			avs11u0t
+		WHERE
+			name = #name#
+	</select>
+	
+	
+	
+	<!-- SSO Token 생성용 Test BackDoor -->
+	<select id="getIntraUser" parameterClass="String" resultClass="mil.af.L6S.component.common.SsoTestVO">
+		SELECT 
+			userid, sosokcode, ass, fullass, rankcode, name, telin, usergubun, 
+			gunbun, sosokname, insasosokcode, insasosokname, insabojik, origin, 
+			kisu, mspccode, mspcname, rankname, intrasosokname, sinbuncode 
+		FROM 
+			avs11u0t 
+		WHERE 
+			userid = #userid#
+	</select>
+	
+	<resultMap id="beltFileVO" 			class="mil.af.L6S.component.common.FileVO">
+		<result property="sn" 			column="file_sn" />
+		<result property="seq" 			column="file_seq" />
+		<result property="fileName" 	column="file_name" />
+		<result property="saveName" 	column="file_saved_name" />
+		<result property="type" 		column="file_type" />
+	</resultMap>
+	
+	<!-- 파일업로드데이터 입력 -->
+	<insert id="insertFileUpload" parameterClass="mil.af.L6S.component.common.FileVO">
+		INSERT
+		INTO
+			lsms_belt_file
+			(
+				file_sn,
+				file_seq,
+				file_name,
+				file_saved_name,
+				file_type
+			)
+		VALUES
+			(
+				lsms_file_sn.NEXTVAL,
+				<isNotNull property="seq">
+					#seq#,
+				</isNotNull>
+				<isNull property="seq">
+					lsms_file_seq.CURRVAL,
+				</isNull>
+				#fileName#,
+				#saveName#,
+				#type#
+			)
+	</insert>
+	
+	<!-- 파일 한개만 가져옴 -->
+	<select id="selectFileVOOne" parameterClass="String" resultMap="beltFileVO">
+		SELECT
+			file_sn,
+			file_seq,
+			file_name,
+			file_saved_name,
+			file_type
+		FROM
+		    lsms_belt_file
+		WHERE
+		   	file_sn = #value#
+	</select>
+	
+	<!-- 파일 삭제 -->
+	<delete id="deleteFileData" parameterClass="String">
+		DELETE
+		FROM
+		    lsms_belt_file
+		WHERE
+		    file_sn = #value#
+	</delete>
+		<!--  조직도 조회 -->
+	<select id="getLineList" parameterClass="string" resultClass="mil.af.L6S.component.approvalLine.ApprovalMemberVO">
+		SELECT RANKNAME, NAME, SOSOKNAME, ASS, SOSOKCODE, USERID 
+  		  FROM AVS11U0T
+  		  WHERE
+  		 <dynamic>
+  		 <isEmpty property = "value"> 1 != 1</isEmpty>
+  		 <isNotEmpty property = "value"> SOSOKCODE like #value#||'%' and length(sosokcode)=(length(#value#)+2) and substr(rankcode,0,1)!='K'</isNotEmpty>
+  		 </dynamic>
+  		 ORDER BY RANKCODE||USERID
+	</select>
+
+</sqlMap>

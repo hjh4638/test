@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans
+	xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/security 
+		http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+	
+	<beans:bean id="ssoService" class="com.ksign.ssoapi.SSOService">
+		<beans:constructor-arg type="java.lang.String" value="af.mil" />
+		<beans:constructor-arg type="java.lang.String" value="368B184727E89AB69FAF" />
+	</beans:bean>
+		
+	<http use-expressions="true" entry-point-ref="http403ForbiddenEntryPoint">
+		<custom-filter position="PRE_AUTH_FILTER" ref="preAuthFilter" />
+		
+		<intercept-url pattern="/common/referenceRoom.do" access="hasAnyRole('ROLE_ADMIN')"/>
+		
+		<intercept-url pattern="/main/upload.do" access="hasAnyRole('ROLE_ADMIN','ROLE_MANAGER','ROLE_ANONYMOUS')"/>
+		<intercept-url pattern="/main/download.do" access="hasAnyRole('ROLE_ADMIN','ROLE_MANAGER','ROLE_ANONYMOUS')"/>
+		
+		<intercept-url pattern="/common/alrimi.do" access="hasAnyRole('ROLE_ADMIN','ROLE_MANAGER','ROLE_ANONYMOUS')"/>
+		<intercept-url pattern="/start.do" access="hasAnyRole('ROLE_ADMIN','ROLE_MANAGER','ROLE_ANONYMOUS')" />
+		<intercept-url pattern="/ajax/*" access="hasAnyRole('ROLE_ADMIN','ROLE_MANAGER','ROLE_ANONYMOUS')"/>
+		<intercept-url pattern="/common/*" access="hasAnyRole('ROLE_ADMIN','ROLE_MANAGER','ROLE_ANONYMOUS')"/>
+		<intercept-url pattern="/board/*" access="hasAnyRole('ROLE_ADMIN','ROLE_MANAGER','ROLE_ANONYMOUS')"/>
+		
+		<intercept-url pattern="/main/fileUploadTest.do" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/admin/*" access="hasAnyRole('ROLE_ADMIN','ROLE_MANAGER','ROLE_ANONYMOUS')"/> 
+		
+<!-- 		145.99 : 일병 박민 / 147.122 : 중위 김지은 -->
+<!-- 		147.127 : 상병 정성모 / 147.40 : 상병 함준혁 -->
+<!-- 		147.21 : 중위  이의준 / 138.58 : (정보보호실)중위(진) 김종선 -->
+<!-- 		138.45 : (정보보호실)중위 전준희  -->
+		<intercept-url pattern="/main/test/login.do" 
+		access="hasIpAddress('48.2.147.122')
+		or hasIpAddress('48.2.147.127') or hasIpAddress('48.2.147.40')
+		or hasIpAddress('48.2.147.21')	or hasIpAddress('48.2.138.58')
+		or hasIpAddress('48.2.138.45')" /> 
+		
+		<access-denied-handler error-page="/main/noPermission.do" />
+	</http>
+
+	<beans:bean id="http403ForbiddenEntryPoint"
+		class="org.springframework.security.web.authentication.Http403ForbiddenEntryPoint"
+		/>
+
+	<authentication-manager alias="authManager">
+		<authentication-provider ref="preAuthFilter" />
+	</authentication-manager>
+
+	<beans:bean id="preAuthFilter" class="mil.af.L6S.component.common.AuthService">
+		<beans:property name="checkForPrincipalChanges" value="true" />
+		<beans:property name="authenticationManager" ref="authManager" />
+	</beans:bean>
+	
+	
+</beans:beans>

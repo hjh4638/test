@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/jee
+		http://www.springframework.org/schema/jee/spring-jee-3.0.xsd">
+	
+	<!-- .properties 파일을 ${} 형태로 불러 쓸수 있게 해주는 빈 등록 --> 
+	<!-- L6S-bean.xml과 L6S-orm.xml의 devDataSource,UploadAndDownloadUtil 빈의-->
+	 <!--프로퍼티 주입시 사용 (개발에서 운영으로 서버가 바뀔시를 대비)-->
+	<bean id="propertyConfigurer"
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>/WEB-INF/setting/spring/DBandUploadSetting.properties</value>
+            </list>
+        </property>
+    </bean>
+	
+<!-- 	dataSource Setting 개발 -->
+	<bean id="devDataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="${driverClassName}" />
+		<property name="url" value="${url}" />
+		<property name="username" value="${username}" />
+		<property name="password" value="${password}" />
+	</bean>
+	<!-- mims yone#x83 irms hndo#86e-->
+	
+<!-- 		dataSource Setting 개발 -->
+<!-- 	<bean id="devDataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource"> -->
+<!-- 		<property name="driverClass" value="oracle.jdbc.driver.OracleDriver" /> -->
+<!-- 		<property name="url" value="jdbc:-oracle:thin:@48.2.1.61:1622:SHQ1212" /> -->
+<!-- 		<property name="username" value="LSMS" /> -->
+<!-- 		<property name="password" value="ICWY#76A" /> -->
+<!-- 	</bean> -->
+		
+	<!-- dataSource 운영 -->
+	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/L6S" default-ref="devDataSource" />
+
+	<!-- ibatis setting -->
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="/WEB-INF/setting/ibatis/L6S-sqlMapConfig.xml" />
+	</bean>
+
+	<!-- Spring ibatis Template Setting -->
+	<bean id="sqlMapClientTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	
+</beans>

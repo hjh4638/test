@@ -1,0 +1,748 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "../../../../../../setting/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="SubjectSql">
+	<typeAlias alias="UserVO" type="mil.af.L6S.component.subject.UserVO" /> 
+	<typeAlias alias="SubjectVO" type="mil.af.L6S.component.subject.SubjectVO" />
+	<typeAlias alias="AdministratorVO" type="mil.af.L6S.component.admin.AdministratorVO" />
+	<typeAlias alias="SubjectFormAndDataVO" type="mil.af.L6S.component.subject.SubjectFormAndDataVO" />
+	<typeAlias alias="BaseVO" type="mil.af.L6S.component.subject.BaseVO" />
+	<typeAlias alias="SubjectExcelVO" type="mil.af.L6S.component.subject.SubjectExcelVO" />
+	<typeAlias alias="AfterSubjectVO" type="mil.af.L6S.component.endsubject.AfterSubjectVO" />
+	
+	<!-- 과제입력 -->
+	<insert id="insertSubject" parameterClass="SubjectVO">
+		INSERT INTO LSMS_SUBJECT
+		(
+		SUBJECT_CODE,
+		PROJECT_NAME,
+		TEAM_NAME,
+		LEADER,
+		LEADER_QUALIFICATION,
+		CHAMPION,
+		DEPARTMENT_CHAIRMAN,
+		GUIDE_COMMITTEE,
+		FIELD_TYPE,
+		SUBJECT_SECTION,
+		RESULT_SECTION,
+		SUBJECT_TYPE,
+		PLAN_D,
+		PLAN_A,
+		PLAN_M,
+		PLAN_I,
+		PLAN_C,
+		PROBLEM,
+		ADVANCE,
+		sosokcode,
+		filename,
+		sosokname
+		)
+			VALUES
+			(
+			#subject_code#,
+			#project_name#,
+			#team_name#,
+			#leader#,
+			#leader_qualification#,
+			#champion#,
+			#department_chairman#,
+			#guide_committee#,
+			#field_type#,
+			#subject_section#,
+			#result_section#,
+			#subject_type#,
+			#plan_d#,
+			#plan_a#,
+			#plan_m#,
+			#plan_i#,
+			#plan_c#,
+			#problem#,
+			#advance#,
+			#sosokcode#,
+			#filename#,
+			#sosokname#
+			)
+	</insert>
+	<!-- 과제 업데이트(과제수정시) -->
+	<update id="updateSubject" parameterClass="SubjectVO">
+	UPDATE
+	    LSMS_SUBJECT
+	SET	
+		SUBJECT_CODE=#subject_code#,
+		PROJECT_NAME=#project_name#,
+		TEAM_NAME=#team_name#,
+		FIELD_TYPE=#field_type#,
+		SUBJECT_SECTION=#subject_section#,
+		RESULT_SECTION=#result_section#,
+		SUBJECT_TYPE=#subject_type#,
+		PLAN_D=#plan_d#,
+		PLAN_A=#plan_a#,
+		PLAN_M=#plan_m#,
+		PLAN_I=#plan_i#,
+		PLAN_C=#plan_c#,
+		PROBLEM=#problem#,
+		ADVANCE=#advance#,
+		filename=#filename#
+	WHERE
+	    subject_code=#subject_code#
+	</update>
+	<!-- 과제 업데이트(과제수정시) 지도위원 챔피언 부서장 변경 -->
+	<update id="updateSubjectChampion" parameterClass="SubjectVO">
+	UPDATE
+	    LSMS_SUBJECT
+	SET	
+		CHAMPION=#champion#
+	WHERE
+	    subject_code=#subject_code#
+	</update>
+	<update id="updateSubjectDepartment_chair" parameterClass="SubjectVO">
+	UPDATE
+	    LSMS_SUBJECT
+	SET	
+		DEPARTMENT_CHAIRMAN=#department_chairman#
+	WHERE
+	    subject_code=#subject_code#
+	</update>
+	<update id="updateSubjectGuide_committee" parameterClass="SubjectVO">
+	UPDATE
+	    LSMS_SUBJECT
+	SET	
+		GUIDE_COMMITTEE=#guide_committee#
+	WHERE
+	    subject_code=#subject_code#
+	</update>
+	<!-- 사용자 등록 -->
+	<insert id="insertUser" parameterClass="UserVO">
+		INSERT INTO LSMS_USER
+		(
+		SUBJECT_CODE,
+		ROLE_NAME,
+		NAME,
+		DEPARTMENT,
+		SN,
+		IS_LEADER
+		)
+			values
+			(
+			#subject_code#, 
+			#role_name#,
+			#name#,
+			#department#,
+			#sn#,
+			#is_leader#
+			)
+	</insert>
+	<!-- 과제코드 새롭게 만들어서 가져오기 -->
+	<select id="getSeq" resultClass="Integer">
+		SELECT
+				 LSMS_SUBJECT_SEQ.nextval 
+		FROM
+				 dual
+	</select>
+	<!-- 단계코드 새롭게 만들어서 가져오기 -->
+	<select id="getStepSeq" resultClass="Integer">
+		SELECT 
+				LSMS_STEP_SEQ.nextval 
+		FROM
+				dual
+	</select>
+	<!-- 과제조회시 모든 과제 가져오는 쿼리 -->
+	<select id="getAllSubject" resultClass="SubjectVO">
+		SELECT
+				  * 
+		FROM
+				 LSMS_subject
+		ORDER BY
+				 subject_code DESC
+	</select>
+	<!-- 팝업에서 사용자 조회하는 쿼리 -->
+	<select id="searchUserByAvs" parameterClass="String" resultClass="UserVO">
+		 SELECT
+			    userid,
+			    name,
+			    rankname,
+			    intrasosokname,
+			    sosokcode intrasosokcode 
+			FROM
+			    avs11u0t
+			WHERE
+			    name = #name#
+			ORDER BY
+			    rankcode	
+	</select>
+	<!-- 타입으로 폼에서 가져오는 쿼리(select박스나 I단계 이미지 처리할때 이용) -->
+	<select id="getFormByType" resultClass="SubjectFormAndDataVO" parameterClass="String">
+		SELECT 
+			title,form_id,bigo
+		FROM 
+			LSMS_FORM
+		WHERE
+			 DATA_TYPE=#value#
+	</select>
+	<select id="getFormById" resultClass="SubjectFormAndDataVO" parameterClass="String">
+		SELECT 
+			form_id,title
+		FROM 
+			LSMS_FORM
+		WHERE 
+			SUBSTR(form_id,1,1)=#value#
+		ORDER BY
+			 form_id
+	</select>
+	<!-- 내 과제코드 가져오는쿼리 -->
+	<select id="getMySubjectCode" resultClass="SubjectVO">
+		 SELECT 
+			s.subject_code
+		FROM
+			LSMS_SUBJECT s, LSMS_USER u
+		WHERE
+			 s.subject_code = u.subject_code
+	    And  u.sn=#value#
+	    And  s.is_expire is null   
+	</select>
+	<!-- 단계입력 -->
+	<insert id="insertStep" parameterClass="Map">
+		INSERT INTO LSMS_STEP
+		(
+		STEP_CODE,
+		SUBJECT_CODE,
+		STEP,
+		filename
+		)
+		VALUES
+		(
+		#step_code#,
+		#subject_code#,
+		#step#,
+		#filename#
+		)
+	</insert>
+	<!-- 데이터 입력 -->
+	<insert id="insertDataWithStep" parameterClass="SubjectFormAndDataVO">
+		INSERT INTO LSMS_DATA
+		(
+		STEP_CODE,
+		FORM_ID,
+		SUBKEY,
+		DATA
+		)
+		VALUES
+		(
+		#step_code#,
+		#form_id#,
+		#subkey#,
+		#data#
+		)
+	</insert>
+	<!-- 단계코드를 가져온다 -->
+	<select id="getStepSeqBySubjectSeq" resultClass="Integer" parameterClass="Map">
+	SELECT
+	    step_code
+	FROM
+	    lsms_step
+	WHERE
+	    subject_code=#seq#
+	AND
+	    step=#step#
+	</select>
+	<select id="getSubjectBySn" resultClass="SubjectVO" parameterClass="String">
+	    SELECT 
+	    			*
+	    FROM 
+	    			LSMS_SUBJECT
+	    WHERE 
+	    			subject_code = ( SELECT 
+										s.subject_code
+										FROM
+											LSMS_SUBJECT s, LSMS_USER u
+										WHERE
+											 s.subject_code = u.subject_code
+									    And  u.sn= #value#
+									    And  s.is_expire is null   
+									    )
+	</select>
+	<select id="getBaseByBaseCode" resultClass="BaseVO">
+	SELECT 
+				base_code basecode, base_name basename
+	FROM 
+				LSMS_BASE2
+	</select>
+	<!-- 과제검색해주는 쿼리 -->
+	<select id="searchSubject" resultClass="SubjectVO" parameterClass="SubjectVO">
+		SELECT
+			*
+		FROM
+		(
+			SELECT
+				rownum AS rnum,
+		    	SUBJECT_CODE,
+				PROJECT_NAME,
+				to_char(REGISTER_DAY,'YYYY/MM/DD') REGISTER_DAY,
+				TEAM_NAME,
+				substr(leader,0,instr(leader,',')-1) leader,
+				substr(champion,0,instr(champion,',')-1) champion,
+				substr(department_chairman,0,instr(department_chairman,',')-1) department_chairman,
+				substr(guide_committee,0,instr(guide_committee,',')-1) guide_committee,
+                substr(leader,instr(leader,',')+1,length(leader)-instr(leader,',')) sn,
+				FIELD_TYPE,
+				SUBJECT_SECTION,
+				RESULT_SECTION,
+				SUBJECT_TYPE,
+					
+				(SELECT distinct(first_value(name) OVER (ORDER BY name DESC))
+    			  FROM lsms_subject a, lsms_user b
+	     		  WHERE a.subject_code = b.subject_code
+		    	  AND b.name like '%' || #name#
+		    	  AND #name# is not null
+			      AND a.subject_code = c.subject_code
+			      AND b.is_leader is null
+				) person,
+				
+				(SELECT base_name 
+                FROM LSMS_BASE2 
+                where (substr(sosokcode,1,4) not in base_code
+                AND substr(sosokcode,1,6) in base_code)
+                OR  (substr(sosokcode,1,4) in base_code    
+                AND  substr(sosokcode,1,6) not in (SELECT base_code
+                                                FROM LSMS.LSMS_BASE2 
+                                                WHERE base_code like 'A500__')
+                ))sosokname
+			FROM
+			    LSMS_SUBJECT c
+			WHERE
+				is_expire is null
+			AND
+				subject_code in (SELECT subject_code
+			                     FROM LSMS.LSMS_APPROVAL
+			                     WHERE app_type='S'
+			                     AND is_complete='1')
+			<dynamic>
+				<isNotEmpty prepend="AND" property="endsubject">
+				subject_code in (SELECT subject_code
+			                     FROM LSMS.LSMS_APPROVAL
+			                     WHERE app_type='E'
+			                     AND is_complete='1')
+				</isNotEmpty>
+				<isNotEmpty prepend="AND" property="result_section">
+			        RESULT_SECTION =#result_section#
+		        </isNotEmpty>
+				<isNotEmpty prepend="AND" property="field_type">
+			        FIELD_TYPE=#field_type#		
+		        </isNotEmpty>
+			   <isNotEmpty prepend="AND" property="subject_section">
+			        SUBJECT_SECTION = #subject_section#
+			    </isNotEmpty>
+			    <isNotEmpty prepend="AND" property="subject_type"> 
+			        SUBJECT_TYPE  =   #subject_type#           
+			    </isNotEmpty>    
+		    	<isNotEqual prepend="AND" property="name" compareValue="-9999">
+				   subject_code IN (SELECT
+			                            distinct(subject_code)
+			                         FROM 
+			                            LSMS.LSMS_USER 
+			                         WHERE 
+			                            name like '%' || #name# || '%'
+		                             AND 
+		                             	is_leader is null
+									)
+			    </isNotEqual>
+			    <isNotEmpty prepend="AND" property="dummy">
+			       subject_code IN (SELECT
+			                            distinct(subject_code)
+			                         FROM 
+			                            LSMS.LSMS_USER 
+			                         WHERE 
+			                            sn=#dummy#
+									)
+				</isNotEmpty>
+			    <isNotEmpty prepend="AND" property="leader">
+			    SUBSTR(leader,1,INSTR(leader,',')-1) like '%' || #leader#
+			    </isNotEmpty>
+		        <isNotEmpty prepend="AND" property="champion">
+		        SUBSTR(CHAMPION,1,INSTR(CHAMPION,',')-1) like '%' || #champion#
+		        </isNotEmpty>
+		        <isNotEmpty prepend="AND" property="department_chairman">
+		        SUBSTR(DEPARTMENT_CHAIRMAN,1,INSTR(DEPARTMENT_CHAIRMAN,',')-1) like '%' || #department_chairman#
+		        </isNotEmpty>
+		        <isNotEmpty prepend="AND" property="guide_committee">
+		        SUBSTR(GUIDE_COMMITTEE,1,INSTR(GUIDE_COMMITTEE,',')-1) like '%' || #guide_committee#
+		        </isNotEmpty>
+		        <isNotEmpty prepend="AND" property="sosokname">
+		         (SELECT base_name 
+                FROM LSMS_BASE2 
+                where (substr(sosokcode,1,4) not in base_code
+                AND substr(sosokcode,1,6) in base_code)
+                OR  (substr(sosokcode,1,4) in base_code    
+                AND  substr(sosokcode,1,6) not in (SELECT base_code
+                                                FROM LSMS.LSMS_BASE2 
+                                                WHERE base_code like 'A500__')
+                )) in #sosokname#
+		        </isNotEmpty>
+		         <isNotEmpty prepend="AND" property="project_name">
+		        project_name like '%'||#project_name# ||'%'
+		        </isNotEmpty>
+			</dynamic>
+			 <![CDATA[
+			AND rownum <= #pagination.itemSeqEnd#
+			]]>			
+			ORDER BY subject_code
+		)
+	    WHERE
+	    <![CDATA[
+	       	Rnum >= #pagination.itemSeqBegin#
+	    ]]>
+	    <dynamic>
+	     <isNotEmpty prepend="AND" property="register_day">
+		     substr(register_day,0,4)=#register_day#
+        </isNotEmpty>
+		</dynamic>
+
+		    
+	</select>
+	<!-- 과제 수 -->
+	<select id="getListCount" resultClass="Integer" parameterClass="SubjectVO">
+		SELECT
+				COUNT(SUBJECT_CODE)
+			FROM
+			    LSMS_SUBJECT 
+			WHERE
+				is_expire is null
+			AND
+			subject_code in (SELECT subject_code
+		                     FROM LSMS.LSMS_APPROVAL
+		                     WHERE app_type='S'
+		                     AND is_complete='1')
+			<dynamic>
+				<isNotEmpty prepend="AND" property="endsubject">
+				subject_code in (SELECT subject_code
+			                     FROM LSMS.LSMS_APPROVAL
+			                     WHERE app_type='E'
+			                     AND is_complete='1')
+				</isNotEmpty>
+				<isNotEmpty prepend="AND" property="result_section">
+			        RESULT_SECTION =#result_section#
+		        </isNotEmpty>
+				<isNotEmpty prepend="AND" property="field_type">
+			        FIELD_TYPE=#field_type#		
+		        </isNotEmpty>
+			   <isNotEmpty prepend="AND" property="subject_section">
+			        SUBJECT_SECTION = #subject_section#
+			    </isNotEmpty>
+			    <isNotEmpty prepend="AND" property="subject_type"> 
+			        SUBJECT_TYPE  =   #subject_type#           
+			    </isNotEmpty>    
+		    	<isNotEqual prepend="AND" property="name" compareValue="-9999">
+				   subject_code IN (SELECT
+			                            distinct(subject_code)
+			                         FROM 
+			                            LSMS.LSMS_USER 
+			                         WHERE 
+			                            name like '%' || #name# || '%'
+		                             AND 
+		                             	is_leader is null
+									)
+			    </isNotEqual>
+			    <isNotEmpty prepend="AND" property="dummy">
+			       subject_code IN (SELECT
+			                            distinct(subject_code)
+			                         FROM 
+			                            LSMS.LSMS_USER 
+			                         WHERE 
+			                            sn=#dummy#
+									)
+				</isNotEmpty>
+			    <isNotEmpty prepend="AND" property="leader">
+			    SUBSTR(leader,1,INSTR(leader,',')-1) like '%' || #leader#
+			    </isNotEmpty>
+		        <isNotEmpty prepend="AND" property="champion">
+		        SUBSTR(CHAMPION,1,INSTR(CHAMPION,',')-1) like '%' || #champion#
+		        </isNotEmpty>
+		        <isNotEmpty prepend="AND" property="department_chairman">
+		        SUBSTR(DEPARTMENT_CHAIRMAN,1,INSTR(DEPARTMENT_CHAIRMAN,',')-1) like '%' || #department_chairman#
+		        </isNotEmpty>
+		        <isNotEmpty prepend="AND" property="guide_committee">
+		        SUBSTR(GUIDE_COMMITTEE,1,INSTR(GUIDE_COMMITTEE,',')-1) like '%' || #guide_committee#
+		        </isNotEmpty>
+		        <isNotEmpty prepend="AND" property="sosokname">
+		         (SELECT base_name 
+                FROM LSMS_BASE2 
+                where (substr(sosokcode,1,4) not in base_code
+                AND substr(sosokcode,1,6) in base_code)
+                OR  (substr(sosokcode,1,4) in base_code    
+                AND  substr(sosokcode,1,6) not in (SELECT base_code
+                                                FROM LSMS.LSMS_BASE2 
+                                                WHERE base_code like 'A500__')
+                )) in #sosokname#
+		        </isNotEmpty>
+		         <isNotEmpty prepend="AND" property="project_name">
+		        project_name like '%'||#project_name# ||'%'
+		        </isNotEmpty>
+		         <isNotEmpty prepend="AND" property="register_day">
+				     to_char(register_day,'yyyy')=#register_day#
+		        </isNotEmpty>
+			</dynamic>
+			
+	</select>
+	<!-- 과제코드로 과제 가져옴 -->
+	<select id="getSubjectBySeq" resultClass="SubjectVO" parameterClass="Integer">
+		
+		SELECT
+		
+		SUBJECT_CODE,
+		PROJECT_NAME,
+		to_char(REGISTER_DAY,'YYYY/MM/DD') REGISTER_DAY,
+		TEAM_NAME,
+		substr(leader,0,instr(leader,',')-1) leader,
+		substr(champion,0,instr(champion,',')-1) champion,
+		substr(department_chairman,0,instr(department_chairman,',')-1) department_chairman,
+		substr(guide_committee,0,instr(guide_committee,',')-1) guide_committee,
+		substr(GUIDE_COMMITTEE,instr(GUIDE_COMMITTEE,',')+1,length(GUIDE_COMMITTEE)-instr(GUIDE_COMMITTEE,',')) guide_sn,
+		FIELD_TYPE,
+		SUBJECT_SECTION,
+		RESULT_SECTION,
+		SUBJECT_TYPE,
+		PLAN_D,
+		PLAN_A,
+		PLAN_M,
+		PLAN_I,
+		PLAN_C,
+		PROBLEM,
+		ADVANCE,
+		IS_EXPIRE,
+		sosokcode,
+		filename,
+	  	sosokname
+		FROM
+		    LSMS_SUBJECT 
+		WHERE
+		    subject_code=#value#
+	
+	</select>
+	<select id="getData" resultClass="SubjectFormAndDataVO" parameterClass="Map">
+		SELECT
+		    B.step_code,B.step step_view,C.data, C.form_id, C.subkey, B.filename, D.data_type
+		FROM
+		    LSMS_SUBJECT A, LSMS_STEP B, LSMS_DATA C, LSMS_FORM D
+		WHERE
+		    A.subject_code=B.subject_code
+		AND
+		    B.step_code=C.step_code
+		AND
+		    C.form_id=D.form_id
+		AND
+		    A.subject_code=#subject_code#
+		And 
+		    B.step=#step#
+	    AND
+	      	A.is_expire is null
+		ORDER BY
+			subkey,C.form_id
+	</select>
+	<select id="getStepList" resultClass="SubjectFormAndDataVO" parameterClass="Integer">
+		SELECT
+		    B.step_code,B.step step_view
+		FROM
+		    LSMS_SUBJECT A, LSMS_STEP B
+		WHERE
+		    A.subject_code=B.subject_code
+		AND
+		    A.subject_code=#value#
+	    AND
+	        A.is_expire is null
+	     ORDER BY 
+	        step_code DESC
+	</select>
+	<update id="updateStep" parameterClass="SubjectFormAndDataVO">
+		UPDATE
+	   		 LSMS_STEP
+		SET
+			    filename = #filename#
+		WHERE
+			    step_code = #step_code#
+	</update>
+	<select id="getBaseAll" resultClass="BaseVO">
+		SELECT 
+		    base_code basecode, base_name basename
+		FROM
+		    LSMS.LSMS_BASE2 
+	</select>
+	<update id="expireSubject" parameterClass="Integer">
+		UPDATE 
+		    lsms_subject
+		SET
+		    is_expire = 1
+		WHERE
+		    subject_code = #seq#
+	</update>
+	<delete id="deleteAllDataInaStep" parameterClass="Integer">
+		DELETE FROM
+	            LSMS_DATA
+	    WHERE
+	            step_code = #value#
+	</delete>
+	<delete id="deleteAllUserInaUser" parameterClass="Integer">
+		DELETE FROM
+	            LSMS_USER
+	    WHERE
+	            subject_code = #value#
+	</delete>
+	<select id="getEachStepCount" resultClass="SubjectFormAndDataVO" parameterClass="Integer">
+	SELECT
+		    B.step step_view, count(*) fnd_count
+	FROM
+	    LSMS_SUBJECT A, LSMS_STEP B
+	WHERE
+	    A.subject_code=B.subject_code
+	AND
+	    A.subject_code=#value#
+	   AND
+	       A.is_expire is null
+	   GROUP BY B.step 
+	</select>
+	<!-- 중전소 개발실 제외 -->
+	<select id="getBaseNameBySn" parameterClass="String" resultClass="String">
+	SELECT
+	    d.base_name
+	FROM
+	    avs11u0t c, lsms_base2 d
+	WHERE
+	    d.base_code != 'A15330'
+	AND
+	    c.userid=#value#
+	AND
+	  (
+	  (substr(c.sosokcode,1,4) not in d.base_code
+	AND
+	    substr(c.sosokcode,1,6) in d.base_code)
+	OR
+	   (   
+	    substr(c.sosokcode,1,4) in d.base_code    
+	AND    
+	    substr(c.sosokcode,1,6) not in 
+	                                 (
+	                                SELECT 
+	                                    base_code
+	                                FROM
+	                                    LSMS.LSMS_BASE2 
+	                                WHERE
+	                                    base_code like 'A500__'
+	                                    )
+	    )
+	    )
+	    
+	</select>
+	<!-- 팀원조회 -->
+	<select id="getUsersInfo" parameterClass="Integer" resultClass="UserVO">
+	SELECT
+	        * 
+	FROM
+	    LSMS.LSMS_USER 
+	WHERE
+	    subject_code = #value#
+	ORDER BY 
+		is_leader
+	</select>
+	<select id="myListCount" parameterClass="subjectVO" resultClass="Integer">
+		SELECT COUNT(a.subject_code)
+		FROM LSMS.LSMS_USER a,
+	         LSMS.LSMS_SUBJECT b
+		WHERE a.sn=#dummy#
+	    and b.is_expire is null
+	    and a.subject_code = b.subject_code(+)
+	</select>
+
+	<resultMap id="ExcelVO" 					class="SubjectExcelVO">
+		<result property="Position" 			column="position" />
+		<result property="Subject_Name" 		column="subjectname" />
+		<result property="Rank" 				column="rank" />
+		<result property="Name" 				column="name" />
+		<result property="Subject_Section" 		column="subject_section" />
+		<result property="Before" 				column="before" />
+		<result property="After" 				column="after" />
+		<result property="RegisterDay" 			column="registerday" />
+		
+	</resultMap>
+	
+	<select id="getExcelDatum" resultMap="ExcelVO">
+		SELECT 
+		    (select base_name
+		    from lsms_base2
+		    where     (substr(a.sosokcode,1,4) not in base_code
+		               AND substr(a.sosokcode,1,6) in base_code)
+		    OR
+		               (substr(a.sosokcode,1,4) in base_code    
+		               AND substr(a.sosokcode,1,6) not in 
+		                                 (SELECT base_code
+		                                FROM LSMS_BASE2 
+		                                WHERE base_code like 'A500__'))
+		    )position, a.project_name subjectname,
+		    substr(leader,0,instr(leader,' ')-1) rank, 
+		    substr(leader,instr(leader,' ')+1,instr(leader,',')-instr(leader,' ')-1) name,
+		    a.subject_section,
+		    NVL(
+            (SELECT data
+		    FROM lsms_data
+		    WHERE step_code = (SELECT step_code
+		                       FROM lsms_step
+		                       WHERE subject_code =a.subject_code 
+		                       AND step = 'M')
+		    AND form_id = 'M08'),0) before,
+		    TO_NUMBER(NVL(
+            (SELECT data
+		    FROM lsms_data
+		    WHERE step_code = (SELECT step_code
+		                        FROM lsms_step
+		                        WHERE subject_code =a.subject_code 
+		                        AND step = 'C')
+		    AND form_id = 'C04'),0)) after,
+		    to_number(to_char(a.register_day,'YYYY')) registerday
+		FROM lsms_subject a
+        ORDER BY registerday desc, after desc
+	</select>
+	<select id="getOneDataByCode" parameterClass="Map" resultClass="String">
+	SELECT data
+	FROM (lsms_subject a join lsms_step b on(a.subject_code=b.subject_code))
+	    join lsms_data c on(b.step_code=c.step_code)
+	WHERE form_id =#form_id#
+	AND a.subject_code =#subject_code#
+	</select>
+	<insert id="inserAfter" parameterClass="AfterSubjectVO">
+	insert into lsms_after_subject
+	(
+	    SUBJECT_CODE,
+	    PRICE,
+	    CONTENT,
+	    TITLE,
+	    seq
+	)
+	values
+	(
+	    #subject_code#,
+	    #price#,
+	    #content#,
+	    #title#,
+	    #seq#
+	)
+	</insert>
+	<update id="updateAfter" parameterClass="AfterSubjectVO">
+	update lsms_after_subject
+	set price=#price# , content=#content#,title=#title#
+	where seq=#seq#
+	</update>
+	<select id="getAfter" parameterClass="String" resultClass="AfterSubjectVO">
+	select 
+    SUBJECT_CODE,
+    ltrim(to_char(price,'9,999,999,999')) price_com,
+    price,
+    CONTENT,
+    TITLE,
+    SEQ
+	from lsms_after_subject
+	where subject_code = #subject_code#
+    order by title
+	</select>
+	<delete id="deleteAfter" parameterClass="String">
+	delete from lsms_after_subject
+	where seq=#seq#
+	</delete>
+</sqlMap>

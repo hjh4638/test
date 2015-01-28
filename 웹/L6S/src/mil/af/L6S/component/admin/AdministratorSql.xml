@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "../../../../../../setting/dtd/sql-map-2.dtd" >
+<sqlMap namespace="administratorSql">
+
+	<!-- 관리자 정보 가져오는 MAP -->
+	<resultMap id="administrator_result_map" class="mil.af.L6S.component.admin.AdministratorVO">
+		<result property="code" column="base_code"/>
+		<result property="name" column="base_name"/>
+		<result property="sn" column="base_manager" />
+		
+		<result property="position" column="position" />
+		<result property="sn_name" column="managerName" />
+		<result property="sn_rank" column="rankname" />
+		
+		<result property="quarter" column="base_quarter"/>
+		<result property="authority" column="base_auth" />
+	</resultMap>
+	
+	<!-- 관리자 개수  -->
+	<select id="getAdministratorCount" resultClass="Integer">
+		SELECT
+			COUNT(ROWNUM)
+		FROM
+			LSMS_admin
+	</select>
+
+	<!-- 관리자 정보 조회 avs11u0t Join-->
+	<select id="selectAdministratorList" parameterClass="mil.af.L6S.component.admin.AdministratorVO" resultMap="administrator_result_map">
+		SELECT
+			*
+		FROM
+		(
+			SELECT
+				ROWNUM AS rnum, 
+				z.*
+			FROM
+			(
+				SELECT
+					base_code,	base_name,	base_manager,	base_quarter,	base_auth,
+					(
+						SELECT
+							fullass                          
+						FROM
+							avs11u0t
+						WHERE
+							userid = base_manager
+					) AS position,
+                    (
+						SELECT
+							name
+						FROM
+							avs11u0t
+						WHERE
+							userid = base_manager
+					) AS managerName,
+                    (
+						SELECT
+							rankname                            
+						FROM
+							avs11u0t
+						WHERE
+							userid = base_manager
+					) AS rankname
+				FROM
+					lsms_admin
+			)z
+		<![CDATA[	            
+			WHERE rownum <= #pagination.itemSeqEnd#
+		)
+		WHERE rnum >= #pagination.itemSeqBegin#  
+	]]>
+	</select>
+	
+	<!-- 관리자 등록 체크 -->
+	<select id="checkUserSn" parameterClass="String" resultClass="Integer">
+		SELECT 
+		    count(base_manager)
+		FROM 
+		    LSMS_admin
+		WHERE 
+		    base_manager = #value#
+            
+	</select>
+	
+	<!-- 관리자 정보 군번값으로삭제 -->
+	<delete id="deleteAdministrator" parameterClass="java.lang.String">
+		DELETE
+		FROM
+			LSMS_admin
+		WHERE
+			sn = #sn#
+	</delete>
+	
+	<!-- Intrasosok != sosokcode in belt_data -->
+	<select id="getConfirmedData" resultClass="String">
+		SELECT
+		    a.sn
+		FROM
+		    lsms_belt_data a,
+		    avs11u0t b
+		WHERE
+		    a.sn = b.userid
+		AND
+		    a.sosokcode != b.sosokcode
+		
+	</select>
+	
+	<select id="getConfirmedData2" resultClass="String">
+	SELECT 
+		a.sn
+	FROM 
+		lsms_belt_data a
+	WHERE 
+		a.sn not in 
+			(
+			    SELECT 
+			    	b.gunbun
+			    FROM 
+			    	lsms_belt_data a,
+			        avs11u0t b
+			    WHERE 
+			    	a.sn = b.gunbun 
+			)	
+	</select>
+	
+	
+	
+	
+	<!-- 관리자 등록 및 변경  -->
+	<update id="insertAdmin" parameterClass="mil.af.L6S.component.admin.AdministratorVO">
+		UPDATE
+			lsms_admin
+		SET
+			base_manager = #sn#
+		WHERE
+			base_quarter = #quarter#
+	</update>
+	
+	<!-- update -->
+   	<update id="upDateData" parameterClass="String">
+		UPDATE
+			lsms_belt_data
+		SET
+			sosokname = (
+							SELECT
+								intrasosokname
+							FROM
+								avs11u0t
+							WHERE
+								userid = #value#
+						),
+			sosokcode = (
+							SELECT
+								sosokcode
+							FROM
+								avs11u0t
+							WHERE
+								userid = #value#
+						)
+			
+		WHERE
+			sn = #value#
+	</update>
+	
+   	<update id="upDateData2" parameterClass="String">
+		UPDATE
+			lsms_belt_data
+		SET
+			viewstate = 0
+		WHERE
+			sn = #value#
+	</update>
+	
+	<!-- AVS11U0T 조회 맵 -->
+	<resultMap id="avs11u0t_map" class="mil.af.L6S.component.common.User">
+		<result property="sn" column="userid"/>
+		<result property="name" column="name"/>
+		<result property="rank" column="rankname"/>
+		<result property="insasosok" column="insasosokname"/>
+		<result property="intrasosok" column="intrasosokname"/>
+	</resultMap>
+	
+	<!-- 바뀐 관리자 모드 : 소속코드로 구분 -->
+	<select id="selectAvs11u0tToQuarter" parameterClass="mil.af.L6S.component.admin.AdministratorVO" resultMap="avs11u0t_map">
+	
+		SELECT
+			*
+		FROM
+		    (
+		        SELECT
+		            a.*,
+		            ROWNUM AS rnum 
+		        FROM
+		            (
+		                SELECT
+						    userid,
+						    name,
+						    rankname,
+						    insasosokname,
+						    intrasosokname
+						FROM
+						    avs11u0t
+						WHERE
+						    sosokcode LIKE #quarter#||'%' 
+						AND
+							userid NOT LIKE '%-_'
+						<isNotNull property="sn">
+							AND
+								userid != #sn#
+						</isNotNull> 
+						AND
+							SUBSTR(rankcode,1,1) != 'K'
+						ORDER BY
+						    rankcode	
+		            ) a
+           		<![CDATA[
+		        WHERE rownum <= #pagination.itemSeqEnd#
+		    )
+		WHERE rnum >= #pagination.itemSeqBegin#   
+	]]>	
+	</select>
+	
+	<!-- 해당 부서별 관리자 수 측정 -->
+	<select id="getAdminCount" parameterClass="String" resultClass="Integer">
+		SELECT
+			COUNT(userid)
+		FROM
+			avs11u0t
+		WHERE
+		    sosokcode LIKE #quarter#||'%' 
+		AND
+			userid NOT LIKE '%-_' 
+		AND
+			SUBSTR(rankcode,1,1) != 'K'
+	</select>
+	
+	<!-- 소속 부대(ex. A101) 들고 오기 -->
+	<select id="getMyQuarter" parameterClass="String" resultClass="String">
+		SELECT
+			base_quarter
+		FROM
+			lsms_admin
+		WHERE
+			base_manager = #value#
+	</select>
+	
+	<!-- 소속 부대(ex. A101) 들고 오기 -->
+	<select id="getMyAuth" parameterClass="String" resultClass="String">
+		SELECT
+			base_auth
+		FROM
+			lsms_admin
+		WHERE
+			base_manager = #value#
+	</select>
+</sqlMap>

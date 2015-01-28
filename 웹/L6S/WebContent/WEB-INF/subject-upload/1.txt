@@ -1,0 +1,63 @@
+	<resultMap id="beltFileVO" 			class="mil.af.L6S.component.common.FileVO">
+		<result property="sn" 			column="file_sn" />
+		<result property="seq" 			column="file_seq" />
+		<result property="fileName" 	column="file_name" />
+		<result property="saveName" 	column="file_saved_name" />
+		<result property="type" 		column="file_type" />
+	</resultMap>
+	
+	
+		<!-- 벨트 목록 조회 v-->
+	<select id="beltListInquiry" parameterClass="mil.af.L6S.component.SearchFilter" resultMap="beltListMap">
+		SELECT
+		    *
+		FROM
+		(
+		    SELECT
+		        rownum as Rnum,
+		        a.*
+		    FROM
+		        lsms_belt_data a
+		    WHERE
+		        a.viewstate = 1
+		    ORDER BY
+		        length(a.sn),
+		        a.sn,
+		        Rnum
+		)data,
+		    lsms_belt_contents b
+		<isEmpty property="pn">
+			WHERE
+			    data.sn = b.sn(+)
+			<isEmpty property="searchName"></isEmpty>
+	  		<isNotEmpty property="searchName">
+	  			AND
+	  				data.name = #searchName#
+	  		</isNotEmpty>
+	  		<isEmpty property="searchBelt"></isEmpty>
+	  		<isNotEmpty property="searchBelt">
+	  			AND
+	  				b.belt = #searchBelt#
+	  		</isNotEmpty>
+	  		<isEmpty property="searchEduNum"></isEmpty>
+	  		<isNotEmpty property="searchEduNum">
+	  			AND
+	  				b.eduNum = #searchEduNum#
+	  		</isNotEmpty>
+	  		<isEmpty property="searchSosok"></isEmpty>
+	  		<isNotEmpty property="searchSosok">
+	  			AND
+	  				data.sosokCode LIKE '%'||#searchSosok#||'%'
+	  		</isNotEmpty>
+		</isEmpty>
+  		<isNotEmpty property="pn">
+  				,
+  				lsms_belt_file c
+  			WHERE
+		    	data.sn = b.sn(+)
+  			AND
+  				b.file_seq = c.file_seq(+)
+  			AND
+				Rnum = #pn#
+  		</isNotEmpty>    
+	</select>

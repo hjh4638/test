@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "../dtd/tiles-config_2_1.dtd">
+<tiles-definitions>
+
+	<!-- 일반 창 Layout -->
+	<definition name="layout" template="/WEB-INF/view/layout/layout.jsp">
+		<put-attribute name="title" value="린6시그마 관리체계"/>
+		<put-attribute name="include" value="/WEB-INF/view/layout/include.jsp"/>
+		<put-attribute name="top_navigation" value="/WEB-INF/view/nav/top_navigation.jsp"/>
+		<put-attribute name="left_navigation" value="/WEB-INF/view/nav/left_navigation.jsp"/>
+		<put-attribute name="foot" value="/WEB-INF/view/layout/foot.jsp"/>
+		<put-attribute name="content" value=""/>
+		<put-attribute name="stage_template" value=""/>
+	</definition>
+	
+	<definition name="layout_work" template="/WEB-INF/view/layout/layout_work.jsp">
+		<put-attribute name="title" value="린6시그마 관리체계"/>
+		<put-attribute name="include" value="/WEB-INF/view/layout/include.jsp"/>
+		<put-attribute name="top_navigation" value="/WEB-INF/view/nav/top_navigation.jsp"/>
+<!-- 		<put-attribute name="left_navigation" value="/WEB-INF/view/nav/left_navigation.jsp"/> -->
+		<put-attribute name="foot" value="/WEB-INF/view/layout/foot.jsp"/>
+		<put-attribute name="content" value=""/>
+		<put-attribute name="stage_template" value=""/>
+	</definition>	
+	
+	<!-- 와일드 카드를 이용한 일반 뷰 지정 -->
+	<definition name="statistics/*" extends="layout_work">
+		<put-attribute name="content" value="/WEB-INF/view/statistics/{1}.jsp" />
+	</definition>
+	
+	<!-- Popup 창 Layout -->
+	<definition name="layout_popup" template="/WEB-INF/view/layout/layout_popup.jsp">
+		<put-attribute name="title" value="린6시그마 관리체계"/>
+		<put-attribute name="include" value="/WEB-INF/view/layout/include.jsp"/>
+	</definition>
+	
+	<!-- Popup 뷰 지정 -->
+	<definition name="*/popup/*" extends="layout_popup">
+		<put-attribute name="content" value="/WEB-INF/view/{1}/{2}.jsp" />	
+	</definition>
+
+	<!-- 탑네비 없는 Layout -->
+	<definition name="layout_nonetop" template="/WEB-INF/view/layout_nonetop.jsp">
+		<put-attribute name="title" value="린6시그마 관리체계"/>
+		<put-attribute name="left_navigation" value="/WEB-INF/view/nav/left_navigation.jsp"/>
+	</definition>
+		
+	<!-- 시작 페이지 -->
+	<definition name="start" extends="layout">
+		<put-attribute name="content" value="/WEB-INF/view/common/main.jsp"/>
+	</definition>
+	
+	<!-- 와일드 카드를 이용한 일반 뷰 지정 -->
+	<definition name="*/*" extends="layout">
+		<put-attribute name="content" value="/WEB-INF/view/{1}/{2}.jsp" />
+	</definition>
+	
+	<!-- 와일드 카드를 이용한 일반 뷰 지정 -->
+	<definition name="*/stage/*" extends="layout">
+		<put-attribute name="content" value="/WEB-INF/view/{1}/stage/{2}.jsp" />
+		<put-attribute name="stage_template" value="/WEB-INF/view/subject/stage/stage_template.jsp"/>
+	</definition>
+
+	<!-- 관리자 메뉴인 경우 뷰 지정 -->
+	<definition name="admin/*/*" extends="layout">
+		<put-attribute name="admin_navigation" value="/WEB-INF/view/nav/admin_navigation.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/view/{1}/{2}.jsp"/>
+	</definition>
+	
+	<!-- Top 이 없는것 -->
+	<definition name="nonetop/*/*" extends="layout_nonetop">
+		<put-attribute name="content" value="/WEB-INF/view/{1}/{2}.jsp" />
+	</definition>
+	
+	
+	<!-- Upload 페이지 -->
+	<definition name="fileUploadTest" template="/WEB-INF/view/test/test.jsp"/>
+	
+	<definition name="main/upload" template="/WEB-INF/view/upload.jsp"/>
+	
+	<!-- 로그인 백도어 페이지 -->
+	<definition name="backdoor" template="/WEB-INF/view/test/login.jsp"/>
+	
+	<!-- 로그인을 하지 않은 경우 페이지 -->
+	<definition name="noPermission" template="/WEB-INF/view/common/noPermission.jsp" />
+	
+	<!-- 로그인을 하지 않은 경우 페이지 -->
+	<definition name="NeedSSOLoginException" template="/WEB-INF/view/common/NeedSSOLoginPage.jsp" />
+	
+	<!-- print 창 -->
+	<definition name="refer/allPrint" template="/WEB-INF/view/refer/allPrint.jsp">
+		<put-attribute name="title" value="린6시그마 관리체계-총괄-인쇄" />
+	</definition>
+	
+	<!-- print 창 -->
+	<definition name="refer/planPrint" template="/WEB-INF/view/refer/planPrint.jsp">
+		<put-attribute name="title" value="린6시그마 관리체계-총괄-인쇄" />
+	</definition>
+</tiles-definitions>

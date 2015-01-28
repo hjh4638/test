@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+		http://www.directwebremoting.org/schema/spring-dwr
+		http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+	
+	<!-- AOP Auto proxy Setting class=L6S.component.PrototypeAspect-->
+	<aop:aspectj-autoproxy/>
+		
+	<!-- Component Bean Scanning -->
+	<context:component-scan base-package="mil.af.L6S.component">
+		<context:include-filter 
+			type="annotation"
+			expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	
+	<!-- tiles2 Setting -->
+	<!-- tiles2 Definition Setting -->
+	<bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/setting/tiles/L6S-tiles2.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- tiles2 ViewResolver -->
+	<bean id="tileViewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.tiles2.TilesView" />
+	</bean>	
+	
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/view"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+	
+	<!-- MessageSource setting-->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource" >
+		<property name="basename" value="messages" />
+	</bean>
+	
+	<!-- File Upload Setting -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="52428800" />
+	</bean>
+	
+	<!-- 메시지 컨버터 -->
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" >
+		<property name="messageConverters">
+			<list>
+				<bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Exception Resolver : 로그인 안됨 , 예외 시 보낼 페이지 설정 (tiles 설정페이지에 설정되어 있음)-->
+	<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="mil.af.L6S.component.exception.NeedSSOLoginException">NeedSSOLoginException</prop>
+				<prop key="java.lang.reflect.UndeclaredThrowableException">NeedSSOLoginException</prop>
+			</props>
+		</property>
+		<!-- <property name="defaultErrorView" value="backdoor"/> -->
+	</bean>
+	
+</beans>

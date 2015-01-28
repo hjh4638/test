@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "../../../../../../setting/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="BaseSql">
+<typeAlias alias="BaseVO" type="mil.af.L6S.component.subject.BaseVO" /> 
+<select id="getBaseByCode" resultClass="BaseVO" parameterClass="String">
+	SELECT
+	            *
+	FROM
+	            LSMS_BASE
+	WHERE
+	            length(basecode) =length(#value#)+3 
+	AND         
+				substr(basecode,1, length(#value#)) = #value#
+	ORDER BY
+				basecode
+</select>
+
+<select id="getHeadBase" resultClass="BaseVO">
+	SELECT
+	            *
+	FROM 
+	            LSMS_BASE
+	WHERE 
+	            length(basecode)=3
+	ORDER BY
+				basecode
+</select>
+<select id="hasChild" resultClass="Integer" parameterClass="String">
+	SELECT
+	    		HASCHILD(#value#)
+	FROM
+	    		dual
+</select>
+</sqlMap>

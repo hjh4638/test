@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "../../../../../../setting/dtd/sql-map-2.dtd" >
+<sqlMap namespace="beltSql">
+	
+	<resultMap id="beltListMap" 		class="mil.af.L6S.component.belt.BeltVO" groupBy="sn">
+		<result property="pn" 			column="ppl_seq" />
+		<result property="sn" 			column="sn" />
+		<result property="rank" 		column="rank" />
+		<result property="name" 		column="name"/>
+		<result property="sosokCode" 	column="sosokcode"/>
+		<result property="sosokName" 	column="sosokname"/>
+		<result property="viewState" 	column="viewstate" />
+		<result property="beltDatum" 	resultMap="beltSql.beltDatumMap"/>
+	</resultMap>
+	
+	<resultMap id="beltDatumMap" 		class="mil.af.L6S.component.belt.ContentsVO">
+		<result property="belt" 		column="belt" />
+		<result property="institution" 	column="institution" />
+		<result property="eduStartDate" column="edustartdate" />
+		<result property="eduEndDate"	column="eduenddate" />
+		<result property="eduNum" 		column="edunum" />
+		<result property="beltstate"	column="beltstate" />
+		<result property="score" 		column="result" />
+<!-- 		<result property="appState" 	column="appState" /> -->
+		<result property="file_seq" 	column="file_seq" />
+<!-- 		<result property="fileVO" 		resultMap="beltSql.beltFileVO"/>  -->
+	</resultMap>
+	
+	<resultMap id="beltFileVO" 			class="mil.af.L6S.component.common.FileVO">
+		<result property="sn" 			column="file_sn" />
+		<result property="seq" 			column="file_seq" />
+		<result property="fileName" 	column="file_name" />
+		<result property="saveName" 	column="file_saved_name" />
+		<result property="type" 		column="file_type" />
+	</resultMap>
+	
+	<!-- 벨트 조회 v-->
+	<select id="beltListInquiry" parameterClass="mil.af.L6S.component.SearchFilter" resultMap="beltListMap">
+		SELECT
+		    data.*,
+		    b.*,
+		    (CASE b.belt
+		         WHEN 'MBB' THEN 4
+		         WHEN 'BB' THEN 3
+		         WHEN 'GB' THEN 2
+		         WHEN 'FEA' THEN 1
+		         ELSE 0 
+		         END) code 
+		FROM
+		(
+			SELECT
+			    rownum as Rnum,
+				a.*
+			FROM
+			(
+			    SELECT
+			        *
+			    FROM
+			        lsms_belt_data 
+			    WHERE
+			        viewstate = 1
+		    )a
+		    <isNull property="pn">
+		    WHERE
+				<![CDATA[	           
+					rownum <= #pagination.itemSeqEnd#
+				]]>
+			</isNull>
+			<isEmpty property="searchName"></isEmpty>
+	  		<isNotEmpty property="searchName" prepend="AND">
+  				name = #searchName#
+	  		</isNotEmpty>
+	  		<isEmpty property="searchBelt">
+		  		<isEmpty property="searchBeltState"></isEmpty>
+		  		<isNotEmpty property="searchBeltState" prepend="AND">
+		            sn IN
+		                (
+		                    SELECT 
+		                        sn
+		                    FROM
+		                        lsms_belt_contents
+		                    WHERE
+		                        beltstate =  #searchBeltState#
+	               		)
+		  		</isNotEmpty>
+	  		</isEmpty>
+	  		<isNotEmpty property="searchBelt" prepend="AND">
+	            sn IN
+	                (
+	                    SELECT 
+	                        sn
+	                    FROM
+	                        lsms_belt_contents
+	                    WHERE
+	                    (
+	                        belt =  #searchBelt#
+                        <isNotEmpty property="searchBeltState" prepend="AND">
+	                    	beltstate =  #searchBeltState#
+		                </isNotEmpty>
+	                    )
+               		)
+	  		</isNotEmpty>
+	  		<isEmpty property="searchEduNum"></isEmpty>
+	  		<isNotEmpty property="searchEduNum" prepend="AND">
+	            sn IN
+	                (
+	                    SELECT
+	                        sn
+	                    FROM
+	                        lsms_belt_contents
+	                    WHERE
+	                        eduNum LIKE SUBSTR(#searchEduNum#,3,2)||'%'
+	                )
+	  		</isNotEmpty>
+	  		<isEmpty property="searchSosok"></isEmpty>
+	  		<isNotEmpty property="searchSosok" prepend="AND">
+  				sosokName LIKE '%'||#searchSosok#||'%'
+	  		</isNotEmpty>
+		)data,
+		 lsms_belt_contents b
+		 WHERE
+   		<isNotNull property="pn">
+ 				ppl_seq = #pn#			
+ 			AND
+ 				data.sn = b.sn(+)
+ 			ORDER BY
+  				edunum DESC
+	 	</isNotNull>    
+  		
+  		<isNull property="pn">
+			   	data.sn = b.sn(+)
+		    <![CDATA[
+		    AND
+		    	Rnum >= #pagination.itemSeqBegin#
+		    ]]>
+		</isNull>
+	</select>
+	
+	<!-- 순번 들고오기 -->
+	<select id="getRnum" parameterClass="String" resultClass="Integer">
+		SELECT
+		    ppl_seq
+		FROM
+		    lsms_belt_data
+		WHERE
+		    sn = #value#
+	</select>
+	
+	<!-- 벨트 보유자 입력 중복확인-->
+	<select id="checkSNinBase" parameterClass="String" resultClass="Integer">
+		SELECT
+			count(sn)
+		FROM
+			lsms_belt_data
+		WHERE 	
+			viewstate = 1
+		AND
+			sn = #value#
+	</select>
+	
+	<!-- 벨트 보유자 등록 -->
+	<insert id="beltPossessorInput" parameterClass="mil.af.L6S.component.belt.BeltVO">
+		INSERT
+		INTO
+			lsms_belt_data
+			(
+				ppl_seq,
+				sn,
+				rank,
+				name,
+				sosokcode,
+				sosokname,
+				viewstate
+			)
+		VALUES
+			(
+				lsms_data_seq.NEXTVAL,
+				#sn#,
+				#rank#,
+				#name#,
+				#sosokCode#,
+				#sosokName#,
+				1
+			)
+	</insert>
+		
+	<!-- 벨트 Contents 등록 -->
+	<insert id="beltInput" parameterClass="mil.af.L6S.component.belt.ContentsVO">
+		INSERT
+		INTO
+			lsms_belt_contents
+		VALUES
+			(
+				#sn#,
+				#belt#,
+				#institution#,
+				#eduStartDate#,
+				#eduEndDate#,
+				#eduNum#,
+				#beltstate#,
+				#score#,
+				lsms_file_seq.NEXTVAL
+			)
+	</insert>
+	
+	<!-- 벨트 보유자에 해당하는 과제 목록  -->
+	<select id="getListData" parameterClass="String" resultClass="String">
+	    SELECT 
+	        a.project_name
+	    FROM
+	    	(
+	    	SELECT
+	    		distinct
+                subject_code,
+	    		project_name,
+                is_expire
+	    	FROM
+	    		lsms_subject
+	    	WHERE
+	            leader LIKE '%'||#value#||'%'
+	    	)a,	        
+            lsms_user b
+	    WHERE
+	        b.sn LIKE '%'||#value#||'%'
+	    AND 
+	    	a.is_expire is null
+        AND 
+            a.subject_code = b.subject_code
+	</select>
+	
+	<!-- 해당 과제수 -> Java/Html에서 for 돌리는 것 보다 효율적일 것 이라 생각이 들어서  -->
+	<select id="getSubjectCount" parameterClass="String" resultClass="Integer">
+	    SELECT 
+	        count(a.subject_code)
+	    FROM
+	    	(
+	    	SELECT
+	    		distinct
+                subject_code,
+	    		project_name,
+                is_expire
+	    	FROM
+	    		lsms_subject
+	    	WHERE
+	            leader LIKE '%'||#value#||'%'
+	    	)a,	        
+            lsms_user b
+	    WHERE
+	        b.sn LIKE '%'||#value#||'%'
+	    AND 
+	    	a.is_expire is null
+        AND 
+            a.subject_code = b.subject_code
+	</select>
+
+	<!-- 등록자에 따른 파일 Load -->
+	<select id="MatchFiles" parameterClass="mil.af.L6S.component.SearchFilter" resultMap="beltFileVO">
+		SELECT
+			a.*
+		FROM
+			lsms_belt_file a,
+			lsms_belt_contents b
+		WHERE 
+			b.sn = #sn#
+		AND
+			b.file_seq = a.file_seq
+	</select>
+	
+	<!-- List에 보여줄 사용자들의 수 -->
+	<select id="getListCount" parameterClass="mil.af.L6S.component.SearchFilter" resultClass="Integer">
+		SELECT
+			COUNT(DISTINCT(a.sn))
+		FROM
+			lsms_belt_data a,
+			lsms_belt_contents b
+		WHERE
+			viewstate = 1
+	    AND
+            a.sn = b.sn (+)
+		<isEmpty property="searchName"></isEmpty>
+  		<isNotEmpty property="searchName" prepend="AND">
+ 				a.name = #searchName#
+  		</isNotEmpty>
+  		<isEmpty property="searchBelt">
+	   		<isNotEmpty property="searchBeltState" prepend="AND">
+					b.beltstate = #searchBeltState#
+  			</isNotEmpty>
+  			<isEmpty property="searchBeltState"></isEmpty>
+  		</isEmpty>
+  		<isNotEmpty property="searchBelt" prepend="AND">
+			(
+				b.belt = #searchBelt#
+ 			AND
+ 				b.beltstate = #searchBeltState#
+ 			)
+  		</isNotEmpty>
+  		<isEmpty property="searchEduNum"></isEmpty>
+  		<isNotEmpty property="searchEduNum" prepend="AND">
+				SUBSTR(b.edunum,1,2) = SUBSTR(#searchEduNum#,3,2)
+  		</isNotEmpty>
+  		<isEmpty property="searchSosok"></isEmpty>
+  		<isNotEmpty property="searchSosok" prepend="AND">
+				a.sosokName LIKE '%'||#searchSosok#||'%' 
+  		</isNotEmpty>
+	</select>
+	
+	<!-- Content 삭제 -->
+	<delete id="deleteContent" parameterClass="String">
+		DELETE
+		FROM
+			lsms_belt_contents
+		WHERE
+			file_seq = #value#			
+	</delete>
+	
+	<!-- Content 하위=파일 존재 여부 확인  -->
+	<select id="fileCheck" parameterClass="String" resultClass="Integer">
+		SELECT
+			COUNT(file_seq)
+		FROM
+			lsms_belt_file
+		WHERE
+			file_seq = #value#
+	</select>
+	
+	<!-- DB에서 File 정보 삭제 -->
+	<delete id="deleteFiles" parameterClass="String">
+		DELETE
+		FROM
+			lsms_belt_file
+		WHERE
+			file_seq = #value#
+	</delete>
+	
+	<!-- File Datum Load -->
+	<select id="getFiles" parameterClass="String" resultMap="beltFileVO">
+		SELECT
+			*
+		FROM
+			lsms_belt_file
+		WHERE
+			file_seq = #value#
+	</select>
+	
+	<!-- Contents Datum Load -->
+	<select id="getContent" parameterClass="String" resultMap="beltDatumMap">
+		SELECT
+			*
+		FROM
+			lsms_belt_contents
+		WHERE
+			file_seq = #value#
+	</select>
+	
+	<!-- Contents 수정시 Update  -->
+	<update id="updateContents" parameterClass="mil.af.L6S.component.belt.ContentsVO">
+		UPDATE
+			lsms_belt_contents
+		SET
+			belt = #belt#,
+			institution = #institution#,
+			edustartdate = #eduStartDate#,
+			eduenddate = #eduEndDate#,
+			edunum = #eduNum#,
+			beltstate = #beltstate#,
+			result = #score#
+		WHERE
+			file_seq = #file_seq#
+	</update>
+	
+	<!-- 엑셀에 들어갈 데이터 Filtering -->
+	<select id="beltFiltering" parameterClass="Integer" resultMap="beltListMap">
+		SELECT
+			rownum as Rnum,
+		    a.*,
+		    b.*
+		FROM
+		    lsms_belt_data a,
+		    (
+		        SELECT
+		            *
+		        FROM
+		            lsms_belt_contents
+		        WHERE
+		            sn NOT IN (
+		                          SELECT
+		                              DISTINCT(sn)
+		                          FROM
+		                              lsms_belt_contents
+		                          WHERE
+		                              belt in ('MBB','BB')
+		                      )
+		    )b
+		WHERE
+		    a.sn = b.sn(+)
+		AND
+			SUBSTR(b.edunum,1,2) IN (SUBSTR(#value#,3,2),
+									 SUBSTR(#value#,3,2)-1,
+									 SUBSTR(#value#,3,2)-2)
+        AND
+		    b.beltstate in (2,3)
+		AND
+		    result is not null
+		ORDER BY
+		    SUBSTR(edunum,1,2) DESC,
+		    result DESC
+    </select>
+    
+    <!-- code(file_seq)를 통해 sn 들고 오기 -->
+    <select id="getSNfromCode" parameterClass="Integer" resultClass="String">
+    	SELECT
+    		sn
+    	FROM
+    		lsms_belt_contents
+    	WHERE
+    		file_seq = #value#
+    </select>
+    
+    <!-- sn을 통해 code(file_seq) 들고 오기 -->
+    <select id="getCodefromSN" parameterClass="String" resultClass="Integer">
+    	SELECT
+    		sn
+    	FROM
+    		lsms_belt_contents
+    	WHERE
+    		file_seq = #value#
+    </select>
+    
+    <!-- BeltState 업데이트 (결재) -->
+    <update id="updateBeltState" parameterClass="String">
+		UPDATE
+			lsms_belt_contents
+		SET
+			beltstate = beltstate+1
+		WHERE
+			file_seq = #value#
+    </update>
+    
+    <!-- 벨트 중복 체크 -->
+    <select id="getCountRepeat" parameterClass="mil.af.L6S.component.belt.ContentsVO" resultClass="Integer">
+    	SELECT
+		    count(belt)
+		FROM
+		    lsms_belt_contents
+		WHERE
+		    belt = #belt#
+		AND
+		    sn = #sn#
+		AND
+		    edunum = #eduNum#
+   		AND
+		    beltstate = #beltstate#
+		AND 
+			file_seq != #file_seq#
+    </select>
+    
+</sqlMap>

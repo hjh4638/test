@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "../../../../../../setting/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="ApprovalSql">
+<typeAlias alias="ApprovalVO" type="mil.af.L6S.component.approvalLine.ApprovalVO" /> 
+<!-- 결재 테이블 입력 -->
+<insert id="insertApproval" parameterClass="ApprovalVO">
+INSERT INTO  LSMS_APPROVAL
+    (
+    APP_ID,
+    SUBJECT_CODE,
+    is_complete,
+    app_type
+     )
+values
+    (
+    #app_id#,
+    #subject_code#,
+    #is_complete#,
+    #app_type#
+    )
+</insert>
+<insert id="insertApprovalLine" parameterClass="ApprovalVO">
+INSERT INTO  LSMS_APPROVAL_LINE
+    (
+    APP_SEQ,
+    APP_ID,
+    APP_ORDER,
+    APP_RANK,
+    APP_SN,
+    APP_NAME,
+    APP_ASS,
+    APP_STATE,
+    APP_COMMENT
+     )
+values
+    (
+    #app_seq#,
+    #app_id#,
+    #app_order#,
+    #app_rank#,
+    #app_sn#,
+    #app_name#,
+    #app_ass#,
+    #app_state#,
+    #app_comment#
+    )
+
+</insert>
+<!-- app_id 구해오기 -->
+<select id="getApprovalSeq" resultClass="Integer">
+	SELECT
+			 LSMS_APPROVAL_SEQ.nextval 
+	FROM
+			 dual
+</select>
+<!-- app_seq 구해오기 -->
+<select id="getApprovalLineSeq" resultClass="Integer">
+	SELECT
+			 LSMS_APPROVAL_LINE_SEQ.nextval 
+	FROM
+			 dual
+</select>
+<!--파라미터가 모두 널일경우 전체 데이터 불러오는 상황이 생김-->
+<select id="getApprovalList" resultClass="ApprovalVO" parameterClass="ApprovalVO">
+SELECT
+	*
+FROM
+(
+	SELECT
+		rownum as Rnum,
+	    a.subject_code, a.project_name,a.subject_section,  
+	    (SELECT
+		    rankname|| ' ' || name
+		FROM 
+		    avs11u0t
+		WHERE
+		    userid=substr(leader,instr(a.leader,',')+1,length(a.leader)-instr(a.leader,','))) leader, 
+	    b.create_time, b.is_complete, b.app_type, c.*
+	FROM
+	    LSMS_SUBJECT a, LSMS_APPROVAL b, LSMS_APPROVAL_LINE c
+	WHERE 
+	    a.subject_code = b.subject_code
+	 <![CDATA[
+		AND rownum <= #pagination.itemSeqEnd#
+	]]>	
+	AND
+	    b.app_id = c.app_id
+		<dynamic>   
+			<isNotEmpty prepend="AND" property="app_sn">
+			    c.app_sn = #app_sn#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="subject_code"> 
+			    a.subject_code = #subject_code#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="app_state"> 
+			    c.app_state = #app_state#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="is_complete"> 
+			    b.is_complete = #is_complete#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="app_id"> 
+			    b.app_id = #app_id#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="app_type"> 
+			    b.app_type = #app_type#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="leader"> 
+			    a.subject_code in(
+                        SELECT
+                            a.subject_code
+                        FROM
+                            lsms_subject a, lsms_user b
+                        WHERE a.subject_code = b.subject_code
+                        AND b.is_leader =1
+                        AND b.sn = #leader#
+                        )
+			</isNotEmpty>
+		</dynamic>
+	ORDER BY b.create_time,c.app_order,c.app_seq
+)
+WHERE
+<![CDATA[
+   	Rnum >= #pagination.itemSeqBegin#
+]]>
+</select>
+<!-- 결제 완료,기각, 회수시 수행 -->
+<update id="updateState" parameterClass="ApprovalVO">
+UPDATE
+    LSMS_APPROVAL_LINE
+SET
+    app_state = #app_state#,app_comment =#app_comment#
+WHERE
+    app_seq =#app_seq#
+</update>
+<!-- 한 결재선이 완벽히 끝났을때 실행  혹은 기각 회수일때-->
+<update id="updateApproval" parameterClass="ApprovalVO">
+UPDATE
+    LSMS_APPROVAL
+SET
+    is_complete = #is_complete#
+WHERE
+ 1=1
+	<dynamic>
+		<isNotEmpty prepend="AND" property="app_id">
+                app_id = #app_id#
+        </isNotEmpty>
+        	<isNotEmpty prepend="AND" property="app_type">
+                app_type = #app_type#
+        </isNotEmpty>
+    </dynamic>
+</update>
+<select id="getBaseAdmin" parameterClass="ApprovalVO" resultClass="ApprovalVO">
+SELECT 
+    rankname app_rank,userid app_sn,name app_name,ass app_ass
+FROM
+    avs11u0t
+WHERE
+    userid in(
+            SELECT 
+                base_manager
+            FROM 
+                LSMS_admin
+            WHERE
+            	1=1 
+            <dynamic>
+            	<isNotEmpty prepend="AND" property="sosokcode">
+                base_code = #sosokcode#
+                </isNotEmpty>
+                <!-- 변수 하나 더 만드는게 비효율적이고 지저분해질거 같아 app_comment에 넣어서 전송 -->
+                <isNotEmpty prepend="AND" property="app_comment">
+                base_auth =#app_comment#
+                </isNotEmpty>
+             </dynamic>
+             )
+</select>
+
+<select id="getListCount" parameterClass="ApprovalVO" resultClass="Integer">
+SELECT
+   COUNT(a.subject_code)
+FROM
+    LSMS_SUBJECT a, LSMS_APPROVAL b, LSMS_APPROVAL_LINE c
+WHERE 
+	c.app_state=0
+AND
+    a.subject_code = b.subject_code
+AND
+    b.app_id = c.app_id
+AND
+    c.app_sn = #app_sn#
+</select>
+<!-- 숫자3은 회수 의미 -->
+<delete id="deleteApproval_line" parameterClass="ApprovalVO">
+	DELETE
+	    lsms_approval_line
+	WHERE
+    	app_state =#app_state#
+   	 <dynamic>
+   		<isNotEmpty prepend="AND" property="subject_code">
+   		app_seq in(
+   		SELECT 
+   			c.app_seq
+		FROM 
+			LSMS_SUBJECT a,
+		  	LSMS_APPROVAL b,
+		  	LSMS_APPROVAL_LINE c
+		WHERE
+			 a.subject_code = b.subject_code
+		  AND
+		  	 b.app_id = c.app_id
+		  AND
+		  	 a.subject_code = #subject_code#
+		  	 )
+		  </isNotEmpty>
+	</dynamic>
+</delete>
+<delete id="deleteApproval" parameterClass="ApprovalVO">
+	DELETE
+	    lsms_approval
+	WHERE
+	    is_complete =#is_complete#
+	<dynamic>
+   		<isNotEmpty prepend="AND" property="subject_code">
+   		app_id in(
+   		SELECT 
+   			distinct(b.app_id)
+		FROM 
+			LSMS_SUBJECT a,
+		  	LSMS_APPROVAL b,
+		  	LSMS_APPROVAL_LINE c
+		WHERE
+			 a.subject_code = b.subject_code
+		  AND
+		  	 b.app_id = c.app_id
+		  AND
+		  	 a.subject_code = #subject_code#
+		  )
+		  </isNotEmpty>
+	</dynamic>
+</delete>
+<!-- 과제코드로 과제 BB 찾아주는 쿼리. Admin 테이블에 6자리 이상 코드 넣으면 에러 날 가능성 있음 -->
+<select id="getBBbyAdmin" parameterClass="ApprovalVO" resultClass="ApprovalVO">
+SELECT 
+    rankname app_rank,userid app_sn,name app_name,ass app_ass
+FROM
+    avs11u0t
+WHERE
+    userid in(
+
+SELECT
+     a.BASE_MANAGER app_sn
+    
+FROM 
+    LSMS_ADMIN a, lsms_subject b
+WHERE
+(
+    (
+    substr(b.sosokcode,1,6) in a.base_code 
+AND
+    substr(b.sosokcode,1,4) not in a.base_code
+    )
+OR
+    (
+    substr(b.sosokcode,1,4) in a.base_code
+AND
+    substr(b.sosokcode,1,6) not in ('A500J0','A500G0','A500H0')
+    )
+)
+AND
+    b.subject_code =#subject_code#
+)
+</select>
+<!-- 지도위원 찾아주는 쿼리 -->
+<select id="getGuide_Committee" parameterClass="ApprovalVO" resultClass="ApprovalVO">
+SELECT 
+    rankname app_rank,userid app_sn,name app_name,ass app_ass
+FROM
+    avs11u0t
+WHERE
+    userid in(
+		SELECT
+		     base_manager
+		FROM 
+		    LSMS_ADMIN 
+		WHERE
+			(
+			    (
+			    substr(#sosokcode#,1,6) in base_code 
+			AND
+			    substr(#sosokcode#,1,4) not in base_code
+			    )
+			OR
+			    (
+			    substr(#sosokcode#,1,4) in base_code
+			AND
+			    substr(#sosokcode#,1,6) not in ('A500J0','A500G0','A500H0')
+			    )
+			)
+)
+</select>
+<select id="getApprovalTableList" parameterClass="ApprovalVO" resultClass="ApprovalVO">
+SELECT
+    * 
+FROM
+    LSMS.LSMS_APPROVAL 
+WHERE
+	1=1
+<dynamic>
+	<isNotEmpty prepend="AND" property="app_id">
+    app_id =#app_id#
+    </isNotEmpty>
+    <isNotEmpty prepend="AND" property="subject_code">
+    subject_code = #subject_code#
+    </isNotEmpty>
+	<isNotEmpty prepend="AND" property="is_complete">
+	is_complete = #is_complete#
+	</isNotEmpty>
+	<isNotEmpty prepend="AND" property="app_type">
+	app_type = #app_type#
+	</isNotEmpty>
+</dynamic>
+</select>
+
+<insert id="insertBeltApproval" parameterClass="Integer">
+INSERT INTO  LSMS_APPROVAL
+    (
+    APP_ID,
+    file_seq
+    )
+values
+    (
+    	LSMS_APPROVAL_SEQ.nextval,
+	    #value#
+    )
+</insert>
+
+<select id="getFileSeq" resultClass="Integer">
+             SELECT
+               lsms_file_seq.currval
+             FROM
+               dual
+</select>
+	<!-- 벨트 결재 등록  -->
+	
+	<insert id="Belt_RegisterAPP" parameterClass="mil.af.L6S.component.belt.ContentsVO">
+		INSERT
+		INTO
+		    LSMS_APPROVAL_LINE
+		    (
+		        app_seq,
+		        app_id,
+		        app_order,
+		        app_rank,
+		        app_sn,
+		        app_name,
+		        app_ass,
+		        app_state,
+		        app_comment
+		    )
+		VALUES
+		    (
+		        LSMS_APPROVAL_LINE_SEQ.nextval,		    
+		        (
+		        	SELECT
+		        		app_id
+		        	FROM
+		        		lsms_approval
+		        	WHERE
+		        		lsms_approval.file_seq = #file_seq#
+		        ),		       
+		        100,
+		        (
+		        	SELECT
+		        		rankname
+		        	FROM
+		        		avs11u0t
+		        	WHERE userid = 
+		        		(
+				        	SELECT
+				        		base_manager
+				        	FROM
+				        		lsms_admin
+				        	WHERE
+				        		base_code = 'A100'
+				        )
+		        ),
+		        (
+		        	SELECT
+		        		base_manager
+		        	FROM
+		        		lsms_admin
+		        	WHERE
+		        		base_code = 'A100'
+		        ),
+		        (
+		        	SELECT
+		        		name
+		        	FROM
+		        		avs11u0t
+		        	WHERE userid = 
+		        		(
+				        	SELECT
+				        		base_manager
+				        	FROM
+				        		lsms_admin
+				        	WHERE
+				        		base_code = 'A100'
+				        )
+		        ),
+		        (
+		        	SELECT
+		        		ass
+		        	FROM
+		        		avs11u0t
+		        	WHERE userid = 
+		        		(
+				        	SELECT
+				        		base_manager
+				        	FROM
+				        		lsms_admin
+				        	WHERE
+				        		base_code = 'A100'
+				        )
+		        ),
+		        0,
+		        ''
+		    )
+	</insert>
+	
+	<!-- 결재 상태 들고오기  -->
+	<select id="getApp_state" parameterClass="Integer" resultClass="String">
+    	SELECT
+    		a.app_state
+    	FROM
+    		LSMS_approval_line a,
+            lsms_belt_contents b,
+            lsms_approval c
+    	WHERE
+    		a.app_id=c.app_id
+    	AND
+			c.file_seq = b.file_seq
+        AND
+            b.file_seq = #value#
+	</select>
+	
+	<resultMap id="VO" 		class="mil.af.L6S.component.approvalLine.ApprovalBeltVO">
+		<result property="pn" 					column="ppl_seq" />
+		<result property="sosokname" 			column="sosokname" />
+		<result property="belt" 				column="belt" />
+		<result property="rank" 				column="rank" />
+		<result property="beltstate" 			column="beltstate" />
+		<result property="name" 				column="name"/>
+		<result property="app_state" 			column="app_state"/>
+		<result property="comment"				column="app_comment"/>
+		<result property="file_seq"				column="file_seq"/>
+	</resultMap>
+	
+	<!--  벨트 결재 내용 들고오기 -->
+	<select id="getBelt_app" parameterClass="String" resultMap="VO">
+   SELECT
+        c.ppl_seq,
+        c.sosokname,
+        data.belt,
+        c.rank,
+        c.name,
+        data.beltstate,
+        data.app_state,
+        data.app_comment,
+        data.file_seq
+   FROM
+       (
+       SELECT
+           a.*, b.belt,b.beltstate,b.sn
+       FROM
+           (
+            SELECT
+                a.app_id,file_seq,a.app_state,a.app_comment
+            FROM
+                (SELECT 
+                app_id, app_state,app_comment
+                FROM
+                LSMS_approval_LINE
+                where
+                app_state=0) a,
+                lsms_approval
+            WHERE
+                a.app_id = lsms_approval.app_id
+            ) a,
+            lsms_belt_contents b
+        WHERE
+            a.file_seq = b.file_seq
+        ) data,
+        lsms_belt_data c
+    WHERE
+        data.sn = c.sn
+		
+	</select>
+	<!-- 벨트 결재시 업데이트 -->
+	<update id="updateBeltApproval" parameterClass="String">
+		UPDATE
+		    LSMS_approval_LINE
+		SET
+		    app_state = 1
+		WHERE
+			app_id =(
+						SELECT
+							app_id
+						FROM
+							lsms_approval
+						WHERE
+							lsms_approval.file_seq=#value#
+					)
+			
+	</update>
+	<!-- 벨트 기각시 업데이트 -->
+	<update id="updateBeltdisApproval" parameterClass="mil.af.L6S.component.approvalLine.ApprovalBeltVO">
+		UPDATE
+			LSMS_approval_LINE
+		SET
+			app_state=2,
+			app_comment = #comment#
+		WHERE
+			app_id =(
+						SELECT
+							app_id
+						FROM
+							lsms_approval
+						WHERE
+							lsms_approval.file_seq=#file_seq#
+					)
+			
+	</update>
+	<!-- 벨트 회수시 LSMS_approval_LINE 삭제 -->
+	<delete id="deletebeltApp_line">
+		DELETE
+		    LSMS_approval_LINE
+		WHERE
+	    	app_id =(
+						SELECT
+							app_id
+						FROM
+							lsms_approval
+						WHERE
+							lsms_approval.file_seq=#value#
+					)
+			
+	</delete>
+	<!-- 벨트 회수시 LSMS_approval 삭제 -->
+	<delete id="deletebeltApp">
+		DELETE
+		    LSMS_approval
+		WHERE
+	    	file_seq = #file_seq#
+			
+	</delete>
+	
+	<select id="checkisexist"  parameterClass="Integer" resultClass="String">
+		SELECT
+			app_id
+		FROM
+			lsms_approval
+		WHERE
+			file_seq = #file_seq#
+	
+	</select>
+	
+	<update id="updaterejectedBelt" parameterClass="Integer">
+		UPDATE
+			lsms_approval_line
+		SET
+			app_state = 0,
+			app_comment = ''
+		WHERE
+			app_id =(
+				SELECT
+					app_id
+				FROM
+					lsms_approval
+				WHERE
+					file_seq = #value#
+			)
+	</update>
+	<select id="getComment" parameterClass="Integer" resultClass="String">
+		SELECT
+			app_comment
+		FROM
+			lsms_approval_line
+		WHERE
+			app_id =(
+				SELECT
+					app_id
+				FROM
+					lsms_approval
+				WHERE
+					file_seq = #value#
+			)
+	</select>
+	
+<select id="getAppidToProcessPage" parameterClass="ApprovalVO" resultClass="Integer">
+SELECT 
+    DISTINCT(app_id)
+FROM
+    LSMS.APPROVAL_LIST 
+WHERE
+    subject_code = #subject_code#
+AND
+    app_type = #app_type#
+ORDER BY
+    app_id desc
+</select>
+<select id="getAppseqToProcessPage" parameterClass="ApprovalVO" resultClass="Integer">
+SELECT 
+    DISTINCT(app_seq)
+FROM
+    LSMS.APPROVAL_LIST 
+WHERE
+    subject_code = #subject_code#
+AND
+    app_type = 'step'
+AND 
+    app_order = #app_order#
+ORDER BY app_seq desc    
+</select>
+</sqlMap>
