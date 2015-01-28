@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="스크롤 2D 차트-DateTimeAxis"/>
+	</Options>
+	<Column2DChart showDataTips="true" gutterRight="10"> 
+	     <series>
+			 <Column2DSeries labelPosition="inside" id="cs1" xField="Date" yField="Data1" displayName="Data1" itemRenderer="SemiCircleColumnItemRenderer"/>
+	     </series>
+	     <horizontalAxis>
+	     	<DateTimeAxis id="hAxis" dataUnits="days" dataInterval="1" displayLocalTime="true"/>
+	     	<!--  DateTimeAxis를 정의하였습니다   --> 
+	     </horizontalAxis>
+	     <horizontalAxisRenderers>
+	     	<ScrollableAxisRenderer axis="{hAxis}" visibleItemSize="5" scrollSensitivity="10"/>
+	     </horizontalAxisRenderers>   
+	</Column2DChart>
+</rMateChart>

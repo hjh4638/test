@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="스크롤 2D 칼럼 차트"/>
+	</Options>
+	<Column2DChart showDataTips="true" gutterRight="10"> 
+<!--   
+Scroll_Column_2D 차트 생성시에 필요한 Column2DChart 정의합니다 
+showDataTips : 데이터에 마우스를 가져갔을 때 나오는 Tip을 보이기/안보이기 속성입니다  
+--> 
+	     <series>
+	         <Column2DSeries labelPosition="outside" yField="Data1" displayName="Data1" itemRenderer="SemiCircleColumnItemRenderer"/>
+	     </series>
+	     <horizontalAxis>
+	     	<CategoryLinearAxis id="hAxis" categoryField="Gu"/>
+	     	<!-- Scroll_Column_2D차트를 생성시엔 verticalAxis에 CategoryLinearAxis를 정의해야합니다 -->
+	     </horizontalAxis>
+	     <horizontalAxisRenderers>
+	     	<ScrollableAxisRenderer axis="{hAxis}" visibleItemSize="10" scrollSensitivity="4"/>
+<!--  
+Scroll_Column_2D차트를 생성시엔 horizontalAxisRenderers ScrollableAxisRenderer를 정의해야 합니다 
+visibleItemSize : 스크롤 차트가 한번에 표시할 데이터의 개수입니다
+scrollSensitivity : 스크롤의 민감도를 나타냅니다. 값이 작을수록 스크롤의 이동 폭이 커집니다	
+--> 
+	     </horizontalAxisRenderers>   
+	</Column2DChart>
+</rMateChart>

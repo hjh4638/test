@@ -1,0 +1,3003 @@
+  <?xml version="1.0" encoding="UTF-8" ?> 
+ <items>
+ <item>
+  <index>No. 0</index> 
+  <Profit>4836</Profit> 
+  <Cost>6930</Cost> 
+  <Revenue>105</Revenue> 
+  </item>
+ <item>
+  <index>No. 1</index> 
+  <Profit>6478</Profit> 
+  <Cost>8756</Cost> 
+  <Revenue>4064</Revenue> 
+  </item>
+ <item>
+  <index>No. 2</index> 
+  <Profit>8007</Profit> 
+  <Cost>8166</Cost> 
+  <Revenue>440</Revenue> 
+  </item>
+ <item>
+  <index>No. 3</index> 
+  <Profit>6923</Profit> 
+  <Cost>7817</Cost> 
+  <Revenue>3449</Revenue> 
+  </item>
+ <item>
+  <index>No. 4</index> 
+  <Profit>9568</Profit> 
+  <Cost>3422</Cost> 
+  <Revenue>5573</Revenue> 
+  </item>
+ <item>
+  <index>No. 5</index> 
+  <Profit>4327</Profit> 
+  <Cost>9252</Cost> 
+  <Revenue>179</Revenue> 
+  </item>
+ <item>
+  <index>No. 6</index> 
+  <Profit>1135</Profit> 
+  <Cost>9842</Cost> 
+  <Revenue>4285</Revenue> 
+  </item>
+ <item>
+  <index>No. 7</index> 
+  <Profit>1723</Profit> 
+  <Cost>3361</Cost> 
+  <Revenue>8179</Revenue> 
+  </item>
+ <item>
+  <index>No. 8</index> 
+  <Profit>4252</Profit> 
+  <Cost>3841</Cost> 
+  <Revenue>1491</Revenue> 
+  </item>
+ <item>
+  <index>No. 9</index> 
+  <Profit>2597</Profit> 
+  <Cost>2623</Cost> 
+  <Revenue>3746</Revenue> 
+  </item>
+ <item>
+  <index>No. 10</index> 
+  <Profit>9105</Profit> 
+  <Cost>6107</Cost> 
+  <Revenue>6108</Revenue> 
+  </item>
+ <item>
+  <index>No. 11</index> 
+  <Profit>5120</Profit> 
+  <Cost>2558</Cost> 
+  <Revenue>8747</Revenue> 
+  </item>
+ <item>
+  <index>No. 12</index> 
+  <Profit>9545</Profit> 
+  <Cost>2102</Cost> 
+  <Revenue>6420</Revenue> 
+  </item>
+ <item>
+  <index>No. 13</index> 
+  <Profit>6805</Profit> 
+  <Cost>354</Cost> 
+  <Revenue>3894</Revenue> 
+  </item>
+ <item>
+  <index>No. 14</index> 
+  <Profit>7177</Profit> 
+  <Cost>2141</Cost> 
+  <Revenue>7411</Revenue> 
+  </item>
+ <item>
+  <index>No. 15</index> 
+  <Profit>6779</Profit> 
+  <Cost>2545</Cost> 
+  <Revenue>9923</Revenue> 
+  </item>
+ <item>
+  <index>No. 16</index> 
+  <Profit>2006</Profit> 
+  <Cost>7200</Cost> 
+  <Revenue>2965</Revenue> 
+  </item>
+ <item>
+  <index>No. 17</index> 
+  <Profit>2102</Profit> 
+  <Cost>6769</Cost> 
+  <Revenue>3352</Revenue> 
+  </item>
+ <item>
+  <index>No. 18</index> 
+  <Profit>982</Profit> 
+  <Cost>572</Cost> 
+  <Revenue>1840</Revenue> 
+  </item>
+ <item>
+  <index>No. 19</index> 
+  <Profit>5591</Profit> 
+  <Cost>6902</Cost> 
+  <Revenue>2460</Revenue> 
+  </item>
+ <item>
+  <index>No. 20</index> 
+  <Profit>918</Profit> 
+  <Cost>9704</Cost> 
+  <Revenue>3737</Revenue> 
+  </item>
+ <item>
+  <index>No. 21</index> 
+  <Profit>9485</Profit> 
+  <Cost>2901</Cost> 
+  <Revenue>6452</Revenue> 
+  </item>
+ <item>
+  <index>No. 22</index> 
+  <Profit>5078</Profit> 
+  <Cost>6093</Cost> 
+  <Revenue>8455</Revenue> 
+  </item>
+ <item>
+  <index>No. 23</index> 
+  <Profit>5336</Profit> 
+  <Cost>8651</Cost> 
+  <Revenue>404</Revenue> 
+  </item>
+ <item>
+  <index>No. 24</index> 
+  <Profit>1709</Profit> 
+  <Cost>7557</Cost> 
+  <Revenue>1189</Revenue> 
+  </item>
+ <item>
+  <index>No. 25</index> 
+  <Profit>3702</Profit> 
+  <Cost>81</Cost> 
+  <Revenue>378</Revenue> 
+  </item>
+ <item>
+  <index>No. 26</index> 
+  <Profit>7536</Profit> 
+  <Cost>7957</Cost> 
+  <Revenue>8608</Revenue> 
+  </item>
+ <item>
+  <index>No. 27</index> 
+  <Profit>8909</Profit> 
+  <Cost>6187</Cost> 
+  <Revenue>7964</Revenue> 
+  </item>
+ <item>
+  <index>No. 28</index> 
+  <Profit>2679</Profit> 
+  <Cost>7385</Cost> 
+  <Revenue>7864</Revenue> 
+  </item>
+ <item>
+  <index>No. 29</index> 
+  <Profit>1141</Profit> 
+  <Cost>5088</Cost> 
+  <Revenue>7566</Revenue> 
+  </item>
+ <item>
+  <index>No. 30</index> 
+  <Profit>557</Profit> 
+  <Cost>6744</Cost> 
+  <Revenue>7084</Revenue> 
+  </item>
+ <item>
+  <index>No. 31</index> 
+  <Profit>8068</Profit> 
+  <Cost>8955</Cost> 
+  <Revenue>3064</Revenue> 
+  </item>
+ <item>
+  <index>No. 32</index> 
+  <Profit>1445</Profit> 
+  <Cost>1687</Cost> 
+  <Revenue>3348</Revenue> 
+  </item>
+ <item>
+  <index>No. 33</index> 
+  <Profit>5578</Profit> 
+  <Cost>4414</Cost> 
+  <Revenue>5536</Revenue> 
+  </item>
+ <item>
+  <index>No. 34</index> 
+  <Profit>9555</Profit> 
+  <Cost>3107</Cost> 
+  <Revenue>5650</Revenue> 
+  </item>
+ <item>
+  <index>No. 35</index> 
+  <Profit>9260</Profit> 
+  <Cost>9119</Cost> 
+  <Revenue>0</Revenue> 
+  </item>
+ <item>
+  <index>No. 36</index> 
+  <Profit>3956</Profit> 
+  <Cost>3587</Cost> 
+  <Revenue>2717</Revenue> 
+  </item>
+ <item>
+  <index>No. 37</index> 
+  <Profit>1090</Profit> 
+  <Cost>9071</Cost> 
+  <Revenue>5910</Revenue> 
+  </item>
+ <item>
+  <index>No. 38</index> 
+  <Profit>7088</Profit> 
+  <Cost>3686</Cost> 
+  <Revenue>5034</Revenue> 
+  </item>
+ <item>
+  <index>No. 39</index> 
+  <Profit>4598</Profit> 
+  <Cost>2730</Cost> 
+  <Revenue>52</Revenue> 
+  </item>
+ <item>
+  <index>No. 40</index> 
+  <Profit>620</Profit> 
+  <Cost>2802</Cost> 
+  <Revenue>6093</Revenue> 
+  </item>
+ <item>
+  <index>No. 41</index> 
+  <Profit>1242</Profit> 
+  <Cost>8479</Cost> 
+  <Revenue>6725</Revenue> 
+  </item>
+ <item>
+  <index>No. 42</index> 
+  <Profit>3647</Profit> 
+  <Cost>8713</Cost> 
+  <Revenue>9780</Revenue> 
+  </item>
+ <item>
+  <index>No. 43</index> 
+  <Profit>1749</Profit> 
+  <Cost>913</Cost> 
+  <Revenue>4924</Revenue> 
+  </item>
+ <item>
+  <index>No. 44</index> 
+  <Profit>3843</Profit> 
+  <Cost>8465</Cost> 
+  <Revenue>5378</Revenue> 
+  </item>
+ <item>
+  <index>No. 45</index> 
+  <Profit>7807</Profit> 
+  <Cost>8614</Cost> 
+  <Revenue>7454</Revenue> 
+  </item>
+ <item>
+  <index>No. 46</index> 
+  <Profit>4282</Profit> 
+  <Cost>6799</Cost> 
+  <Revenue>1062</Revenue> 
+  </item>
+ <item>
+  <index>No. 47</index> 
+  <Profit>9876</Profit> 
+  <Cost>4939</Cost> 
+  <Revenue>3340</Revenue> 
+  </item>
+ <item>
+  <index>No. 48</index> 
+  <Profit>3979</Profit> 
+  <Cost>2785</Cost> 
+  <Revenue>3269</Revenue> 
+  </item>
+ <item>
+  <index>No. 49</index> 
+  <Profit>7745</Profit> 
+  <Cost>3783</Cost> 
+  <Revenue>6516</Revenue> 
+  </item>
+ <item>
+  <index>No. 50</index> 
+  <Profit>1821</Profit> 
+  <Cost>9544</Cost> 
+  <Revenue>2593</Revenue> 
+  </item>
+ <item>
+  <index>No. 51</index> 
+  <Profit>1238</Profit> 
+  <Cost>295</Cost> 
+  <Revenue>1047</Revenue> 
+  </item>
+ <item>
+  <index>No. 52</index> 
+  <Profit>5007</Profit> 
+  <Cost>4111</Cost> 
+  <Revenue>2632</Revenue> 
+  </item>
+ <item>
+  <index>No. 53</index> 
+  <Profit>9430</Profit> 
+  <Cost>4854</Cost> 
+  <Revenue>3532</Revenue> 
+  </item>
+ <item>
+  <index>No. 54</index> 
+  <Profit>6050</Profit> 
+  <Cost>3248</Cost> 
+  <Revenue>3343</Revenue> 
+  </item>
+ <item>
+  <index>No. 55</index> 
+  <Profit>4009</Profit> 
+  <Cost>3882</Cost> 
+  <Revenue>5147</Revenue> 
+  </item>
+ <item>
+  <index>No. 56</index> 
+  <Profit>9941</Profit> 
+  <Cost>1522</Cost> 
+  <Revenue>843</Revenue> 
+  </item>
+ <item>
+  <index>No. 57</index> 
+  <Profit>586</Profit> 
+  <Cost>6437</Cost> 
+  <Revenue>4718</Revenue> 
+  </item>
+ <item>
+  <index>No. 58</index> 
+  <Profit>7375</Profit> 
+  <Cost>7669</Cost> 
+  <Revenue>6747</Revenue> 
+  </item>
+ <item>
+  <index>No. 59</index> 
+  <Profit>7428</Profit> 
+  <Cost>1396</Cost> 
+  <Revenue>2714</Revenue> 
+  </item>
+ <item>
+  <index>No. 60</index> 
+  <Profit>2623</Profit> 
+  <Cost>9086</Cost> 
+  <Revenue>1770</Revenue> 
+  </item>
+ <item>
+  <index>No. 61</index> 
+  <Profit>1940</Profit> 
+  <Cost>7545</Cost> 
+  <Revenue>2648</Revenue> 
+  </item>
+ <item>
+  <index>No. 62</index> 
+  <Profit>9992</Profit> 
+  <Cost>2966</Cost> 
+  <Revenue>2220</Revenue> 
+  </item>
+ <item>
+  <index>No. 63</index> 
+  <Profit>3695</Profit> 
+  <Cost>317</Cost> 
+  <Revenue>6345</Revenue> 
+  </item>
+ <item>
+  <index>No. 64</index> 
+  <Profit>3364</Profit> 
+  <Cost>4613</Cost> 
+  <Revenue>2839</Revenue> 
+  </item>
+ <item>
+  <index>No. 65</index> 
+  <Profit>2116</Profit> 
+  <Cost>5357</Cost> 
+  <Revenue>7522</Revenue> 
+  </item>
+ <item>
+  <index>No. 66</index> 
+  <Profit>5873</Profit> 
+  <Cost>326</Cost> 
+  <Revenue>9263</Revenue> 
+  </item>
+ <item>
+  <index>No. 67</index> 
+  <Profit>914</Profit> 
+  <Cost>6961</Cost> 
+  <Revenue>2289</Revenue> 
+  </item>
+ <item>
+  <index>No. 68</index> 
+  <Profit>8391</Profit> 
+  <Cost>3581</Cost> 
+  <Revenue>6383</Revenue> 
+  </item>
+ <item>
+  <index>No. 69</index> 
+  <Profit>8185</Profit> 
+  <Cost>723</Cost> 
+  <Revenue>2716</Revenue> 
+  </item>
+ <item>
+  <index>No. 70</index> 
+  <Profit>5893</Profit> 
+  <Cost>9584</Cost> 
+  <Revenue>3089</Revenue> 
+  </item>
+ <item>
+  <index>No. 71</index> 
+  <Profit>9830</Profit> 
+  <Cost>2053</Cost> 
+  <Revenue>5538</Revenue> 
+  </item>
+ <item>
+  <index>No. 72</index> 
+  <Profit>5313</Profit> 
+  <Cost>5293</Cost> 
+  <Revenue>940</Revenue> 
+  </item>
+ <item>
+  <index>No. 73</index> 
+  <Profit>3327</Profit> 
+  <Cost>5714</Cost> 
+  <Revenue>8227</Revenue> 
+  </item>
+ <item>
+  <index>No. 74</index> 
+  <Profit>396</Profit> 
+  <Cost>3493</Cost> 
+  <Revenue>8214</Revenue> 
+  </item>
+ <item>
+  <index>No. 75</index> 
+  <Profit>5175</Profit> 
+  <Cost>740</Cost> 
+  <Revenue>4071</Revenue> 
+  </item>
+ <item>
+  <index>No. 76</index> 
+  <Profit>4432</Profit> 
+  <Cost>576</Cost> 
+  <Revenue>5527</Revenue> 
+  </item>
+ <item>
+  <index>No. 77</index> 
+  <Profit>1733</Profit> 
+  <Cost>1249</Cost> 
+  <Revenue>1666</Revenue> 
+  </item>
+ <item>
+  <index>No. 78</index> 
+  <Profit>6156</Profit> 
+  <Cost>2352</Cost> 
+  <Revenue>4040</Revenue> 
+  </item>
+ <item>
+  <index>No. 79</index> 
+  <Profit>6107</Profit> 
+  <Cost>7931</Cost> 
+  <Revenue>1669</Revenue> 
+  </item>
+ <item>
+  <index>No. 80</index> 
+  <Profit>4218</Profit> 
+  <Cost>4300</Cost> 
+  <Revenue>983</Revenue> 
+  </item>
+ <item>
+  <index>No. 81</index> 
+  <Profit>1933</Profit> 
+  <Cost>894</Cost> 
+  <Revenue>4453</Revenue> 
+  </item>
+ <item>
+  <index>No. 82</index> 
+  <Profit>8431</Profit> 
+  <Cost>3323</Cost> 
+  <Revenue>208</Revenue> 
+  </item>
+ <item>
+  <index>No. 83</index> 
+  <Profit>3772</Profit> 
+  <Cost>8558</Cost> 
+  <Revenue>7774</Revenue> 
+  </item>
+ <item>
+  <index>No. 84</index> 
+  <Profit>5391</Profit> 
+  <Cost>5373</Cost> 
+  <Revenue>7531</Revenue> 
+  </item>
+ <item>
+  <index>No. 85</index> 
+  <Profit>5260</Profit> 
+  <Cost>3291</Cost> 
+  <Revenue>105</Revenue> 
+  </item>
+ <item>
+  <index>No. 86</index> 
+  <Profit>9773</Profit> 
+  <Cost>3466</Cost> 
+  <Revenue>7114</Revenue> 
+  </item>
+ <item>
+  <index>No. 87</index> 
+  <Profit>2929</Profit> 
+  <Cost>373</Cost> 
+  <Revenue>3522</Revenue> 
+  </item>
+ <item>
+  <index>No. 88</index> 
+  <Profit>8171</Profit> 
+  <Cost>7051</Cost> 
+  <Revenue>1983</Revenue> 
+  </item>
+ <item>
+  <index>No. 89</index> 
+  <Profit>8465</Profit> 
+  <Cost>213</Cost> 
+  <Revenue>6400</Revenue> 
+  </item>
+ <item>
+  <index>No. 90</index> 
+  <Profit>7590</Profit> 
+  <Cost>8677</Cost> 
+  <Revenue>104</Revenue> 
+  </item>
+ <item>
+  <index>No. 91</index> 
+  <Profit>1083</Profit> 
+  <Cost>6502</Cost> 
+  <Revenue>6245</Revenue> 
+  </item>
+ <item>
+  <index>No. 92</index> 
+  <Profit>8805</Profit> 
+  <Cost>9258</Cost> 
+  <Revenue>9534</Revenue> 
+  </item>
+ <item>
+  <index>No. 93</index> 
+  <Profit>4642</Profit> 
+  <Cost>7587</Cost> 
+  <Revenue>2385</Revenue> 
+  </item>
+ <item>
+  <index>No. 94</index> 
+  <Profit>3454</Profit> 
+  <Cost>8532</Cost> 
+  <Revenue>6294</Revenue> 
+  </item>
+ <item>
+  <index>No. 95</index> 
+  <Profit>2379</Profit> 
+  <Cost>8416</Cost> 
+  <Revenue>91</Revenue> 
+  </item>
+ <item>
+  <index>No. 96</index> 
+  <Profit>2440</Profit> 
+  <Cost>7423</Cost> 
+  <Revenue>5477</Revenue> 
+  </item>
+ <item>
+  <index>No. 97</index> 
+  <Profit>3778</Profit> 
+  <Cost>3016</Cost> 
+  <Revenue>315</Revenue> 
+  </item>
+ <item>
+  <index>No. 98</index> 
+  <Profit>6341</Profit> 
+  <Cost>850</Cost> 
+  <Revenue>8069</Revenue> 
+  </item>
+ <item>
+  <index>No. 99</index> 
+  <Profit>3585</Profit> 
+  <Cost>7313</Cost> 
+  <Revenue>639</Revenue> 
+  </item>
+ <item>
+  <index>No. 100</index> 
+  <Profit>3259</Profit> 
+  <Cost>528</Cost> 
+  <Revenue>8816</Revenue> 
+  </item>
+ <item>
+  <index>No. 101</index> 
+  <Profit>8800</Profit> 
+  <Cost>5236</Cost> 
+  <Revenue>4921</Revenue> 
+  </item>
+ <item>
+  <index>No. 102</index> 
+  <Profit>2418</Profit> 
+  <Cost>6132</Cost> 
+  <Revenue>5926</Revenue> 
+  </item>
+ <item>
+  <index>No. 103</index> 
+  <Profit>4959</Profit> 
+  <Cost>1109</Cost> 
+  <Revenue>8499</Revenue> 
+  </item>
+ <item>
+  <index>No. 104</index> 
+  <Profit>2030</Profit> 
+  <Cost>7876</Cost> 
+  <Revenue>1891</Revenue> 
+  </item>
+ <item>
+  <index>No. 105</index> 
+  <Profit>3577</Profit> 
+  <Cost>8509</Cost> 
+  <Revenue>9201</Revenue> 
+  </item>
+ <item>
+  <index>No. 106</index> 
+  <Profit>3019</Profit> 
+  <Cost>8147</Cost> 
+  <Revenue>9860</Revenue> 
+  </item>
+ <item>
+  <index>No. 107</index> 
+  <Profit>44</Profit> 
+  <Cost>2635</Cost> 
+  <Revenue>9778</Revenue> 
+  </item>
+ <item>
+  <index>No. 108</index> 
+  <Profit>7795</Profit> 
+  <Cost>698</Cost> 
+  <Revenue>1879</Revenue> 
+  </item>
+ <item>
+  <index>No. 109</index> 
+  <Profit>4524</Profit> 
+  <Cost>8886</Cost> 
+  <Revenue>3783</Revenue> 
+  </item>
+ <item>
+  <index>No. 110</index> 
+  <Profit>1588</Profit> 
+  <Cost>4565</Cost> 
+  <Revenue>5790</Revenue> 
+  </item>
+ <item>
+  <index>No. 111</index> 
+  <Profit>4836</Profit> 
+  <Cost>4966</Cost> 
+  <Revenue>5009</Revenue> 
+  </item>
+ <item>
+  <index>No. 112</index> 
+  <Profit>2695</Profit> 
+  <Cost>8262</Cost> 
+  <Revenue>1119</Revenue> 
+  </item>
+ <item>
+  <index>No. 113</index> 
+  <Profit>5662</Profit> 
+  <Cost>5545</Cost> 
+  <Revenue>4095</Revenue> 
+  </item>
+ <item>
+  <index>No. 114</index> 
+  <Profit>6930</Profit> 
+  <Cost>1193</Cost> 
+  <Revenue>9952</Revenue> 
+  </item>
+ <item>
+  <index>No. 115</index> 
+  <Profit>7276</Profit> 
+  <Cost>5901</Cost> 
+  <Revenue>6020</Revenue> 
+  </item>
+ <item>
+  <index>No. 116</index> 
+  <Profit>6812</Profit> 
+  <Cost>3526</Cost> 
+  <Revenue>4981</Revenue> 
+  </item>
+ <item>
+  <index>No. 117</index> 
+  <Profit>5780</Profit> 
+  <Cost>678</Cost> 
+  <Revenue>3936</Revenue> 
+  </item>
+ <item>
+  <index>No. 118</index> 
+  <Profit>9738</Profit> 
+  <Cost>225</Cost> 
+  <Revenue>4702</Revenue> 
+  </item>
+ <item>
+  <index>No. 119</index> 
+  <Profit>4948</Profit> 
+  <Cost>351</Cost> 
+  <Revenue>4158</Revenue> 
+  </item>
+ <item>
+  <index>No. 120</index> 
+  <Profit>3364</Profit> 
+  <Cost>8034</Cost> 
+  <Revenue>3046</Revenue> 
+  </item>
+ <item>
+  <index>No. 121</index> 
+  <Profit>6494</Profit> 
+  <Cost>4888</Cost> 
+  <Revenue>4899</Revenue> 
+  </item>
+ <item>
+  <index>No. 122</index> 
+  <Profit>6778</Profit> 
+  <Cost>3690</Cost> 
+  <Revenue>7133</Revenue> 
+  </item>
+ <item>
+  <index>No. 123</index> 
+  <Profit>7669</Profit> 
+  <Cost>3431</Cost> 
+  <Revenue>7056</Revenue> 
+  </item>
+ <item>
+  <index>No. 124</index> 
+  <Profit>4940</Profit> 
+  <Cost>8690</Cost> 
+  <Revenue>4487</Revenue> 
+  </item>
+ <item>
+  <index>No. 125</index> 
+  <Profit>2804</Profit> 
+  <Cost>3584</Cost> 
+  <Revenue>3963</Revenue> 
+  </item>
+ <item>
+  <index>No. 126</index> 
+  <Profit>3396</Profit> 
+  <Cost>2823</Cost> 
+  <Revenue>7613</Revenue> 
+  </item>
+ <item>
+  <index>No. 127</index> 
+  <Profit>7162</Profit> 
+  <Cost>1575</Cost> 
+  <Revenue>5618</Revenue> 
+  </item>
+ <item>
+  <index>No. 128</index> 
+  <Profit>7283</Profit> 
+  <Cost>6010</Cost> 
+  <Revenue>131</Revenue> 
+  </item>
+ <item>
+  <index>No. 129</index> 
+  <Profit>9703</Profit> 
+  <Cost>1585</Cost> 
+  <Revenue>2942</Revenue> 
+  </item>
+ <item>
+  <index>No. 130</index> 
+  <Profit>6787</Profit> 
+  <Cost>8652</Cost> 
+  <Revenue>550</Revenue> 
+  </item>
+ <item>
+  <index>No. 131</index> 
+  <Profit>9660</Profit> 
+  <Cost>4196</Cost> 
+  <Revenue>6447</Revenue> 
+  </item>
+ <item>
+  <index>No. 132</index> 
+  <Profit>2485</Profit> 
+  <Cost>7616</Cost> 
+  <Revenue>1714</Revenue> 
+  </item>
+ <item>
+  <index>No. 133</index> 
+  <Profit>1050</Profit> 
+  <Cost>8871</Cost> 
+  <Revenue>4033</Revenue> 
+  </item>
+ <item>
+  <index>No. 134</index> 
+  <Profit>5083</Profit> 
+  <Cost>7382</Cost> 
+  <Revenue>877</Revenue> 
+  </item>
+ <item>
+  <index>No. 135</index> 
+  <Profit>1301</Profit> 
+  <Cost>1374</Cost> 
+  <Revenue>1418</Revenue> 
+  </item>
+ <item>
+  <index>No. 136</index> 
+  <Profit>3944</Profit> 
+  <Cost>3197</Cost> 
+  <Revenue>3143</Revenue> 
+  </item>
+ <item>
+  <index>No. 137</index> 
+  <Profit>4170</Profit> 
+  <Cost>5060</Cost> 
+  <Revenue>4771</Revenue> 
+  </item>
+ <item>
+  <index>No. 138</index> 
+  <Profit>257</Profit> 
+  <Cost>6664</Cost> 
+  <Revenue>8276</Revenue> 
+  </item>
+ <item>
+  <index>No. 139</index> 
+  <Profit>7685</Profit> 
+  <Cost>9514</Cost> 
+  <Revenue>7359</Revenue> 
+  </item>
+ <item>
+  <index>No. 140</index> 
+  <Profit>1282</Profit> 
+  <Cost>9106</Cost> 
+  <Revenue>3190</Revenue> 
+  </item>
+ <item>
+  <index>No. 141</index> 
+  <Profit>2280</Profit> 
+  <Cost>1000</Cost> 
+  <Revenue>2080</Revenue> 
+  </item>
+ <item>
+  <index>No. 142</index> 
+  <Profit>6980</Profit> 
+  <Cost>7264</Cost> 
+  <Revenue>188</Revenue> 
+  </item>
+ <item>
+  <index>No. 143</index> 
+  <Profit>3891</Profit> 
+  <Cost>8318</Cost> 
+  <Revenue>2501</Revenue> 
+  </item>
+ <item>
+  <index>No. 144</index> 
+  <Profit>8069</Profit> 
+  <Cost>8338</Cost> 
+  <Revenue>9904</Revenue> 
+  </item>
+ <item>
+  <index>No. 145</index> 
+  <Profit>5768</Profit> 
+  <Cost>8061</Cost> 
+  <Revenue>7669</Revenue> 
+  </item>
+ <item>
+  <index>No. 146</index> 
+  <Profit>9607</Profit> 
+  <Cost>152</Cost> 
+  <Revenue>5895</Revenue> 
+  </item>
+ <item>
+  <index>No. 147</index> 
+  <Profit>9419</Profit> 
+  <Cost>7321</Cost> 
+  <Revenue>6511</Revenue> 
+  </item>
+ <item>
+  <index>No. 148</index> 
+  <Profit>5544</Profit> 
+  <Cost>1101</Cost> 
+  <Revenue>76</Revenue> 
+  </item>
+ <item>
+  <index>No. 149</index> 
+  <Profit>7234</Profit> 
+  <Cost>7037</Cost> 
+  <Revenue>4515</Revenue> 
+  </item>
+ <item>
+  <index>No. 150</index> 
+  <Profit>9197</Profit> 
+  <Cost>6392</Cost> 
+  <Revenue>4958</Revenue> 
+  </item>
+ <item>
+  <index>No. 151</index> 
+  <Profit>2966</Profit> 
+  <Cost>8332</Cost> 
+  <Revenue>3809</Revenue> 
+  </item>
+ <item>
+  <index>No. 152</index> 
+  <Profit>2788</Profit> 
+  <Cost>7438</Cost> 
+  <Revenue>660</Revenue> 
+  </item>
+ <item>
+  <index>No. 153</index> 
+  <Profit>6741</Profit> 
+  <Cost>2416</Cost> 
+  <Revenue>2012</Revenue> 
+  </item>
+ <item>
+  <index>No. 154</index> 
+  <Profit>6911</Profit> 
+  <Cost>7736</Cost> 
+  <Revenue>3244</Revenue> 
+  </item>
+ <item>
+  <index>No. 155</index> 
+  <Profit>5143</Profit> 
+  <Cost>2009</Cost> 
+  <Revenue>2576</Revenue> 
+  </item>
+ <item>
+  <index>No. 156</index> 
+  <Profit>1704</Profit> 
+  <Cost>5754</Cost> 
+  <Revenue>3017</Revenue> 
+  </item>
+ <item>
+  <index>No. 157</index> 
+  <Profit>4987</Profit> 
+  <Cost>8261</Cost> 
+  <Revenue>7099</Revenue> 
+  </item>
+ <item>
+  <index>No. 158</index> 
+  <Profit>1644</Profit> 
+  <Cost>6595</Cost> 
+  <Revenue>9669</Revenue> 
+  </item>
+ <item>
+  <index>No. 159</index> 
+  <Profit>5362</Profit> 
+  <Cost>3430</Cost> 
+  <Revenue>5778</Revenue> 
+  </item>
+ <item>
+  <index>No. 160</index> 
+  <Profit>8697</Profit> 
+  <Cost>952</Cost> 
+  <Revenue>3172</Revenue> 
+  </item>
+ <item>
+  <index>No. 161</index> 
+  <Profit>5864</Profit> 
+  <Cost>6364</Cost> 
+  <Revenue>6608</Revenue> 
+  </item>
+ <item>
+  <index>No. 162</index> 
+  <Profit>5438</Profit> 
+  <Cost>4520</Cost> 
+  <Revenue>6215</Revenue> 
+  </item>
+ <item>
+  <index>No. 163</index> 
+  <Profit>4423</Profit> 
+  <Cost>5966</Cost> 
+  <Revenue>3589</Revenue> 
+  </item>
+ <item>
+  <index>No. 164</index> 
+  <Profit>4169</Profit> 
+  <Cost>4080</Cost> 
+  <Revenue>1723</Revenue> 
+  </item>
+ <item>
+  <index>No. 165</index> 
+  <Profit>3996</Profit> 
+  <Cost>4446</Cost> 
+  <Revenue>4537</Revenue> 
+  </item>
+ <item>
+  <index>No. 166</index> 
+  <Profit>3413</Profit> 
+  <Cost>5706</Cost> 
+  <Revenue>6939</Revenue> 
+  </item>
+ <item>
+  <index>No. 167</index> 
+  <Profit>9980</Profit> 
+  <Cost>165</Cost> 
+  <Revenue>8572</Revenue> 
+  </item>
+ <item>
+  <index>No. 168</index> 
+  <Profit>3970</Profit> 
+  <Cost>9516</Cost> 
+  <Revenue>8268</Revenue> 
+  </item>
+ <item>
+  <index>No. 169</index> 
+  <Profit>312</Profit> 
+  <Cost>5386</Cost> 
+  <Revenue>2636</Revenue> 
+  </item>
+ <item>
+  <index>No. 170</index> 
+  <Profit>9794</Profit> 
+  <Cost>3607</Cost> 
+  <Revenue>8856</Revenue> 
+  </item>
+ <item>
+  <index>No. 171</index> 
+  <Profit>9129</Profit> 
+  <Cost>9333</Cost> 
+  <Revenue>5795</Revenue> 
+  </item>
+ <item>
+  <index>No. 172</index> 
+  <Profit>7968</Profit> 
+  <Cost>6571</Cost> 
+  <Revenue>2376</Revenue> 
+  </item>
+ <item>
+  <index>No. 173</index> 
+  <Profit>2637</Profit> 
+  <Cost>4190</Cost> 
+  <Revenue>4464</Revenue> 
+  </item>
+ <item>
+  <index>No. 174</index> 
+  <Profit>4770</Profit> 
+  <Cost>2982</Cost> 
+  <Revenue>2341</Revenue> 
+  </item>
+ <item>
+  <index>No. 175</index> 
+  <Profit>1804</Profit> 
+  <Cost>282</Cost> 
+  <Revenue>8451</Revenue> 
+  </item>
+ <item>
+  <index>No. 176</index> 
+  <Profit>3160</Profit> 
+  <Cost>1764</Cost> 
+  <Revenue>6623</Revenue> 
+  </item>
+ <item>
+  <index>No. 177</index> 
+  <Profit>6784</Profit> 
+  <Cost>6797</Cost> 
+  <Revenue>6588</Revenue> 
+  </item>
+ <item>
+  <index>No. 178</index> 
+  <Profit>8117</Profit> 
+  <Cost>6873</Cost> 
+  <Revenue>4648</Revenue> 
+  </item>
+ <item>
+  <index>No. 179</index> 
+  <Profit>1452</Profit> 
+  <Cost>6918</Cost> 
+  <Revenue>3233</Revenue> 
+  </item>
+ <item>
+  <index>No. 180</index> 
+  <Profit>793</Profit> 
+  <Cost>4264</Cost> 
+  <Revenue>1620</Revenue> 
+  </item>
+ <item>
+  <index>No. 181</index> 
+  <Profit>921</Profit> 
+  <Cost>1330</Cost> 
+  <Revenue>3575</Revenue> 
+  </item>
+ <item>
+  <index>No. 182</index> 
+  <Profit>1210</Profit> 
+  <Cost>2290</Cost> 
+  <Revenue>8463</Revenue> 
+  </item>
+ <item>
+  <index>No. 183</index> 
+  <Profit>8971</Profit> 
+  <Cost>2657</Cost> 
+  <Revenue>7393</Revenue> 
+  </item>
+ <item>
+  <index>No. 184</index> 
+  <Profit>8254</Profit> 
+  <Cost>2352</Cost> 
+  <Revenue>3804</Revenue> 
+  </item>
+ <item>
+  <index>No. 185</index> 
+  <Profit>5851</Profit> 
+  <Cost>8322</Cost> 
+  <Revenue>3903</Revenue> 
+  </item>
+ <item>
+  <index>No. 186</index> 
+  <Profit>3017</Profit> 
+  <Cost>5634</Cost> 
+  <Revenue>3178</Revenue> 
+  </item>
+ <item>
+  <index>No. 187</index> 
+  <Profit>8197</Profit> 
+  <Cost>9025</Cost> 
+  <Revenue>8617</Revenue> 
+  </item>
+ <item>
+  <index>No. 188</index> 
+  <Profit>9100</Profit> 
+  <Cost>5189</Cost> 
+  <Revenue>2553</Revenue> 
+  </item>
+ <item>
+  <index>No. 189</index> 
+  <Profit>1950</Profit> 
+  <Cost>5607</Cost> 
+  <Revenue>8933</Revenue> 
+  </item>
+ <item>
+  <index>No. 190</index> 
+  <Profit>3484</Profit> 
+  <Cost>205</Cost> 
+  <Revenue>7043</Revenue> 
+  </item>
+ <item>
+  <index>No. 191</index> 
+  <Profit>6069</Profit> 
+  <Cost>4610</Cost> 
+  <Revenue>1216</Revenue> 
+  </item>
+ <item>
+  <index>No. 192</index> 
+  <Profit>8014</Profit> 
+  <Cost>4479</Cost> 
+  <Revenue>6605</Revenue> 
+  </item>
+ <item>
+  <index>No. 193</index> 
+  <Profit>7096</Profit> 
+  <Cost>3007</Cost> 
+  <Revenue>5557</Revenue> 
+  </item>
+ <item>
+  <index>No. 194</index> 
+  <Profit>2507</Profit> 
+  <Cost>4281</Cost> 
+  <Revenue>1980</Revenue> 
+  </item>
+ <item>
+  <index>No. 195</index> 
+  <Profit>1063</Profit> 
+  <Cost>8355</Cost> 
+  <Revenue>1477</Revenue> 
+  </item>
+ <item>
+  <index>No. 196</index> 
+  <Profit>1899</Profit> 
+  <Cost>373</Cost> 
+  <Revenue>3502</Revenue> 
+  </item>
+ <item>
+  <index>No. 197</index> 
+  <Profit>5146</Profit> 
+  <Cost>2783</Cost> 
+  <Revenue>8227</Revenue> 
+  </item>
+ <item>
+  <index>No. 198</index> 
+  <Profit>5027</Profit> 
+  <Cost>5236</Cost> 
+  <Revenue>6676</Revenue> 
+  </item>
+ <item>
+  <index>No. 199</index> 
+  <Profit>2136</Profit> 
+  <Cost>3197</Cost> 
+  <Revenue>4731</Revenue> 
+  </item>
+ <item>
+  <index>No. 200</index> 
+  <Profit>9441</Profit> 
+  <Cost>2963</Cost> 
+  <Revenue>4773</Revenue> 
+  </item>
+ <item>
+  <index>No. 201</index> 
+  <Profit>1430</Profit> 
+  <Cost>4501</Cost> 
+  <Revenue>8689</Revenue> 
+  </item>
+ <item>
+  <index>No. 202</index> 
+  <Profit>82</Profit> 
+  <Cost>5765</Cost> 
+  <Revenue>3301</Revenue> 
+  </item>
+ <item>
+  <index>No. 203</index> 
+  <Profit>5417</Profit> 
+  <Cost>6688</Cost> 
+  <Revenue>2178</Revenue> 
+  </item>
+ <item>
+  <index>No. 204</index> 
+  <Profit>1920</Profit> 
+  <Cost>9370</Cost> 
+  <Revenue>34</Revenue> 
+  </item>
+ <item>
+  <index>No. 205</index> 
+  <Profit>639</Profit> 
+  <Cost>3369</Cost> 
+  <Revenue>1341</Revenue> 
+  </item>
+ <item>
+  <index>No. 206</index> 
+  <Profit>7617</Profit> 
+  <Cost>5035</Cost> 
+  <Revenue>5341</Revenue> 
+  </item>
+ <item>
+  <index>No. 207</index> 
+  <Profit>2259</Profit> 
+  <Cost>8971</Cost> 
+  <Revenue>7009</Revenue> 
+  </item>
+ <item>
+  <index>No. 208</index> 
+  <Profit>1541</Profit> 
+  <Cost>3249</Cost> 
+  <Revenue>1663</Revenue> 
+  </item>
+ <item>
+  <index>No. 209</index> 
+  <Profit>4009</Profit> 
+  <Cost>4047</Cost> 
+  <Revenue>8135</Revenue> 
+  </item>
+ <item>
+  <index>No. 210</index> 
+  <Profit>4718</Profit> 
+  <Cost>5075</Cost> 
+  <Revenue>4246</Revenue> 
+  </item>
+ <item>
+  <index>No. 211</index> 
+  <Profit>9092</Profit> 
+  <Cost>360</Cost> 
+  <Revenue>847</Revenue> 
+  </item>
+ <item>
+  <index>No. 212</index> 
+  <Profit>4833</Profit> 
+  <Cost>2873</Cost> 
+  <Revenue>5791</Revenue> 
+  </item>
+ <item>
+  <index>No. 213</index> 
+  <Profit>7935</Profit> 
+  <Cost>8603</Cost> 
+  <Revenue>592</Revenue> 
+  </item>
+ <item>
+  <index>No. 214</index> 
+  <Profit>5269</Profit> 
+  <Cost>5253</Cost> 
+  <Revenue>3508</Revenue> 
+  </item>
+ <item>
+  <index>No. 215</index> 
+  <Profit>3447</Profit> 
+  <Cost>7986</Cost> 
+  <Revenue>8242</Revenue> 
+  </item>
+ <item>
+  <index>No. 216</index> 
+  <Profit>4166</Profit> 
+  <Cost>1870</Cost> 
+  <Revenue>8755</Revenue> 
+  </item>
+ <item>
+  <index>No. 217</index> 
+  <Profit>9475</Profit> 
+  <Cost>8337</Cost> 
+  <Revenue>8574</Revenue> 
+  </item>
+ <item>
+  <index>No. 218</index> 
+  <Profit>6315</Profit> 
+  <Cost>9501</Cost> 
+  <Revenue>5787</Revenue> 
+  </item>
+ <item>
+  <index>No. 219</index> 
+  <Profit>5890</Profit> 
+  <Cost>3172</Cost> 
+  <Revenue>8734</Revenue> 
+  </item>
+ <item>
+  <index>No. 220</index> 
+  <Profit>6622</Profit> 
+  <Cost>8313</Cost> 
+  <Revenue>3305</Revenue> 
+  </item>
+ <item>
+  <index>No. 221</index> 
+  <Profit>8287</Profit> 
+  <Cost>3769</Cost> 
+  <Revenue>8301</Revenue> 
+  </item>
+ <item>
+  <index>No. 222</index> 
+  <Profit>183</Profit> 
+  <Cost>8519</Cost> 
+  <Revenue>4059</Revenue> 
+  </item>
+ <item>
+  <index>No. 223</index> 
+  <Profit>649</Profit> 
+  <Cost>9951</Cost> 
+  <Revenue>2431</Revenue> 
+  </item>
+ <item>
+  <index>No. 224</index> 
+  <Profit>1799</Profit> 
+  <Cost>7586</Cost> 
+  <Revenue>8722</Revenue> 
+  </item>
+ <item>
+  <index>No. 225</index> 
+  <Profit>6539</Profit> 
+  <Cost>6540</Cost> 
+  <Revenue>4096</Revenue> 
+  </item>
+ <item>
+  <index>No. 226</index> 
+  <Profit>4029</Profit> 
+  <Cost>7107</Cost> 
+  <Revenue>7993</Revenue> 
+  </item>
+ <item>
+  <index>No. 227</index> 
+  <Profit>4640</Profit> 
+  <Cost>8231</Cost> 
+  <Revenue>7810</Revenue> 
+  </item>
+ <item>
+  <index>No. 228</index> 
+  <Profit>63</Profit> 
+  <Cost>6691</Cost> 
+  <Revenue>4910</Revenue> 
+  </item>
+ <item>
+  <index>No. 229</index> 
+  <Profit>9640</Profit> 
+  <Cost>9165</Cost> 
+  <Revenue>804</Revenue> 
+  </item>
+ <item>
+  <index>No. 230</index> 
+  <Profit>1064</Profit> 
+  <Cost>7449</Cost> 
+  <Revenue>43</Revenue> 
+  </item>
+ <item>
+  <index>No. 231</index> 
+  <Profit>3117</Profit> 
+  <Cost>8890</Cost> 
+  <Revenue>541</Revenue> 
+  </item>
+ <item>
+  <index>No. 232</index> 
+  <Profit>7975</Profit> 
+  <Cost>2024</Cost> 
+  <Revenue>8471</Revenue> 
+  </item>
+ <item>
+  <index>No. 233</index> 
+  <Profit>7257</Profit> 
+  <Cost>8982</Cost> 
+  <Revenue>6261</Revenue> 
+  </item>
+ <item>
+  <index>No. 234</index> 
+  <Profit>2068</Profit> 
+  <Cost>7318</Cost> 
+  <Revenue>4703</Revenue> 
+  </item>
+ <item>
+  <index>No. 235</index> 
+  <Profit>5996</Profit> 
+  <Cost>6751</Cost> 
+  <Revenue>3199</Revenue> 
+  </item>
+ <item>
+  <index>No. 236</index> 
+  <Profit>3239</Profit> 
+  <Cost>9459</Cost> 
+  <Revenue>1814</Revenue> 
+  </item>
+ <item>
+  <index>No. 237</index> 
+  <Profit>5137</Profit> 
+  <Cost>7982</Cost> 
+  <Revenue>8761</Revenue> 
+  </item>
+ <item>
+  <index>No. 238</index> 
+  <Profit>4789</Profit> 
+  <Cost>2612</Cost> 
+  <Revenue>8104</Revenue> 
+  </item>
+ <item>
+  <index>No. 239</index> 
+  <Profit>6220</Profit> 
+  <Cost>9639</Cost> 
+  <Revenue>4242</Revenue> 
+  </item>
+ <item>
+  <index>No. 240</index> 
+  <Profit>9519</Profit> 
+  <Cost>8188</Cost> 
+  <Revenue>1653</Revenue> 
+  </item>
+ <item>
+  <index>No. 241</index> 
+  <Profit>4775</Profit> 
+  <Cost>4644</Cost> 
+  <Revenue>2059</Revenue> 
+  </item>
+ <item>
+  <index>No. 242</index> 
+  <Profit>711</Profit> 
+  <Cost>1031</Cost> 
+  <Revenue>5271</Revenue> 
+  </item>
+ <item>
+  <index>No. 243</index> 
+  <Profit>3270</Profit> 
+  <Cost>1554</Cost> 
+  <Revenue>6477</Revenue> 
+  </item>
+ <item>
+  <index>No. 244</index> 
+  <Profit>6437</Profit> 
+  <Cost>4821</Cost> 
+  <Revenue>130</Revenue> 
+  </item>
+ <item>
+  <index>No. 245</index> 
+  <Profit>1766</Profit> 
+  <Cost>5627</Cost> 
+  <Revenue>3219</Revenue> 
+  </item>
+ <item>
+  <index>No. 246</index> 
+  <Profit>7043</Profit> 
+  <Cost>9524</Cost> 
+  <Revenue>4098</Revenue> 
+  </item>
+ <item>
+  <index>No. 247</index> 
+  <Profit>7102</Profit> 
+  <Cost>6114</Cost> 
+  <Revenue>3926</Revenue> 
+  </item>
+ <item>
+  <index>No. 248</index> 
+  <Profit>128</Profit> 
+  <Cost>6203</Cost> 
+  <Revenue>7453</Revenue> 
+  </item>
+ <item>
+  <index>No. 249</index> 
+  <Profit>6145</Profit> 
+  <Cost>7730</Cost> 
+  <Revenue>1408</Revenue> 
+  </item>
+ <item>
+  <index>No. 250</index> 
+  <Profit>8170</Profit> 
+  <Cost>9868</Cost> 
+  <Revenue>4819</Revenue> 
+  </item>
+ <item>
+  <index>No. 251</index> 
+  <Profit>19</Profit> 
+  <Cost>3364</Cost> 
+  <Revenue>597</Revenue> 
+  </item>
+ <item>
+  <index>No. 252</index> 
+  <Profit>4784</Profit> 
+  <Cost>3208</Cost> 
+  <Revenue>3151</Revenue> 
+  </item>
+ <item>
+  <index>No. 253</index> 
+  <Profit>6468</Profit> 
+  <Cost>4431</Cost> 
+  <Revenue>4167</Revenue> 
+  </item>
+ <item>
+  <index>No. 254</index> 
+  <Profit>9089</Profit> 
+  <Cost>4470</Cost> 
+  <Revenue>6256</Revenue> 
+  </item>
+ <item>
+  <index>No. 255</index> 
+  <Profit>6544</Profit> 
+  <Cost>5776</Cost> 
+  <Revenue>979</Revenue> 
+  </item>
+ <item>
+  <index>No. 256</index> 
+  <Profit>5815</Profit> 
+  <Cost>4806</Cost> 
+  <Revenue>1943</Revenue> 
+  </item>
+ <item>
+  <index>No. 257</index> 
+  <Profit>7141</Profit> 
+  <Cost>2119</Cost> 
+  <Revenue>5509</Revenue> 
+  </item>
+ <item>
+  <index>No. 258</index> 
+  <Profit>2985</Profit> 
+  <Cost>8299</Cost> 
+  <Revenue>8754</Revenue> 
+  </item>
+ <item>
+  <index>No. 259</index> 
+  <Profit>1557</Profit> 
+  <Cost>9517</Cost> 
+  <Revenue>4737</Revenue> 
+  </item>
+ <item>
+  <index>No. 260</index> 
+  <Profit>776</Profit> 
+  <Cost>334</Cost> 
+  <Revenue>8834</Revenue> 
+  </item>
+ <item>
+  <index>No. 261</index> 
+  <Profit>7273</Profit> 
+  <Cost>8156</Cost> 
+  <Revenue>4432</Revenue> 
+  </item>
+ <item>
+  <index>No. 262</index> 
+  <Profit>1994</Profit> 
+  <Cost>1787</Cost> 
+  <Revenue>3716</Revenue> 
+  </item>
+ <item>
+  <index>No. 263</index> 
+  <Profit>7071</Profit> 
+  <Cost>1089</Cost> 
+  <Revenue>1669</Revenue> 
+  </item>
+ <item>
+  <index>No. 264</index> 
+  <Profit>587</Profit> 
+  <Cost>3918</Cost> 
+  <Revenue>9605</Revenue> 
+  </item>
+ <item>
+  <index>No. 265</index> 
+  <Profit>2116</Profit> 
+  <Cost>9860</Cost> 
+  <Revenue>828</Revenue> 
+  </item>
+ <item>
+  <index>No. 266</index> 
+  <Profit>764</Profit> 
+  <Cost>8589</Cost> 
+  <Revenue>3066</Revenue> 
+  </item>
+ <item>
+  <index>No. 267</index> 
+  <Profit>5348</Profit> 
+  <Cost>8773</Cost> 
+  <Revenue>9024</Revenue> 
+  </item>
+ <item>
+  <index>No. 268</index> 
+  <Profit>4442</Profit> 
+  <Cost>2585</Cost> 
+  <Revenue>6202</Revenue> 
+  </item>
+ <item>
+  <index>No. 269</index> 
+  <Profit>2264</Profit> 
+  <Cost>6546</Cost> 
+  <Revenue>4762</Revenue> 
+  </item>
+ <item>
+  <index>No. 270</index> 
+  <Profit>4194</Profit> 
+  <Cost>8243</Cost> 
+  <Revenue>9643</Revenue> 
+  </item>
+ <item>
+  <index>No. 271</index> 
+  <Profit>43</Profit> 
+  <Cost>1554</Cost> 
+  <Revenue>3099</Revenue> 
+  </item>
+ <item>
+  <index>No. 272</index> 
+  <Profit>1947</Profit> 
+  <Cost>4185</Cost> 
+  <Revenue>2693</Revenue> 
+  </item>
+ <item>
+  <index>No. 273</index> 
+  <Profit>7406</Profit> 
+  <Cost>4259</Cost> 
+  <Revenue>6315</Revenue> 
+  </item>
+ <item>
+  <index>No. 274</index> 
+  <Profit>99</Profit> 
+  <Cost>28</Cost> 
+  <Revenue>877</Revenue> 
+  </item>
+ <item>
+  <index>No. 275</index> 
+  <Profit>1895</Profit> 
+  <Cost>3466</Cost> 
+  <Revenue>4751</Revenue> 
+  </item>
+ <item>
+  <index>No. 276</index> 
+  <Profit>218</Profit> 
+  <Cost>1871</Cost> 
+  <Revenue>6018</Revenue> 
+  </item>
+ <item>
+  <index>No. 277</index> 
+  <Profit>9795</Profit> 
+  <Cost>8647</Cost> 
+  <Revenue>2</Revenue> 
+  </item>
+ <item>
+  <index>No. 278</index> 
+  <Profit>1990</Profit> 
+  <Cost>1171</Cost> 
+  <Revenue>2476</Revenue> 
+  </item>
+ <item>
+  <index>No. 279</index> 
+  <Profit>261</Profit> 
+  <Cost>4101</Cost> 
+  <Revenue>4195</Revenue> 
+  </item>
+ <item>
+  <index>No. 280</index> 
+  <Profit>7361</Profit> 
+  <Cost>6731</Cost> 
+  <Revenue>6781</Revenue> 
+  </item>
+ <item>
+  <index>No. 281</index> 
+  <Profit>393</Profit> 
+  <Cost>3129</Cost> 
+  <Revenue>8951</Revenue> 
+  </item>
+ <item>
+  <index>No. 282</index> 
+  <Profit>201</Profit> 
+  <Cost>8468</Cost> 
+  <Revenue>2934</Revenue> 
+  </item>
+ <item>
+  <index>No. 283</index> 
+  <Profit>5355</Profit> 
+  <Cost>4838</Cost> 
+  <Revenue>1056</Revenue> 
+  </item>
+ <item>
+  <index>No. 284</index> 
+  <Profit>6471</Profit> 
+  <Cost>6215</Cost> 
+  <Revenue>3694</Revenue> 
+  </item>
+ <item>
+  <index>No. 285</index> 
+  <Profit>9663</Profit> 
+  <Cost>9933</Cost> 
+  <Revenue>7207</Revenue> 
+  </item>
+ <item>
+  <index>No. 286</index> 
+  <Profit>5006</Profit> 
+  <Cost>6719</Cost> 
+  <Revenue>8390</Revenue> 
+  </item>
+ <item>
+  <index>No. 287</index> 
+  <Profit>7728</Profit> 
+  <Cost>2713</Cost> 
+  <Revenue>8241</Revenue> 
+  </item>
+ <item>
+  <index>No. 288</index> 
+  <Profit>7123</Profit> 
+  <Cost>4413</Cost> 
+  <Revenue>479</Revenue> 
+  </item>
+ <item>
+  <index>No. 289</index> 
+  <Profit>4219</Profit> 
+  <Cost>2854</Cost> 
+  <Revenue>4553</Revenue> 
+  </item>
+ <item>
+  <index>No. 290</index> 
+  <Profit>4675</Profit> 
+  <Cost>4725</Cost> 
+  <Revenue>4619</Revenue> 
+  </item>
+ <item>
+  <index>No. 291</index> 
+  <Profit>9882</Profit> 
+  <Cost>779</Cost> 
+  <Revenue>2950</Revenue> 
+  </item>
+ <item>
+  <index>No. 292</index> 
+  <Profit>3052</Profit> 
+  <Cost>2906</Cost> 
+  <Revenue>7243</Revenue> 
+  </item>
+ <item>
+  <index>No. 293</index> 
+  <Profit>1075</Profit> 
+  <Cost>2497</Cost> 
+  <Revenue>5132</Revenue> 
+  </item>
+ <item>
+  <index>No. 294</index> 
+  <Profit>8205</Profit> 
+  <Cost>9375</Cost> 
+  <Revenue>5988</Revenue> 
+  </item>
+ <item>
+  <index>No. 295</index> 
+  <Profit>7539</Profit> 
+  <Cost>8118</Cost> 
+  <Revenue>3560</Revenue> 
+  </item>
+ <item>
+  <index>No. 296</index> 
+  <Profit>7615</Profit> 
+  <Cost>7546</Cost> 
+  <Revenue>4196</Revenue> 
+  </item>
+ <item>
+  <index>No. 297</index> 
+  <Profit>4091</Profit> 
+  <Cost>4433</Cost> 
+  <Revenue>108</Revenue> 
+  </item>
+ <item>
+  <index>No. 298</index> 
+  <Profit>368</Profit> 
+  <Cost>3983</Cost> 
+  <Revenue>8746</Revenue> 
+  </item>
+ <item>
+  <index>No. 299</index> 
+  <Profit>4997</Profit> 
+  <Cost>1112</Cost> 
+  <Revenue>6087</Revenue> 
+  </item>
+ <item>
+  <index>No. 300</index> 
+  <Profit>6491</Profit> 
+  <Cost>8866</Cost> 
+  <Revenue>7089</Revenue> 
+  </item>
+ <item>
+  <index>No. 301</index> 
+  <Profit>3208</Profit> 
+  <Cost>8903</Cost> 
+  <Revenue>3411</Revenue> 
+  </item>
+ <item>
+  <index>No. 302</index> 
+  <Profit>7549</Profit> 
+  <Cost>1934</Cost> 
+  <Revenue>650</Revenue> 
+  </item>
+ <item>
+  <index>No. 303</index> 
+  <Profit>3844</Profit> 
+  <Cost>8623</Cost> 
+  <Revenue>5902</Revenue> 
+  </item>
+ <item>
+  <index>No. 304</index> 
+  <Profit>9900</Profit> 
+  <Cost>4716</Cost> 
+  <Revenue>7027</Revenue> 
+  </item>
+ <item>
+  <index>No. 305</index> 
+  <Profit>9315</Profit> 
+  <Cost>1326</Cost> 
+  <Revenue>8124</Revenue> 
+  </item>
+ <item>
+  <index>No. 306</index> 
+  <Profit>6792</Profit> 
+  <Cost>4484</Cost> 
+  <Revenue>2589</Revenue> 
+  </item>
+ <item>
+  <index>No. 307</index> 
+  <Profit>8779</Profit> 
+  <Cost>6787</Cost> 
+  <Revenue>4520</Revenue> 
+  </item>
+ <item>
+  <index>No. 308</index> 
+  <Profit>2082</Profit> 
+  <Cost>3549</Cost> 
+  <Revenue>4178</Revenue> 
+  </item>
+ <item>
+  <index>No. 309</index> 
+  <Profit>9001</Profit> 
+  <Cost>6929</Cost> 
+  <Revenue>8978</Revenue> 
+  </item>
+ <item>
+  <index>No. 310</index> 
+  <Profit>2100</Profit> 
+  <Cost>8885</Cost> 
+  <Revenue>5430</Revenue> 
+  </item>
+ <item>
+  <index>No. 311</index> 
+  <Profit>5390</Profit> 
+  <Cost>719</Cost> 
+  <Revenue>5420</Revenue> 
+  </item>
+ <item>
+  <index>No. 312</index> 
+  <Profit>2381</Profit> 
+  <Cost>1891</Cost> 
+  <Revenue>8440</Revenue> 
+  </item>
+ <item>
+  <index>No. 313</index> 
+  <Profit>9648</Profit> 
+  <Cost>3386</Cost> 
+  <Revenue>1719</Revenue> 
+  </item>
+ <item>
+  <index>No. 314</index> 
+  <Profit>4270</Profit> 
+  <Cost>6649</Cost> 
+  <Revenue>8072</Revenue> 
+  </item>
+ <item>
+  <index>No. 315</index> 
+  <Profit>7102</Profit> 
+  <Cost>254</Cost> 
+  <Revenue>5652</Revenue> 
+  </item>
+ <item>
+  <index>No. 316</index> 
+  <Profit>9527</Profit> 
+  <Cost>698</Cost> 
+  <Revenue>7578</Revenue> 
+  </item>
+ <item>
+  <index>No. 317</index> 
+  <Profit>8036</Profit> 
+  <Cost>8759</Cost> 
+  <Revenue>1778</Revenue> 
+  </item>
+ <item>
+  <index>No. 318</index> 
+  <Profit>9139</Profit> 
+  <Cost>2180</Cost> 
+  <Revenue>6881</Revenue> 
+  </item>
+ <item>
+  <index>No. 319</index> 
+  <Profit>2108</Profit> 
+  <Cost>3166</Cost> 
+  <Revenue>3452</Revenue> 
+  </item>
+ <item>
+  <index>No. 320</index> 
+  <Profit>8270</Profit> 
+  <Cost>8989</Cost> 
+  <Revenue>5183</Revenue> 
+  </item>
+ <item>
+  <index>No. 321</index> 
+  <Profit>80</Profit> 
+  <Cost>5707</Cost> 
+  <Revenue>9007</Revenue> 
+  </item>
+ <item>
+  <index>No. 322</index> 
+  <Profit>2079</Profit> 
+  <Cost>9460</Cost> 
+  <Revenue>6583</Revenue> 
+  </item>
+ <item>
+  <index>No. 323</index> 
+  <Profit>5989</Profit> 
+  <Cost>4020</Cost> 
+  <Revenue>2709</Revenue> 
+  </item>
+ <item>
+  <index>No. 324</index> 
+  <Profit>7101</Profit> 
+  <Cost>7978</Cost> 
+  <Revenue>3662</Revenue> 
+  </item>
+ <item>
+  <index>No. 325</index> 
+  <Profit>1144</Profit> 
+  <Cost>7646</Cost> 
+  <Revenue>9786</Revenue> 
+  </item>
+ <item>
+  <index>No. 326</index> 
+  <Profit>7331</Profit> 
+  <Cost>5418</Cost> 
+  <Revenue>9054</Revenue> 
+  </item>
+ <item>
+  <index>No. 327</index> 
+  <Profit>1963</Profit> 
+  <Cost>4716</Cost> 
+  <Revenue>9273</Revenue> 
+  </item>
+ <item>
+  <index>No. 328</index> 
+  <Profit>3911</Profit> 
+  <Cost>3998</Cost> 
+  <Revenue>4440</Revenue> 
+  </item>
+ <item>
+  <index>No. 329</index> 
+  <Profit>8882</Profit> 
+  <Cost>9682</Cost> 
+  <Revenue>1366</Revenue> 
+  </item>
+ <item>
+  <index>No. 330</index> 
+  <Profit>6386</Profit> 
+  <Cost>1615</Cost> 
+  <Revenue>915</Revenue> 
+  </item>
+ <item>
+  <index>No. 331</index> 
+  <Profit>1876</Profit> 
+  <Cost>8522</Cost> 
+  <Revenue>3225</Revenue> 
+  </item>
+ <item>
+  <index>No. 332</index> 
+  <Profit>7247</Profit> 
+  <Cost>8592</Cost> 
+  <Revenue>2159</Revenue> 
+  </item>
+ <item>
+  <index>No. 333</index> 
+  <Profit>7989</Profit> 
+  <Cost>8707</Cost> 
+  <Revenue>2040</Revenue> 
+  </item>
+ <item>
+  <index>No. 334</index> 
+  <Profit>7672</Profit> 
+  <Cost>375</Cost> 
+  <Revenue>9751</Revenue> 
+  </item>
+ <item>
+  <index>No. 335</index> 
+  <Profit>5035</Profit> 
+  <Cost>7346</Cost> 
+  <Revenue>674</Revenue> 
+  </item>
+ <item>
+  <index>No. 336</index> 
+  <Profit>6646</Profit> 
+  <Cost>9210</Cost> 
+  <Revenue>4162</Revenue> 
+  </item>
+ <item>
+  <index>No. 337</index> 
+  <Profit>777</Profit> 
+  <Cost>4202</Cost> 
+  <Revenue>5121</Revenue> 
+  </item>
+ <item>
+  <index>No. 338</index> 
+  <Profit>6215</Profit> 
+  <Cost>5843</Cost> 
+  <Revenue>9595</Revenue> 
+  </item>
+ <item>
+  <index>No. 339</index> 
+  <Profit>6149</Profit> 
+  <Cost>6400</Cost> 
+  <Revenue>4366</Revenue> 
+  </item>
+ <item>
+  <index>No. 340</index> 
+  <Profit>8722</Profit> 
+  <Cost>3345</Cost> 
+  <Revenue>5974</Revenue> 
+  </item>
+ <item>
+  <index>No. 341</index> 
+  <Profit>1502</Profit> 
+  <Cost>9359</Cost> 
+  <Revenue>6664</Revenue> 
+  </item>
+ <item>
+  <index>No. 342</index> 
+  <Profit>2848</Profit> 
+  <Cost>9664</Cost> 
+  <Revenue>1605</Revenue> 
+  </item>
+ <item>
+  <index>No. 343</index> 
+  <Profit>2830</Profit> 
+  <Cost>9269</Cost> 
+  <Revenue>4326</Revenue> 
+  </item>
+ <item>
+  <index>No. 344</index> 
+  <Profit>4487</Profit> 
+  <Cost>1286</Cost> 
+  <Revenue>3378</Revenue> 
+  </item>
+ <item>
+  <index>No. 345</index> 
+  <Profit>4153</Profit> 
+  <Cost>6584</Cost> 
+  <Revenue>3365</Revenue> 
+  </item>
+ <item>
+  <index>No. 346</index> 
+  <Profit>2395</Profit> 
+  <Cost>7213</Cost> 
+  <Revenue>9533</Revenue> 
+  </item>
+ <item>
+  <index>No. 347</index> 
+  <Profit>1042</Profit> 
+  <Cost>591</Cost> 
+  <Revenue>3301</Revenue> 
+  </item>
+ <item>
+  <index>No. 348</index> 
+  <Profit>916</Profit> 
+  <Cost>7108</Cost> 
+  <Revenue>631</Revenue> 
+  </item>
+ <item>
+  <index>No. 349</index> 
+  <Profit>3833</Profit> 
+  <Cost>530</Cost> 
+  <Revenue>4682</Revenue> 
+  </item>
+ <item>
+  <index>No. 350</index> 
+  <Profit>130</Profit> 
+  <Cost>8203</Cost> 
+  <Revenue>3510</Revenue> 
+  </item>
+ <item>
+  <index>No. 351</index> 
+  <Profit>4631</Profit> 
+  <Cost>7028</Cost> 
+  <Revenue>2824</Revenue> 
+  </item>
+ <item>
+  <index>No. 352</index> 
+  <Profit>7725</Profit> 
+  <Cost>2490</Cost> 
+  <Revenue>9978</Revenue> 
+  </item>
+ <item>
+  <index>No. 353</index> 
+  <Profit>4296</Profit> 
+  <Cost>6362</Cost> 
+  <Revenue>2109</Revenue> 
+  </item>
+ <item>
+  <index>No. 354</index> 
+  <Profit>64</Profit> 
+  <Cost>8013</Cost> 
+  <Revenue>9004</Revenue> 
+  </item>
+ <item>
+  <index>No. 355</index> 
+  <Profit>2983</Profit> 
+  <Cost>1499</Cost> 
+  <Revenue>3874</Revenue> 
+  </item>
+ <item>
+  <index>No. 356</index> 
+  <Profit>7361</Profit> 
+  <Cost>2371</Cost> 
+  <Revenue>4096</Revenue> 
+  </item>
+ <item>
+  <index>No. 357</index> 
+  <Profit>2749</Profit> 
+  <Cost>9465</Cost> 
+  <Revenue>8112</Revenue> 
+  </item>
+ <item>
+  <index>No. 358</index> 
+  <Profit>4609</Profit> 
+  <Cost>4686</Cost> 
+  <Revenue>9446</Revenue> 
+  </item>
+ <item>
+  <index>No. 359</index> 
+  <Profit>8556</Profit> 
+  <Cost>2199</Cost> 
+  <Revenue>8204</Revenue> 
+  </item>
+ <item>
+  <index>No. 360</index> 
+  <Profit>6727</Profit> 
+  <Cost>6208</Cost> 
+  <Revenue>3381</Revenue> 
+  </item>
+ <item>
+  <index>No. 361</index> 
+  <Profit>174</Profit> 
+  <Cost>8394</Cost> 
+  <Revenue>6961</Revenue> 
+  </item>
+ <item>
+  <index>No. 362</index> 
+  <Profit>3206</Profit> 
+  <Cost>5649</Cost> 
+  <Revenue>4760</Revenue> 
+  </item>
+ <item>
+  <index>No. 363</index> 
+  <Profit>5700</Profit> 
+  <Cost>2864</Cost> 
+  <Revenue>2137</Revenue> 
+  </item>
+ <item>
+  <index>No. 364</index> 
+  <Profit>7674</Profit> 
+  <Cost>4968</Cost> 
+  <Revenue>6072</Revenue> 
+  </item>
+ <item>
+  <index>No. 365</index> 
+  <Profit>4610</Profit> 
+  <Cost>2665</Cost> 
+  <Revenue>4300</Revenue> 
+  </item>
+ <item>
+  <index>No. 366</index> 
+  <Profit>553</Profit> 
+  <Cost>2004</Cost> 
+  <Revenue>729</Revenue> 
+  </item>
+ <item>
+  <index>No. 367</index> 
+  <Profit>1172</Profit> 
+  <Cost>272</Cost> 
+  <Revenue>3096</Revenue> 
+  </item>
+ <item>
+  <index>No. 368</index> 
+  <Profit>7246</Profit> 
+  <Cost>5270</Cost> 
+  <Revenue>9078</Revenue> 
+  </item>
+ <item>
+  <index>No. 369</index> 
+  <Profit>4452</Profit> 
+  <Cost>74</Cost> 
+  <Revenue>5471</Revenue> 
+  </item>
+ <item>
+  <index>No. 370</index> 
+  <Profit>4935</Profit> 
+  <Cost>3550</Cost> 
+  <Revenue>1099</Revenue> 
+  </item>
+ <item>
+  <index>No. 371</index> 
+  <Profit>5401</Profit> 
+  <Cost>3815</Cost> 
+  <Revenue>3299</Revenue> 
+  </item>
+ <item>
+  <index>No. 372</index> 
+  <Profit>1453</Profit> 
+  <Cost>2976</Cost> 
+  <Revenue>4082</Revenue> 
+  </item>
+ <item>
+  <index>No. 373</index> 
+  <Profit>7956</Profit> 
+  <Cost>6707</Cost> 
+  <Revenue>7510</Revenue> 
+  </item>
+ <item>
+  <index>No. 374</index> 
+  <Profit>6926</Profit> 
+  <Cost>4151</Cost> 
+  <Revenue>6108</Revenue> 
+  </item>
+ <item>
+  <index>No. 375</index> 
+  <Profit>5065</Profit> 
+  <Cost>6955</Cost> 
+  <Revenue>1060</Revenue> 
+  </item>
+ <item>
+  <index>No. 376</index> 
+  <Profit>6867</Profit> 
+  <Cost>104</Cost> 
+  <Revenue>4110</Revenue> 
+  </item>
+ <item>
+  <index>No. 377</index> 
+  <Profit>6072</Profit> 
+  <Cost>7847</Cost> 
+  <Revenue>6149</Revenue> 
+  </item>
+ <item>
+  <index>No. 378</index> 
+  <Profit>68</Profit> 
+  <Cost>8119</Cost> 
+  <Revenue>3576</Revenue> 
+  </item>
+ <item>
+  <index>No. 379</index> 
+  <Profit>5480</Profit> 
+  <Cost>927</Cost> 
+  <Revenue>1510</Revenue> 
+  </item>
+ <item>
+  <index>No. 380</index> 
+  <Profit>4146</Profit> 
+  <Cost>3035</Cost> 
+  <Revenue>2553</Revenue> 
+  </item>
+ <item>
+  <index>No. 381</index> 
+  <Profit>5328</Profit> 
+  <Cost>304</Cost> 
+  <Revenue>2564</Revenue> 
+  </item>
+ <item>
+  <index>No. 382</index> 
+  <Profit>3617</Profit> 
+  <Cost>1366</Cost> 
+  <Revenue>5321</Revenue> 
+  </item>
+ <item>
+  <index>No. 383</index> 
+  <Profit>6407</Profit> 
+  <Cost>6639</Cost> 
+  <Revenue>9817</Revenue> 
+  </item>
+ <item>
+  <index>No. 384</index> 
+  <Profit>2403</Profit> 
+  <Cost>2006</Cost> 
+  <Revenue>9125</Revenue> 
+  </item>
+ <item>
+  <index>No. 385</index> 
+  <Profit>6855</Profit> 
+  <Cost>6632</Cost> 
+  <Revenue>7684</Revenue> 
+  </item>
+ <item>
+  <index>No. 386</index> 
+  <Profit>2283</Profit> 
+  <Cost>5635</Cost> 
+  <Revenue>4524</Revenue> 
+  </item>
+ <item>
+  <index>No. 387</index> 
+  <Profit>999</Profit> 
+  <Cost>3893</Cost> 
+  <Revenue>2736</Revenue> 
+  </item>
+ <item>
+  <index>No. 388</index> 
+  <Profit>2410</Profit> 
+  <Cost>3305</Cost> 
+  <Revenue>6611</Revenue> 
+  </item>
+ <item>
+  <index>No. 389</index> 
+  <Profit>501</Profit> 
+  <Cost>5780</Cost> 
+  <Revenue>3168</Revenue> 
+  </item>
+ <item>
+  <index>No. 390</index> 
+  <Profit>780</Profit> 
+  <Cost>3808</Cost> 
+  <Revenue>2337</Revenue> 
+  </item>
+ <item>
+  <index>No. 391</index> 
+  <Profit>8971</Profit> 
+  <Cost>7852</Cost> 
+  <Revenue>7077</Revenue> 
+  </item>
+ <item>
+  <index>No. 392</index> 
+  <Profit>2852</Profit> 
+  <Cost>4404</Cost> 
+  <Revenue>9582</Revenue> 
+  </item>
+ <item>
+  <index>No. 393</index> 
+  <Profit>6705</Profit> 
+  <Cost>8638</Cost> 
+  <Revenue>6143</Revenue> 
+  </item>
+ <item>
+  <index>No. 394</index> 
+  <Profit>6914</Profit> 
+  <Cost>9515</Cost> 
+  <Revenue>5599</Revenue> 
+  </item>
+ <item>
+  <index>No. 395</index> 
+  <Profit>954</Profit> 
+  <Cost>6895</Cost> 
+  <Revenue>3885</Revenue> 
+  </item>
+ <item>
+  <index>No. 396</index> 
+  <Profit>4928</Profit> 
+  <Cost>2206</Cost> 
+  <Revenue>6752</Revenue> 
+  </item>
+ <item>
+  <index>No. 397</index> 
+  <Profit>9620</Profit> 
+  <Cost>2717</Cost> 
+  <Revenue>2757</Revenue> 
+  </item>
+ <item>
+  <index>No. 398</index> 
+  <Profit>3315</Profit> 
+  <Cost>8775</Cost> 
+  <Revenue>2641</Revenue> 
+  </item>
+ <item>
+  <index>No. 399</index> 
+  <Profit>7972</Profit> 
+  <Cost>6908</Cost> 
+  <Revenue>1365</Revenue> 
+  </item>
+ <item>
+  <index>No. 400</index> 
+  <Profit>6567</Profit> 
+  <Cost>8260</Cost> 
+  <Revenue>2181</Revenue> 
+  </item>
+ <item>
+  <index>No. 401</index> 
+  <Profit>8569</Profit> 
+  <Cost>9091</Cost> 
+  <Revenue>1593</Revenue> 
+  </item>
+ <item>
+  <index>No. 402</index> 
+  <Profit>1978</Profit> 
+  <Cost>488</Cost> 
+  <Revenue>289</Revenue> 
+  </item>
+ <item>
+  <index>No. 403</index> 
+  <Profit>4140</Profit> 
+  <Cost>5626</Cost> 
+  <Revenue>5787</Revenue> 
+  </item>
+ <item>
+  <index>No. 404</index> 
+  <Profit>8553</Profit> 
+  <Cost>5438</Cost> 
+  <Revenue>8954</Revenue> 
+  </item>
+ <item>
+  <index>No. 405</index> 
+  <Profit>5264</Profit> 
+  <Cost>8019</Cost> 
+  <Revenue>3762</Revenue> 
+  </item>
+ <item>
+  <index>No. 406</index> 
+  <Profit>5490</Profit> 
+  <Cost>3214</Cost> 
+  <Revenue>5312</Revenue> 
+  </item>
+ <item>
+  <index>No. 407</index> 
+  <Profit>5140</Profit> 
+  <Cost>6036</Cost> 
+  <Revenue>6010</Revenue> 
+  </item>
+ <item>
+  <index>No. 408</index> 
+  <Profit>6102</Profit> 
+  <Cost>8237</Cost> 
+  <Revenue>5249</Revenue> 
+  </item>
+ <item>
+  <index>No. 409</index> 
+  <Profit>7970</Profit> 
+  <Cost>2477</Cost> 
+  <Revenue>1834</Revenue> 
+  </item>
+ <item>
+  <index>No. 410</index> 
+  <Profit>1262</Profit> 
+  <Cost>6201</Cost> 
+  <Revenue>8735</Revenue> 
+  </item>
+ <item>
+  <index>No. 411</index> 
+  <Profit>6839</Profit> 
+  <Cost>7889</Cost> 
+  <Revenue>8797</Revenue> 
+  </item>
+ <item>
+  <index>No. 412</index> 
+  <Profit>3541</Profit> 
+  <Cost>1025</Cost> 
+  <Revenue>3253</Revenue> 
+  </item>
+ <item>
+  <index>No. 413</index> 
+  <Profit>4990</Profit> 
+  <Cost>8743</Cost> 
+  <Revenue>6100</Revenue> 
+  </item>
+ <item>
+  <index>No. 414</index> 
+  <Profit>4819</Profit> 
+  <Cost>5115</Cost> 
+  <Revenue>237</Revenue> 
+  </item>
+ <item>
+  <index>No. 415</index> 
+  <Profit>9647</Profit> 
+  <Cost>3505</Cost> 
+  <Revenue>5556</Revenue> 
+  </item>
+ <item>
+  <index>No. 416</index> 
+  <Profit>1028</Profit> 
+  <Cost>1703</Cost> 
+  <Revenue>2548</Revenue> 
+  </item>
+ <item>
+  <index>No. 417</index> 
+  <Profit>5202</Profit> 
+  <Cost>825</Cost> 
+  <Revenue>762</Revenue> 
+  </item>
+ <item>
+  <index>No. 418</index> 
+  <Profit>6915</Profit> 
+  <Cost>4459</Cost> 
+  <Revenue>8701</Revenue> 
+  </item>
+ <item>
+  <index>No. 419</index> 
+  <Profit>6438</Profit> 
+  <Cost>4455</Cost> 
+  <Revenue>9748</Revenue> 
+  </item>
+ <item>
+  <index>No. 420</index> 
+  <Profit>9965</Profit> 
+  <Cost>8224</Cost> 
+  <Revenue>4669</Revenue> 
+  </item>
+ <item>
+  <index>No. 421</index> 
+  <Profit>6918</Profit> 
+  <Cost>5557</Cost> 
+  <Revenue>6959</Revenue> 
+  </item>
+ <item>
+  <index>No. 422</index> 
+  <Profit>4903</Profit> 
+  <Cost>2181</Cost> 
+  <Revenue>4930</Revenue> 
+  </item>
+ <item>
+  <index>No. 423</index> 
+  <Profit>6026</Profit> 
+  <Cost>1598</Cost> 
+  <Revenue>1817</Revenue> 
+  </item>
+ <item>
+  <index>No. 424</index> 
+  <Profit>8578</Profit> 
+  <Cost>7996</Cost> 
+  <Revenue>7015</Revenue> 
+  </item>
+ <item>
+  <index>No. 425</index> 
+  <Profit>3026</Profit> 
+  <Cost>4194</Cost> 
+  <Revenue>7796</Revenue> 
+  </item>
+ <item>
+  <index>No. 426</index> 
+  <Profit>9768</Profit> 
+  <Cost>1006</Cost> 
+  <Revenue>7130</Revenue> 
+  </item>
+ <item>
+  <index>No. 427</index> 
+  <Profit>4234</Profit> 
+  <Cost>5113</Cost> 
+  <Revenue>3367</Revenue> 
+  </item>
+ <item>
+  <index>No. 428</index> 
+  <Profit>7925</Profit> 
+  <Cost>421</Cost> 
+  <Revenue>4716</Revenue> 
+  </item>
+ <item>
+  <index>No. 429</index> 
+  <Profit>3919</Profit> 
+  <Cost>2276</Cost> 
+  <Revenue>2838</Revenue> 
+  </item>
+ <item>
+  <index>No. 430</index> 
+  <Profit>6010</Profit> 
+  <Cost>2150</Cost> 
+  <Revenue>789</Revenue> 
+  </item>
+ <item>
+  <index>No. 431</index> 
+  <Profit>8525</Profit> 
+  <Cost>1898</Cost> 
+  <Revenue>5870</Revenue> 
+  </item>
+ <item>
+  <index>No. 432</index> 
+  <Profit>6342</Profit> 
+  <Cost>6681</Cost> 
+  <Revenue>8097</Revenue> 
+  </item>
+ <item>
+  <index>No. 433</index> 
+  <Profit>8683</Profit> 
+  <Cost>9305</Cost> 
+  <Revenue>2164</Revenue> 
+  </item>
+ <item>
+  <index>No. 434</index> 
+  <Profit>9109</Profit> 
+  <Cost>7398</Cost> 
+  <Revenue>1489</Revenue> 
+  </item>
+ <item>
+  <index>No. 435</index> 
+  <Profit>7682</Profit> 
+  <Cost>2542</Cost> 
+  <Revenue>6444</Revenue> 
+  </item>
+ <item>
+  <index>No. 436</index> 
+  <Profit>1129</Profit> 
+  <Cost>5038</Cost> 
+  <Revenue>5603</Revenue> 
+  </item>
+ <item>
+  <index>No. 437</index> 
+  <Profit>8614</Profit> 
+  <Cost>3490</Cost> 
+  <Revenue>1182</Revenue> 
+  </item>
+ <item>
+  <index>No. 438</index> 
+  <Profit>4289</Profit> 
+  <Cost>4057</Cost> 
+  <Revenue>3412</Revenue> 
+  </item>
+ <item>
+  <index>No. 439</index> 
+  <Profit>3617</Profit> 
+  <Cost>5188</Cost> 
+  <Revenue>556</Revenue> 
+  </item>
+ <item>
+  <index>No. 440</index> 
+  <Profit>7987</Profit> 
+  <Cost>5930</Cost> 
+  <Revenue>9215</Revenue> 
+  </item>
+ <item>
+  <index>No. 441</index> 
+  <Profit>9658</Profit> 
+  <Cost>7996</Cost> 
+  <Revenue>777</Revenue> 
+  </item>
+ <item>
+  <index>No. 442</index> 
+  <Profit>8845</Profit> 
+  <Cost>5335</Cost> 
+  <Revenue>8884</Revenue> 
+  </item>
+ <item>
+  <index>No. 443</index> 
+  <Profit>4208</Profit> 
+  <Cost>1048</Cost> 
+  <Revenue>9388</Revenue> 
+  </item>
+ <item>
+  <index>No. 444</index> 
+  <Profit>17</Profit> 
+  <Cost>8027</Cost> 
+  <Revenue>7853</Revenue> 
+  </item>
+ <item>
+  <index>No. 445</index> 
+  <Profit>8391</Profit> 
+  <Cost>2522</Cost> 
+  <Revenue>927</Revenue> 
+  </item>
+ <item>
+  <index>No. 446</index> 
+  <Profit>588</Profit> 
+  <Cost>2124</Cost> 
+  <Revenue>2662</Revenue> 
+  </item>
+ <item>
+  <index>No. 447</index> 
+  <Profit>2146</Profit> 
+  <Cost>6161</Cost> 
+  <Revenue>3100</Revenue> 
+  </item>
+ <item>
+  <index>No. 448</index> 
+  <Profit>1349</Profit> 
+  <Cost>3072</Cost> 
+  <Revenue>8218</Revenue> 
+  </item>
+ <item>
+  <index>No. 449</index> 
+  <Profit>5100</Profit> 
+  <Cost>3841</Cost> 
+  <Revenue>755</Revenue> 
+  </item>
+ <item>
+  <index>No. 450</index> 
+  <Profit>509</Profit> 
+  <Cost>7944</Cost> 
+  <Revenue>8849</Revenue> 
+  </item>
+ <item>
+  <index>No. 451</index> 
+  <Profit>6731</Profit> 
+  <Cost>8291</Cost> 
+  <Revenue>5810</Revenue> 
+  </item>
+ <item>
+  <index>No. 452</index> 
+  <Profit>3358</Profit> 
+  <Cost>3323</Cost> 
+  <Revenue>2753</Revenue> 
+  </item>
+ <item>
+  <index>No. 453</index> 
+  <Profit>9634</Profit> 
+  <Cost>1135</Cost> 
+  <Revenue>5394</Revenue> 
+  </item>
+ <item>
+  <index>No. 454</index> 
+  <Profit>7430</Profit> 
+  <Cost>3327</Cost> 
+  <Revenue>2654</Revenue> 
+  </item>
+ <item>
+  <index>No. 455</index> 
+  <Profit>2654</Profit> 
+  <Cost>1905</Cost> 
+  <Revenue>8859</Revenue> 
+  </item>
+ <item>
+  <index>No. 456</index> 
+  <Profit>7843</Profit> 
+  <Cost>3278</Cost> 
+  <Revenue>1174</Revenue> 
+  </item>
+ <item>
+  <index>No. 457</index> 
+  <Profit>8706</Profit> 
+  <Cost>2793</Cost> 
+  <Revenue>389</Revenue> 
+  </item>
+ <item>
+  <index>No. 458</index> 
+  <Profit>3708</Profit> 
+  <Cost>6256</Cost> 
+  <Revenue>1199</Revenue> 
+  </item>
+ <item>
+  <index>No. 459</index> 
+  <Profit>3367</Profit> 
+  <Cost>6883</Cost> 
+  <Revenue>9020</Revenue> 
+  </item>
+ <item>
+  <index>No. 460</index> 
+  <Profit>5068</Profit> 
+  <Cost>7778</Cost> 
+  <Revenue>8079</Revenue> 
+  </item>
+ <item>
+  <index>No. 461</index> 
+  <Profit>9287</Profit> 
+  <Cost>1744</Cost> 
+  <Revenue>4435</Revenue> 
+  </item>
+ <item>
+  <index>No. 462</index> 
+  <Profit>7426</Profit> 
+  <Cost>9315</Cost> 
+  <Revenue>7881</Revenue> 
+  </item>
+ <item>
+  <index>No. 463</index> 
+  <Profit>2964</Profit> 
+  <Cost>6063</Cost> 
+  <Revenue>1750</Revenue> 
+  </item>
+ <item>
+  <index>No. 464</index> 
+  <Profit>2398</Profit> 
+  <Cost>311</Cost> 
+  <Revenue>4463</Revenue> 
+  </item>
+ <item>
+  <index>No. 465</index> 
+  <Profit>6750</Profit> 
+  <Cost>607</Cost> 
+  <Revenue>6659</Revenue> 
+  </item>
+ <item>
+  <index>No. 466</index> 
+  <Profit>923</Profit> 
+  <Cost>4572</Cost> 
+  <Revenue>559</Revenue> 
+  </item>
+ <item>
+  <index>No. 467</index> 
+  <Profit>4270</Profit> 
+  <Cost>7015</Cost> 
+  <Revenue>4568</Revenue> 
+  </item>
+ <item>
+  <index>No. 468</index> 
+  <Profit>2896</Profit> 
+  <Cost>8118</Cost> 
+  <Revenue>3343</Revenue> 
+  </item>
+ <item>
+  <index>No. 469</index> 
+  <Profit>8634</Profit> 
+  <Cost>7812</Cost> 
+  <Revenue>3424</Revenue> 
+  </item>
+ <item>
+  <index>No. 470</index> 
+  <Profit>8253</Profit> 
+  <Cost>4044</Cost> 
+  <Revenue>9180</Revenue> 
+  </item>
+ <item>
+  <index>No. 471</index> 
+  <Profit>502</Profit> 
+  <Cost>2639</Cost> 
+  <Revenue>6159</Revenue> 
+  </item>
+ <item>
+  <index>No. 472</index> 
+  <Profit>8110</Profit> 
+  <Cost>1554</Cost> 
+  <Revenue>27</Revenue> 
+  </item>
+ <item>
+  <index>No. 473</index> 
+  <Profit>6996</Profit> 
+  <Cost>5176</Cost> 
+  <Revenue>1845</Revenue> 
+  </item>
+ <item>
+  <index>No. 474</index> 
+  <Profit>4676</Profit> 
+  <Cost>3686</Cost> 
+  <Revenue>5085</Revenue> 
+  </item>
+ <item>
+  <index>No. 475</index> 
+  <Profit>6730</Profit> 
+  <Cost>5994</Cost> 
+  <Revenue>5128</Revenue> 
+  </item>
+ <item>
+  <index>No. 476</index> 
+  <Profit>3706</Profit> 
+  <Cost>9084</Cost> 
+  <Revenue>2759</Revenue> 
+  </item>
+ <item>
+  <index>No. 477</index> 
+  <Profit>1919</Profit> 
+  <Cost>5069</Cost> 
+  <Revenue>9959</Revenue> 
+  </item>
+ <item>
+  <index>No. 478</index> 
+  <Profit>8016</Profit> 
+  <Cost>3615</Cost> 
+  <Revenue>1016</Revenue> 
+  </item>
+ <item>
+  <index>No. 479</index> 
+  <Profit>2182</Profit> 
+  <Cost>8960</Cost> 
+  <Revenue>4693</Revenue> 
+  </item>
+ <item>
+  <index>No. 480</index> 
+  <Profit>9129</Profit> 
+  <Cost>3846</Cost> 
+  <Revenue>3548</Revenue> 
+  </item>
+ <item>
+  <index>No. 481</index> 
+  <Profit>2553</Profit> 
+  <Cost>2691</Cost> 
+  <Revenue>5650</Revenue> 
+  </item>
+ <item>
+  <index>No. 482</index> 
+  <Profit>3501</Profit> 
+  <Cost>8927</Cost> 
+  <Revenue>1517</Revenue> 
+  </item>
+ <item>
+  <index>No. 483</index> 
+  <Profit>5927</Profit> 
+  <Cost>5758</Cost> 
+  <Revenue>398</Revenue> 
+  </item>
+ <item>
+  <index>No. 484</index> 
+  <Profit>8497</Profit> 
+  <Cost>3679</Cost> 
+  <Revenue>1283</Revenue> 
+  </item>
+ <item>
+  <index>No. 485</index> 
+  <Profit>430</Profit> 
+  <Cost>2535</Cost> 
+  <Revenue>219</Revenue> 
+  </item>
+ <item>
+  <index>No. 486</index> 
+  <Profit>8189</Profit> 
+  <Cost>9348</Cost> 
+  <Revenue>2808</Revenue> 
+  </item>
+ <item>
+  <index>No. 487</index> 
+  <Profit>6844</Profit> 
+  <Cost>1802</Cost> 
+  <Revenue>4767</Revenue> 
+  </item>
+ <item>
+  <index>No. 488</index> 
+  <Profit>5101</Profit> 
+  <Cost>2013</Cost> 
+  <Revenue>7821</Revenue> 
+  </item>
+ <item>
+  <index>No. 489</index> 
+  <Profit>8663</Profit> 
+  <Cost>8968</Cost> 
+  <Revenue>965</Revenue> 
+  </item>
+ <item>
+  <index>No. 490</index> 
+  <Profit>6340</Profit> 
+  <Cost>9365</Cost> 
+  <Revenue>1696</Revenue> 
+  </item>
+ <item>
+  <index>No. 491</index> 
+  <Profit>5669</Profit> 
+  <Cost>3777</Cost> 
+  <Revenue>6720</Revenue> 
+  </item>
+ <item>
+  <index>No. 492</index> 
+  <Profit>2699</Profit> 
+  <Cost>9433</Cost> 
+  <Revenue>9789</Revenue> 
+  </item>
+ <item>
+  <index>No. 493</index> 
+  <Profit>9088</Profit> 
+  <Cost>8103</Cost> 
+  <Revenue>3104</Revenue> 
+  </item>
+ <item>
+  <index>No. 494</index> 
+  <Profit>4847</Profit> 
+  <Cost>5508</Cost> 
+  <Revenue>6159</Revenue> 
+  </item>
+ <item>
+  <index>No. 495</index> 
+  <Profit>8637</Profit> 
+  <Cost>2942</Cost> 
+  <Revenue>2514</Revenue> 
+  </item>
+ <item>
+  <index>No. 496</index> 
+  <Profit>2819</Profit> 
+  <Cost>3204</Cost> 
+  <Revenue>8610</Revenue> 
+  </item>
+ <item>
+  <index>No. 497</index> 
+  <Profit>6886</Profit> 
+  <Cost>3003</Cost> 
+  <Revenue>9931</Revenue> 
+  </item>
+ <item>
+  <index>No. 498</index> 
+  <Profit>2129</Profit> 
+  <Cost>5357</Cost> 
+  <Revenue>4958</Revenue> 
+  </item>
+ <item>
+  <index>No. 499</index> 
+  <Profit>8404</Profit> 
+  <Cost>8857</Cost> 
+  <Revenue>5652</Revenue> 
+  </item>
+  </items>

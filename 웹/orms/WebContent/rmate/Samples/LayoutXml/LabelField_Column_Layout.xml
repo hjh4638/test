@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report" /> 
+	</Options>
+	<NumberFormatter id="numFmt"/>
+	<Column3DChart showDataTips="true">
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month"/> 
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis formatter="{numFmt}" maximum="3500"/>
+		</verticalAxis>
+		<series>
+			<Column3DSeries yField="Profit" displayName="Profit" formatter="{numFmt}" labelPosition="outside" styleName="seriesStyle">
+			<!-- labelPosition을 outside로 지정 하였습니다 
+      labelPosition은 inside,outside,both가 있습니다.
+     inside - 차트 안에 표시됩니다
+      outside - 차트 밖에 표시됩니다
+      both - 차트 안,밖에 표시됩니다
+      -->
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Column3DSeries>
+		</series>
+	</Column3DChart>
+	<Style>
+		.seriesStyle{
+			fontFamily:돋움;
+			fontSize:11;
+			color:0x0000FF;
+		}
+	</Style>
+</rMateChart>

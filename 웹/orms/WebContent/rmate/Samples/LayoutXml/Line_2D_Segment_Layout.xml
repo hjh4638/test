@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Annual Report"/>
+	</Options>
+	<NumberFormatter id="numFmt" precision="0"/>
+
+	<Line2DChart showDataTips="true">
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month" padding="0"/>
+		</horizontalAxis>
+		<series>
+			<Line2DSeries yField="Profit" >
+			<!-- form의 기본값은 segement입니다 -->
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Line2DSeries>
+		</series>
+		<annotationElements>
+			<CrossRangeZoomer zoomType="horizontal" enableZooming="false" enableCrossHair="true" 
+							fontSize="11" color="0xFF3300"
+							horizontalLabelFormatter="{numFmt}" 
+							verticalLabelPlacement="bottom" horizontalLabelPlacement="left"/>
+		</annotationElements>
+	</Line2DChart>
+</rMateChart>

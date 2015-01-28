@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../print.css" type="text/css" media="print">
+<meta content="VTarget2DResultSeries,series.VTarget2DResultSeries" name="keywords">
+<title>series.VTarget2DResultSeries</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../asdoc.js"></script><script type="text/javascript" language="javascript" src="../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'VTarget2DResultSeries - rMateChart 4.0 Flash Version Reference By RiaMore Soft.';
+				var baseRef = '../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">rMateChart 4.0 Flash Version Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../all-classes.html')" href="../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../all-classes.html')" href="../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../index-list.html')" href="../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../index.html?series/VTarget2DResultSeries.html&amp;series/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;VTarget2DResultSeries</td><td align="right" id="subNav" class="titleTableSubNav"></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class VTarget2DResultSeries"); titleBar_setSubNav(false,false,false,false,false,false,false,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">series</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class VTarget2DResultSeries</td>
+</tr>
+</table>
+<p></p>
+   VTarget2DResultSeries 클래스는 목표 대비 실적 차트 즉, Target2DChart 컨트롤의 실적에 해당되는 데이터 시리즈를 정의합니다.
+   이 클래스를 Target2DChart 컨트롤의 series 속성의 배열로 할당함으로써 목표 대비 실적 차트를 생성 할 수 있습니다.
+   정상적인 목표 대비 실적 차트를 생성하기 위해서는 시리즈 배열을 정의 할 때 실적에 해당되는 클래스(VTarget2DResultSeries) 인스턴스를 먼저 정의하고,
+   다음으로 목표에 해당되는 클래스(VTarget2DGoalSeries) 인스턴스를 정의하여야 합니다.
+   디폴트 아이템렌더러는 BoxItemRenderer 클래스입니다.
+   columnWidthRatio 속성의 디폴트 값은 0.8 입니다.
+   fill 스타일의 디폴트 값은0x299DE5 색깔을 갖는 SolidColor 인스턴스입니다.
+   stroke 스타일의 디폴트 값은 Stroke(0x000000, 1, 1) 인스턴스입니다.
+   <p>구체적인 정의 방법은 아래와 같습니다.</p>
+   
+   <pre>
+   &lt;rmate:Target2DChart&gt;
+     &lt;rmate:series&gt;
+    <strong>실적</strong>
+    &lt;rmate:VTarget2DResultSeries /&gt;
+  
+    <strong>목표 </strong>
+    &lt;rmate:VTarget2DGoalSeries /&gt;
+     &lt;/rmate:series&gt;
+   &lt;/rmate:Target2DChart&gt;
+   </pre>
+  
+   <p><code>&lt;rmate:Target2DChart&gt;</code> 는 기본적으로 parent classes 의 모든 properties
+   를 상속받습니다. </p>
+  
+   
+  <p></p>
+<br>
+<hr>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->

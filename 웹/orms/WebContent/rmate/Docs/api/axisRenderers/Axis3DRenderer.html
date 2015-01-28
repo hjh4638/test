@@ -1,0 +1,399 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../print.css" type="text/css" media="print">
+<meta content="Axis3DRenderer,axisRenderers.Axis3DRenderer" name="keywords">
+<title>axisRenderers.Axis3DRenderer</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../asdoc.js"></script><script type="text/javascript" language="javascript" src="../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'Axis3DRenderer - rMateChart 4.0 Flash Version Reference By RiaMore Soft.';
+				var baseRef = '../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">rMateChart 4.0 Flash Version Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../all-classes.html')" href="../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../all-classes.html')" href="../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../index-list.html')" href="../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../index.html?axisRenderers/Axis3DRenderer.html&amp;axisRenderers/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;Axis3DRenderer</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#styleSummary">Styles</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class Axis3DRenderer"); titleBar_setSubNav(false,false,true,false,false,false,false,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">axisRenderers</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class Axis3DRenderer</td>
+</tr>
+</table>
+<p></p>
+ 차트의 종류가 3D인 경우 3D 축의 렌더링 방식을 설정합니다.
+ <br>축의 두께 및 색깔, 틱의 위치, 틱의 색상 등을 조절할 수 있습니다.
+ <br>반드시 axis 에 해당 축을 설정할 필요가 있습니다.
+ <p>레이아웃은 다음과 같은 형식으로 작성됩니다.</p>
+ <pre>
+ &lt;Axis3DRenderer axis="{vAxis}" tickLength="20" minorTickLength="0" tickPlacement="outside" placement="left"
+        canDropLabels="false" showLabels="true" labelAlign="center"&gt;
+     &lt;axisStroke&gt;
+      &lt;Stroke weight="10" color="0x66CCFF" caps="none"/&gt;
+     &lt;/axisStroke&gt;
+     &lt;tickStroke&gt;
+      &lt;Stroke weight="2" color="0xFF0000" /&gt;
+    &lt;/tickStroke&gt;
+     &lt;minorTickStroke&gt;
+      &lt;Stroke weight="1" color="0x0000FF" caps="square"/&gt;
+    &lt;/minorTickStroke&gt;
+    &lt;/Axis3DRenderer&gt;
+ </pre>
+ <p></p>
+<br>
+<hr>
+</div>
+<a name="styleSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Styles</div>
+<table id="summaryTableStyle" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Style</th><th>Description</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:axis"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">axis</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Object<br>
+ Axis3DRenderer 가 표현하고자 하는 축입니다. 이 값은 horizontalAxis 또는 verticalAxis 에 할당된 축의 id 를 삽입하십시오.
+ </td><td class="summaryTableOwnerCol">Axis3DRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:axisStroke"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">axisStroke</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Object<br>
+  축의 선의 속성을 지정합니다.<br>
+  이 스타일은 Stroke 클래스의 인스턴스일 필요가 있습니다.
+ </td><td class="summaryTableOwnerCol">Axis3DRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:axisTitleStyleName"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">axisTitleStyleName</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>String<br>
+ <p>축의 타이틀을 Style 노드에서 설정한 경우에 사용하는 선택자의 이름입니다.</p>
+ </td><td class="summaryTableOwnerCol">Axis3DRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:canDropLabels"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">canDropLabels</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Boolean<br>
+  축의 라벨들을 정확하게 배치시키기 위해 필요에 따라 라벨(lables)들을 삭제할지 어떨지를 결정합니다.<br>
+  <p><code>true</code>로 설정하면, Axis3DRenderer 는 렌더링시 겹치는 라벨들을 삭제합니다.<br>
+  라벨들은 항상 일정한 간격으로 표시되며 필요한 경우 2개 또는 3개의 라벨을 표시를 하지 않은 후 다음 라벨을 표시하게 할 수 있습니다.<br>
+  그러나 2개 후 다음 3개 라벨 후 표시하지는 않습니다.<br>
+  <p><code>false</code>로 설정하면  Axis3DRenderer는 회전이나 확대/축소를 사용해 라벨을 레이아웃합니다.(내장 폰트 사용시)<br>
+  이 스타일을 명시적으로 설정하지 않은 경우, 렌더링 하는 축의 타입에 근거하여 적절한 값이 디폴트로 설정됩니다.</p>
+ </td><td class="summaryTableOwnerCol">Axis3DRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:canStagger"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">canStagger</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Boolean<br> 
+ 축 라벨을 위, 아래로 교대로 표시할지를 결정합니다.<br>
+ 이 설정을 사용해 라벨이 차지하는 영역의 자리를 최소화 할 수 있습니다.<br>
+ <p>디폴트는 <code>true</code> 로 위, 아래 교대로 배치합니다.</p>
+  The default value is <code>true</code>.</td><td class="summaryTableOwnerCol">Axis3DRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:fillTargetArea"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">fillTargetArea</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Boolean<br>
+ <p>targetValue 와 targetSecondValue 를 정의한 경우 안쪽 채우기를 할지를 나타냅니다.</p>
+  The default value is <code>false</code>.</td><td class="summaryTableOwnerCol">Axis3DRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:formatter"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">formatter</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Object<br>
+ <p>축 수치 라벨을 NumberFormatter 또는 CurrencyFormatter, DateFormatter 로 재설정 하여 출력시키게끔 포매터를 지정합니다.</p>
+ </td><td class="summaryTableOwnerCol">Axis3DRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:id"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">id</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>String<br>
+ <p>id를  설정합니다. id는 사용자에 의해 정의된 임의의 고유값입니다.</p>
+ 설정된 id를 통해 해당 객체에 접근이 가능합니다.<br>
+ </td><td class="summaryTableOwnerCol">Axis3DRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:labelAlign"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">labelAlign</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>String<br>
+ <p>라벨의 텍스트 값(value)에 따라 라벨 value 값의 위치를 결정합니다.</p>
+ 
+   The default value is <code>center</code>.</td><td class="summaryTableOwnerCol">Axis3DRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:labelGap"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">labelGap</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number &nbsp; <span class="label">Format: </span>Length<br> 
+  <p>눈금의 하단으로부터 라벨의 상단까지 간격의 폭을 픽셀로 지정합니다.</p>
+  
+    The default value is <code>3</code>.</td><td class="summaryTableOwnerCol">Axis3DRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:labelRotation"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">labelRotation</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number<br> 
+ 라벨의 회전을 지정합니다. 라벨을 device fonts 로 렌더링 하면 라벨은 항상 수평 방향으로 출력됩니다.<br>
+ 라벨의 회전을 표현하기 위해서는 임베디드 폰트를 사용하여야 합니다.
+ </td><td class="summaryTableOwnerCol">Axis3DRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:minorTickLength"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">minorTickLength</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number &nbsp; <span class="label">Format: </span>Length<br>
+  <p>축의 작은 눈금의 길이를 픽셀로 지정합니다.</p>
+  
+   The default value is <code>0</code>.</td><td class="summaryTableOwnerCol">Axis3DRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:minorTickPlacement"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">minorTickPlacement</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>String<br>
+ 작은 눈금(minor Tick)을 그리는 위치를 지정합니다.<br>
+ 옵션은 아래와 같습니다.
+  <ul>
+    <li><code>"inside"</code> -
+    작은 눈금을 데이터 영역 내에 그립니다.</li>
+     <li><code>"outside"</code> -
+    작은 눈금을 라벨(label) 영역 내에 그립니다.</li>
+     <li><code>"cross"</code> -
+    작은 눈금을 축 상에 그립니다.</li>
+     <li><code>"none"</code> -
+    작은 눈금을 그리지 않습니다.</li>
+  </ul>
+ </td><td class="summaryTableOwnerCol">Axis3DRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:minorTickStroke"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">minorTickStroke</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Object<br>
+  축 상의 작은 눈금의 선(stroke) 스타일을 결정합니다.<br>
+  이 스타일은 Stroke 클래스의 인스턴스일 필요가 있습니다.<br>
+ </td><td class="summaryTableOwnerCol">Axis3DRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:placement"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">placement</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>String<br>
+ 차트를 기준으로 축을 어디에 표시할지를 나타내느 속성입니다.<br>
+ 유효한 값으로 수직 축인 경우  "left" 와 "right", 수평 축인 경우  "top" 와 "bottom" 입니다.<br> 
+ 디폴트로 첫번째 축이 왼쪽(수직 축) 과 아래(수평 축)에 , 두번째 축이 오른쪽과 아래에 배치됩니다. <br>
+ CartesianCharts 는 자동적으로, 두번째 축이 첫번째 축의 반대 쪽에 렌더링 합니다.<br>
+ 예를 들어, 첫번째 수직 축을 명시적으로 오른쪽으로 배치하면, 두번째 수직 축은 왼쪽으로 배치됩니다. 
+</td><td class="summaryTableOwnerCol">Axis3DRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:showLabels"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">showLabels</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Boolean<br>
+  <p>라벨(Label)들을  표시할지 어떨지를 지정합니다.</p>
+  
+   The default value is <code>true</code>.</td><td class="summaryTableOwnerCol">Axis3DRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:showLine"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">showLine</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Boolean<br>
+  <p>실제적인 축을 표시할지 어떨지를 결정합니다.</p>
+  
+   The default value is <code>true</code>.</td><td class="summaryTableOwnerCol">Axis3DRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:targetAreaFill"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">targetAreaFill</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Object<br>
+ targetValue 와 targetSecondValue 를 정의한 경우 안쪽 채우기 색을 정의합니다.
+ </td><td class="summaryTableOwnerCol">Axis3DRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:targetLineStroke"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">targetLineStroke</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Object<br>
+  차트 배경에 targetValue 를 참고하여 그리는 라인의 스타일을 정의합니다.
+ </td><td class="summaryTableOwnerCol">Axis3DRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:targetSecondLineStroke"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">targetSecondLineStroke</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Object<br>
+ 차트 배경에 targetSecondValue 를 참고하여 그리는 라인의 스타일을 정의합니다.
+ </td><td class="summaryTableOwnerCol">Axis3DRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:targetSecondValue"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">targetSecondValue</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number<br>
+ 데이터가 매핑된 축을 바탕으로 해당 second value에 선을 그립니다.
+ 이 속성은 선을 그릴 데이터의 값을 나타냅니다.
+ </td><td class="summaryTableOwnerCol">Axis3DRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:targetSecondValueName"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">targetSecondValueName</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>String<br>
+  속성 targetSecondValue 의 라벨 텍스트 기본값을 변경할 수 있는 스타일입니다.
+  예를 들어  target second 라인을 1000 에 그렸다면 해당 vlaue 는 500으로 표시됩니다.
+  500을 Low Value 로 표현하고자 할 경우 이 스타일을 이용하십시오.
+ </td><td class="summaryTableOwnerCol">Axis3DRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:targetSecondValueStyleName"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">targetSecondValueStyleName</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>String<br>
+  targetSecondValue 라벨의 스타일 이름입니다.
+ </td><td class="summaryTableOwnerCol">Axis3DRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:targetValue"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">targetValue</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number<br>
+ 데이터가 매핑된 축을 바탕으로 해당 value에 선을 그립니다.
+ 이 속성은 선을 그릴 데이터의 값을 나타냅니다.
+ </td><td class="summaryTableOwnerCol">Axis3DRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:targetValueName"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">targetValueName</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>String<br>
+  속성 targetValue 의 라벨 텍스트 기본값을 변경할 수 있는 스타일입니다.
+  예를 들어 타겟 라인을 1000 에 그렸다면 해당 vlaue 는 1000으로 표시됩니다.
+  1000을 High Value 로 표현하고자 할 경우 이 스타일을 이용하십시오.
+ </td><td class="summaryTableOwnerCol">Axis3DRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:targetValueStyleName"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">targetValueStyleName</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>String<br>
+ targetValue 라벨의 스타일 이름입니다.
+ </td><td class="summaryTableOwnerCol">Axis3DRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:tickLength"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">tickLength</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number &nbsp; <span class="label">Format: </span>Length<br>
+  <p>축의 눈금의 길이를 픽셀단위로 결정합니다.</p>
+  
+   The default value is <code>3</code>.</td><td class="summaryTableOwnerCol">Axis3DRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:tickPlacement"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">tickPlacement</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>String<br>
+  눈금(tick)을 그리는 위치를 지정합니다.<br>
+  옵션은 아래와 같습니다.
+  <ul>
+    <li><code>"inside"</code> -
+    눈금을 데이터 영역 내에 그립니다.</li>
+     <li><code>"outside"</code> -
+    눈금을 라벨(label) 영역 내에 그립니다.</li>
+     <li><code>"cross"</code> -
+    눈금을 축 상에 그립니다.</li>
+     <li><code>"none"</code> -
+    눈금을 그리지 않습니다.</li>
+  </ul>
+ </td><td class="summaryTableOwnerCol">Axis3DRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:tickStroke"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">tickStroke</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Object<br>
+  축의 눈금의 선(stroke) 스타일을 결정합니다.<br>
+  이 스타일은 Stroke 클래스의 인스턴스일 필요가 있습니다.<br>
+ </td><td class="summaryTableOwnerCol">Axis3DRenderer</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->

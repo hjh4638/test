@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xEEEEEE" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="게이지"/>
+	</Options>
+	<NumberFormatter id="numFmt" precision="1"/>
+	<HalfCircularGauge 
+				frameType="roundig"
+				bottomRadius="30"
+				minimumAngle="180" maximumAngle="360"
+				minimum="-100" maximum="100" value="0"
+				interval="25" minorInterval="5"
+				formatter="{numFmt}"
+				padding="10"
+				tickGap="10"
+				labelGap="5"
+				valueXOffset="0" valueYOffset="-80"
+				tickLabelStyleName="tickLabelStyle"
+				valueLabelStyleName="valueLabelStyle"
+				editMode="true" liveDragging="true"
+				showDataTip="false"
+				tickColor2010-11-22="0xCCCCCC"
+				minorTickColor="0x932108"
+				coverRadiusRatio="0.02"
+				needleThickness="10"
+				pointThickness="0"
+				needleLengthRatio="0.8"
+				needlePointStyle="steeple"
+				needleBackLengthRatio="0.15">
+		<frameStroke>
+			<Stroke color="0xCCCCCC" weight="6"/>
+		</frameStroke>
+		<frameFill>
+				<SolidColor color="0x932108"/>
+		</frameFill>
+		<tickFill>
+			<SolidColor color="0xCCCCCC"/>
+		</tickFill>
+		<minorTickFill>
+			<SolidColor color="0xFF9900"/>
+		</minorTickFill>
+		<needleFilter>
+			<DropShadowFilter distance="1" alpha="0.5"/>
+		</needleFilter>
+		<needleCoverFill>
+			<SolidColor color="0xB0B0B0"/>
+		</needleCoverFill>
+		<needleCoverFilter>
+			<DropShadowFilter distance="1" alpha="0.5"/>
+		</needleCoverFilter>
+	</HalfCircularGauge>
+	<Style>
+		.valueLabelStyle
+		{
+			fontSize:18;
+			fontFamily:Myriad;
+			textAlign:center;
+			borderColor:#999999;
+			backgroundColor:#FFFFFF;
+			paddingTop:4;
+			borderThickness:1;
+			borderAlpha:1;
+			borderStyle:solid;
+			color:0xFF0000;
+		}
+
+		.tickLabelStyle
+		{
+			fontFamily:Myriad;
+			fontSize:15;
+			color:0xFFFFFF
+		}
+	</Style>
+</rMateChart>

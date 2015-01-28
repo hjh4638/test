@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report"/>
+		<SubCaption text="수치필드를 안쪽에 표시한 경우 left, center, right 에 위치 시킬 수 있습니다." fontSize="11" textAlign="right" paddingRight="10"/>
+	</Options>
+	<Bar2DChart showDataTips="true">
+		<verticalAxis>
+			<CategoryAxis categoryField="Month" /> 
+		</verticalAxis>
+		<series>
+		<!-- Bar2D Multi-Sereis 를 생성시에는 Bar2DSeries 여러 개 정의합니다 -->
+			<Bar2DSeries labelPosition="inside" labelAlign="left" xField="Profit" itemRenderer="SemiCircleBarItemRenderer" displayName="Profit">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Bar2DSeries>
+			<Bar2DSeries labelPosition="inside" labelAlign="center" xField="Cost" itemRenderer="SemiCircleBarItemRenderer" displayName="Cost">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Bar2DSeries>
+			<Bar2DSeries labelPosition="inside" labelAlign="right" xField="Revenue" itemRenderer="SemiCircleBarItemRenderer" displayName="Revenue">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Bar2DSeries>
+		</series>
+	</Bar2DChart>
+</rMateChart>

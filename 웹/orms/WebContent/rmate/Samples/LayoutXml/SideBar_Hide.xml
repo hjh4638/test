@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="SIDE BAR"/>
+	</Options>
+	<Column3DChart showDataTips="true">
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month"/> 
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis id="vAxis"/>
+		</verticalAxis>
+		<series>
+			<Column3DSeries labelPosition="inside" yField="Profit" displayName="Profit">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Column3DSeries>
+		</series>
+	</Column3DChart>
+</rMateChart>

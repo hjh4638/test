@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Column3DChart>
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month" ticksBetweenLabels="false"  title="MONTH" displayName="Month"/>
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis interval="500" baseAtZero="true" maximum="3500" title="Dollars"/>
+		</verticalAxis>
+		<horizontalAxisRenderer> 
+			<Axis3DRenderer visible="true"
+				tickLength="5"
+				minorTickLength="5"
+				tickPlacement="cross"
+				placement="bottom"       
+				canDropLabels="true"
+				showLabels="true" 
+				labelAlign="center">
+<!-- 
+tickLength : tick의 길이 
+minorTickLength : 축에 표시되는 tick의 길이
+tickPlacement - cross, inside, outside : tick이 그려지는 방향
+placement - bottom,left,right,top : 축이 표시될 방향
+showLabels : Label보이기 안보이기
+labelAlign - left, center, right : Label의 표시지점
+-->
+				<axisStroke>
+					<Stroke weight="10" color="0x66CCFF" caps="none"/>
+				</axisStroke>
+				<tickStroke>
+					<Stroke weight="2" color="0xFF00FF" alpha="0.5" />
+				</tickStroke>
+				<minorTickStroke>
+					<Stroke weight="1" color="0x00FF00" caps="square"/>
+				</minorTickStroke>
+			</Axis3DRenderer>
+		</horizontalAxisRenderer>
+
+		<verticalAxisRenderer>
+			<Axis3DRenderer visible="true"
+							tickLength="20"
+							minorTickLength="0"
+							tickPlacement="outside"
+							placement="left"  
+							canDropLabels="false"
+							showLabels="true" 
+							labelAlign="center">
+				<axisStroke>
+					<Stroke weight="10" color="0x66CCFF" caps="none"/>
+				</axisStroke>
+				<tickStroke>
+					<Stroke weight="2" color="0xFF0000" />
+				</tickStroke>
+				<minorTickStroke>
+					<Stroke weight="1" color="0x0000FF" caps="square"/>
+				</minorTickStroke>
+			</Axis3DRenderer>
+	</verticalAxisRenderer>
+	<series>
+		<Column3DSeries yField="Profit">
+			<showDataEffect>
+	  			<SeriesInterpolate/> 
+	  		</showDataEffect>
+		</Column3DSeries>
+	</series>
+</Column3DChart>
+
+</rMateChart>

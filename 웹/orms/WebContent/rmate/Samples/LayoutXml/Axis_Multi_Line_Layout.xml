@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" borderStyle="solid" cornerRadius="12">
+	<Options>
+		<DataEditor/>
+	</Options>
+	<NumberFormatter id="numFmt" useThousandsSeparator="true" precision="1"/> 
+	<Stroke id="stroke1" color="0xFF0000" weight="1"/>
+	<Line2DChart showDataTips="true" selectionMode="single">
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month" /> 
+		</horizontalAxis>
+		<series>
+			<Line2DSeries labelPosition="up" yField="Profit" raidus="4" displayName="Revenue" itemRenderer="CircleItemRenderer"
+			itemRollOverColor="0x0066FF"  itemSelectionColor="0x0099FF">
+				<showDataEffect>
+					<SeriesInterpolate/>
+				</showDataEffect>
+			</Line2DSeries>
+		</series>
+		<backgroundElements>
+			<GridLines/>
+			<AxisMarker>
+				<lines>
+					<AxisLine value="1000" label="Label 01" stroke="{stroke1}" labelUpDown="up" color="0xFF0000"/>
+					<AxisLine value="1500" label="Label 02" stroke="{stroke1}" labelAlign="left" labelUpDown="down" color="0xFF0000"/>
+					<AxisLine value="2000" label="Label 03" stroke="{stroke1}" labelUpDown="up" labelAlign="left" labelRotation="90" color="0xFF0000"/>
+					<AxisLine value="Jan" label="January" stroke="{stroke1}" color="0xFF0000" labelUpDown="down" labelAlign="right" linePosition="left" horizontal="false"/>
+					<AxisLine value="Mar" label="March" stroke="{stroke1}" color="0xFF0000" labelUpDown="down" labelRotation="90" linePosition="left" horizontal="false"/>
+					<AxisLine value="May" label="May" stroke="{stroke1}" color="0xFF0000" labelUpDown="down" labelAlign="left" linePosition="left" horizontal="false"/>
+					<AxisLine value="Oct" label="October" stroke="{stroke1}" color="0xFF0000" labelUpDown="up" labelRotation="90" linePosition="right" horizontal="false"/>
+					<AxisLine startValue="1000" endValue="2000" label="From-To Line" color="0x0000FF" labelAlign="right" labelUpDown="up">
+						<stroke><Stroke color="0x0099FF" weight="1"/></stroke>
+					</AxisLine>
+				</lines>
+			</AxisMarker>
+		</backgroundElements>
+	</Line2DChart>
+</rMateChart>

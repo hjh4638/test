@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Column3DChart>
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month" ticksBetweenLabels="false" title="MONTH" displayName="Month"/>
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis interval="500" baseAtZero="true" maximum="3500" title="Dollars"/>
+		</verticalAxis>
+		<horizontalAxisRenderer> 
+			<Axis3DRenderer axisTitleStyleName="title"/>
+			<!-- axisTitleStyleName : 정의된 스타일명의 스타일을 axisTitle에 적용합니다 -->
+		</horizontalAxisRenderer>
+
+		<verticalAxisRenderer>
+			<Axis3DRenderer axisTitleStyleName="title"/>
+			<!-- axisTitleStyleName : 정의된 스타일명의 스타일을 axisTitle에 적용합니다 -->
+	</verticalAxisRenderer>
+	<series>
+		<Column3DSeries yField="Profit">
+			<showDataEffect>
+	  			<SeriesInterpolate/> 
+	  		</showDataEffect>
+		</Column3DSeries>
+	</series>
+</Column3DChart>
+
+<Style>
+	.title{
+		color : 0x4691E1;
+		fontSize : 12;
+		fontWeight : "bold";
+		fontStyle : "italic";
+	}
+</Style>
+</rMateChart>

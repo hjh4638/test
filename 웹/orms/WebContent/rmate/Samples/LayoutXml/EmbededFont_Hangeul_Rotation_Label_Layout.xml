@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+	<Caption text="외부 폰트를 이용한 한글 기울여 출력" /> 
+	</Options>
+	<Area2DChart showDataTips="true" fontFamily="Dotum">
+		<horizontalAxis>
+			<CategoryAxis id="hAxis" categoryField="Han" displayName="날짜" padding="0"/> 
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis id="vAxis" displayName="금액"/> 
+		</verticalAxis>
+		<series>
+			<Area2DSeries id="series1" yField="Profit" displayName="Profit">
+				<showDataEffect>
+					<SeriesInterpolate /> 
+				</showDataEffect>
+			</Area2DSeries>
+			<Area2DSeries id="series2" yField="Cost" displayName="Cost">
+				<showDataEffect>
+					<SeriesInterpolate /> 
+				</showDataEffect>
+			</Area2DSeries>
+			<Area2DSeries id="series3" yField="Revenue" displayName="Revenue">
+				<showDataEffect>
+					<SeriesInterpolate /> 
+				</showDataEffect>
+			</Area2DSeries>
+		</series>
+		<verticalAxisRenderers>
+			<Axis2DRenderer axis="{vAxis}"/>
+		</verticalAxisRenderers>
+		<horizontalAxisRenderers>
+			<Axis2DRenderer axis="{hAxis}" labelRotation="45" fontSize="11"/>
+		</horizontalAxisRenderers>
+	</Area2DChart>
+
+</rMateChart>

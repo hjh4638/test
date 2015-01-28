@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+
+<sqlMap namespace="TestSql">
+<typeAlias alias="DataOfHistoryDTO" type="mil.af.hq.orms.test.hjh.DataOfHistoryDTO"/>
+
+<select id="getScoreTypeCount" resultClass="DataOfHistoryDTO">
+SELECT *
+FROM(
+    SELECT      section upper_id,
+                decode(section,1,'임무과목',(select question_name from orms_question where id=section)) question_name,
+                score_type,
+                decode(score_type,'Orange',3,decode(score_type,'Yellow',2,1)) score,
+                count(*) connt
+        FROM(
+            SELECT 
+            decode((select count(*) from orms_question where id=a.question_id start with question_name='임무과목' connect by upper_id=prior id),0,b.upper_id,1) section,
+            a.score,
+            decode(score,3,'Orange',decode(a.score,2,'Yellow','Green')) score_type, 
+            question_id,
+            lev
+            FROM orms_answer a join orms_question b
+            ON(a.question_id = b.id)
+            WHERE 
+                sn='09-10426'
+            )
+    group by section,score_type
+     )
+order by upper_id,score desc
+</select>
+<select id="getScoreDetailData" resultClass="DataOfHistoryDTO">
+ SELECT section upper_id,question_name || ' '||score||'회' question_name,score
+     FROM
+     (
+       SELECT 
+            decode((select count(*) from orms_question where id=a.question_id start with question_name='임무과목' connect by upper_id=prior id),0,b.upper_id,1) section,
+            question_name,
+            a.score,
+            decode(score,3,'Orange',decode(a.score,2,'Yellow','Green')) score_type
+        
+        FROM orms_answer a join orms_question b
+        ON(a.question_id = b.id)
+        WHERE 
+            sn='09-10426'
+        AND 
+            (score = 2 or score =3)
+    )
+    GROUP BY section,question_name,score
+    ORDER BY upper_id,score desc
+ </select>
+</sqlMap>

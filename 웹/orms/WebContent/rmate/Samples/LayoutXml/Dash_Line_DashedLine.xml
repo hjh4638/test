@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report"/>
+	</Options>
+	<Line2DChart showDataTips="true" >
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month" padding="0.5" /> 
+		</horizontalAxis>
+		<series>
+			<Line2DSeries labelPosition="up" showMaxValueLabel="true" yField="Profit" radius="4"
+										lineStyle="dashLine" dashLinePattern="5"
+										dashLineSeperatePos="8"
+										dashLinePlacement="before"
+										itemRenderer="RectangleItemRenderer"
+										displayName="Profit">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Line2DSeries>
+		</series>
+	</Line2DChart>
+</rMateChart>

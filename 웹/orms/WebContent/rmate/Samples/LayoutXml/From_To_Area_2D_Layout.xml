@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report"/>
+	</Options>
+	<Area2DChart showDataTips="true">
+<!--  
+From_To_Area_2D 차트 생성시에 필요한 Area2DChart를 정의합니다 
+showDataTips : 데이터에 마우스를 가져갔을 때 나오는 Tip을 보이기/안보이기 속성입니다  
+--> 
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month" padding="0" /> 
+		</horizontalAxis>
+		<series>
+			<Area2DSeries minField="Cost" yField="Profit" form="curve" displayName="Profit">
+<!-- 
+Area2DChart 정의 후 Area2DSeries를 정의합니다. form 속성으로는 curve 
+From_To_Area_2D 차트에서는 yField와 minField를 정의 하여야 합니다
+--> 
+				<areaStroke>
+				<!-- 영역 차트 위쪽 라인의 선 -->
+					<Stroke color="0x000000" weight="1"/>
+					<!-- color:색깔 weight:굵기 -->
+				</areaStroke>
+				<showDataEffect>
+				<!--  차트 생성시에 Effect를 주고 싶을 때 shoDataEffect정의합니다 --> 
+					<SeriesInterpolate/> 
+<!--  
+SeriesInterpolate는 시리즈 데이터가 새로운 시리즈 데이터로 표시될 때 이동하는 효과를 적용합니다 
+- 공통속성 -						
+elementOffset : effect를 지연시키는 시간을 지정합니다 default:20
+minimumElementDuration : 각 엘리먼트의 최소 지속 시간을 설정합니다 default:0
+			 이 값보다 짧은 시간에 effect가 실행되지 않습니다
+offset : effect개시의 지연시간을 설정합니다 default:0
+perElementOffset : 각 엘리먼트의 개시 지연시간을 설정합니다
+--> 
+				</showDataEffect>
+			</Area2DSeries>
+		</series>
+	</Area2DChart>
+</rMateChart>

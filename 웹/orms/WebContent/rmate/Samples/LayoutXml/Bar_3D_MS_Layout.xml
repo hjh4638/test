@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report"/>
+	</Options>
+	<Bar3DChart showDataTips="true">
+		<verticalAxis>
+			<CategoryAxis categoryField="Month" /> 
+		</verticalAxis>
+		<series>
+		<!-- Bar3D Multi-Sereis 를 생성시에는 Bar3DSeries 여러 개 정의합니다 -->
+			<Bar3DSeries labelPosition="inside" xField="Profit">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Bar3DSeries>
+			<Bar3DSeries labelPosition="inside" xField="Cost">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Bar3DSeries>
+			<Bar3DSeries labelPosition="inside" xField="Revenue">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Bar3DSeries>
+		</series>
+	</Bar3DChart>
+</rMateChart>

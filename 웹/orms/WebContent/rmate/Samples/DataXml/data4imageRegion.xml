@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items>
+	<item>
+		<Region>A 시</Region>
+		<Data1>1500</Data1>
+	</item>
+	<item>
+		<Region>B 시</Region>
+		<Data1>1000</Data1>
+	</item>
+	<item>
+		<Region>C 시</Region>
+		<Data1>1400</Data1>
+	</item>
+	<item>
+		<Region>D 시</Region>
+		<Data1>1500</Data1>
+	</item>
+	<item>
+		<Region>E 시</Region>
+		<Data1>1900</Data1>
+	</item>
+	<item>
+		<Region>F 시</Region>
+		<Data1>1400</Data1>
+	</item>
+	<item>
+		<Region>G 시</Region>
+		<Data1>1000</Data1>
+	</item>
+	<item>
+		<Region>H 시</Region>
+		<Data1>1400</Data1>
+	</item>
+</items>

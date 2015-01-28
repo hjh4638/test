@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="히스토리 2D 차트"/>
+	</Options>
+	<HistoryChart>
+		<displayerChart>
+			<Displayer id="chart1" showDataTips="true" width="100%" height="100%">
+				<horizontalAxis>
+					<CategoryAxis id="mainHAxis" categoryField="Date"/>
+				</horizontalAxis>
+				<series>
+					
+					<Column2DSeries labelPosition="inside" id="columnSeries" 
+						yField="Data1" fill="0xB0C759" maxColumnWidth="30"
+						displayName="Data1" itemRenderer="SemiCircleColumnItemRenderer">
+					<!-- 디스플레이어(Displayer)차트로 Column2Dseries를 정의 하였습니다 -->
+						<showDataEffect>
+							<SeriesInterpolate duration="1000"/>
+						</showDataEffect>
+					</Column2DSeries>
+					<Line2DSeries id="lineSeris" 
+						yField="Data1" form="curve"
+						displayName="Data1">
+					<!-- 디스플레이어(Displayer)차트로 Line2DSeries labelPosition="both"정의 하였습니다 -->
+						<lineStroke>
+							<Stroke color="0xFFCC00" weight="2" /> 
+						</lineStroke>
+						<showDataEffect>
+							<SeriesInterpolate duration="1000"/>
+						</showDataEffect>
+					</Line2DSeries>
+			    </series>
+			</Displayer>
+		</displayerChart>
+		<navigator>
+			<Navigator id="navi"  width="100%" height="100"  gutterLeft="0" gutterRight="0" paddingLeft="30" paddingRight="10">
+				<horizontalAxis>
+					<CategoryAxis categoryField="Date" id="naviHAxis"  padding="0"/> 
+				</horizontalAxis>
+				<horizontalAxisRenderers>
+					<Axis2DRenderer axis="{naviHAxis}" visible="false"/>
+				</horizontalAxisRenderers>
+		        <verticalAxis>
+		        	<LinearAxis id="vAxis"/>
+		        </verticalAxis>
+		        <verticalAxisRenderers>
+		        	<Axis2DRenderer axis="{vAxis}" visible="false"/>
+		        </verticalAxisRenderers>
+				 <backgroundElements>
+		        	<GridLines direction="horizontal"/>
+		        </backgroundElements>
+				<series>
+					<Area2DSeries yField="Data1"/>
+			    </series>
+			</Navigator>
+		</navigator>
+		<selector><!-- 시작 시 보여지는 차트는 총 데이터의 약 30%이며 센터 영역입니다. -->
+			<HistoryRangeSelector width="100%" startingRange="center" visibleItemSize="30"/>
+		</selector>
+	</HistoryChart>
+</rMateChart>

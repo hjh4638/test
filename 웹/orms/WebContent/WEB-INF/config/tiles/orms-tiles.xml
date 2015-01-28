@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<!-- 기본 레이아웃 -->
+	<definition name="orms_base_template" template="/layout/orms_Layout.jsp">
+		<put-attribute name="include" value="/layout/orms_Include.jsp" />
+		<put-attribute name="main" value="" />
+		<put-attribute name="menu" value="/layout/orms_Menu.jsp" />
+		<put-attribute name="top" value="/layout/orms_Top.jsp" />
+		<put-attribute name="footer" value="/layout/orms_Footer.jsp" />
+	</definition>
+
+	<!-- 메뉴가 없는 레이아웃 -->
+	<definition name="orms_no_menu_template" template="/layout/orms_LayoutNoMenu.jsp">
+		<put-attribute name="include" value="/layout/orms_Include.jsp" />
+		<put-attribute name="main" value="" />
+	</definition>
+
+	<!-- 메인 뷰 셋팅 -->
+	<definition name="normalMain" extends="orms_base_template">
+		<put-attribute name="main" value="/WEB-INF/jsp/normalMain.jsp" />
+	</definition>
+
+	<!-- 와일드카드를 사용한 기본 뷰 셋팅 -->
+	<definition name="*/*" extends="orms_base_template">
+		<put-attribute name="main" value="/WEB-INF/jsp/{1}/{2}.jsp" />
+	</definition>
+
+	<!-- 와일드카드를 사용한 메뉴없는 뷰 셋팅 -->
+	<!-- 주로 팝업창에서 사용되므로, 뷰의 구별을 위해 popup 이라는 경로를 추가하여 식별한다. -->
+	<definition name="*/view/*" extends="orms_no_menu_template">
+		<put-attribute name="main" value="/WEB-INF/jsp/{1}/{2}.jsp" />		
+	</definition>
+
+	<!-- SSO 로그인  에러페이지 뷰 -->
+	<definition name="NeedSSOLoginPage" extends="orms_no_menu_template">
+		<put-attribute name="main" value="/WEB-INF/jsp/Exception/orms_needSSOLoginPage.jsp" />
+	</definition>
+	
+	<!-- SSO 로그인  에러페이지 뷰 -->
+	<definition name="NoServiceSquadron" extends="orms_no_menu_template">
+		<put-attribute name="main" value="/WEB-INF/jsp/Exception/orms_noServiceSquadron.jsp" />
+	</definition>
+
+	<!-- 권한없음 에러페이지 뷰 -->
+	<definition name="NoPermit" extends="orms_no_menu_template">
+		<put-attribute name="main" value="/WEB-INF/jsp/Exception/orms_NoPermit.jsp" />
+	</definition>
+
+	<!-- 에러페이지 뷰 -->
+	<definition name="Error" extends="orms_no_menu_template">
+		<put-attribute name="main" value="/WEB-INF/jsp/Exception/orms_Error.jsp" />
+	</definition>
+
+</tiles-definitions>

@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title></title>
+<script src="./JS/AC_OETags.js" language="javascript"></script>
+<script src="./JS/rMateChart.js" language="javascript"></script>
+<script src="./JS/rMateChartLicense.js" language="javascript"></script>
+<link rel="styleSheet" href="rMateStyle.css"/>
+<style type="text/css">
+
+</style>
+
+
+<!-- 사용자 정의 설정 시작 -->
+<script language="JavaScript" type="text/javascript">
+
+window.onload = function()
+{
+	rMateChartInit();
+}
+
+// -----------------------1번 차트 flashVars 설정 시작-----------------------
+// 차트 레이아웃 URL 경로. 반드시 설정하십시오.
+var layoutURL = encodeURIComponent("./LayoutXml/LabelField_Column_Func_Layout.xml");	
+var flashVars = "layoutURL="+layoutURL;
+
+
+// 데이타를 URL 경로를 통해 가져올 경우 설정하십시오.
+// 배열형태로 데이터를 삽입할 경우 주석처리나 삭제하십시오.
+// 배열형태와 같이 사용할 경우, 우선순위는 배열형태 데이터 삽입입니다.
+var dataURL =encodeURIComponent("./DataXml/multiData2.xml");	
+flashVars += "&dataURL="+dataURL;
+
+
+/*
+// ------------------------- 수치 필드 사용자 정의 함수 -----------------------------------------------------
+// 챠트의 시리즈에서 labelPosition 속성을 설정한 경우 수치 필드를 사용자 정의하는 함수입니다.
+// layout XML 에서 Series 속성을 넣을때 라벨펑션을 설정하고 속성 값으로 javascript 함수명을 넣어줍니다
+//
+// 예) <Column2DSeries yField="Profit" labelPosition="outside" outsideLabelJsFunction="seriesLabelFunc">
+//
+// 파라메터 설명
+// seriesID : 해당 시리즈의 ID.
+// index : 해당 시리즈 아이템의 인덱스.
+// data : 해당 item의 값을 표현하기 위해 입력된 data(row값에 해당 - data로 입력된 종류에 따라 XML의 내용 또는 배열이 됩니다)
+// values : 해당 item의 값 (배열로 전달되며, 챠트 종류에 따라 아래와 같이 들어옵니다.)
+
+			Pie2DSeries,Pie3DSeries			0:값 1:퍼센트값
+			Bubble3DSeries,Matrix2DSeries   0:x축값 1:y축값 2:z값
+
+			Pie,Bubble시리즈를 제외한 모든 시리즈   0:x축값 1:y축값 2:min값
+			* min값은 type을 '100%' 또는 'stacked' 인 경우만 유효합니다. 쌓아올릴 경우 해당 데이터의 시작값을 의미합니다.
+//
+*/
+
+function seriesLabelFunc(seriesID, index, data, values)
+{
+	//alert(values);
+	return "$" + (values[1]-values[2]);
+}
+
+/*
+// ------------------------- 스택 타입의 토탈 필드 사용자 정의 함수 -----------------------------------------------------
+// 챠트의 SeriesSet 에서 showTotalLabel 속성을 설정한 경우 토탈 필드를 사용자 정의하는 함수입니다.
+// layout XML 에서 Series 속성을 넣을때 labelJsFunction 주고, 만든 javascript 함수명을 넣어줍니다
+//
+// 예) <Column2DSet showTotalLabel="true" totalLabelJsFunction="totalLabelFunc">
+//
+// 파라메터 설명
+// index : 해당 시리즈 아이템의 인덱스.
+// total : 총 합계 값.
+// data : 해당 item의 값을 표현하기 위해 입력된 data(row값에 해당 - data로 입력된 종류에 따라 XML의 내용 또는 배열이 됩니다)
+*/
+function totalLabelFunc(index, total, data)
+{
+	//alert(data);
+	return "$" + total;
+}
+
+<!-- 사용자 정의 설정 끝  -->
+</script>
+</head>
+
+<body>
+	<div class="wrap">
+		<div class="header">
+			<div class="header_title">
+				<p>Column 2D Chart</p>
+			</div>
+		</div>
+		<div class="content">
+			<script language="javascript">
+				<!--
+					rMateChartCreate("chart1","../Component/rMateChart",flashVars, 600, 400, "#FFFFFF");
+				// -->
+			</script>
+		</div>
+		<div class="footer">
+			<div class="footer_button">
+			<a href="#" onclick="javascript:window.open('./LayoutXml/LabelField_Column_Func_Layout.xml', '_blank', 'width=1024 height=768 scrollbars=yes')">
+			<img src="./Images/viewLayout.png" width="100" height="22" border="0"/></a>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="#" onclick="javascript:window.open('./DataXml/multiData2.xml', '_blank', 'width=1024 height=768 scrollbars=yes')">
+			<img src="./Images/viewData.png" width="100" height="22" border="0"/></a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

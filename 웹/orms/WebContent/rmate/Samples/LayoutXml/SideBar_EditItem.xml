@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="SIDE BAR"/>
+		<DataEditor showOnInit="true" editorHeight="53"/>
+	</Options>
+	<NumberFormatter id="numFmt" precision="0"/>
+	<Column2DChart showDataTips="true" selectionMode="single">
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month"/> 
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis id="vAxis"/>
+		</verticalAxis>
+		<series>
+			<Column2DSeries labelPosition="inside" yField="Profit" displayName="Profit">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Column2DSeries>
+		</series>
+		<annotationElements>
+			<CrossRangeZoomer zoomType="horizontal"
+								horizontalLabelFormatter="{numFmt}"
+								enableZooming="false" enableCrossHair="false"/>
+		</annotationElements>
+	</Column2DChart>
+</rMateChart>

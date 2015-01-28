@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+	<Caption text="영문 세로로 출력" /> 
+	</Options>
+	<Line2DChart showDataTips="true">
+		<horizontalAxis>
+			<CategoryAxis id="hAxis" categoryField="Month" displayName="날짜" labelJsFunction="labelFunc"/> 
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis id="vAxis" displayName="금액"/> 
+		</verticalAxis>
+		<series>
+			<Line2DSeries id="series1" yField="Profit" displayName="Profit">
+				<showDataEffect>
+					<SeriesInterpolate /> 
+				</showDataEffect>
+			</Line2DSeries>
+			<Line2DSeries id="series2" yField="Cost" displayName="Cost">
+				<showDataEffect>
+					<SeriesInterpolate /> 
+				</showDataEffect>
+			</Line2DSeries>
+			<Line2DSeries id="series3" yField="Revenue" displayName="Revenue">
+				<showDataEffect>
+					<SeriesInterpolate /> 
+				</showDataEffect>
+			</Line2DSeries>
+		</series>
+		<verticalAxisRenderers>
+			<Axis2DRenderer axis="{vAxis}" labelRotation="90"/>
+		</verticalAxisRenderers>
+		<horizontalAxisRenderers>
+			<Axis2DRenderer axis="{hAxis}" labelRotation="90" fontSize="11"/>
+		</horizontalAxisRenderers>
+	</Line2DChart>
+
+</rMateChart>

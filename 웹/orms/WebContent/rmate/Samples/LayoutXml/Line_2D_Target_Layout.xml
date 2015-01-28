@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report"/>
+		<Legend useVisibleCheck="true" fontSize='12'/>
+	</Options>
+	<NumberFormatter id="fmt"/>
+	<Line2DChart id="chart" showDataTips="true">
+		<horizontalAxis>
+			<CategoryAxis id="hAxis" categoryField="Month" padding="0"/>
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis id="vAxis1" formatter="{fmt}" minimum="0" maximum="3200" interval="500"/>
+		</verticalAxis>
+		<series>
+			<Line2DSeries yField="Profit" displayName="A 제품">
+				<lineStroke>
+					<Stroke color="0xE48701" weight="2"/> 
+				</lineStroke>
+				<showDataEffect>
+					<SeriesSlide direction="up" duration="1000"/>
+				</showDataEffect>
+			</Line2DSeries>
+			<Line2DSeries yField="Cost" displayName="B 제품">
+				<lineStroke>
+					<Stroke color="0xA5BC4E" weight="2"/> 
+				</lineStroke>
+				<showDataEffect>
+					<SeriesSlide direction="up" duration="1000"/>
+				</showDataEffect>
+			</Line2DSeries>
+		</series>
+		<verticalAxisRenderers>
+			<Axis2DRenderer axis="{vAxis1}" placement="left" targetValue="2500" targetSecondValue="500" targetValueName="High" targetSecondValueName="Low" fillTargetArea="true">
+<!-- 
+targetValue : 해당하는 값의 y축에 선을 그을 수 있게 합니다
+targetValueName : 이 속성을 정의하지 않으면 targetValue에 해당하는 y축은 targetValue에서 지정한 값이 나옵니다. 
+	    	  이 속성을 정의하면 targetValue에 해당하는 곳에 정의한 대로 보이게 합니다
+targetSecondValue : 해당하는 값의 y축에 두번 째 선을 그을 수 있게 합니다
+targetSecondeValueName : 이 속성을 정의하지 않으면 targetSecondValue 해당하는 y축은 targetSecondValue 지정한 값이 나옵니다. 
+	    	 	 이 속성을 정의하면 targetSecondValue 해당하는 곳에 정의한 대로 보이게 합니다 
+fillTargetArea : targetValue와 tagetSecondeValue안의 영역을 지정하는 색깔로 채웁니다			
+-->
+				<targetLineStroke>
+					<Stroke weight="1" color="0xFF0000"/>
+				</targetLineStroke>
+				<targetSecondLineStroke>
+					<Stroke weight="1" color="0x0000FF"/>
+				</targetSecondLineStroke>
+				<targetAreaFill>
+					<SolidColor color="0x00FFFF" alpha="0.1"/>
+				</targetAreaFill>
+			</Axis2DRenderer>
+		</verticalAxisRenderers>
+	</Line2DChart>
+</rMateChart>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Logarithmic Chart" /> 
+	</Options>
+	<NumberFormatter id="numFmt"/>
+	<Plot2DChart showDataTips="true">
+		<horizontalAxis>
+			<LogAxis id="vAxis" title="Log Axis" formatter="{numFmt}" baseAtZero="false" interval="10" minimum="100" maximum="1000000"/>
+<!-- 
+LogAxis 속성
+interval : 10의 승수 단위로 라벨에 표시합니다
+minimum : 축 라벨의 최소치를 나타냅니다
+maximum : 축 라벨의 최대치를 나타냅니다
+title : 축의 대표 제목 입니다
+labelJsFunction : 축 라벨 텍스트를 사용자 정의할 함수를 나타냅니다
+displayName : 툴팁에 나타날 축을 대표하는 문자열을 입력하세요
+baseAtZero : minimim및 maximum의 값을 0으로 할지 지정합니다
+-->
+		</horizontalAxis>
+		<series>
+			<Line2DSeries xField="xData" yField="field1" radius="0" displayName="Data 1" formatter="{numFmt}">
+				<verticalAxis>
+					<LogAxis id="vAxis1" title="Log Axis" formatter="{numFmt}" baseAtZero="false" interval="10" maximum="1000000"/>
+				</verticalAxis>
+				<lineStroke>
+					<Stroke weight="2" color="0xe48701"/>
+				</lineStroke>
+				<showDataEffect>
+					<SeriesSlide/>
+				</showDataEffect>
+			</Line2DSeries>
+			<Line2DSeries xField="xData" yField="field2" radius="0" displayName="Data 2" formatter="{numFmt}" verticalAxis="{vAxis1}">
+				<lineStroke>
+					<Stroke weight="2" color="0x1b95d9"/>
+				</lineStroke>
+				<showDataEffect>
+					<SeriesSlide/>
+				</showDataEffect>
+			</Line2DSeries>
+			<Line2DSeries xField="xData" yField="field3" radius="0" displayName="Data 3" formatter="{numFmt}" verticalAxis="{vAxis1}">
+				<lineStroke>
+					<Stroke weight="2" color="0xa5bc4e"/>
+				</lineStroke>
+				<showDataEffect>
+					<SeriesSlide/>
+				</showDataEffect>
+			</Line2DSeries>
+			<Plot2DSeries xField="xData" yField="field4"  displayName="Data 4" itemRenderer="CircleItemRenderer">
+				<verticalAxis>
+					<LogAxis id="vAxis2" title="Log Axis" formatter="{numFmt}" baseAtZero="false" interval="10" minimum="100" maximum="10000000"/>
+<!-- 
+LogAxis 속성
+interval : 10의 승수 단위로 라벨에 표시합니다
+minimum : 축 라벨의 최소치를 나타냅니다
+maximum : 축 라벨의 최대치를 나타냅니다
+title : 축의 대표 제목 입니다
+labelJsFunction : 축 라벨 텍스트를 사용자 정의할 함수를 나타냅니다
+displayName : 툴팁에 나타날 축을 대표하는 문자열을 입력하세요
+baseAtZero : minimim및 maximum의 값을 0으로 할지 지정합니다
+-->
+				</verticalAxis>
+				<showDataEffect>
+					<SeriesSlide/>
+				</showDataEffect>
+			</Plot2DSeries>
+		</series>
+		<verticalAxisRenderers>
+			<Axis2DRenderer axis="{vAxis1}" /> 
+			<Axis2DRenderer axis="{vAxis2}" /> 
+		</verticalAxisRenderers>
+	</Plot2DChart>
+</rMateChart>

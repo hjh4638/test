@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report"/>
+	</Options>
+	<Line2DChart showDataTips="true" >
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month" padding="0.5" /> 
+		</horizontalAxis>
+		<series>
+			<Line2DSeries labelPosition="up" showMaxValueLabel="true" yField="Profit" radius="4"
+										lineStyle="dashLine" dashLinePattern="5"
+										dashLineSeperatePos="5"
+										itemRenderer="RectangleItemRenderer"
+										displayName="Profit">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Line2DSeries>
+		</series>
+		<annotationElements>
+			<AxisMarker>
+				<lines>
+				<!-- labelAlign : 라인에 표시할 라벨의 수평정렬입니다.(유효값:center,left,right)
+					horizontal=false 인 경우 left 는 top 에 right는 bottom 기능을 합니다. -->
+	
+				<!-- labelUpDown : 라벨을 라인의 위에 표시할지 아래에 표시할지 여부.(유효값:up,down)
+					horizontal=false 인 경우 up 은 우측, down 은 좌측입니다.-->
+					<AxisLine horizontal="false" value="Jun" fontSize="12" color="0xff0000"
+						label="분기점" labelAlign="right" labelUpDown="down">
+						<stroke>
+							<Stroke color="0x0066FF" weight="1"/>
+						</stroke>
+					</AxisLine>
+				</lines>
+			</AxisMarker>
+		</annotationElements>
+	</Line2DChart>
+</rMateChart>

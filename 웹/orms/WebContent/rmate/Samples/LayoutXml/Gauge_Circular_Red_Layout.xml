@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xEEEEEE" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="게이지 예제 - Red"/>
+		<SubCaption text="게이지, 색상, 그라데이션 등을 변경 할 수 있습니다." textAlign="right" paddingRight="10" fontSize="11" /> 
+	</Options>
+	<CurrencyFormatter id="numFmt" precision="0" currencySymbol="%" alignSymbol="right"/>
+	<CircularGauge width="300" height="300" valueChangeFunction="valueChangeFunc"
+				startAngle="270" minimumAngle="0" maximumAngle="360"
+				minimum="0" maximum="100" value="28"
+				interval="10" minorInterval="2"
+				formatter="{numFmt}"
+				padding="10"
+				labelGap="10"
+				tickLabelStyleName="tickText"
+				valueLabelStyleName="valueText"
+				editMode="true" liveDragging="true"
+				showDataTip="true"
+				tickColor="0xCCCCCC"
+				minorTickColor="0x932108"
+				coverRadiusRatio="0.1"
+				hideTickLabel="first"
+				needleThickness="10"
+				pointThickness="5"
+				needleLengthRatio="0.6"
+				needlePointStyle="steeple"
+				needleBackLengthRatio="0"
+				isValueTop="false"
+				valueYOffset="50">
+			<frameStroke>
+				<Stroke color="0xCCCCCC" weight="10"/>
+			</frameStroke>
+			<frameFill>
+				<SolidColor color="0x932108"/>
+			</frameFill>
+			<needleFill>
+				<LinearGradient angle="90">
+					<entries>
+						<GradientEntry color="0xEEEEEE" ratio="0" alpha="1"/>
+						<GradientEntry color="0x555555" ratio="1" alpha="1"/>
+					</entries>
+				</LinearGradient>
+			</needleFill>
+			<needleCoverFill>
+				<RadialGradient>
+					<entries>
+						<GradientEntry color="0xFFFFFF" ratio="0" alpha="1"/>
+						<GradientEntry color="0xB0B0B0" ratio="1" alpha="1"/>
+					</entries>
+				</RadialGradient>
+			</needleCoverFill>
+			<needleCoverFilter>
+				<DropShadowFilter distance="1"/>
+			</needleCoverFilter>
+	</CircularGauge>
+	<Style>
+		.valueText
+		{
+			fontSize:12;
+			fontFamily:Myriad;
+			textAlign:center;
+			borderColor:0x999999;
+			backgroundColor:0xFFFFFF;
+			backgroundAlpha:1;
+			paddingTop:2;
+			borderThickness:1;
+			borderAlpha:1;
+			borderStyle:solid;
+			color:0xFF0000;
+		}
+
+		.tickText
+		{
+			fontFamily:Myriad;
+			fontSize:18;
+			color:0xFFFFFF;
+		}
+	</Style>
+</rMateChart>

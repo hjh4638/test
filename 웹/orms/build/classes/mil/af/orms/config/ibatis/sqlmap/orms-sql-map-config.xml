@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN" "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+	<settings 
+		cacheModelsEnabled="true" 
+		enhancementEnabled="true"
+		lazyLoadingEnabled="true" 
+		maxRequests="256" 
+		maxSessions="128"
+		maxTransactions="32" 
+		useStatementNamespaces="true" />
+	<sqlMap resource="mil/af/orms/config/ibatis/sql/Common_SQL.xml" />
+	<sqlMap resource="mil/af/orms/config/ibatis/sql/Code_SQL.xml" />
+	<sqlMap resource="mil/af/orms/config/ibatis/sql/Question_SQL.xml" />
+	<sqlMap resource="mil/af/orms/config/ibatis/sql/Schedule_SQL.xml" />
+	<sqlMap resource="mil/af/orms/config/ibatis/sql/Answer_SQL.xml" />
+	<sqlMap resource="mil/af/orms/config/ibatis/sql/Cal_SQL.xml" />
+	<sqlMap resource="mil/af/orms/config/ibatis/sql/Confirm_SQL.xml" />
+	<sqlMap resource="mil/af/orms/config/ibatis/sql/System_SQL.xml" />
+	
+</sqlMapConfig>
+

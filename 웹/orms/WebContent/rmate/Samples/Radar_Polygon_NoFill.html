@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title></title>
+<script src="./JS/AC_OETags.js" language="javascript"></script>
+<script src="./JS/rMateChart.js" language="javascript"></script>
+<script src="./JS/rMateChartLicense.js" language="javascript"></script>
+
+<style type="text/css">
+
+body 
+{ 
+	margin: 0px; 
+	overflow:hidden;
+}
+
+.wrap
+{
+	position:absolute;
+	top:40px;
+	left:50%;
+	width:500px;
+	height:590px;
+	margin: 0 0 0 -230px;
+}
+
+.header
+{ 
+	position:absolute;
+	width:100%;
+}
+ 
+.header_title
+{
+	top:0px;
+	font-family:verdana;
+	text-align:center;
+}
+
+.content
+{
+	position:absolute;
+	top:36px;
+
+}
+
+.footer
+{
+	position:absolute;
+	left:0px;
+	right:0px;
+	bottom:2px; 
+	text-align:center;
+}
+
+</style>
+
+<!-- 사용자 정의 설정 시작 -->
+<script language="JavaScript" type="text/javascript">
+
+window.onload = function()
+{
+	rMateChartInit();
+}
+
+
+// 차트 레이아웃 URL 경로. 반드시 설정하십시오.
+var layoutURL = encodeURIComponent("./LayoutXml/Radar_Layout_NoFill.xml");	
+var rMateOnLoadCallFunction = "rMateChartOnLoad";
+
+// flashVars 정의..차트 레이아웃은 URL XML 형태로 읽고 데이터는 배열형태로 삽입.
+var flashVars = "layoutURL="+layoutURL;
+flashVars += "&rMateOnLoadCallFunction="+rMateOnLoadCallFunction;
+flashVars += "&saveImage=true";
+
+flashVars += "&useDataEditor=true";
+function rMateChartOnLoad() 
+{
+	
+	document.getElementById("chart1").setData(chartData); 
+}
+ 
+var chartData = [{"catName":"Food", "year2005":100, "year2006":100, "year2007":180, "year2008":150}
+				,{"catName":"Health Care", "year2005":80, "year2006":120, "year2007":200, "year2008":210}
+				,{"catName":"Transportation", "year2005":70, "year2006":115, "year2007":100, "year2008":240}
+				,{"catName":"Clothing", "year2005":80, "year2006":120, "year2007":140, "year2008":210}
+				,{"catName":"Education", "year2005":90, "year2006":160, "year2007":130, "year2008":200}
+				,{"catName":"Shelter", "year2005":100, "year2006":180, "year2007":165, "year2008":140}
+				,{"catName":"Leisure", "year2005":76, "year2006":120, "year2007":130, "year2008":170}
+				,{"catName":"Others", "year2005":80, "year2006":140, "year2007":140, "year2008":190}];
+</script>
+</head>
+
+<body>
+	<div class="wrap">
+		<div class="header">
+			<div class="header_title">
+				<p>Radar Chart </p>
+			</div>
+		</div>
+		<div class="content">
+			<script language="javascript">
+				<!--
+					rMateChartCreate("chart1","../Component/rMateRadarChart",flashVars, 500, 500, "#FFFFFF");
+				// -->
+			</script>
+		</div>
+		<div class="footer">
+			<div class="footer_button">
+				<a href="#" onclick="javascript:window.open('./LayoutXml/Radar_Layout_NoFill.xml', '_blank', 'width=1024 height=768 scrollbars=yes')">
+				<img src="./Images/viewLayout.png" width="100" height="22" border="0"/></a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" borderStyle="solid" cornerRadius="12">
+	<Options>
+		<Legend markerWidth="15" markerHeight="15"/>
+	</Options>
+	<SeriesSlide id="ss"/>
+	<Matrix2DChart showDataTips="true" type="image" drawType="radius" selectionMode="single" dataTipJsFunction="tipFunc">
+		<backgroundElements>
+			<GridLines direction="horizontal"  horizontalChangeCount="2">
+				<horizontalStroke>
+					<Stroke color="0x000000"/>
+				</horizontalStroke>
+			</GridLines>
+		</backgroundElements>
+		<verticalAxis>
+			<LinearAxis id="vAxis" maximum="5" interval="0.5" labelJsFunction="vertiFunc"/>
+		</verticalAxis>
+		<horizontalAxis>
+			<LinearAxis id="hAxis" maximum="4" interval="0.5" labelJsFunction="horiFunc"/>
+		</horizontalAxis>
+		<verticalAxisRenderers>
+			<Axis2DRenderer axis="{vAxis}" tickPlacement="none" styleName="font" minorTickPlacement="none"/>
+		</verticalAxisRenderers>
+		<horizontalAxisRenderers>
+			<Axis2DRenderer axis="{hAxis}" tickPlacement="none" styleName="font" minorTickPlacement="none"/>
+		</horizontalAxisRenderers>
+		<series>
+			<Matrix2DSeries  xField="Data1_x" yField="Data1_y" zField="Data1" imageSource="./Images/icon1.png" showDataEffect="{ss}" labelPosition="inside" displayName="ㄱ제품 생산량" insideLabelJsFunction="labelJsFunc"/>
+			<Matrix2DSeries xField="Data2_x" yField="Data2_y" zField="Data2" imageSource="./Images/icon2.png" showDataEffect="{ss}" labelPosition="inside" displayName="ㄴ제품 생산량" insideLabelJsFunction="labelJsFunc"/>
+			<Matrix2DSeries  xField="Data3_x" yField="Data3_y" zField="Data3" imageSource="./Images/icon3.png" showDataEffect="{ss}" labelPosition="inside" displayName="ㄷ제품 생산량" insideLabelJsFunction="labelJsFunc"/>
+		</series>
+	</Matrix2DChart>
+</rMateChart>

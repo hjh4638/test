@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Annual Report" />
+	</Options>
+	<NumberFormatter id="numFmt"/> 
+	<Column3DChart id="chart" dataDisplayType="dataSize" displayDataSize="15" showDataTips="true">
+		<horizontalAxis>
+			<CategoryAxis id="hAxis" categoryField="Month" ticksBetweenLabels="true"/> 
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis id="vAxis" minimum="0" maximum="3200" interval="500" formatter="{numFmt}"/>
+		</verticalAxis>
+		<verticalAxisRenderers>
+			<Axis3DRenderer axis="{vAxis}" targetValue="2500" targetValueName="Goal(2,500)"/>
+<!-- 
+targetValue : 해당하는 값의 y축에 선을 그을 수 있게 합니다
+targetValueName : 이 속성을 정의하지 않으면 targetValue에 해당하는 y축은 targetValue에서 지정한 값이 나옵니다. 
+		  이 속성을 정의하면 targetValue에 해당하는 곳에 정의한 대로 보이게 합니다
+-->
+		</verticalAxisRenderers>
+		<series>
+			<Column3DSeries yField="Profit" displayName="Profit">
+				<showDataEffect>
+					<SeriesSlide direction="up" duration="1000"/>
+				</showDataEffect>
+			</Column3DSeries>
+		</series>
+	</Column3DChart>
+</rMateChart>

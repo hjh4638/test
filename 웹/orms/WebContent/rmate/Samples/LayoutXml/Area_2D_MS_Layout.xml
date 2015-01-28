@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Area2DChart showDataTips="true">
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month" padding="0"/> 
+		</horizontalAxis>
+		<series>
+		<!-- Area2D Multi-Sereis 를 생성시에는 Area2DSeries를 여러 개 정의합니다 -->
+			<Area2DSeries yField="Profit" form="curve" displayName="Profit">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+				<areaStroke>
+				<!-- areaStroke는 차트 생성 후 보여지는 areaSeries에서의 선의 색깔을 정의합니다. -->
+					<Stroke weight="1" color="0xE48701"/>
+					<!-- Stroke를 정의합니다. weight:굵기 color:색깔 alpha:투명도 -->
+				</areaStroke>
+				<areaFill>
+				<!-- areaFill은 차트 생성 후 선이 지나가는 자리 밑 부분을 지정한 색깔로 채워줍니다 -->
+					<SolidColor color="0xE48701" alpha="0.25"/>
+					<!-- SolidColor를 정의합니다. color:색깔 alpha:투명도 -->
+				</areaFill>
+			</Area2DSeries>
+			<Area2DSeries yField="Cost" form="curve" displayName="Cost">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+				<areaStroke>
+					<Stroke weight="1" color="0xA5BC4E"/>
+				</areaStroke>
+				<areaFill>
+					<SolidColor color="0xA5BC4E" alpha="0.25"/>
+				</areaFill>
+			</Area2DSeries>
+			<Area2DSeries yField="Revenue" form="curve" displayName="Revenue">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+				<areaStroke>
+					<Stroke weight="1" color="0x1B95D9"/>
+				</areaStroke>
+				<areaFill>
+					<SolidColor color="0x1B95D9" alpha="0.25"/>
+				</areaFill>
+			</Area2DSeries>
+		</series>
+	</Area2DChart>
+</rMateChart>

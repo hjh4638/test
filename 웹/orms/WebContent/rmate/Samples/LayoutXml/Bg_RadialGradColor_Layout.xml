@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid" paddingRight="10" paddingBottom="5" paddingTop="5" paddingLeft="10">
+	<Options>
+		<Caption text="Anual Report"/>
+	</Options>
+	<Column3DChart showDataTips="true" paddingRight="10" paddingBottom="5" paddingTop="5" paddingLeft="10">
+		<fill>
+           <RadialGradient focalPointRatio="-0.65" angle="60">           
+<!-- 
+	RadialGradient는 어느 한 지점을 중심으로 원형으로 그라데이션을 넣는 속성입니다
+	focalPointRatio : 유효값은 -1 ~ 1까지이며 이 값은 초점이 존재하는 중심으로부터의 거리를 지정합니다
+			  예를 들어 focalPointRatio가 0.25 라면 중심보다 오른쪽에 존재하고 -0.25로 하면 중심보다
+			  왼쪽에 있게 됩니다
+	angle : 경계를 나타내는 구형의 중심점으로부터 초점에서의 위치와 거리를 조절합니다. 유효값은 0 ~ 360입니다
+-->
+            <entries>
+               <GradientEntry 
+                    color="0xFFFFFF" 
+                    ratio="0" 
+                    alpha="1"/>
+               <!-- color:색깔 ratio:그라데이션이 들어가는 범위 0~1 alpha:투명도 -->
+                <GradientEntry 
+                    color="0xFFFF99" 
+                    ratio="0.8" 
+                    alpha="0.65"/>
+                <GradientEntry 
+                    color="0xFFFF66" 
+                    ratio="1" 
+                    alpha="0.3"/>
+            </entries>
+           </RadialGradient>
+		</fill>
+		 <horizontalAxis>
+  			<CategoryAxis categoryField="Month" /> 
+  		</horizontalAxis>
+		<series>
+			<Column3DSeries xField="Month" yField="Profit" displayName="Profit">
+				<showDataEffect>
+					<SeriesInterpolate/>
+				</showDataEffect>
+			</Column3DSeries>
+			<Column3DSeries xField="Month" yField="Cost" displayName="Cost">
+				<showDataEffect>
+					<SeriesInterpolate/>
+				</showDataEffect>
+			</Column3DSeries>
+		</series>
+
+</Column3DChart>
+
+</rMateChart>

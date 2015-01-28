@@ -1,0 +1,494 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>rMate Flash Chart</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+	<link rel="StyleSheet" href="dtree.css" type="text/css" />
+	<script type="text/javascript" src="JS/dtree.js"></script>
+	<script language="javascript">
+		function showTab(val) 
+		{
+			var tb0 = document.getElementById('tab_0'); 
+			var tb1 = document.getElementById('tab_1'); 
+			var tab_type = document.getElementById('type'); 
+			var tab_samples = document.getElementById('samples'); 
+			if(val == 0)
+			{
+				tab_type.style.background = "url('./Images/tab1_over.gif')";
+				tab_samples.style.background = "url('./Images/tab2.gif')";
+				tb0.style.display = "block";
+				tb1.style.display = "none"; 
+			}
+			else
+			{
+				tab_samples.style.background = "url('./Images/tab2_over.gif')";
+				tab_type.style.background = "url('./Images/tab1.gif')";
+				tb0.style.display = "none";
+				tb1.style.display = "block"; 
+			}
+		}
+	</script>
+</head>
+<body>
+
+
+<!-- 상단 메뉴 -->  
+
+<table width='100%'  height="23"  cellpadding='0' border='0' cellspacing='0' >
+<tr>
+<td>
+<div id="tabs">
+  <ul>
+    <li><a id="type" href="#" onclick="showTab('0')" class="type"><span>Chart Type</span></a></a></li>
+    <li><a id="samples" href="#" onclick="showTab('1')" class="samples"><span>Chart Samples</span></a></a></li>
+  </ul>
+</div>
+</td>
+</tr>
+</table>
+
+<!-- 각 메뉴의 내용 --> 
+<table id="main_table" width="100%" cellpadding="0" cellspacing="0">
+<tr><td style="padding:10 20 20 20;">
+ <div style="TEXT-ALIGN: left; leftMargin:0; padding:0 0 0 0;">  
+
+
+<!-------------------------------------------------------------------------------------->
+<!-- 차트 타입 메뉴 구성 -->
+<!-------------------------------------------------------------------------------------->
+
+   <div id=tab_0 class="dtree" style="display:block; padding:0 0 0 0;">
+	<script type="text/javascript">
+		<!--
+
+		//id, pid, name, url, title, target, icon, iconOPne, open,
+
+		ct = new dTree('ct');
+		ct.config.target="right";		
+		ct.config.folderLinks = true;
+		
+
+// --------------- Chart Type -------------------- //
+		ct.add(0,-1,' <B>rMate Chart Type</B>','./Overview.html','rMate Flash Chart');
+
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		//
+		//																Soho												//
+		//
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		ct.add(100,0,'Line Chart','');
+		ct.add(101,100,'Line Segment','../Samples/Line_2D_Segment.html');	
+		ct.add(102,100,'Line Curve','../Samples/Line_2D_Curve.html');
+		ct.add(103,100,'Line Step','../Samples/Line_2D_Step.html');	
+		ct.add(104,100,'Line ItemRenderer', '../Samples/Line_2D_Item.html');
+
+
+		ct.add(200,0,'Column Chart','');
+		ct.add(201,200,'Column','../Samples/Column_2D.html');		
+		ct.add(202,200,'Column 3D','../Samples/Column_3D.html');		
+		ct.add(203,200,'Multi Series','../Samples/Column_2D_MS.html');				
+		ct.add(204,200,'Multi Series 3D','../Samples/Column_3D_MS.html');		
+		ct.add(205,200,'Stacked','../Samples/Column_2D_Stacked.html');
+		ct.add(206,200,'Stacked (연결선 잇기)','../Samples/Column_2D_Stacked_Link.html');
+		ct.add(207,200,'Stacked 3D','../Samples/Column_3D_Stacked.html');
+		ct.add(208,200,'Stacked 3D (연결선 잇기)','../Samples/Column_3D_Stacked_Link.html');
+		
+
+		ct.add(300,0,'Bar Chart','');
+		ct.add(301,300,'Bar','../Samples/Bar_2D.html');		
+		ct.add(302,300,'Bar 3D','../Samples/Bar_3D.html');		
+		ct.add(303,300,'Multi Series','../Samples/Bar_2D_MS.html');				
+		ct.add(304,300,'Multi Series 3D','../Samples/Bar_3D_MS.html');		
+		ct.add(305,300,'Stacked','../Samples/Bar_2D_Stacked.html');		
+		ct.add(306,300,'Stacked 3D','../Samples/Bar_3D_Stacked.html');		
+
+	
+		ct.add(400,0,'Area Chart','');
+		ct.add(401,400,'Area','../Samples/Area_2D.html');		
+		ct.add(402,400,'Stacked','../Samples/Area_2D_Stacked.html');	
+		ct.add(403,400,'Multi Series','../Samples/Area_2D_MS.html');	
+
+
+		ct.add(500,0,'Pie Chart','');
+		ct.add(501,500,'Pie','../Samples/Pie_2D.html');	
+		ct.add(502,500,'pie 3D','../Samples/Pie_3D.html');						
+		ct.add(503,500,'Stacked 3D','../Samples/Pie_3D_Stacked.html');	
+		ct.add(504,500,'Pie with Wedge','../Samples/Pie_2D_Wedge.html');
+
+
+		ct.add(600,0,'Doughnut Chart','');
+		ct.add(601,600,'Doughnut','../Samples/Doughnut_2D.html');		
+		ct.add(602,600,'Doughnut 3D','../Samples/Doughnut_3D.html');		
+
+
+		ct.add(700,0,'Bubble Chart','');
+		ct.add(701,700,'Bubble 3D','../Samples/Bubble_3D.html');		
+		ct.add(702,700,'Multi Series 3D','../Samples/Bubble_3D_MS.html');		
+
+		
+		ct.add(800,0,'Plot Chart','');
+		ct.add(801,800,'Plot','../Samples/Plot_2D.html');		
+		ct.add(802,800,'Plot - 중심선 긋기','../Samples/Plot_2D_Ex.html');
+				
+	
+		ct.add(900,0,'Combination Chart','');
+		ct.add(901,900,'Line Combination','../Samples/Combination_2D_Line.html');		
+		ct.add(902,900,'3D & Line Combination','../Samples/Combination_3D_Line.html');		
+		ct.add(903,900,'Complex Combination','../Samples/Combination_3D_Complex_Line.html');
+		ct.add(904,900,'Multi Series Combination','../Samples/Combination_3D_MS_Line.html');		
+		ct.add(905,900,'Stacked 3D & Line','../Samples/Combination_3D_Stacked_Line.html');
+		ct.add(907,900,'Area + Line + Column 차트','../Samples/Combi_2D_Single.html');
+		ct.add(908,900,'Area + Line + Multi Column 차트','../Samples/Combi_2D_Multi.html');
+		ct.add(909,900,'Area + Line + 3D Column 차트','../Samples/Combi_Single.html');
+		ct.add(910,900,'Area + Line + 3D Multi Column 차트','../Samples/Combi_Multi.html');
+		ct.add(911,900,'Area + Line + 3D Stacked Column 차트','../Samples/Combi_Stacked.html');
+
+		
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		//
+		//															Standard												//
+		//
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+		ct.add(1000,0,'Dashed Line Chart','');
+		ct.add(1001,1000,'Dashed Line Segment','../Samples/Dash_Lines.html');	
+		ct.add(1002,1000,'Dashed Line Curve','../Samples/Dash_Line_Curve.html');
+		ct.add(1003,1000,'Dashed Line Step','../Samples/Dash_Line_Step.html');
+		ct.add(1004,1000,'Line + Dashed Line','../Samples/Dash_DashedLine_Line.html');
+		ct.add(1005,1000,'Dashed Line + Line','../Samples/Dash_Line_DashedLine.html');
+		
+
+
+		ct.add(1100,0,'Cylinder Chart','');
+		ct.add(1101,1100,'Cylinder 3D','../Samples/Cylinder_3D.html');		
+		ct.add(1102,1100,'Multi Series 3D','../Samples/Cylinder_3D_MS.html');		
+		ct.add(1103,1100,'Stacked 3D','../Samples/Cylinder_3D_Stacked.html');	
+		ct.add(1104,1100,'Cylinder Bar 3D','../Samples/Cylinder_Bar_3D.html');	
+		ct.add(1105,1100,'Cylinder Bar Stacked 3D','../Samples/Cylinder_Bar_3D_Stacked.html');	
+
+		
+		ct.add(1200,0,'From-To Chart','');
+		ct.add(1201,1200,'Steps','../Samples/From_To_Bar_2D.html');
+		ct.add(1202,1200,'From-To (Bar)','../Samples/From_To_Bar_3D.html');
+		ct.add(1203,1200,'Waterfall','../Samples/From_To_Column_2D.html');
+		ct.add(1204,1200,'From-To (Column)','../Samples/From_To_Column_3D.html');
+		ct.add(1205,1200,'From-To (Area)','../Samples/From_To_Area_2D.html');
+		ct.add(1206,1200,'From-To (Area Multi)','../Samples/From_To_Area_2D_MS.html');
+
+
+		ct.add(1300,0,'Radar Chart','');
+		ct.add(1301,1300, 'Radar Polygon-Fill Type','../Samples/Radar_Polygon.html');
+		ct.add(1302,1300, 'Radar Polygon Type','../Samples/Radar_Polygon_NoFill.html');
+		ct.add(1303,1300, 'Radar Circle-Fill Type','../Samples/Radar_Circle.html');
+		ct.add(1304,1300, 'Radar Circle Type','../Samples/Radar_Circle_NoFill.html');
+
+
+		ct.add(1400,0,'목표 대비 실적 차트','');
+		ct.add(1401,1400, 'Cylinder 3D Type','../Samples/Target_3D.html');
+		ct.add(1402,1400, 'Cylinder Bar 3D Type','../Samples/Target_Bar_3D.html');
+		ct.add(1403,1400, 'Linear 2D Type','../Samples/Target_2D.html');
+
+
+		ct.add(1500,0,'History Chart','');
+		ct.add(1501,1500,'History Column','../Samples/History_2D.html');
+		ct.add(1502,1500,'History Line','../Samples/History_2D_Line.html');
+		ct.add(1503,1500,'History Column-Line','../Samples/History_2D_WL.html');
+		ct.add(1504,1500,'History 3D Combination','../Samples/History_3D.html');
+
+		ct.add(1600,0,'Real-Time Chart','');
+		ct.add(1601,1600,'데이터 갯수 기준(CategoryAxis)','../Samples/RealTime_Size_TimeAxis.html');
+		ct.add(1602,1600,'시간 기준(DateTimeAxis)','../Samples/RealTime_Time_TimeAxis.html');
+		ct.add(1603,1600,'실시간 차트 샘플','../Samples/Stock_Monitoring.html');
+		ct.add(1604,1600,'실시간 파이차트','../Samples/Stock_Pie_Monitoring.html');
+
+
+		ct.add(1700,0,'Scroll Chart','');
+		ct.add(1701,1700,'Column Chart','../Samples/Scroll_Column_2D.html');
+		ct.add(1702,1700,'Column Multi Series Chart','../Samples/Scroll_Column_2D_MS.html');
+		ct.add(1703,1700,'Column Stacked Chart','../Samples/Scroll_Column_2D_Stacked.html');
+		ct.add(1704,1700,'Bar Multi Series Chart','../Samples/Scroll_Bar_2D_MS.html');
+		ct.add(1704,1700,'Bar Multi Series Another','../Samples/Scroll_Bar_2D_Inverted_MS.html');
+		ct.add(1705,1700,'Line Multi Series Chart','../Samples/Scroll_Line_2D_MS.html');
+		ct.add(1706,1700,'Area Chart','../Samples/Scroll_Area_2D.html');
+		ct.add(1707,1700,'Area Multi Series Chart','../Samples/Scroll_Area_2D_MS.html');
+		ct.add(1708,1700,'Combination Chart','../Samples/Scroll_Combination_2D.html');
+
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		//
+		//															Premium													//
+		//
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+
+		ct.add(1800,0,'Matrix Chart','','Matrix Chart','right','Images/premiumFolder.gif','Images/premiumFolderopen.gif');
+		ct.add(1801,1800,'Matrix 기본형','../Samples/Matrix2D_Renderer.html');
+		ct.add(1802,1800,'Matrix Fill','../Samples/Matrix2D_Fill.html');
+		ct.add(1803,1800,'Matrix Fill 2','../Samples/Matrix2D_Fill_2.html');
+		ct.add(1804,1800,'Matrix Plot','../Samples/Matrix2D_Plot.html');
+		ct.add(1805,1800,'Matrix Image','../Samples/Matrix2D_Image.html');
+		ct.add(1806,1800,'Matrix 렌더러 종류','../Samples/Matrix2D_Renderer_s.html');
+				
+					
+		ct.add(1900,0,'Image Chart','','Image Chart','right','Images/premiumFolder.gif','Images/premiumFolderopen.gif');
+		ct.add(1901,1900,'정배율-단일이미지(1)','../Samples/Image_Single_Ratio.html');		
+		ct.add(1902,1900,'정배율-단일이미지(2)','../Samples/Image_Single_MS_Ratio.html');				
+		ct.add(1903,1900,'차등배율-단일이미지(1)','../Samples/Image_Single_FRatio.html');			
+		ct.add(1904,1900,'차등배율-단일이미지(2)','../Samples/Image_Single_FRatio2.html');			
+		ct.add(1905,1900,'정배율-반복이미지(1)','../Samples/Image_SingleRepeat.html');		
+		ct.add(1906,1900,'정배율-반복이미지(2)','../Samples/Image_SingleRepeat2.html');			
+		ct.add(1907,1900,'차등배율-복수이미지(1)','../Samples/Image_Multiple.html');		
+		ct.add(1908,1900,'차등배율-복수이미지(2)','../Samples/Image_Multiple2.html');
+		
+		ct.add(2000,0,'Slide Chart','','Slide Chart','right','Images/premiumFolder.gif','Images/premiumFolderopen.gif');
+		ct.add(2001,2000,'기본 슬라이드','../Samples/Slide_Sample.html');
+		ct.add(2002,2000,'효과를 추가한 슬라이드','../Samples/Slide_Sample2.html');
+		
+		ct.add(2100,0,'RealTime-Premium Chart','','Real-Time Premium Chart','right','Images/premiumFolder.gif','Images/premiumFolderopen.gif');
+		ct.add(2101,2100,'다른 주기의 실시간 데이터 표현','../Samples/RealTime_Premium_Line_Column.html');
+		ct.add(2102,2100,'전일과 금일의 실시간 비교','../Samples/RealTime_Premium_10Int.html');
+		ct.add(2103,2100, '서로 다른 주기의 실시간 통합 비교','../Samples/RealTime_Premium_25Base.html');
+
+		
+		ct.add(2200,0,'Gauge Chart','','Gauge Chart','right','Images/premiumFolder.gif','Images/premiumFolderopen.gif');
+		ct.add(2250,2200,'Circular Gauge','','Image Chart','right','Images/premiumFolder.gif','Images/premiumFolderopen.gif');
+		ct.add(2251,2250, 'Circular Blue','../Samples/Gauge_Circular_Blue.html');
+		ct.add(2252,2250, 'Circular Silver','../Samples/Gauge_Circular_Silver.html');
+		ct.add(2253,2250, 'Circular Orange','../Samples/Gauge_Circular_Orange.html');
+		ct.add(2254,2250, 'Circular Red','../Samples/Gauge_Circular_Red.html');
+		
+
+		ct.add(2300,2200,'Half-Circular Gauge','','Half-Circular Gauge','right','Images/premiumFolder.gif','Images/premiumFolderopen.gif');
+		ct.add(2301,2300, 'Half-Circular Blue','../Samples/Gauge_Half_Blue.html');
+		ct.add(2302,2300, 'Half-Circular Silver','../Samples/Gauge_Half_Silver.html');
+		ct.add(2303,2300, 'Half-Circular Rainbow','../Samples/Gauge_Half_Rainbow.html');
+		ct.add(2304,2300, 'Half-Circular Red','../Samples/Gauge_Half_Red.html');
+
+
+		ct.add(2350,2200,'Cylinder Gauge','','Cylinder Gauge','right','Images/premiumFolder.gif','Images/premiumFolderopen.gif');
+		ct.add(2351,2350, 'Horizontal Cylinder Gauge','../Samples/Gauge_HorizontalCylinder.html');
+		ct.add(2352,2350, 'Vertical Cylinder Gauge','../Samples/Gauge_VerticalCylinder.html');
+
+
+		ct.add(2400,2200,'Linear Gauge','','Linear Gauge','right','Images/premiumFolder.gif','Images/premiumFolderopen.gif');
+		ct.add(2401,2400, 'Horizontal Linear Gauge','../Samples/Gauge_HorizontalLinear.html');
+		ct.add(2402,2400, 'Vertical Linear Gauge','../Samples/Gauge_VerticalLinear.html');
+
+		document.write(ct);
+
+		//-->
+	</script>
+	<p><a href="javascript: ct.openAll();">Open all</a> | <a href="javascript: ct.closeAll();">Close all</a></p>
+	</div>
+
+<!-------------------------------------------------------------------------------------->
+<!-- 차트 샘플 메뉴 구성 -->
+<!-------------------------------------------------------------------------------------->
+
+     <div id=tab_1 class="dtree" style="display:none; padding:0 0 0 0;"">
+
+		<script type="text/javascript">
+		<!--
+
+		//id, pid, name, url, title, target, icon, iconOPne, open,
+
+		cs = new dTree('cs');
+		cs.config.target="right";		
+		cs.config.folderLinks = true;
+		
+// ----------------- rMate Chart ------------------//
+
+		cs.add(0,-1,' <B>rMate Chart Samples</B>','./Overview.html','rMate Flash Chart');
+
+// --------------- Chart Samples -------------------- //
+		cs.add(100,0,'챠트의 제목','');
+		cs.add(101,100,'제목넣기(기본)','../Samples/Subject_Default.html');		
+		cs.add(102,100,'제목넣기(부제목)','../Samples/Subject_Mod.html');
+		cs.add(103,100,'제목(Caption) CSS Style 적용','../Samples/CSS_Exam.html');
+
+		cs.add(200,0,'챠트의 컬러','');
+		cs.add(201,200,'막대 컬러(단일색)','../Samples/Column_3D_Color.html');		
+		cs.add(202,200,'막대 컬러(여러색)','../Samples/Column_3D_Color2.html');				
+		cs.add(203,200,'막대 멀티 시리즈 컬러','../Samples/Column_3D_Multi_Color.html');		
+		cs.add(204,200,'라인(Line) 차트 컬러','../Samples/Line_Color.html');		
+		cs.add(205,200,'영역(Area) 차트 컬러','../Samples/Area_Color.html');
+		cs.add(206,200,'레이더 차트 컬러','../Samples/Radar_Color_Polygon.html');
+		cs.add(207,200,'조건에 따라 차트 색상 결정하기(Column)','../Samples/Column_3D_Custom_Fill.html');	
+		cs.add(208,200,'조건에 따라 차트 색상 결정하기(Bar)','../Samples/Bar_3D_Custom_Fill.html');	
+		cs.add(209,200,'조건에 따라 차트 색상 결정하기(Bubble)','../Samples/Bubble_3D_Custom_Fill.html');	
+		cs.add(210,200,'조건에 따라 차트 색상 결정하기(파이계열)','../Samples/Pie_2D_Custom_Fill.html');	
+		
+
+		cs.add(300,0,"차트 내 수치 표시",'');
+		cs.add(301,300,'수치표시 없음','../Samples/LabelField_None_Column.html');
+		cs.add(302,300,'차트 상단에 수치표시','../Samples/LabelField_Column.html');
+		cs.add(303,300,'차트 중앙에 수치표시','../Samples/LabelField_Bar.html');
+		cs.add(304,300,'차트 상단/중단/하단에 수치표시','../Samples/LabelField_Both_Column.html');
+		cs.add(305,300,'수치 + underline','../Samples/LabelField_Underline_Column.html');
+		cs.add(306,300,'파이차트에 표시','../Samples/LabelField_Pie.html');
+		cs.add(307,300,'파이차트 밖에 표시','../Samples/LabelField_Pie_Callout.html');
+		cs.add(308,300,'수치 필드 세로로 출력','../Samples/EmbededFont_Field.html');
+		cs.add(309,300,"수치 필드 사용자 정의",'../Samples/LabelField_Func_Column.html');
+		cs.add(310,300,"수치 필드 사용자 정의(파이계열)",'../Samples/LabelField_Func_Pie.html');
+
+		
+		cs.add(400,0,"차트의 데이터팁(툴팁)",'');
+		cs.add(401,400,'기본 데이터팁(툴팁)','../Samples/DataTip.html');
+		cs.add(402,400,"데이터팁(툴팁) 사용자 정의",'../Samples/DataTip_Func.html');
+		cs.add(403,400,"데이터팁(툴팁) 사용자 정의(파이계열)",'../Samples/DataTip_Func2.html');
+
+
+		cs.add(500,0,'챠트의 배경화면','');
+		cs.add(501,500,'챠트 배경(가로 라인)','../Samples/Bg_Hori.html');		
+		cs.add(502,500,'챠트 배경(세로 라인)','../Samples/Bg_Vertical.html');		
+		cs.add(503,500,'챠트 배경(가로 + 세로)','../Samples/Bg_Hori_Vertical.html');		
+		cs.add(504,500,'배경 그라데이션','../Samples/Bg_Color.html');
+		cs.add(505,500,'배경 원형 그라데이션','../Samples/Bg_RadialGradColor.html');
+		cs.add(506,500,'배경에 이미지 삽입','../Samples/Bg_Image.html');
+		cs.add(507,500,'배경에 이미지 로고 삽입','../Samples/Bg_Image_Logo.html');
+		cs.add(508,500,'배경에 이미지+그리드 라인 삽입','../Samples/Bg_Image_Line.html');
+		cs.add(509,500,'차트 외형 CSS Style 적용','../Samples/CSS_rMateChart.html');
+		cs.add(510,500,'html 바탕에 투명차트 삽입','../Samples/Bg_Html_Alpha_Chart.html');
+
+
+		cs.add(600,0,'차트의 확대/축소','');
+		cs.add(601,600,'라인차트 확대/축소(y축 고정)','../Samples/Zoom_Line_Fix.html');
+		cs.add(602,600,'라인차트 확대/축소(y축 가변)','../Samples/Zoom_Line_Flexible.html');
+		cs.add(603,600,'컬럼차트 확대/축소','../Samples/Zoom_Column.html');
+		cs.add(604,600,'바 차트 확대/축소','../Samples/Zoom_Bar.html');
+		cs.add(605,600,'Area차트 확대/축소','../Samples/Zoom_Area.html');
+		cs.add(606,600,'버블차트 확대/축소','../Samples/Zoom_Bubble.html');
+		cs.add(607,600,'Plot차트 확대/축소','../Samples/Zoom_Plot.html');
+		cs.add(608,600,'Combination 확대/축소','../Samples/Zoom_Combination.html');
+		cs.add(609,600,'Real-Time 확대/축소','../Samples/Zoom_Real_Time.html');
+
+
+		cs.add(700,0,'차트에 메모 넣기','');
+		cs.add(701,700,'기본 메모','../Samples/Memo_Basic.html');
+		cs.add(702,700,'메모에 테두리 넣기','../Samples/Memo_BorderColor.html');
+		cs.add(703,700,'메모 폰트/컬러/크기 변경','../Samples/Memo_Font_Color_Size.html');
+		cs.add(704,700,'외부폰트를 이용한 메모 넣기','../Samples/Memo_Embeded_Font.html');
+
+
+		cs.add(800,0,'사이드 바','');
+		cs.add(801,800,'기본형 사이드바','../Samples/SideBar_Basic.html');
+		cs.add(802,800,'사이드바 메뉴 추가/삭제 설정','../Samples/SideBar_EditItem.html');
+		cs.add(803,800,'사이드바 전체 메뉴','../Samples/SideBar_All.html');
+		cs.add(804,800,'사이드바 없애기','../Samples/SideBar_Hide.html');
+
+		cs.add(900,0,'축(X, Y)','');
+		cs.add(901,900,'축의 제목(대표문자)','../Samples/XY_One_Label.html');
+		cs.add(902,900,'축의 제목 스타일','../Samples/XY_Label.html');		
+		cs.add(903,900,'축 꾸미기','../Samples/XY_Tick.html');						
+		cs.add(904,900,'축의 위치바꾸기','../Samples/XY_Revers.html');		
+		cs.add(905,900,'Y축 삭제','../Samples/XY_Y_Remove.html');
+		cs.add(906,900,'Invert Y축','../Samples/XY_Invert_Y.html');
+		cs.add(906,900,'X축 Category축, Y축 Linear축','../Samples/XY_CatLin.html');
+		cs.add(907,900,'X축 DateTime축, Y축 Log축','../Samples/XY_DateLog.html');
+		cs.add(908,900,'X축 Category축, Y축 Log축','../Samples/XY_LogLog_Column.html');
+		cs.add(909,900,'X축 Log축, Y축 Log축','../Samples/XY_LogLog_Line.html');
+		cs.add(911,900,'얇은 3D 축','../Samples/XY_Thin_3D.html');
+		cs.add(910,900,'듀얼(Dual) 축','../Samples/XY_Dual.html');
+		cs.add(911,900,'듀얼축 - 트리플 시리즈','../Samples/XY_Dual2.html');
+		cs.add(912,900,'트리플(Triple) 축','../Samples/XY_Triple.html');	
+		cs.add(913,900,'축 CSS 적용','../Samples/CSS_Exam2.html');
+
+
+		cs.add(1000,0,'축에 범위/선긋기','');
+		cs.add(1001,1000,'축에 한계선 긋기','../Samples/Column_3D_TargetLine.html');
+		cs.add(1002,1000,'축에 상하한선 긋기','../Samples/Line_2D_TargetLine.html');
+		cs.add(1003,1000,'축에 다수의 선 긋기','../Samples/Axis_Multi_Line.html');
+		cs.add(1004,1000,'축에 범위 넣기','../Samples/Axis_Area.html');
+		cs.add(1005,1000,'축에 다수의 범위 넣기','../Samples/Axis_Multi_Area.html');
+		cs.add(1006,1000,'축에 범위 + 선 긋기','../Samples/Axis_Area_Line.html');
+		cs.add(1007,1000,'마우스 이동에 따른 십자가 표시','../Samples/CrossHair_MouseMove.html');
+
+		
+		cs.add(1100,0,'축 라벨(Label)','');
+		cs.add(1101,1100,'천단위로 컴마 구분자 넣기','../Samples/Formatter_Number.html');
+		cs.add(1102,1100,'통화단위 원 넣기','../Samples/Formatter_Currency2.html');
+		cs.add(1103,1100,'통화단위 달러 넣기','../Samples/Formatter_Currency.html');
+		cs.add(1104,1100,'날짜표시(YYYY년 MM월 DD일)','../Samples/Formatter_Date.html');
+		cs.add(1105,1100,'날짜표시(M월 D일 YY년)','../Samples/Formatter_Date2.html');
+		cs.add(1106,1100,"X축 라벨 사용자 정의",'../Samples/Label_Func_X.html');
+		cs.add(1107,1100,"X축 라벨 사용자 정의(스크롤 차트)",'../Samples/Label_Func_X_Scroll.html');
+		cs.add(1108,1100,"Y축 라벨 사용자 정의",'../Samples/Label_Func_Y.html');
+		cs.add(1109,1100,'X축 라벨 회전하여 출력(숫자)','../Samples/EmbededFont_XLabel.html');	
+		cs.add(1110,1100,'한글 세로로 출력','../Samples/Label_Vertical_Hangeul.html');
+		cs.add(1111,1100,'외부 폰트를 이용한 한글 기울여 출력','../Samples/EmbededFont_Hangeul_Rotation_Label.html');
+		cs.add(1112,1100,'영문 세로로 출력','../Samples/Label_Vertical_Eng.html');
+		cs.add(1113,1100,'외부 폰트를 이용한 영문 기울여 출력','../Samples/EmbededFont_Eng_Rotation_Label.html');
+		cs.add(1114,1100,'외부 폰트를 이용한 라벨 회전하여 출력','../Samples/EmbededFont_Rotation_Label.html');
+
+
+		cs.add(1200,0,'범례','');
+		cs.add(1201,1200,'하단','../Samples/Legend_Bottom.html');
+		cs.add(1202,1200,'오른쪽','../Samples/Legend_Right.html');
+		cs.add(1203,1200,'상단','../Samples/Legend_Top.html');
+		cs.add(1204,1200,'상단 오른쪽','../Samples/Legend_Top_Right.html');
+		cs.add(1205,1200,'왼쪽','../Samples/Legend_Left.html');
+
+
+		cs.add(1300,0,'데이터 에디터','');
+		cs.add(1301,1300,'기본 데이터 에디터','../Samples/DataEditor_Basic.html');
+		cs.add(1302,1300,'데이터 에디터 색상 변경','../Samples/DataEditor_Color.html');
+		cs.add(1303,1300,'Huge 데이터 에디터','../Samples/DataEditor_HugeData.html');
+
+		cs.add(1400,0,'마우스 이벤트','');
+		cs.add(1401,1400,'변경 없음','../Samples/Mouse_None.html');
+		cs.add(1402,1400,'오버 시 툴팁','../Samples/Mouse_Tooltip.html');	
+		cs.add(1403,1400,'오버 시 강조 + 툴팁+클릭시 빗금','../Samples/Mouse_Mix.html');		
+		cs.add(1404,1400,'클릭 시 파이 챠트 액션','../Samples/Click_Pie_2D.html');	
+		cs.add(1405,1400,'클릭 시 도넛 챠트 3D 액션','../Samples/Click_Doughnut_3D.html');
+		cs.add(1406,1400,'클릭한 아이템 정보 보기','../Samples/Click_Bar_3D.html');
+		cs.add(1407,1400,'클릭 시 URL 이동','../Samples/Click_Column_3D.html');
+		cs.add(1408,1400,'클릭 시 데이터로 다른 차트 생성','../Samples/Click_Pie3D_CreateChart.html');
+		
+		
+		cs.add(1500,0,'차트 동적으로 변경','');
+		cs.add(1501,1500,'다른 차트로 데이터 표현','../Samples/Dynamic_Change_Layout.html');
+		cs.add(1502,1500,'데이터 동적으로 변경','../Samples/Dynamic_Change_Data.html');
+		cs.add(1503,1500,'데이터,레이아웃 변경','../Samples/Dynamic_Change_Both.html');
+		cs.add(1504,1500,'레이아웃 변수 처리로 동적 생성','../Samples/Var_Dynamic_Layout.html');
+		
+		cs.add(1600,0,'서버로 이미지 전송','');
+		cs.add(1601,1600,'서버로 이미지 전송','../Samples/GetImageSnapshot.html');
+	
+		
+		cs.add(1700,0,'여러 차트 삽입','');
+		cs.add(1701,1700,'각각 다른 차트와 데이터','../Samples/Dual_Chart.html');
+		cs.add(1702,1700,'같은 차트, 다른 데이터','../Samples/Dual_Chart2.html');
+		
+
+		cs.add(1800,0,'대용량 데이터','');
+		cs.add(1801,1800,'라인 차트(데이터 3,000개)','../Samples/HugeData_Line.html');
+		cs.add(1802,1800,'플롯 차트(데이터 10,000개)','../Samples/HugeData_Plot.html');
+		cs.add(1803,1800,'스크롤 차트(데이터 1,000개)','../Samples/HugeData_Column.html');
+
+
+		cs.add(1900,0,'차트 출력 완료 이벤트 처리','');
+		cs.add(1901,1900,'차트 출력 완료 시 JS 함수 호출하기','../Samples/ChartLoadComp_CallJavascript.html');
+
+	
+		cs.add(2000,0,'차트 외형 설정 및 데이터 연동 방식','');
+		cs.add(2001,2000,'String 레이아웃 / 배열 데이터','../Samples/Embeding_String_Array.html');
+		cs.add(2002,2000,'URL 레이아웃 / 배열 데이터','../Samples/Embeding_URL_Array.html');
+		cs.add(2003,2000,'String 레이아웃 / XML URL 데이터','../Samples/Embeding_String_URL.html');
+		cs.add(2004,2000,'URL 레이아웃 / XML URL 데이터','../Samples/Embeding_URL_URL.html');
+		cs.add(2005,2000,'flashVars 변수로 삽입','../Samples/Embeding_flashVars.html');
+
+		
+		cs.add(2100,0,'한글 처리','');
+		cs.add(2101,2100, '레이아웃 XML euc-kr 인코딩','../Samples/Euc_KR.html');
+		
+		document.write(cs);
+
+		//-->
+	</script>
+	<p><a href="javascript: cs.openAll();">Open all</a> | <a href="javascript: cs.closeAll();">Close all</a></p>
+   </div>  
+
+ </div> 
+</td></tr></table>
+</body>
+</html>

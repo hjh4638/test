@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report" /> 
+	</Options>
+	<NumberFormatter id="numFmt"/>
+	<Bar3DChart showDataTips="true" itemClickJsFunction="chartClick">
+<!-- 
+itemClickJsFunction : Bar3DChart의 시리즈를 클릭 하였을 때 실행되는 Javascript함수로
+	  	       html 내에 정의한 Javascript함수로 데이터를 보냅니다
+		       이 예제에서는 클릭 된 시리즈에 대한 정보를 보내고 있습니다
+-->
+		<horizontalAxis>
+			<LinearAxis formatter="{numFmt}" maximum="3500"/>
+		</horizontalAxis>
+		<verticalAxis>
+			<CategoryAxis categoryField="Month"/> 
+		</verticalAxis>
+		<series>
+			<Bar3DSeries id="series1" xField="Profit" displayName="Revenue" labelPosition="inside" labelAlign="center" styleName="seriesStyle"  formatter="{numFmt}" buttonMode="true">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Bar3DSeries>
+			<Bar3DSeries id="series2" xField="Cost" displayName="Revenue" labelPosition="inside" labelAlign="center" styleName="seriesStyle" formatter="{numFmt}"  buttonMode="true">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Bar3DSeries>
+			<Bar3DSeries id="series3" xField="Revenue" displayName="Revenue" labelPosition="inside" labelAlign="center" styleName="seriesStyle" formatter="{numFmt}"  buttonMode="true">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Bar3DSeries>
+		</series>
+	</Bar3DChart>
+	<Style>
+		.seriesStyle{
+			fontFamily:돋움;
+			fontSize:11;
+			color:0x000000;
+			textDecoration:underline;
+		}
+	</Style>
+</rMateChart>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report" /> 
+	</Options>
+	<NumberFormatter id="numFmt"/>
+	<DateFormatter id="dateFmt" formatString="YY/M/D"/>
+	<Line2DChart showDataTips="true">
+		<horizontalAxis>
+			<DateTimeAxis id="hAxis" dataUnits="days" labelUnits="days" formatter="{dateFmt}" title="DateTime Axis" 
+			interval="3" displayName="Date" alignLabelsToUnits="false" displayLocalTime="true"/> 
+<!-- 
+x축 DateTimeAxis 속성 
+dataUnits ┬ milisconds : 그래프 내에서 데이터의 표시에 사용하는 단위를 지정합니다
+	  ├ seconds
+	  ├ minutes
+	  ├ housrs
+	  ├ days	
+	  ├ weeks
+	  ├ months
+	  └ years
+labelUnits ┬ milisconds : 라벨에 나타날 단위를 지정합니다
+	   ├ seconds
+	   ├ minutes
+	   ├ housrs
+	   ├ days	
+	   ├ weeks
+	   ├ months
+	   └ years
+title : 축의 대표 제목 입니다
+interval : 축에 나타나는 라벨의 시간, 날짜 간격을 나타냅니다
+dataInterval : dataUnits으로 지정된 그래프내의 데이터의 간격을 지정합니다 
+displayName : 툴팁에 나타날 축을 대표하는 문자열을 입력하세요
+displayLocalTime : True로 설정 되엇을 경우, DataTimeAxis에 의해, 모든 데이터치가 
+				      어플리케이션을 실행하는 클라이언트 머신의 타임존에 있다고 보여집니다
+				   False는 세계 표준시
+labelJsFunction : 축 라벨 텍스트를 사용자 정의할 함수를 나타냅니다
+-->
+		</horizontalAxis>
+		<verticalAxis>
+			<LogAxis id="vAxis" title="Log Axis" formatter="{numFmt}" interval="10" minimum="100"/>
+<!-- 
+LogAxis 속성
+interval : 10의 승수 단위로 라벨에 표시합니다
+minimum : 축 라벨의 최소치를 나타냅니다
+maximum : 축 라벨의 최대치를 나타냅니다
+title : 축의 대표 제목 입니다
+labelJsFunction : 축 라벨 텍스트를 사용자 정의할 함수를 나타냅니다
+displayName : 툴팁에 나타날 축을 대표하는 문자열을 입력하세요
+baseAtZero : minimim및 maximum의 값을 0으로 할지 지정합니다
+-->
+		</verticalAxis>
+		<series>
+			<Line2DSeries xField="Date" yField="Profit" displayName="Profit" formatter="{numFmt}">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Line2DSeries>
+		</series>
+	</Line2DChart>
+</rMateChart>

@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xEEEEEE" cornerRadius="12" borderStyle="solid">
+	<Options>
+		 <Caption text="게이지 예제 - Silver" /> 
+		<SubCaption text="게이지, 색상, 그라데이션 등을 변경 할 수 있습니다." textAlign="right" paddingRight="10" fontSize="11" /> 
+	</Options>
+	<NumberFormatter id="numFmt" precision="0"/>
+	<!-- editMode : 사용자의 마우스 클릭으로 게이지 값을 수정할지를 나타냅니다. -->
+	<CircularGauge width="300" height="300" 
+				valueChangeFunction="valueChangeFunc"
+				startAngle="90" minimumAngle="0" maximumAngle="360"
+				minimum="0" maximum="100" value="50"
+				interval="10" minorInterval="2"
+				padding="0"
+				labelGap="10"
+				tickGap="10"
+				formatter="{numFmt}"
+				tickLabelStyleName="tickText"
+				valueLabelStyleName="valueText"
+				editMode="false"
+				showDataTip="true"
+				needleCoverRadius="20"
+				needleThickness="20"
+				pointThickness="20"
+				needleLengthRatio="0.7"
+				needlePointStyle="steeple"
+				needleBackLengthRatio="0"
+				enableFilter="false"
+				valueYOffset="50"
+				showTrackColor="true"
+				trackColors="[0x5EBAEF,0xE43345]"
+				trackAlphas="[1,1]"
+				trackValues="[80,90,100]"
+				trackOuterRadius="1"
+				trackInnerRadius="0.9"
+				animationDuration="1000">
+			<frameStroke>
+				<Stroke color="0x232323" weight="10"/>
+			</frameStroke>
+			<frameFill>
+				<RadialGradient focalPointRatio="-0.4" angle="45">
+					<entries>
+						<GradientEntry color="0xEFEFEF" ratio="0" alpha="1"/>
+						<GradientEntry color="0xCCCCCC" ratio="0.8" alpha="1"/>
+						<GradientEntry color="0xEEEEEE" ratio="1" alpha="1"/>
+					</entries>
+				</RadialGradient>
+			</frameFill>
+			<needleFill>
+				<LinearGradient angle="90">
+					<entries>
+						<GradientEntry color="0xaaaaaa" ratio="0" alpha="1"/>
+						<GradientEntry color="0x464646" ratio="1" alpha="1"/>
+					</entries>
+				</LinearGradient>
+			</needleFill>
+			<needleCoverFill>
+				<SolidColor color="0xB0B0B0"/>
+			</needleCoverFill>
+			<tickFill>
+				<SolidColor color="0xFF6600"/>
+			</tickFill>
+			<minorTickFill>
+				<SolidColor color="0x932108"/>
+			</minorTickFill>
+	</CircularGauge>
+	<Style>
+		.valueText
+		{
+			fontSize:12;
+			fontFamily:Myriad;
+			textAlign:center;
+			borderColor:0x999999;
+			backgroundColor:0xFFFFFF;
+			backgroundAlpha:1;
+			paddingTop:2;
+			borderThickness:1;
+			borderAlpha:1;
+			borderStyle:solid;
+			color:0xFF6600;
+		}
+
+		.tickText
+		{
+			fontFamily:Myriad;
+			fontSize:18;
+			color:0x555555;
+		}
+	</Style>
+</rMateChart>

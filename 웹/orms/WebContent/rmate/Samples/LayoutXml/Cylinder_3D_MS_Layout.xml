@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report"/>
+	</Options>
+	<Column3DChart showDataTips="true"  cubeAngleRatio="1" columnWidthRatio="0.85">
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month"/> 
+		</horizontalAxis>
+		<series>
+		<!-- Cylinder3D Multi-Sereis 를 생성시에는 Column3DSeries를 여러 개 정의합니다  -->
+			<Column3DSeries  labelPosition="inside" yField="Profit" displayName="Profit" itemRenderer="CylinderItemRenderer">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Column3DSeries>
+			<Column3DSeries labelPosition="inside" yField="Cost" displayName="Cost" itemRenderer="CylinderItemRenderer">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Column3DSeries>
+			<Column3DSeries labelPosition="inside" yField="Revenue" displayName="Revenue" itemRenderer="CylinderItemRenderer">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Column3DSeries>
+		</series>
+	</Column3DChart>
+</rMateChart>

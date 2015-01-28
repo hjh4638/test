@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="System">
+<typeAlias alias="SystemVO" type="mil.af.orms.model.SystemVO" />
+
+
+<select id="getAuthSelectList" resultClass="SystemVO">
+select A.USERID, A.RANKNAME||' '||A.NAME as NAME, A.FULLASS as BOJIK 
+from avs11u0t A
+where SOSOKCODE like #flightGroup#||'%'
+</select>
+	
+<select id="getAuthViewList" resultClass="SystemVO">
+select C.userid,
+  C.INTRASOSOKNAME sosok,
+  C.RANKNAME||' '||C.NAME as NAME,
+  B.CODENAME as role_code
+from orms_user_info A,
+  orms_sys_code B,
+  avs11u0t C
+where A.ROLE_CODE = B.CODE
+  and A.SN = C.USERID
+  and B.M_CODE = 'ORM008' 
+order by role_code
+ </select>
+
+
+<insert id="insertAuthList" parameterClass="Map">0
+insert into orms_user_info
+values(
+#sosokcode#,
+
+(select distinct(unit_code) from 
+orms_unit where lev = '2' and #sosokcode# like unit_code||'%'),
+
+#sn#,
+#role_code#)
+</insert>
+
+<delete id="deleteAuthList"  parameterClass="Map">
+DELETE FROM orms_user_info
+WHERE  sn = #sn#
+</delete>
+
+<select id="searchAuthViewList" parameterClass="String" resultClass="SystemVO">
+select C.userid,
+  C.INTRASOSOKNAME sosok,
+  C.RANKNAME||' '||C.NAME as NAME,
+  B.CODENAME as role_code
+from orms_user_info A,
+  orms_sys_code B,
+  avs11u0t C
+where A.ROLE_CODE = B.CODE
+  and A.SN = C.USERID
+  and B.M_CODE = 'ORM008' 
+and A.UNIT_CODE like #sosokcode#||'%'
+order by role_code
+</select>
+
+</sqlMap>

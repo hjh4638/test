@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="연도별 가계 지출 품목 분석"/>
+		<SubCaption text="(2005~2008)"/>
+		<Legend useVisibleCheck="true"/>
+		<DataEditor showOnInit="true" fontSize="12"/>
+	</Options>
+	<RadarChart id="chart1"
+	            isSeriesOnAxis="true"
+	            type="polygon"
+				paddingTop="25"
+				paddingBottom="25"
+	            showDataTips="true">
+	            <radialAxis>
+	            	<LinearAxis id="rAxis"/>
+	            </radialAxis>
+
+	            <angularAxis>
+					<CategoryAxis id="aAxis" categoryField="catName" displayName="Category" />
+				</angularAxis>
+				<!-- radial Axis 세로축만 표시 -->
+				<radialAxisRenderers>
+	            	<Axis2DRenderer axis="{rAxis}" horizontal="true" visible="false"/>
+	            	<Axis2DRenderer axis="{rAxis}" horizontal="false" visible="true"/>
+	            </radialAxisRenderers>
+	            <angularAxisRenderers>
+	            	<AngularAxisRenderer axis="{aAxis}"/>
+	            </angularAxisRenderers>
+	          <series>
+	          	<RadarSeries field="year2005" 
+	          				displayName="2005년"
+							fillLineArea="false">
+				<!-- fillLineArea : 레이더 차트 시리즈가 표현한 라인 안쪽에 색깔을 채울지 여부를 정의합니다 --> 
+	          				<showDataEffect>
+	          					<SeriesInterpolate/>
+	          				</showDataEffect>
+	          				<stroke> <!-- 데이터 포인트에 찍힌 도형의 외곽 테두리 선 스타일  -->
+	          					<Stroke color="0xE48701" weight="2"/>
+	          				</stroke>
+	          				<lineStroke> <!-- 레이더 라인 스타일 -->
+	          					<Stroke color="0xE48701" weight="2"/>
+	          				</lineStroke>
+	          				<fill> <!--  데이터 포인트에 찍힌 도형의 안쪽 채우기 색 -->
+	          					<SolidColor color="0xFFFFFF"/>
+	          				</fill>
+	          	</RadarSeries>
+	          						
+	          	<RadarSeries field="year2006" 
+	          				displayName="2006년"
+							fillLineArea="false">
+	          				<showDataEffect>
+	          					<SeriesInterpolate/>
+	          				</showDataEffect>
+	          				<stroke>
+	          					<Stroke color="0xB0C759" weight="2"/>
+	          				</stroke>
+	          				<lineStroke>
+	          					<Stroke color="0xB0C759" weight="2"/>
+	          				</lineStroke>
+	          				<fill>
+	          					<SolidColor color="0xFFFFFF"/>
+	          				</fill>
+	          	</RadarSeries>
+	          	<RadarSeries field="year2007" 
+	          				displayName="2007년"
+							fillLineArea="false">
+	          				<showDataEffect>
+	          					<SeriesInterpolate/>
+	          				</showDataEffect>
+	          				<stroke>
+	          					<Stroke color="0x0A80C4" weight="2"/>
+	          				</stroke>
+	          				<lineStroke>
+	          					<Stroke color="0x0A80C4" weight="2"/>
+	          				</lineStroke>
+	          				<fill>
+	          					<SolidColor color="0xFFFFFF"/>
+	          				</fill>
+	          	</RadarSeries>
+	          	<RadarSeries field="year2008" 
+	          				displayName="2008년"
+							fillLineArea="false">
+	          				<showDataEffect>
+	          					<SeriesInterpolate/>
+	          				</showDataEffect>
+	          				<stroke>
+	          					<Stroke color="0xCC99CC" weight="2"/>
+	          				</stroke>
+	          				<lineStroke>
+	          					<Stroke color="0xCC99CC" weight="2"/>
+	          				</lineStroke>
+	          				<fill>
+	          					<SolidColor color="0xFFFFFF"/>
+	          				</fill>
+	          	</RadarSeries>
+	          </series>
+		</RadarChart>
+</rMateChart>

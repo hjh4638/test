@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report"/>
+	</Options>
+	<Combination2DChart showDataTips="true">
+<!-- 
+Combination2D 차트 생성시에 필요한 Combination2DChart 정의합니다 
+showDataTips : 데이터에 마우스를 가져갔을 때 나오는 Tip을 보이기/안보이기 속성입니다  
+-->
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month" /> 
+		</horizontalAxis>
+		<series>
+			<Column2DSeries labelPosition="inside" selectable="true" yField="Profit" displayName="Profit" itemRenderer="SemiCircleColumnItemRenderer">
+			<showDataEffect>
+				<SeriesInterpolate/> 
+			</showDataEffect>
+			<fill>
+				<SolidColor color="0x66CC66" /> 
+			</fill>
+			</Column2DSeries>
+			<Line2DSeries labelPosition="up" selectable="true" yField="Cost" displayName="Cost" styleName="lineSeriesLabel">
+					<showDataEffect>
+						<SeriesInterpolate/> 
+					</showDataEffect>
+				<filters>
+					<DropShadowFilter distance="3" color="0x666666" alpha=".8" /> 
+				</filters>
+				<lineStroke>
+					<Stroke color="0xFFCC00" weight="4" /> 
+				</lineStroke>
+				<fill>
+					<SolidColor color="0xFFCC00" /> 
+				</fill>
+			</Line2DSeries>
+		</series>
+	</Combination2DChart>
+	<Style>
+		.lineSeriesLabel{
+			color:#0000ff;
+			fontWeight:bold;
+		}
+	</Style>
+</rMateChart>

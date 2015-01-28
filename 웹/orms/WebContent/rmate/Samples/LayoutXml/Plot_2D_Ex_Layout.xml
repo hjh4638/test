@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Legend useVisibleCheck="true"/>
+	</Options>
+	<NumberFormatter id="numFmt" precision="0"/>
+	<Plot2DChart showDataTips="true">
+		<verticalAxis>
+			<LinearAxis maximum="3200" interval="400"/>
+		</verticalAxis>
+		<horizontalAxis>
+			<LinearAxis maximum="3200" interval="400"/>
+		</horizontalAxis>
+		<backgroundElements>
+			<GridLines direction="both" horizontalShowCenterLine="true" verticalShowCenterLine="true">
+<!--
+
+horizontalShowCenterLine : Chart 가운데에 수평축을 그립니다
+verticalShowCenterLine : Chart 가운데에 수직축을 그립니다 
+-->
+				<horizontalCenterStroke>
+				<!-- Chart 가운데 수평축 선 -->
+					<Stroke color="0xFF0000" weight="1"/>
+					<!-- color:색깔 weight:굵기 -->
+				</horizontalCenterStroke>
+				<verticalCenterStroke>
+				<!-- Chart 가운데 수직축 선 -->
+					<Stroke color="0xFF0000" weight="1"/>
+					<!-- color:색깔 weight:굵기 -->
+				</verticalCenterStroke>
+			</GridLines>
+		</backgroundElements>
+
+		<series>
+			<Plot2DSeries xField="Cost" yField="Profit" radius="5" displayName="Cost/Profit">
+				<showDataEffect>
+					<SeriesZoom   relativeTo="series"/>
+				</showDataEffect>
+			</Plot2DSeries>
+			<Plot2DSeries xField="Revenue" yField="Profit" radius="5" displayName="Revenue/Profit">
+				<showDataEffect>
+					<SeriesZoom   relativeTo="series"/>
+				</showDataEffect>
+			</Plot2DSeries>
+			<Plot2DSeries xField="Cost" yField="Revenue" radius="5" displayName="Cost/Revenue">
+				<showDataEffect>
+					<SeriesZoom   relativeTo="series"/>
+				</showDataEffect>
+			</Plot2DSeries>
+		</series>
+		<annotationElements>
+			<CrossRangeZoomer zoomType="both" enableZooming="false" verticalLabelFormatter="{numFmt}" horizontalLabelFormatter="{numFmt}"/>
+		</annotationElements>
+	</Plot2DChart>
+</rMateChart>

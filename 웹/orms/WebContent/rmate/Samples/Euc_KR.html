@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title></title>
+<script src="./JS/AC_OETags.js" language="javascript"></script>
+<script src="./JS/rMateChart.js" language="javascript"></script>
+<script src="./JS/rMateChartLicense.js" language="javascript"></script>
+<link rel="styleSheet" href="rMateStyle.css"/>
+<style type="text/css">
+body { margin: 0px; overflow:hidden }
+</style>
+
+
+<!-- 사용자 정의 설정 시작 -->
+<script language="JavaScript" type="text/javascript">
+
+window.onload = function()
+{
+	rMateChartInit();
+}
+
+// 차트 레이아웃 URL 경로. 반드시 설정하십시오.
+var layoutURL = encodeURIComponent("./LayoutXml/chartLayout(euc_kr).xml"); 
+var rMateOnLoadCallFunction = "rMateChartOnLoad";
+var flashVars = "layoutURL="+layoutURL;
+flashVars += "&rMateOnLoadCallFunction="+rMateOnLoadCallFunction;
+
+// 시스템 코드 사용..
+flashVars += "&flash.system.System.useCodePage=true";
+ 
+function rMateChartOnLoad() 
+{
+	// 데이터삽입.
+	document.getElementById("chart1").setData(chartData); 
+}
+
+var chartData = [{"Month":"Jan", "Revenue":10000, "Cost":5000},
+	{"Month":"Feb", "Revenue":15000, "Cost":7000},
+	{"Month":"Mar", "Revenue":12000 , "Cost":6000},
+	{"Month":"Apr", "Revenue":30200, "Cost":4000},
+	{"Month":"May", "Revenue":28000, "Cost":10000},
+	{"Month":"Jun", "Revenue":12000, "Cost":5000},
+	{"Month":"Jul", "Revenue":22000, "Cost":10000},
+	{"Month":"Aug", "Revenue":13000, "Cost":6000},
+	{"Month":"Sep", "Revenue":22000, "Cost":10000},
+	{"Month":"Oct", "Revenue":29000, "Cost":8000},
+	{"Month":"Nov", "Revenue":18000, "Cost":7500},
+	{"Month":"Dec", "Revenue":30000, "Cost":12000} ];
+
+<!-- 사용자 정의 설정 끝  -->
+</script>
+</head>
+
+<body>
+	<div class="wrap">
+		<div class="header">
+			<div class="header_title">
+				<p>Combination Chart</p> 
+			</div>
+		</div>
+		<div class="content">
+			<script language="javascript">
+				<!--
+					rMateChartCreate("chart1","../Component/rMateChart",flashVars, 600, 400, "#FFFFFF");
+				// -->
+			</script>
+		</div>
+		<div class="footer">
+			<div class="footer_button">
+			<a href="#" onclick="javascript:window.open('./LayoutXml/chartLayout(euc_kr).xml', '_blank', 'width=1024 height=768 scrollbars=yes')">
+			<img src="./Images/viewLayout.png" width="100" height="22" border="0"/></a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

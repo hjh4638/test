@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report" />
+		<SubCaption text="차트가 내장하고 있는 Myriad 폰트를 사용한 예제입니다." fontSize="11" textAlign="right" />
+	</Options>
+	<NumberFormatter id="numFmt"/>
+	<Column3DChart showDataTips="true">
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month"/> 
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis formatter="{numFmt}" maximum="3500"/>
+		</verticalAxis>
+		<series>
+			<Column3DSeries yField="Profit" showLabelVertically="true" displayName="Profit" formatter="{numFmt}" labelPosition="inside" styleName="seriesStyle">
+			<!-- showLabelVertically를 true로 할당합니다 -->
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Column3DSeries>
+		</series>
+	</Column3DChart>
+	<Style>
+		.seriesStyle{
+			paddingTop:6;
+			fontFamily:Myriad;
+			fontSize:11;
+			color:0x0000FF;
+		}
+	</Style>
+</rMateChart>

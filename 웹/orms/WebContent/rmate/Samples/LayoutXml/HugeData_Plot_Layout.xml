@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="대용량(데이터 10000개) 플롯 차트"/>
+	</Options>
+	<Plot2DChart showDataTips="true">
+		<series>
+			<Plot2DSeries yField="Profit" xField="Cost">
+			</Plot2DSeries>
+		</series>
+	</Plot2DChart>
+</rMateChart>

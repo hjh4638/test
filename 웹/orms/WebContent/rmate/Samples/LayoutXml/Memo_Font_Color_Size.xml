@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="M.E.M.O"/>
+	</Options>
+	<Bar2DChart showDataTips="true">
+		<verticalAxis>
+			<CategoryAxis categoryField="Month"/> 
+		</verticalAxis>
+		<horizontalAxis>
+			<LinearAxis id="vAxis"/>
+		</horizontalAxis>
+		<verticalAxisRenderers>
+			<Axis2DRenderer  axis="{vAxis}"/>
+		</verticalAxisRenderers>
+		<series>
+			<Bar2DSeries labelPosition="inside" xField="Profit" displayName="Profit">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Bar2DSeries>
+		</series>
+		<annotationElements>
+			<CanvasElement>
+				<Label right="0" textAlign="center" text="글씨 크기 예제 입니다." color="0xffffff" textDecoration="underline" backgroundColor="0x9d4c64" fontSize="17" borderStyle="solid" borderColor="0x9d4c64">
+					<filters>
+						<DropShadowFilter color="0x9d4c64"/>
+					</filters>
+				</Label>
+				<Label width="150" top="150" right="20" textAlign="center" text="글씨 색상 예제 입니다." cornerRadius="20" fontSize="11" color="0xff0000" borderStyle="solid" borderColor="0x0000ff" backgroundColor="0xf5d6fc"/>
+
+				<Label width="200" height="60" top="230" right="20" cornerRadius="12" textAlign="center" text="색상과 크기&#xa;예제 입니다." fontSize="20" color="0xffffff" borderStyle="solid" fontWeight="bold" fontStyle="italic" borderColor="0xcea614" backgroundColor="0xff6634" backgroundAlpha="1">
+				<!-- 띄어쓰기는 &#xa; 를 사용하여주십시오. -->
+					<filters>
+						<DropShadowFilter color="0xff6634" distance="10"/>
+					</filters>
+				</Label>
+			</CanvasElement>
+		</annotationElements>
+	</Bar2DChart>
+</rMateChart>

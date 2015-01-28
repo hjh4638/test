@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title></title>
+<script src="./JS/AC_OETags.js" language="javascript"></script>
+<script src="./JS/rMateChart.js" language="javascript"></script>
+<script src="./JS/rMateChartLicense.js" language="javascript"></script>
+
+<style type="text/css">
+
+body
+{ 
+	margin: 0px; 
+	overflow:hidden 
+}
+
+.wrap
+{
+	position:absolute;
+	top:40px;
+	left:50%;
+	width:800px;
+	height:450px;
+	margin: 0 0 0 -400px;
+}
+
+.header
+{
+	position:absolute;
+	width:100%;
+}
+
+.header_title
+{
+	font-family:verdana;
+	text-align:center;
+}
+
+.header_description
+{
+	font-family:arial;
+}
+
+.content
+{
+	position:absolute;
+	top:70px;
+}
+
+.footer
+{
+	position:absolute;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	text-align:center;
+}
+
+.footer_button{}
+
+.footer_description
+{
+	border:2px solid #b7babc;
+	position:relative;
+	top:10px;
+	font-family:arial;
+}
+
+</style>
+
+
+<!-- 사용자 정의 설정 시작 -->
+<script language="JavaScript" type="text/javascript">
+
+window.onload = function()
+{
+	rMateChartInit();
+}
+
+// -----------------------1번 차트 flashVars 설정 시작-----------------------
+// 차트 레이아웃 URL 경로. 반드시 설정하십시오.
+
+var flashVars;
+
+var rMateOnLoadCallFunction = "rMateChartOnLoad";
+
+ flashVars += "&rMateOnLoadCallFunction="+rMateOnLoadCallFunction;
+
+ function rMateChartOnLoad()
+ {
+	 document.getElementById("chart1").setData(data);
+	 document.getElementById("chart1").setLayout(layout);
+ }
+
+function labelFunction(value)
+{
+	
+}
+var today = "2010/2/16";
+
+var layout = "<rMateChart cornerRadius='12' borderStyle='solid'>"
+			+"<Options>"
+			+"<Caption text='하루 일과표'/>"
+			+"</Options>"
+			+"<DateFormatter id='dateFmt' formatString='HH:NN'/>"
+			+"<Bar2DChart showDataTips='true' fontSize='11'>"
+			+"<seriesFilters>"
+			+"<DropShadowFilter alpha='0'/>"
+			+"</seriesFilters>"
+			+"<verticalAxis>"
+			+"<CategoryAxis categoryField='cat'/>"
+			+"</verticalAxis>"
+			+"<horizontalAxis>"
+			+"<DateTimeAxis displayLocalTime='true' id='hAxis' labelUnits='hours' minimum='"+today+" 8:30:00' maximum='"+today+" 18:00:00'/>"
+			+"</horizontalAxis>"
+			+"<series>"
+			+"<Bar2DSeries id='series1' minField='date1' xField='date2' labelPosition='inside' itemRenderer='BoxItemRenderer' formatter='{dateFmt}'>"
+			+"<stroke><Stroke color='0x000000' weight='1'/></stroke>"
+			+"<showDataEffect><SeriesSlide direction='right' duration='600' elementOffset='0'/></showDataEffect>"
+			+"</Bar2DSeries>"
+			+"</series>"
+			+"</Bar2DChart>"
+			+"</rMateChart>";
+
+var data= [
+			{"cat":"티 타임", "date1":today+" 08:30:00", "date2":today+" 09:00:00"},
+            {"cat":"팀 미팅", "date1":today+" 09:00:00", "date2":today+" 10:00:00"},
+        	{"cat":"A 업무", "date1":today+" 10:10:00", "date2":today+" 11:50:00"},
+        	{"cat":"점심식사", "date1":today+" 11:50:00", "date2":today+" 13:00:00"},
+        	{"cat":"B 업무", "date1":today+" 13:00:00", "date2":today+" 15:00:00"},
+        	{"cat":"보고회의", "date1":today+" 15:20:00", "date2":today+" 16:30:00"},
+        	{"cat":"B 업무", "date1":today+" 16:30:00", "date2":today+" 17:30:00"},
+        	{"cat":"정리 및 보고", "date1":today+" 17:40:00", "date2":today+" 18:00:00"}
+			];
+
+<!-- 사용자 정의 설정 끝  -->
+</script>
+</head>
+
+<body>
+	<div class="wrap">
+		<div class="header">
+			<div class="header_title">
+				<p>From-To Bar 2D Chart</p>
+			</div>
+			<div class="header_description">
+				<p>레이아웃 설정 및 데이터 삽입은 각각 스트링형태와 배열입니다.(소스보기 참고)</p>
+			</div>
+		</div>
+		<div class="content">
+			<script language="javascript">
+				<!--
+					rMateChartCreate("chart1","../Component/rMateChart",flashVars, 800, 400, "#FFFFFF");
+				// -->
+			</script>
+		</div>
+	</div>
+</body>
+</html>

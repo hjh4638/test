@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="목표 대비 실적 차트"/>
+		<SubCaption text="Cylinder Bar Type" />
+	</Options>
+	<Combination3DChart showDataTips="true">
+<!--  
+Target_Bar_3D 차트 생성시에 필요한 Combination3DChart 정의합니다 
+showDataTips : 데이터에 마우스를 가져갔을 때 나오는 Tip을 보이기/안보이기 속성입니다.
+--> 
+		<verticalAxis>
+			<CategoryAxis categoryField="Month" /> 
+		</verticalAxis>
+		<series>
+		<!-- 목표비실적Chart의 지켜야 할 점은 실적에 해당되는 시리즈를 먼저 정의 후에 목표 시리즈를 정의 해야 합니다 -->
+			<!-- 실적에 해당 필히 순서 준수-->
+			<HTarget3DResultSeries labelPosition="inside" xField="Result" displayName="Result">
+			<!-- Combination3DChart 정의 후 HTarget3DResultSeries 정의합니다 -->
+				<fill>
+					<SolidColor color="0x00CC33"/>
+				</fill>
+				<showDataEffect>
+				<!--  차트 생성시에 Effect를 주고 싶을 때 shoDataEffect정의합니다 -->
+					<SeriesInterpolate/> 
+<!--  
+SeriesInterpolate는 시리즈 데이터가 새로운 시리즈 데이터로 표시될 때 이동하는 효과를 적용합니다 
+- 공통속성 -						
+elementOffset : effect를 지연시키는 시간을 지정합니다 default:20
+minimumElementDuration : 각 엘리먼트의 최소 지속 시간을 설정합니다 default:0
+			 이 값보다 짧은 시간에 effect가 실행되지 않습니다
+offset : effect개시의 지연시간을 설정합니다 default:0
+perElementOffset : 각 엘리먼트의 개시 지연시간을 설정합니다
+-->
+				</showDataEffect>
+			</HTarget3DResultSeries>
+			<!-- 목표에 해당 -->
+			<HTarget3DGoalSeries labelPosition="outside" xField="Goal" displayName="Goal" styleName="labelColor">
+			<!-- HTarget3DResultSeries 정의 후 HTarget3DGoalSeries 정의합니다 -->
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</HTarget3DGoalSeries>
+			<!-- 목표비실적Chart는 두개의 시리즈만 정의 하여야 합니다 -->
+		</series>
+	</Combination3DChart>
+	<Style>
+		.labelColor{
+			color:#0000ff;
+		}
+	</Style>
+</rMateChart>

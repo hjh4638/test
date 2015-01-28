@@ -1,0 +1,604 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../print.css" type="text/css" media="print">
+<meta content="CircularGauge,charts.CircularGauge" name="keywords">
+<title>charts.CircularGauge</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../asdoc.js"></script><script type="text/javascript" language="javascript" src="../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'CircularGauge - rMateChart 4.0 Flash Version Reference By RiaMore Soft.';
+				var baseRef = '../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">rMateChart 4.0 Flash Version Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../all-classes.html')" href="../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../all-classes.html')" href="../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../index-list.html')" href="../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../index.html?charts/CircularGauge.html&amp;charts/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;CircularGauge</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#styleSummary">Styles</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class CircularGauge"); titleBar_setSubNav(false,false,true,false,false,false,false,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">charts</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class CircularGauge</td>
+</tr>
+</table>
+<p></p>
+  CircularGauge는  0~360 구간의 원형 게이지입니다.
+  
+  <p>레이아웃은 아래와 같이 작성합니다.</p>
+  <pre>
+  &lt;rMateChart backgroundColor="0xEEEEEE" cornerRadius="12" borderStyle="solid"&gt;
+  &lt;Options&gt;
+   &lt;Caption text="Gauge" /&gt; 
+   &lt;SubCaption text="게이지, 색상, 그라데이션 등을 변경 할 수 있습니다." textAlign="right" paddingRight="10" fontSize="11" /&gt; 
+  &lt;/Options&gt;
+  &lt;CurrencyFormatter id="numFmt" precision="0" currencySymbol="%" alignSymbol="right"/&gt;
+  &lt;CircularGauge width="300" height="300" valueChangeFunction="valueChangeFunc"
+     startAngle="90" minimumAngle="0" maximumAngle="270"
+     minimum="0" maximum="100" value="50"
+     interval="10" minorInterval="2"
+     formatter="{numFmt}"
+     needleLengthRatio="0.8"
+     needleBackLengthRatio="0.2"
+     valueXOffset="65" valueYOffset="60"
+     tickLabelStyleName="tickText"
+     valueLabelStyleName="valueText"
+     dataTipJsFunction="dataTipFunction"
+     editMode="true" liveDragging="true"
+     bounceAnimating="true"
+     labelGap="10"
+     showDataTip="true"&gt;
+  &lt;/CircularGauge&gt;
+  &lt;Style&gt;
+   .valueText
+   {
+    fontSize:18;
+    fontFamily:Myriad;
+    textAlign:center;
+    borderColor:#999999;
+    backgroundColor:#FFFFFF;
+    paddingTop:4;
+    borderThickness:1;
+    borderAlpha:1;
+    borderStyle:solid;
+   }
+   .tickText
+   {
+    fontFamily:Myriad;
+    fontSize:15;
+    color:#FFFFFF
+   }
+  &lt;/Style&gt;
+  &lt;/rMateChart&gt;
+  </pre>
+  <p></p>
+<br>
+<hr>
+</div>
+<a name="styleSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Styles</div>
+<table id="summaryTableStyle" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Style</th><th>Description</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:dataTipJsFunction"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">dataTipJsFunction</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Object<br>
+  데이터팁 라벨을 재정의하는 함수입니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:editMode"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">editMode</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Boolean<br>
+  게이지의 value 를 마우스로 편집할 수 있게 할지 여부를 나타냅니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:enableFilter"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">enableFilter</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Boolean &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  게이지에 필터를 활성화 할지 여부를 나타냅니다.
+   The default value is <code>true</code>.</td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:formatter"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">formatter</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Object<br>
+  valueDisplay 와 tickLabel, 데이터팁에 표시할 텍스트 포매터입니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:frameFill"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">frameFill</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>mx.graphics.IFill &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  게이지 바탕 프레임의 채우기색입니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:frameFilter"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">frameFilter</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Object &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  프레임에 적용할 필터를 지정합니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:frameSkin"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">frameSkin</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Class &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  테두리를 포함한 게이지 전체 바탕을 나타내는 스킨을 나타냅니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:frameStroke"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">frameStroke</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>mx.graphics.IStroke &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  게이지 바탕 프레임의 테두리 선 스타일입니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:hideTickLabel"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">hideTickLabel</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Object<br>
+  차트 구간이 360도인 경우 시작 라벨과 마지막 라벨이 만나게 되는데 이 때 시작 라벨 또는 마지막 라벨 표시 여부를 나타냅니다.
+  유효값은 first, last, none 입니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:isValueTop"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">isValueTop</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Boolean &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  value 라벨을 최상단에 표시할지 여부를 나타냅니다.
+   The default value is <code>false</code>.</td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:labelGap"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">labelGap</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number &nbsp; <span class="label">Format: </span>Length &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  틱과 라벨 사이의 여백(gap) 을 지정합니다.
+   The default value is <code>4</code>.</td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:labelJsFunction"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">labelJsFunction</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Object<br>
+  value 라벨을 재정의하는 함수입니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:maximum"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">maximum</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number &nbsp; <span class="label">Format: </span>Length<br>
+  게이지 라벨에 표시할 최대값입니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:maximumAngle"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">maximumAngle</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number &nbsp; <span class="label">Format: </span>Length<br>
+  게이지의 최대 각도입니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:minimum"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">minimum</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number &nbsp; <span class="label">Format: </span>Length<br>
+  게이지 라벨에 표시할 최소값입니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:minimumAngle"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">minimumAngle</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number &nbsp; <span class="label">Format: </span>Length<br>
+  게이지의 최소 각도입니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:minorTickFill"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">minorTickFill</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>mx.graphics.IFill &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  게이지 작은 틱의 채우기색입니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:minorTickRadius"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">minorTickRadius</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number &nbsp; <span class="label">Format: </span>Length &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  게이지 작은 틱의 반지름을 픽셀단위로 지정합니다.
+   The default value is <code>2</code>.</td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:minorTickStroke"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">minorTickStroke</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>mx.graphics.IStroke &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  게이지 작은 틱의 선 스타일입니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:needleBackLengthRatio"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">needleBackLengthRatio</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  게이지 바늘 커버 뒤쪽으로 바늘의 하단부를 표시하는 비율입니다.
+   The default value is <code>0</code>.</td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:needleCoverFill"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">needleCoverFill</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>mx.graphics.IFill &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  게이지 바늘 커버의 채우기색입니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:needleCoverFilter"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">needleCoverFilter</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Object &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  바늘 커버에 적용할 필터를 지정합니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:needleCoverRadius"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">needleCoverRadius</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number &nbsp; <span class="label">Format: </span>Length &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  게이지 바늘 커버의 반지름을 픽셀 단위로 지정합니다.
+   The default value is <code>15;</code>.</td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:needleCoverStroke"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">needleCoverStroke</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>mx.graphics.IStroke &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  게이지 바늘 커버의 선 스타일입니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:needleFill"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">needleFill</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>mx.graphics.IFill &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  게이지  바늘의  채우기색입니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:needleFilter"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">needleFilter</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Object &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  바늘에 적용할 필터를 지정합니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:needleLengthRatio"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">needleLengthRatio</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  게이지 바늘의 길이를 나타냅니다. 이는 게이지 반지름의 비율입니다.
+  예를 들어 1로 설정 시 게이지 반지름 크기의 바늘이 생성됩니다.
+   The default value is <code>0.85</code>.</td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:needlePointStyle"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">needlePointStyle</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>String &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  게이지 바늘의 모양입니다. 뽀족한 모양과 둥근 모양으로 설정할 수 있습니다.
+  유효값은 steeple, round 입니다.
+   The default value is <code>steeple</code>.</td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:needleSkin"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">needleSkin</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Class &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  게이지  바늘의 스킨을 나타냅니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:needleStroke"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">needleStroke</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>mx.graphics.IStroke &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  게이지  바늘의  테두리 선 스타일입니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:needleThickness"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">needleThickness</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number &nbsp; <span class="label">Format: </span>Length &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  게이지 바늘의 두께를 나타냅니다.(픽셀 단위)
+   The default value is <code>10</code>.</td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:padding"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">padding</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number &nbsp; <span class="label">Format: </span>Length &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  게이지의 상하좌우 여백입니다.
+  
+   The default value is <code>0</code>.</td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:pointThickness"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">pointThickness</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number &nbsp; <span class="label">Format: </span>Length &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  게이지 바늘 끝의 두께를 나타냅니다.
+   The default value is <code>0</code>.</td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:showDataTip"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">showDataTip</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Boolean &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  게이지의 바늘에 마우스 오버 시 게이지값을 표시하는 팁을 표시할지 여부를 나타냅니다.
+   The default value is <code>true</code>.</td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:showTickLabels"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">showTickLabels</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Boolean &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  게이지 틱 라벨의 표시 여부를 나타냅니다.
+   The default value is <code>true</code>.</td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:showTrackColor"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">showTrackColor</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Boolean<br>
+  게이지의 minimum, maximum 사이의 범위에 따라 게이지 트랙을 설정할지 여부를 나타냅니다.
+   The default value is <code>false</code>.</td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:showValueLabel"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">showValueLabel</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Boolean &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  게이지 value 라벨의 표시 여부를 나타냅니다.
+   The default value is <code>true</code>.</td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:tickFill"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">tickFill</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>mx.graphics.IFill &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  게이지 틱의 채우기색입니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:tickFilter"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">tickFilter</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Object &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  틱에 적용할 필터를 지정합니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:tickGap"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">tickGap</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number &nbsp; <span class="label">Format: </span>Length &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  게이지 프레임 테두리와 tick 사이에 여백을 지정합니다.
+   The default value is <code>4</code>.</td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:tickLabelJsFunction"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">tickLabelJsFunction</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Object<br>
+  major Tick의 라벨을 재정의하는 함수입니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:tickLabelPlacement"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">tickLabelPlacement</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>String &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  틱 라벨의 위치를 틱을 기준으로 안쪽에 위치할지 바깥쪽에 위치할지를 지정합니다.
+  유효값은 inside, outside 입니다.
+   The default value is <code>inside</code>.</td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:tickLabelStyleName"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">tickLabelStyleName</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>String &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  tick 라벨의 스타일 이름입니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:tickRadius"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">tickRadius</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number &nbsp; <span class="label">Format: </span>Length &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  게이지 틱의 반지름을 픽셀단위로 지정합니다.
+   The default value is <code>4</code>.</td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:tickStroke"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">tickStroke</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>mx.graphics.IStroke &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  게이지 틱의 선 스타일입니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:trackAlphas"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">trackAlphas</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Array &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  minimum~maximum 구간에 따라 따라 표현하는 컬러 트랙의 채우기 색 투명도를 지정합니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:trackColors"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">trackColors</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Array &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  minimum~maximum 구간에 따라 따라 표현하는 컬러 트랙의 범위를 지정합니다. 
+  예를들어, trackColors=[#FFFF00, #0000FF, #FF0000] 이면, trackValue의 범위에 맞게 색이 채워집니다. 
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:trackInnerRadius"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">trackInnerRadius</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  minimum~maximum 구간에 따라 따라 표현하는 컬러 트랙의 안쪽 표현 범위를 나타냅니다.
+  유효값은 0~1 이며, 0 인 경우 게이지 정중앙을 나타내고, 1인 경우 게이지 테두리 전까지를 나타냅니다.
+   The default value is <code>0</code>.</td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:trackOuterRadius"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">trackOuterRadius</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  minimum~maximum 구간에 따라 따라 표현하는 컬러 트랙의 바깥쪽 표현 범위를 나타냅니다.
+  유효값은 0~1 이며, 0 인 경우 게이지 정중앙을 나타내고, 1인 경우 게이지 테두리 전까지를 나타냅니다.
+   The default value is <code>1</code>.</td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:trackValues"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">trackValues</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Array &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  minimum~maximum 구간에 따라 따라 표현하는 컬러 트랙의 범위를 지정합니다. 
+  예를들어, minimum=0, maximnum=100 일 경우, trackValues=[0,50,80,100] 이면, 0~50, 50~80, 80~100까지 색상을 지정할 수 있습니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:valueLabelStyleName"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">valueLabelStyleName</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>String &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  value 라벨의 스타일 이름입니다.
+  </td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:valueXOffset"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">valueXOffset</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number &nbsp; <span class="label">Format: </span>Length &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  value 라벨에 추가 X Offset 을 지정하여 라벨을 이동시킵니다.
+   The default value is <code>0</code>.</td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:valueYOffset"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">valueYOffset</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number &nbsp; <span class="label">Format: </span>Length &nbsp; <span class="label">CSS Inheritance: </span>no<br>
+  value 라벨에 추가 Y Offset 을 지정하여 라벨을 이동시킵니다.
+   The default value is <code>0</code>.</td><td class="summaryTableOwnerCol">CircularGauge</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->

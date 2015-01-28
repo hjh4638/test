@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="확대 / 축소 (y축 고정)"/>
+		<SubCaption text="마우스 왼쪽 클릭 후 드래그 하십시오." textAlign="right" fontSize="11"/>
+	</Options>
+	<NumberFormatter id="numFmt" precision="0"/>
+	<Line2DChart showDataTips="true">
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month" padding="0"/> 
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis id="vAxis"/>
+		</verticalAxis>
+		<series>
+			<Line2DSeries labelPosition="up" yField="Profit" form="curve" displayName="Profit">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Line2DSeries>
+		</series>
+		<annotationElements>
+			<CrossRangeZoomer zoomType="horizontal" horizontalLabelFormatter="{numFmt}"	enableZooming="true"/>
+			<!-- CrossRangeZoomer 속성 설명
+	* zoomType : 줌 실행 기준을 정합니다. 유효값 : horizontal, vertical, both
+	* horizontalLabelFormatter : 십자가의 수평 라인에 붙는 라벨 formatter 입니다.
+	* verticalLabelFormatter : 십자가의 수직 라인에 붙는 라벨 formatter 입니다.
+	* enableZooming : zoom 기능 사용 여부를 나타냅니다.
+	* enableCrossHair : 십자가 표시 여부를 나타냅니다.
+	* useDualCrossXLabel : 십자가의 수평 라인에 두개의 라벨을 표시합니다.(듀얼축인 경우 유효)
+	* useDualCrossYLabel : 십자가의 수직 라인에 두개의 라벨을 표시합니다.(듀얼축인 경우 유효)
+	* verticalLabelPlacement : 수직 라인의 라벨 위치를 지정합니다.(유효값: top, bottom)
+	* horizontalLabelPlacement : 수평 라인의 라벨 위치를 지정합니다.(유효값 : left, right)
+	-->
+		</annotationElements>
+	</Line2DChart>
+</rMateChart>

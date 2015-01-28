@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report"/>
+		<SubCaption text="2008"/>
+		<Legend/>
+	</Options>
+	<Combination2DChart showDataTips="true" type="overlaid" selectionMode="single">
+		<horizontalAxis>
+           <CategoryAxis categoryField="Month"/>
+        </horizontalAxis>
+        <series>
+			<Column2DSeries yField="Cost" displayName="Cost" labelPosition="outside" itemRenderer="SemiCircleColumnItemRenderer">
+			<!-- lebelPosition을 outside로 지정 하였습니다 -->
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+				<fill>
+					<SolidColor color="0x66CC66" /> 
+				</fill>
+			</Column2DSeries>
+			<Line2DSeries  yField="Revenue" displayName="Revenue">
+				<showDataEffect>
+  					<SeriesInterpolate/> 
+  				</showDataEffect>
+				<filters>
+  					<DropShadowFilter distance="3" color="0x666666" alpha=".8" /> 
+  				</filters>
+				<lineStroke>
+  					<Stroke color="0xFFCC00" weight="4" /> 
+  				</lineStroke>
+				<fill>
+  					<SolidColor color="0xFFCC00" /> 
+  				</fill>
+  			</Line2DSeries>
+  		</series>
+	</Combination2DChart>
+</rMateChart>

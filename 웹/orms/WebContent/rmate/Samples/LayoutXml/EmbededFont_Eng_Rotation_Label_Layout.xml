@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+	<Caption text="외부 폰트를 이용한 영문 기울여 출력" /> 
+	</Options>
+	<Bar3DChart showDataTips="true" fontFamily="Dotum">
+		<horizontalAxis>
+			<LinearAxis id="hAxis" displayName="금액"/> 
+		</horizontalAxis>
+		<verticalAxis>
+			<CategoryAxis id="vAxis" categoryField="Month" displayName="날짜" /> 
+		</verticalAxis>
+		<series>
+			<Bar3DSeries id="series1" xField="Profit" displayName="Profit">
+				<showDataEffect>
+					<SeriesInterpolate /> 
+				</showDataEffect>
+			</Bar3DSeries>
+			<Bar3DSeries id="series2" xField="Cost" displayName="Cost">
+				<showDataEffect>
+					<SeriesInterpolate /> 
+				</showDataEffect>
+			</Bar3DSeries>
+			<Bar3DSeries id="series3" xField="Revenue" displayName="Revenue">
+				<showDataEffect>
+					<SeriesInterpolate /> 
+				</showDataEffect>
+			</Bar3DSeries>
+		</series>
+		<verticalAxisRenderers>
+			<Axis3DRenderer axis="{vAxis}" labelRotation="-45" fontSize="13"/>
+		</verticalAxisRenderers>
+		<horizontalAxisRenderers>
+			<Axis3DRenderer axis="{hAxis}"/>
+		</horizontalAxisRenderers>
+	</Bar3DChart>
+
+</rMateChart>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart styleName="rMateChartStyle">
+	<Options>
+		<Caption text="연간 보고서 - 2007" textAlign="center" styleName="captionStyle"/> 
+		<!-- styleName : Caption에 정의된 스타일명의 스타일을 적용합니다 -->
+		<SubCaption text="RiaMore Soft" textAlign="center" styleName="subCaptionStyle"/>
+		<!-- styleName : SubCaption에 정의된 스타일명의 스타일을 적용합니다 -->
+	</Options>
+	<DateFormatter id="dateFmt" formatString="M/D"/>
+	<NumberFormatter id="numFmt"/>
+	<Line2DChart showDataTips="true" styleName="chartStyle" axisTitleStyleName="chartAxisStyle">
+		<horizontalAxis>
+			<DateTimeAxis id="hAxis" dataUnits="days" labelUnits="days" formatter="{dateFmt}" title="DateTime Axis" 
+			interval="2" displayName="Date" alignLabelsToUnits="false" displayLocalTime="true"/> 
+		</horizontalAxis>
+		<verticalAxis>
+        	<LogAxis id="vAxis" title="Log Axis" formatter="{numFmt}" interval="10" minimum="10" maximum="100000"/>
+		</verticalAxis>
+		<series>
+			<Line2DSeries xField="Date" yField="Profit" displayName="Profit">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Line2DSeries>
+			<Line2DSeries xField="Date" yField="Cost" displayName="Cost">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Line2DSeries>
+		</series>
+	</Line2DChart>
+	<Style>
+		.rMateChartStyle
+		{
+			backgroundColor:#FFFFFF;
+			borderColor:#666600;
+			cornerRadius:0;
+			borderThickness:2;
+			borderStyle:solid;
+		}
+		
+		.captionStyle
+		{
+			fontFamily:Tahoma;
+			textDecoration:underline;
+			fontWeight:normal;
+			fontSize:14;
+			color:#FF0000;
+		}
+
+		.subCaptionStyle
+		{
+			fontFamily:Tahoma;
+			fontStyle:italic;
+			fontSize:12;
+			color:#777777;
+		}
+
+		.chartAxisStyle
+		{
+			fontSize:12;
+			color:#FF6600;
+			fontFamily:Tahoma;
+		}
+	</Style>
+</rMateChart>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Annual Report"/>
+		<SubCaption text="2008"/>
+	</Options>
+	<Pie2DChart id="chart"  showDataTips="true" explodable="true">
+	<!-- explodable : True로 설정하면 도넛차트를 클릭하였을 때 클릭된 조각이  밖으로 나오게 합니다 -->
+		<series>
+			<Pie2DSeries nameField="Month" field="Profit" labelPosition="inside" >
+				<showDataEffect>
+					<SeriesInterpolate/>
+				</showDataEffect>
+			</Pie2DSeries>
+		</series>
+	</Pie2DChart>
+</rMateChart>

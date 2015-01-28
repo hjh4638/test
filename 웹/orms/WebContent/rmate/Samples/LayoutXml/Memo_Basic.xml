@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="M.E.M.O"/>
+	</Options>
+	<Area2DChart showDataTips="true">
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month" padding="0" /> 
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis id="vAxis"/>
+		</verticalAxis>
+		<verticalAxisRenderers>
+			<Axis2DRenderer  axis="{vAxis}"/>
+		</verticalAxisRenderers>
+		<series>
+			<Area2DSeries labelPosition="up" yField="Profit" form="curve" displayName="Profit">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Area2DSeries>
+		</series>
+		<annotationElements>
+			<CanvasElement>
+				<Label left="0" text="첫 번째 기본 메모입니다.( 왼쪽에 출력 )" fontSize="11" borderColor="0x000000" borderStyle="solid"/>
+				<Label right="0" bottom="0" text="두 번째 기본 메모입니다. ( 오른쪽에 출력 )" fontSize="11" borderColor="0x000000" borderStyle="solid"/>
+				<Label horizontalCenter="0" verticalCenter="0" text="세 번째 기본 메모입니다.( 가운데 출력 )" fontSize="11" borderColor="0x000000" borderStyle="solid"/>
+			</CanvasElement>
+		</annotationElements>
+	</Area2DChart>
+</rMateChart>

@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../print.css" type="text/css" media="print">
+<meta content="RealTimeChart,charts.RealTimeChart" name="keywords">
+<title>charts.RealTimeChart</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../asdoc.js"></script><script type="text/javascript" language="javascript" src="../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'RealTimeChart - rMateChart 4.0 Flash Version Reference By RiaMore Soft.';
+				var baseRef = '../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">rMateChart 4.0 Flash Version Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../all-classes.html')" href="../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../all-classes.html')" href="../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../index-list.html')" href="../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../index.html?charts/RealTimeChart.html&amp;charts/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;RealTimeChart</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#styleSummary">Styles</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class RealTimeChart"); titleBar_setSubNav(false,false,true,false,false,false,false,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">charts</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class RealTimeChart</td>
+</tr>
+</table>
+<p></p>
+   RealTimeChart 클래스는 데이터를 시간 단위와 사이즈 단위로 보여주는 역할을 하는 차트 컨트롤 입니다.
+   일반적인 차트의 경우 dataProvider 속성에 데이터를 삽입할 경우 데이터가 갱신되는 반면,
+   RealTimeChart 는 기존 데이터에 새로운 데이터를 붙이는 형식입니다.
+   예를 들어, 데이터 사이즈를 기준으로 차트 아이템을 10개 표현하고자 한다면 기존 데이터와 새로운 데이터의 양에 상관없이
+   최근 10개의 데이터만을 차트는 출력하게 됩니다.
+   시간을 기준으로 데이터를 표현하고자 할 경우에는 DateTimeAxis 클래스의 인스턴스를 해당 축 속성값으로 지정해야 합니다.
+   interval 을 10초로 하고 최근 60초의 데이터를 표현하고자 한다면 차트는 interval 10 을 갖는 최근 60초의 데이터를 표현하게 됩니다.
+   실제적으로 차트가 출력하고 있는 총 아이템은 6개가 됩니다.
+  
+  <p>레이아웃은 아래와 같이 작성합니다.</p>
+  
+  <pre>
+    &lt;rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid"&gt;
+   &lt;Options&gt;
+    &lt;Caption text="Stock Monitoring" /&gt;
+    &lt;SubCaption text="Real Time Chart" fontSize="11" textAlign="right"/&gt;
+    &lt;Legend/&gt;
+   &lt;/Options&gt;
+    &lt;DateFormatter id="dateFmt" formatString="HH시 NN분 SS초" /&gt; 
+   &lt;RealTimeChart id="chart" dataDisplayType="time"  timePeriod="60" interval="3" showDataTips="true"&gt;
+    &lt;backgroundElements&gt;
+     &lt;GridLines direction="both"/&gt;
+    &lt;/backgroundElements&gt; 
+    &lt;horizontalAxis&gt;
+       &lt;DateTimeAxis id="hAxis" dataUnits="seconds" labelUnits="seconds" dataInterval="3" interval="3" formatter="{dateFmt}" displayLocalTime="true"/&gt;
+    &lt;/horizontalAxis&gt;
+    &lt;series&gt;
+     &lt;Column2DSeries labelPosition="outside" yField="Volume" xField="Time" 
+      displayName="Trading Volume"
+      itemRenderer="net.riamore.rmate.charts.renderers.GradientColumnItemRenderer"&gt;
+       &lt;filters&gt;
+          &lt;DropShadowFilter distance="3" color="0x666666" alpha=".8"/&gt;
+       &lt;/filters&gt;
+       &lt;fill&gt;
+       &lt;SolidColor color="0xB0C759"/&gt;
+       &lt;/fill&gt;
+      &lt;verticalAxis&gt;
+         &lt;LinearAxis id="vAxis1"  title="Volume" minimum="0" maximum="10000"/&gt;
+      &lt;/verticalAxis&gt; 
+     &lt;/Column2DSeries&gt;
+     &lt;Line2DSeries labelPosition="up" xField="Time" yField="Price" displayName="Stock Price" interpolateValues="false"
+        itemRenderer="mx.charts.renderers.CircleItemRenderer"  radius="5" fill="0xFFFF00"&gt;
+      &lt;filters&gt;
+       &lt;DropShadowFilter distance="3" color="0x666666" alpha="0.8"/&gt;
+      &lt;/filters&gt;
+      &lt;stroke&gt;
+       &lt;Stroke color="0xE48701" weight="2"/&gt;
+      &lt;/stroke&gt;
+      &lt;lineStroke&gt;
+        &lt;Stroke color="0xE48701" weight="4"/&gt;
+       &lt;/lineStroke&gt;
+        &lt;verticalAxis&gt;
+       &lt;LinearAxis id="vAxis2" title="Price" minimum="0" maximum="1000"/&gt;           
+      &lt;/verticalAxis&gt;
+     &lt;/Line2DSeries&gt;
+    &lt;/series&gt;
+    &lt;verticalAxisRenderers&gt;
+     &lt;Axis2DRenderer placement="left" axis="{vAxis1}"&gt;
+     &lt;/Axis2DRenderer&gt;
+     &lt;Axis2DRenderer placement="right" axis="{vAxis2}"&gt;
+     &lt;/Axis2DRenderer&gt;
+      &lt;/verticalAxisRenderers&gt;
+   &lt;/RealTimeChart&gt;
+   &lt;HttpServiceRepeater url="http://demo.riamore.net/chartTest/data4.jsp" target="{chart}" interval="3"  method="get"/&gt;
+  &lt;/rMateChart&gt;  
+  </pre>
+  <p></p>
+<br>
+<hr>
+</div>
+<a name="styleSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Styles</div>
+<table id="summaryTableStyle" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Style</th><th>Description</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:dataDisplayType"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">dataDisplayType</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>String<br>
+  화면에 나타낼 데이타 출력 형태를 나타냅니다.
+  화면에 나타낼 데이타 양을 설정할 수 있거나
+  일정 시간을 설정할 수 있습니다. 일정시간을 설정한 경우 그 시간동안 받은 데이타를
+  현재 차트에 출력합니다.
+  기본값은 데이타의 양.
+  </td><td class="summaryTableOwnerCol">RealTimeChart</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:interval"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">interval</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number<br>
+  dataDisplayType을 time으로 설정한 경우 유효합니다.
+  interval은 차트에게 데이터가 들어오는 간격을 지시하여 차트가 그 수를 헤아리게 합니다.
+  단위는 초(second)
+  </td><td class="summaryTableOwnerCol">RealTimeChart</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:timePeriod"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">timePeriod</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number<br>
+  dataDisplayType을 time으로 설정한 경우 유효합니다.
+  현재 차트의 화면에 출력할 데이터의 시간을 설정합니다.
+  예를 들어 timePeriod 를 60으로 설정한 경우 마지막 데이터가 들어온 시간과 1분 차이의 데이터들만 차트에 출력됩니다.
+  단위는 초(second)
+  </td><td class="summaryTableOwnerCol">RealTimeChart</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Process Monitoring" />
+		<SubCaption text="매 3초 단위로 업데이트합니다.(데이터는 랜덤)" fontSize="11" textAlign="right"/>
+		<Legend useVisibleCheck="true"/>
+	</Options>
+ 	<Move id="mvEffect" duration="1000"/>
+	<DateFormatter id="dateFmt" formatString="H:N:S" />
+	<RealTimeChart id="chart" dataDisplayType="time" timePeriod="60" interval="3" showDataTips="true">
+		<backgroundElements>
+			<GridLines direction="both"/>
+		</backgroundElements> 
+		<horizontalAxis>
+			<DateTimeAxis id="hAxis" dataUnits="seconds" labelUnits="seconds" dataInterval="3" interval="3" displayLocalTime="true"  formatter="{dateFmt}"/> 
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis maximum="100" interval="10"/>
+		</verticalAxis>
+		<series>
+			<Line2DSeries xField="Time" yField="P1" displayName="Process 1" moveEffect="{mvEffect}"
+						radius="5" fill="0xFFFF00"
+						itemRenderer="DiamondItemRenderer">
+				<stroke>
+					<Stroke color="0xB0C759" weight="2"/>
+				</stroke>
+				<lineStroke>
+					<Stroke color="0xB0C759" weight="2"/>
+				</lineStroke>
+			</Line2DSeries>
+						  
+			<Line2DSeries xField="Time" yField="P2" displayName="Process 2" moveEffect="{mvEffect}"
+						radius="5"  fill="0x00FF00" 
+						itemRenderer="CircleItemRenderer">
+				<stroke>
+					<Stroke color="0xE48701" weight="2"/>
+				</stroke>
+				<lineStroke>
+					<Stroke color="0xE48701" weight="2"/>
+				</lineStroke>
+			</Line2DSeries>
+
+			<Line2DSeries xField="Time" yField="P3" displayName="Process 3" moveEffect="{mvEffect}"
+						radius="5" fill="0xFFFF00"
+						itemRenderer="TriangleItemRenderer">
+				<stroke>
+					<Stroke color="0x0048FF" weight="2"/>
+				</stroke>
+				<lineStroke>
+					<Stroke color="0x0048FF" weight="2"/>
+				</lineStroke>
+			</Line2DSeries>
+			
+		</series>
+	</RealTimeChart>
+	<HttpServiceRepeater url="http://demo.riamore.net/chartTest/data2.jsp" interval="3" target="{chart}"  method="get"/>
+  </rMateChart>

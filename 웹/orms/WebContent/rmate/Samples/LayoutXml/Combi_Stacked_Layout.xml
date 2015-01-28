@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report"/>
+		<SubCaption text="2008"/>
+		<Legend useVisibleCheck="true"/>
+	</Options>
+	<Combination3DChart showDataTips="true" selectionMode="single">
+<!-- 
+Combination3D 차트 생성시에 필요한 Combination3DChart 정의합니다 
+showDataTips : 데이터에 마우스를 가져갔을 때 나오는 Tip을 보이기/안보이기 속성입니다  
+selectionMode : 해당 차트 아이템을 선택 할 수 있게 합니다 
+	  ├ none : 선택 못함
+	  ├ single : 하나 선택
+	  └ multiple : 여러개 선택
+-->
+		<horizontalAxis>
+           <CategoryAxis categoryField="Month"/>
+        </horizontalAxis>
+        <series>
+        <!-- Combination3D Stacked 를 생성시에는 넣고자 하는 series를 최소 2개 정의합니다   --> 
+        	<Area2DSeries yField="Profit" form="curve" displayName="Profit"/>
+        	<Column3DSet type="stacked">
+<!-- 
+type 속성을 stacked로 변경	
+type속성으로는
+clustered : 일반적인 다중데이터(차트의 멀티시리즈)방식으로 데이터를 표현합니다.(Default)
+stacked : 데이터를 위에 쌓아 올린 방식으로 표현 합니다.
+overlaid : 수치 데이터 값을 겹쳐서 표현 합니다. 주로 목표 위치와 현재 위치를 나타낼 때 많이 쓰입니다.
+100% : 차트의 수치 데이터를 퍼센티지로 계산 후 값을 퍼센티지로 나타냅니다. 
+-->
+        		<series>
+					<Column3DSeries labelPosition="inside" yField="Revenue" displayName="Revenue">
+						<showDataEffect>
+		  					<SeriesInterpolate/> 
+		  				</showDataEffect>
+		  			</Column3DSeries>
+		  			<Column3DSeries labelPosition="inside" yField="Cost" displayName="Cost">
+						<showDataEffect>
+		  					<SeriesInterpolate/> 
+		  				</showDataEffect>
+		  			</Column3DSeries>
+	  			</series>
+	  		</Column3DSet>
+			<Line2DSeries yField="Revenue" displayName="Revenue">
+				<showDataEffect>
+  					<SeriesInterpolate/> 
+  				</showDataEffect>
+				<filters>
+  					<DropShadowFilter distance="3" color="0x666666" alpha=".8" /> 
+  				</filters>
+				<lineStroke>
+  					<Stroke color="0x7aa371" weight="4" /> 
+  				</lineStroke>
+				<fill>
+  					<SolidColor color="0xFFCC00" /> 
+  				</fill>
+  			</Line2DSeries>
+  		</series>
+	</Combination3DChart>
+</rMateChart>

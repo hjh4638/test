@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title></title>
+<script src="./JS/AC_OETags.js" language="javascript"></script>
+<script src="./JS/rMateChart.js" language="javascript"></script>
+<script src="./JS/rMateChartLicense.js" language="javascript"></script>
+
+<style type="text/css">
+
+body
+{ 
+	margin: 0px; 
+	overflow:hidden 
+}
+
+.wrap
+{
+	position:absolute;
+	top:40px;
+	left:50%;
+	width:750px;
+	height:400px;
+	margin: 0 0 0 -350px;
+}
+
+.header
+{
+	position:absolute;
+	width:100%;
+}
+
+.header_title
+{
+	font-family:verdana;
+	text-align:center;
+}
+
+.header_description
+{
+	font-family:arial;
+}
+
+.content
+{
+	position:absolute;
+	top:80px;
+}
+
+.footer
+{
+	position:absolute;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	text-align:center;
+}
+
+.footer_button{}
+
+.footer_description
+{
+	border:2px solid #b7babc;
+	position:relative;
+	top:10px;
+	font-family:arial;
+}
+
+</style>
+
+<!-- 사용자 정의 설정 시작 -->
+<script language="JavaScript" type="text/javascript">
+
+window.onload = function()
+{
+	rMateChartInit();
+}
+
+//..................... 1번 차트 설정 ..........................
+
+
+// 차트 레이아웃 URL 경로. 반드시 설정하십시오.
+var layoutURL = encodeURIComponent("./LayoutXml/Click_Pie3D_CreateChart.xml");
+var rMateOnLoadCallFunction = "rMateChartOnLoad";
+
+// flashVars 정의..차트 레이아웃은 URL XML 형태로 읽고 데이터는 배열형태로 삽입.
+var flashVars = "layoutURL="+layoutURL;
+flashVars += "&rMateOnLoadCallFunction="+rMateOnLoadCallFunction;
+
+function rMateChartOnLoad() 
+{
+	
+	document.getElementById("chart1").setData(chartData); 
+}
+ 
+var chartData = [{"Month":"2008-01", "Output":15},
+	{"Month":"2008-02", "Output":10},
+	{"Month":"2008-03", "Output":20},
+	{"Month":"2008-04", "Output":30},
+	{"Month":"2008-05", "Output":40},
+	{"Month":"2008-06", "Output":50},
+	{"Month":"2008-07", "Output":40},
+	{"Month":"2008-08", "Output":30},
+	{"Month":"2008-09", "Output":20},
+	{"Month":"2008-10", "Output":10},
+	{"Month":"2008-11", "Output":10},
+	{"Month":"2008-12", "Output":10}];
+
+/*
+// 챠트에서 item클릭시 불려지는 함수 설정
+// layout XML 에서 Chart 속성을 넣을때 itemClickJsFunction를 주고,만든 javascript 함수명을 넣어줍니다
+// 예) <Column3DChart showDataTips="true" itemClickJsFunction="chartClick">
+//
+// 파라메터 설명
+// seriesId : layout XML에서 부여한 series의 id가 있을 경우, 해당 id를 보내줍니다.
+// displayText : 화면상에 보여주는 dataTip(마우스 올라갔을때 보여주는 박스-tooltip)의 내용
+// index : 클릭된 item(막대나 파이조각등)의 index 번호 - 맨 왼쪽 또는 맨 위 것이 0번입니다
+// data : 해당 item의 값을 표현하기 위해 입력된 data(row값에 해당 - data로 입력된 종류에 따라 XML의 내용 또는 배열이 됩니다)
+// values : 해당 item의 값 (배열로 전달되며, 챠트 종류에 따라 아래와 같이 들어옵니다.)
+            BarSeries     0:x축값 1:y축값
+            ColumnSeries  0:x축값 1:y축값
+            AreaSeries    0:x축값 1:y축값
+            BubbleSeries  0:x축값 1:y축값 2:radius값
+            LineSeries    0:x축값 1:y축값
+            HLOCSeries    0:x축값 1:open값 2:low값 3:high값 4:close값
+            PieSeries     0:값
+*/
+function chartClick(seriesId, displayText, index, data, values)
+{
+	alert("클릭 정보 \nseriesId:"+seriesId+"\ndisplayText:"+displayText+"\nindex:"+index+"\ndata:"+data['Month']+"\nvalues:"+values[0]);
+
+
+	//클릭시 2번차트에 레이아웃과 데이터를 삽입합니다.
+	document.getElementById("chart2").setLayoutURL(layoutURL2);
+	document.getElementById("chart2").setData(chartData2);
+
+	//chUrl = "/myurl/list.asp?code="+values[1];
+	//alert(chUrl);
+	//document.location = "http://www.riamore.net";
+}
+
+
+//.............................2번 차트 설정............................
+
+var flashVars2;
+var layoutURL2 ="./LayoutXml/Column_3D_Stacked_Layout.xml";
+var chartData2 = [{"Month":"2008-01", "Profit":10, "Cost":200, "Revenue":150},
+	{"Month":"2008-02", "Profit":20,"Cost":200, "Revenue":150},
+	{"Month":"2008-03", "Profit":30, "Cost":200, "Revenue":150},
+	{"Month":"2008-04", "Profit":40, "Cost":200, "Revenue":150},
+	{"Month":"2008-05", "Profit":50, "Cost":200, "Revenue":150},
+	{"Month":"2008-06", "Profit":60, "Cost":200, "Revenue":150},
+	{"Month":"2008-07", "Profit":70, "Cost":200, "Revenue":150},
+	{"Month":"2008-08", "Profit":80, "Cost":200, "Revenue":150},
+	{"Month":"2008-09", "Profit":90, "Cost":200, "Revenue":150},
+	{"Month":"2008-10", "Profit":100, "Cost":200, "Revenue":150},
+	{"Month":"2008-11", "Profit":110, "Cost":200, "Revenue":150},
+	{"Month":"2008-12", "Profit":120, "Cost":200, "Revenue":150}];
+</script>
+</head>
+
+<body>
+	<div class="wrap">
+		<div class="header">
+			<div class="header_title">
+				<p>Pie Chart</p>
+			</div>
+			<div class="header_description">
+				<p>파이 차트 아이템 클릭 시 특정 데이터로 칼럼 3D 차트 생성하기.</p>
+			</div>
+		</div>
+		<div class="content">
+			<table width="100%" cellspacing="0" cellpadding="0">
+				<tr>
+					<td>
+						<script>
+							<!--
+								rMateChartCreate("chart1","../Component/rMateChart",flashVars, 300, 300, "#FFFFFF");
+							// -->
+						</script>
+					</td>
+					<td>
+						<script>
+							<!--
+								rMateChartCreate("chart2","../Component/rMateChart",flashVars2, 450, 300, "#FFFFFF");
+							// -->
+						</script>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" borderStyle="solid" cornerRadius="12">
+	<Options>
+		<DataEditor/>
+	</Options>
+	<NumberFormatter id="numFmt" useThousandsSeparator="true" precision="1"/> 
+	<Stroke id="stroke1" color="0xFF0000" weight="1"/>
+
+	<Line2DChart showDataTips="true" selectionMode="single">
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month" /> 
+		</horizontalAxis>
+		<series>
+			<Line2DSeries labelPosition="up" yField="Profit" raidus="4" displayName="Revenue" itemRenderer="CircleItemRenderer"
+			itemRollOverColor="0x0066FF"  itemSelectionColor="0x0099FF">
+				<showDataEffect>
+					<SeriesInterpolate/>
+				</showDataEffect>
+			</Line2DSeries>
+		</series>
+		<backgroundElements>
+			<GridLines/>
+			<AxisMarker>
+               	<ranges>
+					<AxisRange startValue="1000" endValue="2000" label="영역1" fontSize="11" labelHorizontalAlign="left" color="0xFF00FF">
+						<fill>
+							<SolidColor color="0x00FF99" alpha="0.2"/>
+						</fill>
+					</AxisRange>
+					<AxisRange startValue="Mar" endValue="May" label="영역2" fontSize="11" labelVerticalAlign="bottom" color="0x0066FF" horizontal="false">
+						<fill>
+							<SolidColor color="0x0099FF" alpha="0.2"/>
+						</fill>
+					</AxisRange>
+					<AxisRange startValue="Jul" endValue="Nov" label="영역3" fontSize="11" labelVerticalAlign="bottom" color="0x0066FF" horizontal="false">
+						<fill>
+							<SolidColor color="0xdd99FF" alpha="0.2"/>
+						</fill>
+					</AxisRange>
+				</ranges>
+			</AxisMarker>
+		</backgroundElements>
+	</Line2DChart>
+</rMateChart>

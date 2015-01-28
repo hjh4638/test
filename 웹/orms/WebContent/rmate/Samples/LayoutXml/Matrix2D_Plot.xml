@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="연도별 집 값"/>
+	</Options>
+	<SeriesSlide id="ss"/>
+	<NumberFormatter id="nft"/>
+	<Matrix2DChart showDataTips="true" type="plot" selectionMode="single" dataTipJsFunction="tipFunc">
+		<backgroundElements>
+			<GridLines direction="horizontal" horizontalChangeCount="2">
+				<horizontalStroke>
+					<Stroke color="0x000000"/>
+				</horizontalStroke>
+				<horizontalFill>	
+					<SolidColor color="0xeaeaea"/>
+				</horizontalFill>
+				<horizontalAlternateFill>
+					<SolidColor color="0xffffff"/>
+				</horizontalAlternateFill>
+			</GridLines>
+		</backgroundElements>
+		<verticalAxis>
+			<LinearAxis id="vAxis" interval="0.5" maximum="5" labelJsFunction="vertiJsFunc"/>
+		</verticalAxis>
+		<horizontalAxis>
+			<LinearAxis id="hAxis" interval="0.5" maximum="4" labelJsFunction="horiJsFunc"/>
+		</horizontalAxis>
+		<series>
+			<Matrix2DSeries  xField="Data_x" yField="Data_y" zField="Data" renderer="rectangle" showDataEffect="{ss}" labelPosition="inside" insideLabelJsFunction="labelJsFunc" fillJsFunction="fillJsFunc"/>
+		</series>
+		<verticalAxisRenderers>
+			<Axis2DRenderer axis="{vAxis}" tickPlacement="none" styleName="font" minorTickPlacement="none"/>
+		</verticalAxisRenderers>
+		<horizontalAxisRenderers>
+			<Axis2DRenderer axis="{hAxis}" tickPlacement="none" styleName="font" minorTickPlacement="none"/>
+		</horizontalAxisRenderers>
+	</Matrix2DChart>
+	<Box width="100%" horizontalAlign="center">
+		<SubLegend direction="horizontal" markerWidth="10" markerHeight="10">
+			<LegendItem label="5,000만 ~" fill="0x00ffff">
+				<marker markerFill="0xff0000"/>
+			</LegendItem>
+			<LegendItem label="7,000만 ~" fill="0x00ff00">
+				<marker markerFill="0xff0000"/>
+			</LegendItem>
+			<LegendItem label="1억 ~" fill="0xff0000">
+				<marker markerFill="0xff0000"/>
+			</LegendItem>
+		</SubLegend>
+	</Box>
+</rMateChart>

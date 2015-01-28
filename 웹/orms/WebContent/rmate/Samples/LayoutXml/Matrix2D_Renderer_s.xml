@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Renerer 종류"/>
+		<Legend useVisibleCheck="false" horizontalGap="1"/>
+	</Options>
+	<SeriesSlide id="ss"/>
+	<Matrix2DChart showDataTips="true" type="renderer" drawType="radius" legendOver="true" selectionMode="single">
+		<backgroundElements>
+			<GridLines direction="horizontal" horizontalChangeCount="2">
+				<horizontalStroke>
+					<Stroke color="0x000000"/>
+				</horizontalStroke>
+			</GridLines>
+		</backgroundElements>
+		<verticalAxis>
+			<LinearAxis id="vAxis" interval="0.5" maximum="6" labelJsFunction="vertiJsFunc"/>
+		</verticalAxis>
+		<horizontalAxis>
+			<LinearAxis id="hAxis" interval="0.5" maximum="3" labelJsFunction="horiJsFunc"/>
+		</horizontalAxis>
+		<series>
+			<Matrix2DSeries xField="Data1_x" yField="Data1_y" zField="Data1" renderer="rectangle" showDataEffect="{ss}" displayName="rectangle"/>
+			<Matrix2DSeries xField="Data2_x" yField="Data2_y" zField="Data2" renderer="circle" showDataEffect="{ss}" displayName="circle"/>
+			<Matrix2DSeries xField="Data3_x" yField="Data3_y" zField="Data3" renderer="diamond" showDataEffect="{ss}" displayName="diamond"/>
+			<Matrix2DSeries xField="Data4_x" yField="Data4_y" zField="Data4" renderer="upTriangle" showDataEffect="{ss}" displayName="upTriangle"/>
+			<Matrix2DSeries xField="Data5_x" yField="Data5_y" zField="Data5" renderer="downTriangle" showDataEffect="{ss}" displayName="downTriangle"/>
+			<Matrix2DSeries xField="Data6_x" yField="Data6_y" zField="Data6" renderer="star" showDataEffect="{ss}" displayName="star"/>
+		</series>
+		<verticalAxisRenderers>
+			<Axis2DRenderer axis="{vAxis}" tickPlacement="none" styleName="font" minorTickPlacement="none"/>
+		</verticalAxisRenderers>
+		<horizontalAxisRenderers>
+			<Axis2DRenderer axis="{hAxis}" tickPlacement="none" styleName="font" minorTickPlacement="none"/>
+		</horizontalAxisRenderers>
+	</Matrix2DChart>
+	<Style>
+		.font{
+			fontSize:11;
+		}
+	</Style>
+</rMateChart>

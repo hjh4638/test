@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<NumberFormatter id="numFmt" precision="0"/>
+	<Options>
+		<Caption text="Anual Report"/>
+
+		<!-- DataEditor 속성 설명
+			showOnInit : 처음부터 에디터 기능을 표시할지 여부를 나타냅니다.
+			reverseRow : 행의 순서를 반대로 할지 여부, true 인 경우 마지막 행이 처음으로 옵니다.
+			styleName : dataEditor 의 스타일 명입니다.
+			minColumnWidth : 칼럼(열)의 가로 최소 사이즈를 픽셀 단위로 지정합니다.
+		-->
+		<DataEditor showOnInit="true" formatter="{numFmt}" editorHeight="96" reverseRow="true" styleName="gridStyle" /> 
+	</Options>
+	<Column3DChart showDataTips="true" selectionMode="single">
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month" /> 
+		</horizontalAxis>
+		<series>
+			<Column3DSet type="stacked" showTotalLabel="true" fontFamily="Myriad">
+				<series>
+					<Column3DSeries labelPosition="inside" showLabelVertically="true" yField="Profit" displayName="Profit">
+						<showDataEffect><SeriesInterpolate/></showDataEffect>
+					</Column3DSeries>
+					<Column3DSeries labelPosition="inside" showLabelVertically="true" yField="Cost" displayName="Cost">
+						<showDataEffect><SeriesInterpolate/></showDataEffect>
+					</Column3DSeries>
+					<Column3DSeries labelPosition="inside" showLabelVertically="true" yField="Revenue" displayName="Revenue">
+						<showDataEffect><SeriesInterpolate/></showDataEffect>
+					</Column3DSeries>
+				</series>
+			</Column3DSet>
+		</series>
+	</Column3DChart>
+	<Style>
+		.gridStyle {
+			color:#378F8B;
+			alternatingItemColors:#C5E3E3,#FFFFFF;
+			headerColors:#88C3C3,#5C8484;
+			headerStyleName:gridHeaderStyle;
+			horizontalGridLines:true;
+			horizontalGridLineColor:#5C8484;
+			selectionColor:#ADC1C1;
+			rollOverColor:#CC9999;
+			fontWeight:bold;
+			textDecoration:underline;
+			fontSize:11;
+			verticalAlign:middle;
+			verticalGridLineColor:#5C8484;
+		}
+		.gridHeaderStyle {
+			color:#FFFFFF;
+		}
+	</Style>
+</rMateChart>

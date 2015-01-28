@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Column3DChart showDataTips="true">
+		<horizontalAxis>
+			<CategoryAxis id="hAxis" categoryField="Month"/>
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis id="vAxis"/>
+		</verticalAxis>
+		<series>
+			<Column3DSeries yField="Profit">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Column3DSeries>
+		</series>
+
+		<horizontalAxisRenderers>
+			<Axis3DRenderer	axis="{hAxis}" ㄴplacement="bottom">				
+			</Axis3DRenderer>
+		</horizontalAxisRenderers>
+		<verticalAxisRenderers>
+			<Axis3DRenderer	axis="{vAxis}" placement="right">
+			<!-- y축의 placement를 right으로 주어 y축이 오른쪽에 표시됩니다 -->
+			</Axis3DRenderer> 
+		</verticalAxisRenderers>
+
+</Column3DChart>
+
+</rMateChart>

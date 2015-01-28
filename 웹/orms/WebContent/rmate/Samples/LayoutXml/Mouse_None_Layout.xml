@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Annual Report"/>
+	</Options>
+	<Column3DChart paddingLeft="10" paddingRight="10">
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month" title="Month"/>
+		</horizontalAxis>
+		
+		<verticalAxis>
+			<LinearAxis title="Profit"/>
+		</verticalAxis>
+	<series>
+		<Column3DSeries yField="Profit">
+			<showDataEffect>
+	  			<SeriesInterpolate/> 
+	  		</showDataEffect>
+		</Column3DSeries>
+		<Column3DSeries yField="Cost">
+			<showDataEffect>
+	  			<SeriesInterpolate/> 
+	  		</showDataEffect>
+		</Column3DSeries>
+	</series>
+</Column3DChart>
+
+</rMateChart>

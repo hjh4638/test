@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../print.css" type="text/css" media="print">
+<meta content="ImageChart,charts.ImageChart" name="keywords">
+<title>charts.ImageChart</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../asdoc.js"></script><script type="text/javascript" language="javascript" src="../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'ImageChart - rMateChart 4.0 Flash Version Reference By RiaMore Soft.';
+				var baseRef = '../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">rMateChart 4.0 Flash Version Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../all-classes.html')" href="../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../all-classes.html')" href="../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../index-list.html')" href="../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../index.html?charts/ImageChart.html&amp;charts/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;ImageChart</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#styleSummary">Styles</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class ImageChart"); titleBar_setSubNav(false,false,true,false,false,false,false,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">charts</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class ImageChart</td>
+</tr>
+</table>
+<p></p>
+   ImageChart는 데이터의 값을 이미지로 표현합니다.
+    이미지 차트의 이미지 표현 유형은 다음 3가지가 있습니다.
+   <ul>
+     <li>single : 대표 이미지 한개로 데이터 value 를 표현합니다.</li> 
+     <li>singleRepeat : 대표 이미지 한개가 표현하는 value 값을 설정하여 데이터 값에 이를 때까지 쌓아 올려 표현합니다.</li> 
+     <li>multiple : 다수의 이미지에 각각의 value 값을 설정하여 데이터 값을 표현합니다.</li>
+   </ul>
+   <p>rMate ImageChart 는 series 속성에 ImageSeries 객체의 배열이 할당되어야 합니다.</p>
+     <p>레이아웃은 아래와 같이 작성합니다.</p>
+     <pre>
+   
+  &lt;rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid"&gt;
+   &lt;Options&gt;
+     &lt;Caption text="Image Chart" /&gt;
+     &lt;SubCaption text="(2004 ~ 2008)" textAlign="center"/&gt;
+    &lt;/Options&gt;
+    &lt;NumberFormatter id="numFmt" /&gt; 
+    &lt;ImageChart id="chart" showDataTips="true" gutterLeft="20" gutterRight="20"  showLabelVertically="true"&gt;
+     &lt;horizontalAxis&gt;
+      &lt;CategoryAxis id="hAxis" categoryField="Year"/&gt;
+    &lt;/horizontalAxis&gt;
+     &lt;verticalAxis&gt;
+      &lt;LinearAxis id="vAxis"/&gt;
+     &lt;/verticalAxis&gt;
+    &lt;series&gt;
+     &lt;ImageSeries yField="Data1" imageDisplayType="single" styleName="seriesStyle" displayName="Male" formatter="{numFmt}"&gt;
+      &lt;imgSource&gt;
+               &lt;ImageSourceItem maintainAspectRatio="true" url="../Samples/Images/1-1-1.png"/&gt;
+               &lt;/imgSource&gt;
+               &lt;showDataEffect&gt;
+                &lt;SeriesSlide duration="1000" direction="up"/&gt;
+               &lt;/showDataEffect&gt;
+     &lt;/ImageSeries&gt;
+     &lt;ImageSeries yField="Data2" imageDisplayType="single" styleName="seriesStyle2" displayName="Female" formatter="{numFmt}"&gt;
+      &lt;imgSource&gt;
+                &lt;ImageSourceItem maintainAspectRatio="true" url="../Samples/Images/1-1-2.png"/&gt;
+              &lt;/imgSource&gt;
+              &lt;showDataEffect&gt;
+            &lt;SeriesSlide duration="1000" direction="up"/&gt;
+            &lt;/showDataEffect&gt;
+    &lt;/ImageSeries&gt;
+   &lt;/series&gt;
+   &lt;verticalAxisRenderers&gt;
+    &lt;Axis2DRenderer axis="{vAxis}" visible="false" includeInLayout="false"/&gt;
+   &lt;/verticalAxisRenderers&gt;
+  &lt;/ImageChart&gt;
+  &lt;Style&gt;
+   .seriesStyle
+   {
+    labelPosition:outside;
+    fontFamily:Myriad;
+    color:0x0066FF;
+    fontSize:11;
+   }
+   .seriesStyle2
+   {
+    labelPosition:outside;
+    fontFamily:Myriad;
+    color:0xFF66FF;
+    fontSize:11;
+   }
+  &lt;/Style&gt;
+  lt;/rMateChart&gt;
+     </pre>
+   
+  <p><code>&lt;ImageChart</code></p>
+  <pre>
+    <strong>Styles</strong>
+     columnWidthRatio="<i>0.65</i>"
+     maxColumnWidth="<i>Nan</i>"
+  </pre>
+  <code>/&gt;</code>
+  <p></p>
+<br>
+<hr>
+</div>
+<a name="styleSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Styles</div>
+<table id="summaryTableStyle" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Style</th><th>Description</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:columnWidthRatio"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">columnWidthRatio</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number<br>
+  표시하는 칼럼(column)의 width 를 카테고리의 width에 대한 비율(범위는 0~1)로 지정합니다.
+  값이 1인  경우는 영역 전체가 사용되며, 0.6인 경우  칼럼의 사용 가능 영역은 60%입니다.
+  <p>실제 칼럼(column)의 width 는 <code>columnWidthRatio</code> property 와 
+  <code>maxColumnWidth</code> property 를 계산하여 작은 값이 적용됩니다</p>
+  </td><td class="summaryTableOwnerCol">ImageChart</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:maxColumnWidth"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">maxColumnWidth</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number &nbsp; <span class="label">Format: </span>Length<br>
+   칼럼(column)의 width를 픽셀 단위로 지정합니다.
+  
+  <p>실제 칼럼(column)의 width 는 <code>columnWidthRatio</code> property 와 
+  <code>maxColumnWidth</code> property 를 계산하여 작은 값이 적용됩니다</p>
+  </td><td class="summaryTableOwnerCol">ImageChart</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->

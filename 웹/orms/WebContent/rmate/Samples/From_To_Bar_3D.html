@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title></title>
+<script src="./JS/AC_OETags.js" language="javascript"></script>
+<script src="./JS/rMateChart.js" language="javascript"></script>
+<script src="./JS/rMateChartLicense.js" language="javascript"></script>
+
+<style type="text/css">
+
+body
+{ 
+	margin: 0px; 
+	overflow:hidden 
+}
+
+.wrap
+{
+	position:absolute;
+	top:40px;
+	left:50%;
+	width:800px;
+	height:50px;
+	margin: 0 0 0 -400px;
+}
+
+.header
+{
+	position:absolute;
+	width:100%;
+}
+
+.header_title
+{
+	font-family:verdana;
+	text-align:center;
+}
+
+.header_description
+{
+	font-family:arial;
+}
+
+.content
+{
+	position:absolute;
+	top:70px;
+}
+
+.footer
+{
+	position:absolute;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	text-align:center;
+}
+
+.footer_button{}
+
+.footer_description
+{
+	border:2px solid #b7babc;
+	position:relative;
+	top:10px;
+	font-family:arial;
+}
+
+</style>
+
+
+<!-- 사용자 정의 설정 시작 -->
+<script language="JavaScript" type="text/javascript">
+
+window.onload = function()
+{
+	rMateChartInit();
+}
+
+// -----------------------1번 차트 flashVars 설정 시작-----------------------
+// 차트 레이아웃 URL 경로. 반드시 설정하십시오.
+
+var flashVars;
+
+var rMateOnLoadCallFunction = "rMateChartOnLoad";
+
+ flashVars += "&rMateOnLoadCallFunction="+rMateOnLoadCallFunction;
+
+ function rMateChartOnLoad()
+ {
+	 document.getElementById("chart1").setData(data);
+	 document.getElementById("chart1").setLayout(layout);
+ }
+
+var today = "2010/2/16";
+
+var layout = "<rMateChart  cornerRadius='12' borderStyle='solid'>"
+			+"<Options>"
+			+"<Caption text='스케줄링'/>"
+			+"<DataEditor/>"
+			+"</Options>"
+			+"<DateFormatter id='dateFmt' formatString='M월'/>"
+			+"<DateFormatter id='dateOrgFmt' formatString='YYYY/MM/DD'/>"
+			+"<Bar3DChart showDataTips='true' fontSize='11'>"
+			+"<seriesFilters>"
+			+"<DropShadowFilter alpha='0'/>"
+			+"</seriesFilters>"
+			+"<verticalAxis>"
+			+"<CategoryAxis categoryField='cat'/>"
+			+"</verticalAxis>"
+			+"<horizontalAxis>"
+			+"<DateTimeAxis displayLocalTime='true' id='hAxis' labelUnits='months' minimum='2010/01/01' maximum='2010/12/31' formatter='{dateOrgFmt}'/>"
+			+"</horizontalAxis>"
+			+"<series>"
+			+"<Bar3DSeries id='series1' minField='date1' xField='date2' labelPosition='inside' insideLabelField='cat'>"
+			+"<stroke><Stroke color='0x000000' weight='1'/></stroke>"
+			+"<showDataEffect><SeriesSlide direction='right' duration='1000'/></showDataEffect>"
+			+"</Bar3DSeries>"
+			+"</series>"
+			+"<horizontalAxisRenderers>"
+			+"<Axis3DRenderer axis='{hAxis}' formatter='{dateFmt}'/>"
+			+"</horizontalAxisRenderers>"
+			+"</Bar3DChart>"
+			+"</rMateChart>";
+
+var data= [
+			{"cat":"A 업무", "date1":"2010/01/1", "date2":"2010/05/31"},
+            {"cat":"B 업무", "date1":"2010/02/15", "date2":"2010/03/10"},
+        	{"cat":"C 업무", "date1":"2010/03/15", "date2":"2010/05/7"},
+        	{"cat":"D 업무", "date1":"2010/02/15", "date2":"2010/04/12"},
+        	{"cat":"E 업무", "date1":"2010/05/15", "date2":"2010/10/1"},
+        	{"cat":"F 업무", "date1":"2010/02/15", "date2":"2010/08/10"},
+        	{"cat":"G 업무", "date1":"2010/07/15", "date2":"2010/11/20"},
+        	{"cat":"H 업무", "date1":"2010/09/15", "date2":"2010/12/20"}
+			];
+
+<!-- 사용자 정의 설정 끝  -->
+</script>
+</head>
+
+<body>
+	<div class="wrap">
+		<div class="header">
+			<div class="header_title">
+				<p>From-To Bar 3D Chart</p>
+			</div>
+			<div class="header_description">
+				<p>레이아웃 설정 및 데이터 삽입은 각각 스트링형태와 배열입니다.(소스보기 참고)</p>
+			</div>
+		</div>
+		<div class="content">
+			<script language="javascript">
+				<!--
+					rMateChartCreate("chart1","../Component/rMateChart",flashVars, 800, 400, "#FFFFFF");
+				// -->
+			</script>
+		</div>
+	</div>
+</body>
+</html>

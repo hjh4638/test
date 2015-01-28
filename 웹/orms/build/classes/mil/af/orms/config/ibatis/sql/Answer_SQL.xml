@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="Answer">
+
+<typeAlias alias="AnswerWithHeadQuestionVO" type="mil.af.orms.model.AnswerWithHeadQuestionVO" />
+
+<select id="getAnswerWithHeadQuestionList" parameterClass="Map" resultClass="AnswerWithHeadQuestionVO">
+SELECT A.ID ID,A.SN,C.ID HEAD_QUESTION_ID,C.QUESTION_NAME HEAD_QUESTION_NAME,
+A.QUESTION_ID,B.QUESTION_NAME QUESTION_NAME,SCORE
+FROM ORMS_ANSWER A, ORMS_QUESTION B,ORMS_QUESTION C
+WHERE A.QUESTION_ID=B.ID
+AND B.HEAD_QUESTION=C.ID
+<dynamic>
+	<isNotNull property="id" prepend=" AND ">
+	A.ID=#id#
+	</isNotNull>
+	<isNotNull property="sn" prepend=" AND ">
+	A.SN=#sn#
+	</isNotNull>
+	<isNotNull property="schedule_seq_list" prepend=" AND ">
+	<iterate property="schedule_seq_list" prepend="" open="(" close=")" conjunction=" OR " > 
+  	A.ID = #schedule_seq_list[]#</iterate>
+	</isNotNull>
+</dynamic>
+</select>
+
+<insert id="insertDiagnosisTable" parameterClass="Map">
+INSERT INTO ORMS_ANSWER
+SELECT #schedule_id# ID,#sn# SN,Q.ID QUESTION_ID,SCORE,SYSDATE WRITE_DATE FROM ORMS_QUESTION Q,
+(
+    SELECT * FROM ORMS_SCORE
+    WHERE (SECTION_1='ORM003' AND SECTION_2=#day_period#)
+    OR (SECTION_1='ORM004' AND SECTION_2=#section#)
+) S
+WHERE 
+(<iterate property="answerList" prepend="" open="" close="" conjunction=" OR " > 
+  Q.ID = #answerList[]#</iterate>)
+AND Q.ID=S.ID(+)
+</insert>
+
+<delete id="deleteDiagnosisTable" parameterClass="Map">
+DELETE FROM ORMS_ANSWER
+WHERE ID=#id# AND SN=#sn#
+</delete>
+
+<update id="testUpdate" parameterClass="Map">
+update orms_schedule
+set sn=#sn#
+where seq=#seq#
+</update>
+
+</sqlMap>

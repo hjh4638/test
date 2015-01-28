@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report"/>
+	</Options>
+	<Combination3DChart showDataTips="true">
+<!-- 
+Combination3D 차트 생성시에 필요한 Combination3DChart 정의합니다 
+showDataTips : 데이터에 마우스를 가져갔을 때 나오는 Tip을 보이기/안보이기 속성입니다  
+ -->		
+ 		<horizontalAxis>
+			<CategoryAxis categoryField="Month" /> 
+		</horizontalAxis>
+		<series>
+			<Column3DSet type="clustered">
+ <!--  
+Combination 차트에서는 Column차트와 Bar차트를 사용할때 Column3DSet(Colum2DSet),Bar3DSet(Bar2DSet)을 사용합니다
+예제로 Column3DSeries를 사용하려 할 때는 Column3DSet을 정의 후 <series>와<Column3DSet>을 정의합니다
+Column3DSet(Colum2DSet),Bar3DSet(Bar2DSet)의 Type은 일반 Type과 동일 합니다
+그러나 기본 Type은 overlaid입니다
+  --> 
+				<series>
+					<Column3DSet type="stacked">
+						<series>
+							<Column3DSeries yField="Profit" displayName="Profit">
+								<showDataEffect>
+									<SeriesInterpolate/> 
+								</showDataEffect>
+							</Column3DSeries>
+							<Column3DSeries yField="Cost" displayName="Cost">
+								<showDataEffect>
+									<SeriesInterpolate/> 
+								</showDataEffect>
+							</Column3DSeries>
+						</series>
+					</Column3DSet>
+					<Column3DSeries yField="Revenue" displayName="Revenue">
+						<showDataEffect>
+							<SeriesInterpolate/> 
+						</showDataEffect>
+					</Column3DSeries>
+				</series>
+			</Column3DSet>
+
+			<Line2DSeries selectable="true" yField="Revenue" radius="4" form="curve" displayName="Revenue"
+					itemRenderer="CircleItemRenderer">
+					<showDataEffect>
+						<SeriesInterpolate/> 
+					</showDataEffect>
+				<filters>
+					<DropShadowFilter distance="3" color="0x666666" alpha=".8" /> 
+				</filters>
+				<lineStroke>
+					<Stroke color="0x7aa371" weight="4" /> 
+				</lineStroke>
+				<stroke>
+					<Stroke color="0x7aa371" weight="2" /> 
+				</stroke>
+				<fill>
+					<SolidColor color="0xFFFFFF" /> 
+				</fill>
+			</Line2DSeries>
+		</series>
+	</Combination3DChart>
+</rMateChart>

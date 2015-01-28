@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report"/>
+		<DataEditor showOnInit="true" editorHeight="94" reverseRow="true"/>
+	</Options>
+	<Column2DChart showDataTips="true" selectionMode="single">
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month" /> 
+		</horizontalAxis>
+		<series>
+			<!-- 
+			type 속성을 stacked로 변경	
+			type속성으로는
+			clustered : 일반적인 다중데이터(차트의 멀티시리즈)방식으로 데이터를 표현합니다.(Default)
+			stacked : 데이터를 위에 쌓아 올린 방식으로 표현 합니다.
+			overlaid : 수치 데이터 값을 겹쳐서 표현 합니다. 주로 목표 위치와 현재 위치를 나타낼 때 많이 쓰입니다.
+			100% : 차트의 수치 데이터를 퍼센티지로 계산 후 값을 퍼센티지로 나타냅니다. 
+			-->
+			<Column2DSet type="stacked" showTotalLabel="true">	
+				<series>
+					<Column2DSeries labelPosition="inside" yField="Profit" lineToEachItems="true">
+					<!-- lineToEachItems : True로 설정 하면 Series간에 선을 이어준다 -->
+						<lineStroke>
+							 <Stroke weight="1" color="0xE48701" caps="none" />
+						</lineStroke>
+						<showDataEffect>
+							<SeriesInterpolate/> 
+						</showDataEffect>
+					</Column2DSeries>
+					<Column2DSeries labelPosition="inside" yField="Cost" lineToEachItems="true">
+						<lineStroke>
+							 <Stroke weight="1" color="0xA5BC4E" caps="none" />
+						</lineStroke>
+						<showDataEffect>
+							<SeriesInterpolate/> 
+						</showDataEffect>
+					</Column2DSeries>
+					<Column2DSeries labelPosition="inside" yField="Revenue" lineToEachItems="true">
+						<lineStroke>
+							 <Stroke weight="1" color="0x1B95D9" caps="none" />
+						</lineStroke>
+						<showDataEffect>
+							<SeriesInterpolate/> 
+						</showDataEffect>
+					</Column2DSeries>
+				</series>
+			</Column2DSet>
+		</series>
+	</Column2DChart>
+</rMateChart>

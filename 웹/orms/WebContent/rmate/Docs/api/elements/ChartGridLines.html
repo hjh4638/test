@@ -1,0 +1,328 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../print.css" type="text/css" media="print">
+<meta content="ChartGridLines,elements.ChartGridLines" name="keywords">
+<title>elements.ChartGridLines</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../asdoc.js"></script><script type="text/javascript" language="javascript" src="../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'ChartGridLines - rMateChart 4.0 Flash Version Reference By RiaMore Soft.';
+				var baseRef = '../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">rMateChart 4.0 Flash Version Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../all-classes.html')" href="../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../all-classes.html')" href="../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../index-list.html')" href="../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../index.html?elements/ChartGridLines.html&amp;elements/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;ChartGridLines</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#methodSummary">Methods</a>&nbsp;| <a href="#styleSummary">Styles</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class ChartGridLines"); titleBar_setSubNav(false,false,true,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">elements</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class ChartGridLines</td>
+</tr>
+</table>
+<p></p>
+   ChartGridLines 는  차트의 데이터 영역 안쪽에 격자 모양의 선을 그리는 클래스입니다. 
+   차트 안쪽에 그릴 수 있는 선은 both, horizontal, vertical 형태입니다.
+   
+   <p>차트 축의 모든 tick을 기준으로 그리게 됩니다. 추가로 차트 데이터 영역 안쪽 중앙에 각각 세로, 가로선을 그을 수 있습니다.</p>
+   
+   <p>차트 컨트롤의 <code>backgroundElements</code>속성 또는 <code>annotationElements</code> 속성 값으로 이 클래스의
+   인스턴스를 할당하십시오. </p>
+  
+   <p><code>&lt;rmate:Axis2DRenderer&gt;</code> 는 기본적으로 parent classes 의 모든 properties
+   를 상속받으며 아래의 properties 를 추가로 갖습니다. </p>
+   
+  <p>레이아웃은 아래와 같이 작성하십시오.</p>
+   <pre>
+  &lt;rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid"&gt;
+  &lt;Bar3DChart&gt;
+   &lt;verticalAxis&gt;
+            &lt;CategoryAxis categoryField="Month"/&gt;
+         &lt;/verticalAxis&gt;
+   &lt;series&gt;
+    &lt;Bar3DSeries xField="Profit"&gt;
+     &lt;showDataEffect&gt;
+        &lt;SeriesInterpolate/&gt; 
+       &lt;/showDataEffect&gt;
+    &lt;/Bar3DSeries&gt;
+   &lt;/series&gt;
+   &lt;backgroundElements&gt;
+    &lt;GridLines direction="both" verticalChangeCount="1" horizontalChangeCount="1"&gt;
+        &lt;horizontalStroke&gt;
+      &lt;Stroke color="0x999999" alpha="0.5" weight="1"/&gt;
+      &lt;!-- color:색깔 alpha:투명도 weight:굵기 --&gt;
+     &lt;/horizontalStroke&gt; 
+     &lt;horizontalFill&gt;
+      &lt;SolidColor color="0xEEEEEE" alpha="0.5"/&gt;
+      &lt;!-- color:색깔 alpha:투명도 --&gt;
+     &lt;/horizontalFill&gt; 
+     &lt;horizontalAlternateFill&gt;
+      &lt;SolidColor color="0xFFFFFF" alpha="0.5"/&gt;
+      &lt;!-- color:색깔 alpha:투명도 --&gt;
+     &lt;/horizontalAlternateFill&gt;
+     &lt;verticalStroke&gt;
+      &lt;Stroke color="0x999999" alpha="0.5" weight="1"/&gt;
+     &lt;/verticalStroke&gt;
+     &lt;verticalFill&gt;
+      &lt;SolidColor color="0xFFFFFF" alpha="0.5"/&gt;
+     &lt;/verticalFill&gt; 
+     &lt;verticalAlternateFill&gt;
+      &lt;SolidColor color="0xEEEEEE" alpha="0.5"/&gt;
+     &lt;/verticalAlternateFill&gt; 
+     &lt;horizontalOriginStroke&gt;
+      &lt;Stroke color="0x999999" alpha="0" weight="1"/&gt;
+     &lt;/horizontalOriginStroke&gt;
+    &lt;/GridLines&gt;
+   &lt;/backgroundElements&gt;
+  &lt;/Bar3DChart&gt;
+  &lt;/rMateChart&gt;
+   </pre>
+   
+  <p></p>
+<br>
+<hr>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#ChartGridLines()">ChartGridLines</a>()</div>
+<div class="summaryTableDescription">
+   Constructor
+   </div>
+</td><td class="summaryTableOwnerCol">ChartGridLines</td>
+</tr>
+</table>
+</div>
+<a name="styleSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Styles</div>
+<table id="summaryTableStyle" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Style</th><th>Description</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:direction"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">direction</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>String<br>
+  gridLine의 수직,수평,수직&수평 을 결정합니다.
+  </td><td class="summaryTableOwnerCol">ChartGridLines</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:horizontalAlternateFill"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">horizontalAlternateFill</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>uint &nbsp; <span class="label">Format: </span>color<br>
+  horizontalFill의 상대적인 채우기 색상 입니다.
+  </td><td class="summaryTableOwnerCol">ChartGridLines</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:horizontalCenterStroke"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">horizontalCenterStroke</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Object<br>
+  차트 중앙에 그을 가로선의 선 스타일입니다.
+  </td><td class="summaryTableOwnerCol">ChartGridLines</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:horizontalChangeCount"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">horizontalChangeCount</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number &nbsp; <span class="label">Format: </span>Length<br>
+  설정하는 값 만큼 horizontalFill과 horizontalAlternateFill이 번갈아가며 색상을 번갈아 출력합니다.
+  </td><td class="summaryTableOwnerCol">ChartGridLines</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:horizontalFill"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">horizontalFill</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>uint &nbsp; <span class="label">Format: </span>color<br>
+  direction==horizontal 일 때 최초 시작하는 채우기 색상입니다.
+  </td><td class="summaryTableOwnerCol">ChartGridLines</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:horizontalOriginStroke"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">horizontalOriginStroke</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Object<br>
+  direction==horizontal일 때 수평축의 original선의 색상입니다.
+  </td><td class="summaryTableOwnerCol">ChartGridLines</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:horizontalShowCenterLine"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">horizontalShowCenterLine</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Boolean<br>
+  차트 배경 중앙에 가로선을 그을지를 나타내는 플래그입니다.
+   The default value is <code>false</code>.</td><td class="summaryTableOwnerCol">ChartGridLines</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:horizontalShowOrigin"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">horizontalShowOrigin</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Boolean<br>
+  수평축의 original선의 보이기 안보이기 입니다.
+  </td><td class="summaryTableOwnerCol">ChartGridLines</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:horizontalStroke"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">horizontalStroke</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Object<br>
+  수평선의 색상입니다.
+  </td><td class="summaryTableOwnerCol">ChartGridLines</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:horizontalTickAligned"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">horizontalTickAligned</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Boolean<br>
+   수평축을 tickMark와 동일선상에 그릴지 결정합니다.
+   </td><td class="summaryTableOwnerCol">ChartGridLines</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:verticalAlternateFill"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">verticalAlternateFill</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>uint &nbsp; <span class="label">Format: </span>color<br>
+  verticalFill의 상대적인 채우기 색상 입니다.
+  </td><td class="summaryTableOwnerCol">ChartGridLines</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:verticalCenterStroke"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">verticalCenterStroke</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Object<br>
+  차트 중앙에 그을 세로선의 선 스타일입니다.
+  </td><td class="summaryTableOwnerCol">ChartGridLines</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:verticalChangeCount"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">verticalChangeCount</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number &nbsp; <span class="label">Format: </span>Length<br>
+  설정하는 값 만큼 verticalFill과 verticalAlternateFill이 번갈아가며 색상을 번갈아 출력합니다.
+  </td><td class="summaryTableOwnerCol">ChartGridLines</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:verticalFill"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">verticalFill</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>uint &nbsp; <span class="label">Format: </span>color<br>
+  direction==vertical일 때 최초 시작하는 채우기 색상입니다.
+  </td><td class="summaryTableOwnerCol">ChartGridLines</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:verticalOriginStroke"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">verticalOriginStroke</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Object<br>
+  direction==vertical일 때 수직축의 original선의 색상입니다.
+  </td><td class="summaryTableOwnerCol">ChartGridLines</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:verticalShowCenterLine"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">verticalShowCenterLine</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Boolean<br>
+  차트 배경 중앙에 세로선을 그을지를 나타내는 플래그입니다.
+  </td><td class="summaryTableOwnerCol">ChartGridLines</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:verticalShowOrigin"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">verticalShowOrigin</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Boolean<br>
+  수직축의 original선의 보이기 안보이기 입니다.
+  </td><td class="summaryTableOwnerCol">ChartGridLines</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:verticalStroke"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">verticalStroke</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Object<br>
+  수직선의 색상입니다.
+  </td><td class="summaryTableOwnerCol">ChartGridLines</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:verticalTickAligned"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">verticalTickAligned</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Boolean<br>
+   수직축을 tickMark와 동일선상에 그릴지 결정합니다.
+   </td><td class="summaryTableOwnerCol">ChartGridLines</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="ChartGridLines()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">ChartGridLines</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function ChartGridLines()</code><p>
+   Constructor
+   </p></div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->

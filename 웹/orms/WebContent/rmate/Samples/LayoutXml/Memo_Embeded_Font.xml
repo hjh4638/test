@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="M.E.M.O"/>
+	</Options>
+	<Plot2DChart showDataTips="true" fontFamily="Dotum">
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month"/> 
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis id="vAxis"/>
+		</verticalAxis>
+		<verticalAxisRenderers>
+			<Axis2DRenderer  axis="{vAxis}"/>
+		</verticalAxisRenderers>
+		<series>
+			<Plot2DSeries yField="Revenue" displayName="Cost" raidus="8">
+				<stroke>
+					<Stroke color="0x999999"/>
+				</stroke>
+				<showDataEffect>
+					<SeriesZoom  /> 
+				</showDataEffect>
+			</Plot2DSeries>
+		</series>
+		<backgroundElements>
+			<GridLines verticalShowOrigin="false"/>
+		</backgroundElements>
+		<annotationElements>
+			<CanvasElement>
+				<Label left="250" top="220" text="외부 폰트 가져오기 예제입니다." borderStyle="solid" borderColor="0xff6634" backgroundColor="0xff6634" backgroundAlpha="0.5" fontSize="15" rotation="15">
+					<filters>
+						<DropShadowFilter alpha="0.5" />
+					</filters>
+				</Label>
+			</CanvasElement>
+		</annotationElements>
+	</Plot2DChart>
+
+	<!-- 차트의 데이터팁의 스타일은 .chartDataTip 으로 정의합니다. -->
+	<Style>
+		.chartDataTip
+		{
+			fontFamily:Dotum;
+			fontSize:15;
+		}
+	</Style>
+</rMateChart>

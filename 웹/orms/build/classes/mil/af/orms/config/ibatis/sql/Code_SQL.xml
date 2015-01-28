@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Code">
+	<typeAlias alias="SysCodeVO" type="mil.af.orms.model.SysCodeVO" />
+	<select id="getCodeList" parameterClass="String" resultClass="SysCodeVO">
+	SELECT ID,M_CODE,CODE,M_CODENAME,CODENAME,ORDER_CD 
+	FROM ORMS_SYS_CODE WHERE M_CODE=#value#
+	ORDER BY ORDER_CD
+	</select>
+	<!-- 대대정보 code에 담아서 넘김 
+	-->
+	<select id="getSectionList" parameterClass="SysCodeVO" resultClass="SysCodeVO">
+	SELECT ID,M_CODE,CODE,M_CODENAME,CODENAME,ORDER_CD 
+	FROM ORMS_SYS_CODE WHERE M_CODE=#m_code#
+	<dynamic>
+			<isNotEmpty prepend="AND" property="code">
+		        order_cd in (
+			    select AIRPLANE
+			    from orms_unit
+			    where unit_code like #code#
+			    )
+	        </isNotEmpty>
+	        <isNotEmpty prepend="AND" property="order_cd">
+		        order_cd = #order_cd#
+	        </isNotEmpty>
+	</dynamic>
+	ORDER BY ORDER_CD,CODE
+	</select>
+	
+</sqlMap>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" borderStyle="solid" cornerRadius="12">
+	<NumberFormatter id="numFmt" precision="0" /> 
+	<Options>
+		<Caption text="Anual Report"/>
+		<DataEditor showOnInit="true" formatter="{numFmt}" editorHeight="94" reverseRow="true" textAlign="right"/>
+	</Options>
+	<Combination3DChart showDataTips="true" selectionMode="single">
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month" /> 
+		</horizontalAxis>
+		<series>
+			<Column3DSet type="stacked"  fontFamily="Myriad" fontSize="11" color="0xFF6600" showTotalLabel="true">
+				<series>
+					<Column3DSeries yField="Profit" displayName="Profit">
+						<showDataEffect>
+							<SeriesInterpolate/>
+						</showDataEffect>
+					</Column3DSeries>
+					<Column3DSeries yField="Cost" displayName="Cost">
+						<showDataEffect>
+							<SeriesInterpolate/>
+						</showDataEffect>
+					</Column3DSeries>
+				</series>
+			</Column3DSet>
+			<Line2DSeries labelPosition="down" yField="Revenue" raidus="4" displayName="Revenue"
+							fontSize="11" fontFamily="Myriad" color="0x6600FF"
+							itemRenderer="CircleItemRenderer" fill="0xFFFFFF"
+							itemRollOverColor="0x0066FF"  itemSelectionColor="0x0099FF">
+				<filters>
+					<DropShadowFilter distance="3" color="0x666666" alpha=".8" /> 
+				</filters>
+				<stroke>
+					<Stroke weight="1" color="0x6600FF" alpha="0.5"/>
+				</stroke>
+				<showDataEffect>
+					<SeriesInterpolate/>
+				</showDataEffect>
+			</Line2DSeries>
+		</series>
+	</Combination3DChart>
+</rMateChart>

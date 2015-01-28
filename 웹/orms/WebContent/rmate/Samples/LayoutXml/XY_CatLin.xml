@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report" /> 
+	</Options>
+	<NumberFormatter id="numFmt"/>
+	<Column3DChart showDataTips="true">
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month" title="Category Axis"/> 
+<!-- 
+x축 CategoryAxis 속성
+categoryField : 카테고리 축이 참조할 데이터의 필드명을 입력하세요
+displayName : 툴팁에 나타날 축을 대표하는 문자열을 입력하세요
+title : 축의 대표 제목 입니다
+labelJsFunction : 축 라벨 텍스트를 사용자 정의할 함수를 나타냅니다
+-->
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis formatter="{numFmt}" maximum="3500" title="Linear Axis"/>
+<!-- 
+y축 LinearAxis 속성
+interval : 축에 나타나는 라벨의 간격을 나타냅니다
+minimum : 축 라벨의 최소치를 나타냅니다
+maximum : 축 라벨의 최대치를 나타냅니다
+title : 축의 대표 제목 입니다
+labelJsFunction : 축 라벨 텍스트를 사용자 정의할 함수를 나타냅니다
+displayName : 툴팁에 나타날 축을 대표하는 문자열을 입력하세요
+-->
+		</verticalAxis>
+		<series>
+			<Column3DSeries yField="Profit" displayName="Profit" formatter="{numFmt}">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Column3DSeries>
+		</series>
+	</Column3DChart>
+</rMateChart>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="A 학교 성적 분포도"/>
+	</Options>
+	<SeriesSlide id="ss"/>
+	<Matrix2DChart showDataTips="true" type="fill" selectionMode="single" dataTipJsFunction="tipFunc">
+		<backgroundElements>
+			<GridLines direction="horizontal" horizontalChangeCount="2">
+				<horizontalStroke>
+					<Stroke color="0x000000"/>
+				</horizontalStroke>
+			</GridLines>
+		</backgroundElements>
+		<verticalAxis>
+			<LinearAxis id="vAxis" interval="0.5" maximum="7" labelJsFunction="vertiJsFunc"/>
+		</verticalAxis>
+		<horizontalAxis>
+			<LinearAxis id="hAxis" interval="0.5" maximum="7" labelJsFunction="horiJsFunc"/>
+		</horizontalAxis>
+		<series>
+			<Matrix2DSeries xField="Data_x" yField="Data_y" zField="Data" showDataEffect="{ss}" labelPosition="inside" fillJsFunction="fillJsFunc" insideLabelJsFunction="labelJsFunc"/>
+		</series>
+		<verticalAxisRenderers>
+			<Axis2DRenderer axis="{vAxis}" tickPlacement="none" styleName="font" minorTickPlacement="none"/>
+		</verticalAxisRenderers>
+		<horizontalAxisRenderers>
+			<Axis2DRenderer axis="{hAxis}" tickPlacement="none" styleName="font" minorTickPlacement="none"/>
+		</horizontalAxisRenderers>
+	</Matrix2DChart>
+	<Box width="100%" horizontalAlign="center">
+		<SubLegend borderStyle="solid" markerWidth="15" markerHeight="10" direction="horizontal">
+			<LegendItem label="0 ~ 10" fill="0xffcb99"/>
+			<LegendItem label="10 ~ 20" fill="0xf68344"/>
+			<LegendItem label="20 ~ " fill="0xff6634"/>
+		</SubLegend>
+	</Box>				
+	<Style>
+		.font{
+			fontSize:11;
+		}
+	</Style>
+</rMateChart>

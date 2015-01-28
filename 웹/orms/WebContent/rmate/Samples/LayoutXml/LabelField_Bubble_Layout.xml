@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report" /> 
+	</Options>
+	<Bubble3DChart showDataTips="true" minRadius="5" maxRadius="30">
+		<horizontalAxis>
+			<LinearAxis maximum="2800" title="Profit" /> 
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis maximum="3000" title="Cost" /> 
+		</verticalAxis>
+		<series>
+			<Bubble3DSeries labelPosition="inside" displayName="Profit/Cost/Revenue" xField="Profit" yField="Cost" radiusField="Revenue">
+				<showDataEffect> 
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Bubble3DSeries>
+		</series>
+	</Bubble3DChart>
+</rMateChart>

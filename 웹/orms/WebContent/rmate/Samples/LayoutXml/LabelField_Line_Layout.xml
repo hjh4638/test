@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report" /> 
+	</Options>
+	<NumberFormatter id="numFmt"/>
+	<Line2DChart showDataTips="true">
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month"/> 
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis formatter="{numFmt}" maximum="3500"/>
+		</verticalAxis>
+		<series>
+			<Line2DSeries yField="Profit" displayName="Profit" formatter="{numFmt}" labelPosition="up">
+			<!-- labelPosition을 up로 지정 하였습니다 
+      labelPosition은 up,down,both가 있습니다.
+     up - 차트 안에 표시됩니다
+      down - 차트 밖에 표시됩니다
+      both - 차트 안,밖에 표시됩니다
+      -->
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Line2DSeries>
+		</series>
+	</Line2DChart>
+</rMateChart>

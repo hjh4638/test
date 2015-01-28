@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="히스토리 2D 차트"/>
+	</Options>
+	<HistoryChart>
+		<displayerChart>
+			<Displayer id="chart1" showDataTips="true" width="100%" height="100%">
+				<horizontalAxis>
+					<CategoryAxis id="mainHAxis" categoryField="Date" ticksBetweenLabels="false" padding="0"/>
+				</horizontalAxis>
+				<series>
+					<Line2DSeries labelPosition="up" id="lineSeris" 
+						yField="Data1" form="segment" filterData="false"
+						displayName="Data1">
+					<!-- 디스플레이어(Displayer)차트로 Line2DSeries를 정의 하였습니다 -->
+						<lineStroke>
+							<Stroke color="0x6666FF" weight="2" /> 
+						</lineStroke>
+						<showDataEffect>
+							<SeriesInterpolate duration="1000"/>
+						</showDataEffect>
+					</Line2DSeries>
+			    </series>
+			</Displayer>
+		</displayerChart>
+		<navigator>
+			<Navigator id="navi" width="100%"  height="80" gutterLeft="0" paddingLeft="30" paddingRight="30">
+				<horizontalAxis>
+					<CategoryAxis categoryField="index" id="naviHAxis"  padding="0"/> 
+				</horizontalAxis>
+				<horizontalAxisRenderers>
+					<Axis2DRenderer axis="{naviHAxis}" visible="false"/>
+				</horizontalAxisRenderers>
+		        <verticalAxis>
+		        	<LinearAxis id="vAxis"/>
+		        </verticalAxis>
+		        <verticalAxisRenderers>
+		        	<Axis2DRenderer axis="{vAxis}" visible="false"/>
+		        </verticalAxisRenderers>
+				 <backgroundElements>
+		        	<GridLines direction="horizontal"/>
+		        </backgroundElements>
+				<series>
+					<Area2DSeries yField="Data1"/>
+			    </series>
+			</Navigator>
+		</navigator>
+		<selector><!-- 시작 시 보여지는 차트는 총 데이터의 약 30%이며 센터 영역입니다. -->
+			<HistoryRangeSelector width="100%" startingRange="center" visibleItemSize="30" unSelectedRangeAreaStyleName="unSelectedRangeAreaStyle"/>
+		</selector>
+	</HistoryChart>
+	<Style>
+		.unSelectedRangeAreaStyle
+		{
+			backgroundColor:#00FFFF;
+			backgroundAlpha:0.1;
+			borderStyle:solid;
+			borderWeight:1;
+			borderColor:#999999;
+		}
+	</Style>
+</rMateChart>

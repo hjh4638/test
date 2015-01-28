@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report"/>
+	</Options>
+	<!-- dataTipFunc 는 자바스크립트 함수명 입니다. -->
+	<Pie3DChart showDataTips="true" dataTipJsFunction="dataTipFunc">
+<!-- 
+dataTipJsFunction : Pie3DChart 시리즈에 마우스 오버될 때 실행되는 Javascript함수로
+		     html 내에 정의한 Javascript함수로 데이터를 보낸 후
+	   	     Javascript 에서 반환되는 값을 Tooltip에 보여줍니다
+-->
+		<series>
+			<Pie3DSeries id="pieSeires" nameField="Month" field="Profit" labelPosition="inside" displayName="Month-Profit">
+				<showDataEffect>
+					<SeriesSlide direction="right" duration="1000"/>
+				</showDataEffect>
+			</Pie3DSeries>
+		</series>
+	</Pie3DChart>
+</rMateChart>

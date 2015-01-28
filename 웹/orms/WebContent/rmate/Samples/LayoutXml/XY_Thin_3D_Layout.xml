@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" paddingTop="40" cornerRadius="12" borderStyle="solid">
+	<Column3DChart cubeDepth="12" cubeAngleRatio="0.7" showDataTips="true">
+		<horizontalAxis>
+			<LinearAxis id="hAxis" interval="1" title="Month" padding="1" labelJsFunction="horiFunc"/>
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis id="vAxis" title="Profit" maximum="2200"/>
+		</verticalAxis>
+		<series>
+			<Column3DSeries yField="Profit" labelPosition="inside" itemRenderer="CylinderItemRenderer">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Column3DSeries>
+		</series>
+		<verticalAxisRenderers>
+			<Axis3DRenderer axis="{vAxis}" tickPlacement="none" minorTickPlacement="none" showLabels="false" >
+				<axisStroke>
+					<Stroke color="0xba97a2" weight="1"/>
+				</axisStroke>
+			</Axis3DRenderer>
+		</verticalAxisRenderers>
+		<horizontalAxisRenderers>
+			<Axis3DRenderer axis="{hAxis}" styleName="labelStyle">
+				<axisStroke>
+					<Stroke color="0xba97a2" weight="1"/>
+				</axisStroke>
+			</Axis3DRenderer>
+		</horizontalAxisRenderers>
+	</Column3DChart>
+	<Style>
+		.labelStyle{
+			fontSize:12;
+		}
+	</Style>
+</rMateChart>

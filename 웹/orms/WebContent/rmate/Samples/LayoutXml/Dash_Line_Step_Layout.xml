@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report"/>
+		<Legend useVisibleCheck="true"/>
+	</Options>
+	<Line2DChart showDataTips="true" >
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month" padding="0.5" /> 
+		</horizontalAxis>
+		<series>
+			<!-- dashLinePattern : 점선을 만드는 패턴을 지정합니다. 예를 들어 5를 지정 시 5 픽셀의 선과 5픽셀의 공백이 반복됩니다.
+				 데이터가 많거나 차트의 사이즈가 큰 경우(즉, 그려야 할 양이 많은 경우)
+				 패턴 값이 작으면 성능 저하를 일으킵니다. 패턴의 값이 클수록 성능이 뛰어납니다.-->
+			<Line2DSeries yField="Profit" radius="4" form="step"
+										lineStyle="dashLine" dashLinePattern="5"
+										itemRenderer="CircleItemRenderer"
+										displayName="Profit">
+				<stroke>
+					<Stroke color="0xeca614" weight="1"/>
+				</stroke>
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Line2DSeries>
+			<Line2DSeries yField="Cost" radius="4"  form="step"
+										lineStyle="dashLine" dashLinePattern="5"
+										itemRenderer="CircleItemRenderer"
+										displayName="Cost">
+				<stroke>
+					<Stroke color="0x6a8fa0" weight="1"/>
+				</stroke>
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Line2DSeries>
+			<Line2DSeries yField="Revenue" radius="4"  form="step"
+										lineStyle="dashLine" dashLinePattern="5"
+										itemRenderer="CircleItemRenderer"
+										displayName="Revenue">
+				<stroke>
+					<Stroke color="0xc5607e" weight="1"/>
+				</stroke>
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Line2DSeries>
+		</series>
+	</Line2DChart>
+</rMateChart>

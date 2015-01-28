@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title></title>
+<script src="./JS/AC_OETags.js" language="javascript"></script>
+<script src="./JS/rMateChart.js" language="javascript"></script>
+<script src="./JS/rMateChartLicense.js" language="javascript"></script>
+
+<style type="text/css">
+
+body
+{ 
+	margin: 0px; 
+	overflow:hidden 
+}
+
+.wrap
+{
+	position:absolute;
+	top:40px;
+	left:50%;
+	width:600px;
+	height:550px;
+	margin: 0 0 0 -300px;
+}
+
+.header
+{
+	position:absolute;
+	width:100%;
+}
+
+.header_title
+{
+	font-family:verdana;
+	text-align:center;
+}
+
+.header_description
+{
+	font-family:arial;
+}
+
+.content
+{
+	position:absolute;
+	top:90px;
+}
+
+.footer
+{
+	position:absolute;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	text-align:center;
+}
+
+.footer_button{}
+
+</style>
+<!-- 사용자 정의 설정 시작 -->
+<script language="JavaScript" type="text/javascript">
+
+window.onload = function()
+{
+	rMateChartInit();
+}
+
+// -----------------------1번 차트 flashVars 설정 시작-----------------------
+// 차트 레이아웃 URL 경로. 반드시 설정하십시오.
+var layoutURL = encodeURIComponent("./LayoutXml/ChartLoadComp_CallJavascript_Layout.xml");	
+var flashVars = "layoutURL="+layoutURL;
+
+// 데이타를 URL 경로를 통해 가져올 경우 설정하십시오.
+// 배열형태로 데이터를 삽입할 경우 주석처리나 삭제하십시오.
+// 배열형태와 같이 사용할 경우, 우선순위는 배열형태 데이터 삽입입니다.
+var dataURL =encodeURIComponent("./DataXml/multiData2.xml");	
+flashVars += "&dataURL="+dataURL;
+
+// 차트가 데이터를 모두 출력하고 호출할 함수를 설정하십시오.
+// 즉, 그래프가 화면에 완전히 뿌려진 후(차트의 할일을 모두 끝낸 후) 호출되는 함수입니다.
+var chartComplete = "displayCompleteHandler";
+flashVars += "&displayCompleteCallFunction="+chartComplete;
+
+function displayCompleteHandler()
+{
+	alert("rMateChart displaying complete !!");
+}
+
+<!-- 사용자 정의 설정 끝  -->
+</script>
+</head>
+
+<body>
+	<div class="wrap">
+		<div class="header">
+			<div class="header_title">
+				<p>Area Chart<p>
+			</div>
+			<div class="header_description">
+				<p>소스 보기를 참고하여 displayCompleteCallFunction 을 어떻게<br/> 등록하였는지 확인하십시오.</p>
+			</div>
+		</div>
+		<div class="content">
+			<script language="javascript">
+				<!--
+					rMateChartCreate("chart1","../Component/rMateChart",flashVars, 600, 400, "#FFFFFF");
+				// -->
+			</script>
+		</div>
+		<div class="footer">
+			<div class="footer_button">
+				<a href="#" onclick="javascript:window.open('./LayoutXml/ChartLoadComp_CallJavascript_Layout.xml', '_blank', 'width=1024 height=768 scrollbars=yes')">
+				<img src="./Images/viewLayout.png" width="100" height="22" border="0"/></a>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="#" onclick="javascript:window.open('./DataXml/multiData2.xml', '_blank', 'width=1024 height=768 scrollbars=yes')">
+				<img src="./Images/viewData.png" width="100" height="22" border="0"/></a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

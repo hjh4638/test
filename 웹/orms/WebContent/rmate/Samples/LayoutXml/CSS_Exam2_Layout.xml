@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart  backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Annual Report"/>
+		<SubCaption text="RiaMore Soft"/>
+	</Options>
+	<DateFormatter id="dateFmt" formatString="M/D"/>
+	<NumberFormatter id="numFmt"/>
+	<Line2DChart showDataTips="true" styleName="chartStyle" axisTitleStyleName="chartAxisStyle">
+<!-- 
+styleName : Line2DChart에 정의된 스타일명의 스타일을 적용합니다 
+axisTitleStyleName : 정의된 스타일명의 스타일을 axisTitle에 적용합니다	
+-->
+		<horizontalAxis>
+			<DateTimeAxis id="hAxis" dataUnits="days" labelUnits="days" formatter="{dateFmt}" title="DateTime Axis" 
+			interval="2" displayName="Date" alignLabelsToUnits="false" displayLocalTime="true"/> 
+		</horizontalAxis>
+		<verticalAxis>
+        	<LogAxis id="vAxis" title="Log Axis" formatter="{numFmt}" interval="10" minimum="10" maximum="100000"/>
+		</verticalAxis>
+		<series>
+			<Line2DSeries xField="Date" yField="Revenue" displayName="Revenue">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Line2DSeries>
+		</series>
+	</Line2DChart>
+	<Style>		
+		.chartStyle
+		{
+			fontSize:11;
+			fontStyle:italic;
+			color:0x0000FF;
+		}
+		
+		.chartAxisStyle
+		{
+			fontSize:13;
+			fontWeight:bold;
+			color:0xFF00FF;
+		}
+		
+	</Style>
+</rMateChart>

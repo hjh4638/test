@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report" /> 
+	</Options>
+	<DateFormatter id="dateFmt" formatString="YYYY 년 MM 월 DD일"/>
+<!--  
+DateFormatter를 정의합니다
+formatString : 예를 들어 2009/12/01과 같이 표현하고자 할 때는 YYYY/MM/DD로 정의 하십시오
+			┌──────────────────────────────────┐
+			│ Y │ 연(Year)  │ YY=05,YYYY=2005  │
+			│ M │ 월(Month) │ M=7,MM=07,MMM=Jul│
+			│ D │ 일(Day)   │ D=4,DD=05	   │
+			│ H │ 시(Hour)  │ H=1,HH=01	   │
+			│ N │ 분(Minute)│ N=1,NN=01	   │
+			│ S │ 초(Second)│ SS=30		   │
+			└──────────────────────────────────┘
+-->
+	<NumberFormatter id="curFmt"/>
+	<Line2DChart width="100%" height="100%" showDataTips="true" fontSize="11">
+		<horizontalAxis>
+			<DateTimeAxis dataUnits="days" labelUnits="days" interval="4" formatter="{dateFmt}" alignLabelsToUnits="false" displayLocalTime="true"/> 
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis formatter="{curFmt}"/>
+		</verticalAxis>
+		<series>
+			<Line2DSeries xField="Date" yField="Profit" displayName="Profit">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Line2DSeries>
+		</series>
+	</Line2DChart>
+</rMateChart>

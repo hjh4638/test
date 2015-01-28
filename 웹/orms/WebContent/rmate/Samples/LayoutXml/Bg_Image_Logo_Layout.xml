@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Line2DChart showDataTips="true">
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month"/>
+		</horizontalAxis>
+		<series>
+			<Line2DSeries yField='Profit' displayName='Profit' itemRenderer='CircleItemRenderer' radius='5'>
+				<showDataEffect>
+		  			<SeriesInterpolate/> 
+		  		</showDataEffect>
+				<lineStroke><Stroke color='0xFF3366' weight='2'/></lineStroke>
+				<stroke><Stroke color='0xFF3366' weight='2'/></stroke>
+			</Line2DSeries>
+		</series>
+		<backgroundElements>
+<!-- 
+backgroundElements는 축을 기준으로 안쪽에 해당되는 영역의 배경을 의미합니다 
+이 영역을 꾸미기 위해 backgroundElements를 정의합니다 
+-->
+			<GridLines/>
+<!-- 
+GridLine의 속성으로는
+direction - direction : 수평선 , vertical:수직선, both:수평선&수직선 을 그립니다
+horizontalChangeCount : 정의하는 숫자 만큼 줄 단위로 horizontalFill과 horizontalAlternateFill이
+			번갈아가며 색을 채웁니다.
+horizontalStroke : horizontalFill과 horizontalAlternateFill사이의 선을 정의합니다
+horizontalFill : 최초 시작하는 채우기 색깔 입니다
+horizontalAlternateFill : horizontalFill의 상대적인 채우기 색깔 입니다
+-->
+			<Box verticalAlign="bottom" horizontalAlign="right">
+<!-- 
+Box 속성으로는
+verticalAlign - top:위 , middle:가운데 , bottom:아래
+horizontalAlign - left,왼쪽, center:중앙, right:오른쪽
+-->
+				<Image source="http://www.riamore.net/image/rMate.jpg"/>
+<!-- 
+Image의 속성으로는
+source : 실제 이미지가 있는 URL경로입니다
+maintainAspectRation : 이미지 원본 비율을 유지할지를 나타냅니다
+		        True면 고유비율을 유지하려 하고 
+		        False면 차트 크게이 맞춘 사이즈를 갖습니다
+alpha : 이미지의 투명도를 나타 냅니다
+-->	
+			</Box>
+		</backgroundElements>
+	</Line2DChart>
+
+</rMateChart>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="X축 라벨 회전하여 출력하기"/>
+		<SubCaption text="45도 각도 회전하여 출력한 모습입니다." textAlign="right" fontSize="11"/>
+	</Options>
+	<Area2DChart showDataTips="true">
+		<horizontalAxis>
+			<CategoryAxis id="hAxis" categoryField="Date" /> 
+		</horizontalAxis>
+		<series>
+			<Area2DSeries yField="Data1" form="curve" displayName="Profit">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+				<areaStroke>
+					<Stroke weight="1" color="0xE48701"/>
+				</areaStroke>
+				<areaFill>
+					<SolidColor color="0xE48701" alpha="0.25"/>
+				</areaFill>
+			</Area2DSeries>
+			<Area2DSeries yField="Data2" form="curve" displayName="Cost">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+				<areaStroke>
+					<Stroke weight="1" color="0xA5BC4E"/>
+				</areaStroke>
+				<areaFill>
+					<SolidColor color="0xA5BC4E" alpha="0.25"/>
+				</areaFill>
+			</Area2DSeries>
+			<Area2DSeries yField="Data3" form="curve" displayName="Revenue">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+				<areaStroke>
+					<Stroke weight="1" color="0x1B95D9"/>
+				</areaStroke>
+				<areaFill>
+					<SolidColor color="0x1B95D9" alpha="0.25"/>
+				</areaFill>
+			</Area2DSeries>
+		</series>
+		<horizontalAxisRenderers>
+			<Axis2DRenderer axis="{hAxis}" styleName="xAxisStyle"/>
+<!-- 
+styleName="xAxisStyle"의 xAxisStyle CSS에서 labelRotation:45 로 hAxis축 label을 회전 시킵니다
+단 labelRotation은 내장폰트를 사용할 때만 가능합니다 
+fontFamily:Myriad - 내장 폰트 사용 
+-->
+		</horizontalAxisRenderers>
+	</Area2DChart>
+	<Style>
+	.xAxisStyle { 
+		fontFamily:Myriad;
+		fontSize:11;
+		labelRotation:45;
+	}
+	</Style>
+</rMateChart>

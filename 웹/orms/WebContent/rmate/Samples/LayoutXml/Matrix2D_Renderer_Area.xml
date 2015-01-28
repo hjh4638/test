@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Legend/>
+	</Options>
+	<SeriesSlide id="ss"/>
+	<NumberFormatter id="numFmt" precision="0"/>
+	<Matrix2DChart showDataTips="true" type="renderer" drawType="area" selectionMode="single" legendOver="true">
+		<backgroundElements>
+			<GridLines direction="horizontal">
+				<horizontalStroke>
+					<Stroke color="0x000000"/>
+				</horizontalStroke>
+			</GridLines>
+		</backgroundElements>
+		<verticalAxis>
+			<LinearAxis maximum="5"/>
+		</verticalAxis>
+		<horizontalAxis>
+			<LinearAxis maximum="4"/>
+		</horizontalAxis>
+		<series>
+			<Matrix2DSeries  xField="Data1_x" yField="Data1_y" zField="Data1" renderer="rectangle" showDataEffect="{ss}" labelPosition="inside" displayName="Data1"/>
+			<Matrix2DSeries xField="Data2_x" yField="Data2_y" zField="Data2" renderer="rectangle" showDataEffect="{ss}" labelPosition="inside" displayName="Data2"/>
+			<Matrix2DSeries  xField="Data3_x" yField="Data3_y" zField="Data3" renderer="rectangle" showDataEffect="{ss}" labelPosition="inside" displayName="Data1"/>
+		</series>
+		<annotationElements>
+			<CrossRangeZoomer zoomType="both"
+								verticalLabelFormatter="{numFmt}"
+								horizontalLabelFormatter="{numFmt}"
+								enableZooming="false"/>
+		</annotationElements>							
+	</Matrix2DChart>
+</rMateChart>

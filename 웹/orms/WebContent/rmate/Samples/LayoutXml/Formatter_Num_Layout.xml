@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report"/>
+	</Options>
+	<NumberFormatter id="numfmt" useThousandsSeparator="true"/> 
+<!-- 
+NumberFormatter를 정의합니다
+- 공통속성 -
+useThousandsSeparator : True일 때 숫자 3자리수마다 정해진 구분자로 구분합니다
+useNagativeSign : True인 경우 음수 앞에 마이너스(-)부호를 붙여 출력합니다
+		  Fals인 경우 음수를 괄호로 출력합니다
+precision : 출력 할 소수의 자릿 수를 나타냅니다. precision을 -1로 설정하면
+	     무효로 할 수 있습니다. 값이 -1인 경우 자릿수를 변경하지 않습니다
+thousandsSeparatorTo : 출력 숫자의 자릿수 구분 기호로서 사용 default: , (콤마)
+decimalSeparatorTo : 소수의 값을 출력할 경우에 사용하는 소수점의 단락을 나타냅니다 default: . (도트)
+- NumberFormatter속성 -
+rounding - down, nearest, up : 정해진 소수점 위치에서 올림, 반올림 등을 결정합니다 default:none
+-->
+	<Column3DChart>
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month"/>
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis formatter="{numfmt}"/>
+		</verticalAxis>
+		<series>
+			<Column3DSeries yField="Profit" displayName="Profit">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Column3DSeries>
+		</series>
+	</Column3DChart>
+</rMateChart>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Annual Report"/>
+		<SubCaption text="2008"/>
+	</Options>
+	<CurrencyFormatter id="numFmt" currencySymbol="$" alignSymbol="left"/>
+	<Pie2DChart showDataTips="true">
+<!--
+Pie2D 차트 생성시에 필요한 Pie2DChart 정의합니다
+showDataTips : 데이터에 마우스를 가져갔을 때 나오는 Tip을 보이기/안보이기 속성입니다.
+-->
+		<series>
+			<!-- startAngle : 첫번째 데이터가 표현되는 파이 조각이 기본으로 3시 방향입니다.
+			90도 반시계 방향으로 회전하여 12시 방향을 시작점으로 설정합니다. -->
+			<!-- perWedgeExplodeRadius : 파이 조각을 삐져나오게 하는 역할을 합니다.
+			5번째 파이 조각이 삐져 나오게 설정되었습니다. 만약 2, 7 번째 파이 조각이 삐져나오게 설정하려면
+			 perWedgeExplodeRadius="[0,0.1,0,0,0,0,0.1]" 로 설정하면 됩니다.-->
+
+			<Pie2DSeries nameField="Month" field="Profit" startAngle="90" perWedgeExplodeRadius="[0,0,0,0,0.1]" labelPosition="inside" formatter="{numFmt}" >
+			<!-- Pie2DChart 정의 후 Pie2DSeries labelPosition="both"정의합니다 -->
+				<showDataEffect>
+				<!-- 차트 생성시에 Effect를 주고 싶을 때 shoDataEffect정의합니다 -->
+					<SeriesSlide direction="right" duration="1000"/>
+<!--
+SeriesSlide 효과는 시리즈 데이터가 데이터로 표시될 때 한쪽에서 미끄러지듯 나타나는 효과를 적용합니다
+- 공통 -
+elementOffset : effect를 지연시키는 시간을 지정합니다 default:20
+minimumElementDuration : 각 엘리먼트의 최소 지속 시간을 설정합니다 default:0
+			 이 값보다 짧은 시간에 effect가 실행되지 않습니다
+offset : effect개시의 지연시간을 설정합니다 default:0
+perElementOffset : 각 엘리먼트의 개시 지연시간을 설정합니다
+- SeriesSlide -
+direction : left:왼쪽, right:오른쪽, up:위, down:아래 default는 left입니다
+-->
+				</showDataEffect>
+			</Pie2DSeries>
+		</series>
+	</Pie2DChart>
+</rMateChart>

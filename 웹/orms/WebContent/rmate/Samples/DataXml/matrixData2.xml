@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items>
+	<item>
+		<Data1_x>1.5</Data1_x>
+		<Data1_y>2.5</Data1_y>
+		<Data1>4</Data1>
+
+		<Data2_x>1.5</Data2_x>
+		<Data2_y>3.5</Data2_y>
+		<Data2>5</Data2>
+
+		<Data3_x>1.5</Data3_x>
+		<Data3_y>4.5</Data3_y>
+		<Data3>6</Data3>
+	</item>
+	<item>
+		<Data1_x>2.5</Data1_x>
+		<Data1_y>4.5</Data1_y>
+		<Data1>2</Data1>
+
+		<Data2_x>2.5</Data2_x>
+		<Data2_y>1.5</Data2_y>
+		<Data2>6</Data2>
+
+		<Data3_x>2.5</Data3_x>
+		<Data3_y>0.5</Data3_y>
+		<Data3>6</Data3>
+	</item>
+	<item>	
+		<Data1_x>3.5</Data1_x>
+		<Data1_y>1.5</Data1_y>
+		<Data1>3</Data1>
+		
+		<Data2_x>5.5</Data2_x>
+		<Data2_y>3.5</Data2_y>
+		<Data2>7</Data2>
+
+		<Data3_x>3.5</Data3_x>
+		<Data3_y>2.5</Data3_y>
+		<Data3>6</Data3>
+	</item>
+	<item>
+		<Data1_x>4.5</Data1_x>
+		<Data1_y>2.5</Data1_y>
+		<Data1>10</Data1>
+
+		<Data2_x>0.5</Data2_x>
+		<Data2_y>3.5</Data2_y>
+		<Data2>8</Data2>
+
+		<Data3_x>4.5</Data3_x>
+		<Data3_y>1.5</Data3_y>
+		<Data3>6</Data3>
+	</item>
+	<item>
+		<Data1_x>1.5</Data1_x>
+		<Data1_y>1.5</Data1_y>
+		<Data1>9</Data1>
+
+		<Data2_x>2.5</Data2_x>
+		<Data2_y>3.5</Data2_y>
+		<Data2>8</Data2>
+
+		<Data3_x>10.5</Data3_x>
+		<Data3_y>4.5</Data3_y>
+		<Data3>6</Data3>
+	</item>
+	<item>
+		<Data1_x>6.5</Data1_x>
+		<Data1_y>3.5</Data1_y>
+		<Data1>9</Data1>
+
+		<Data2_x>6.5</Data2_x>
+		<Data2_y>2.5</Data2_y>
+		<Data2>8</Data2>
+
+		<Data3_x>8.5</Data3_x>
+		<Data3_y>5.5</Data3_y>
+		<Data3>6</Data3>
+	</item>
+	<item>
+		<Data1_x>7.5</Data1_x>
+		<Data1_y>2.5</Data1_y>
+		<Data1>9</Data1>
+
+		<Data2_x>8.5</Data2_x>
+		<Data2_y>0.5</Data2_y>
+		<Data2>8</Data2>
+
+		<Data3_x>6.5</Data3_x>
+		<Data3_y>1.5</Data3_y>
+		<Data3>6</Data3>
+	</item>
+	<item>
+		<Data1_x>11.5</Data1_x>
+		<Data1_y>1.5</Data1_y>
+		<Data1>9</Data1>
+
+		<Data2_x>7.5</Data2_x>
+		<Data2_y>3.5</Data2_y>
+		<Data2>8</Data2>
+
+		<Data3_x>11.5</Data3_x>
+		<Data3_y>3.5</Data3_y>
+		<Data3>6</Data3>
+	</item>
+	<item>
+		<Data1_x>10.5</Data1_x>
+		<Data1_y>5.5</Data1_y>
+		<Data1>9</Data1>
+
+		<Data2_x>2.5</Data2_x>
+		<Data2_y>5.5</Data2_y>
+		<Data2>8</Data2>
+
+		<Data3_x>0.5</Data3_x>
+		<Data3_y>0.5</Data3_y>
+		<Data3>6</Data3>
+	</item>
+	<item>
+		<Data1_x>10.5</Data1_x>
+		<Data1_y>3.5</Data1_y>
+		<Data1>9</Data1>
+
+		<Data2_x>7.5</Data2_x>
+		<Data2_y>4.5</Data2_y>
+		<Data2>8</Data2>
+
+		<Data3_x>3.5</Data3_x>
+		<Data3_y>4.5</Data3_y>
+		<Data3>6</Data3>
+	</item>
+	<item>
+		<Data1_x>5.5</Data1_x>
+		<Data1_y>0.5</Data1_y>
+		<Data1>9</Data1>
+
+		<Data2_x>8.5</Data2_x>
+		<Data2_y>3.5</Data2_y>
+		<Data2>8</Data2>
+
+		<Data3_x>9.5</Data3_x>
+		<Data3_y>2.5</Data3_y>
+		<Data3>6</Data3>
+	</item>
+	<item>
+		<Data1_x>10.5</Data1_x>
+		<Data1_y>0.5</Data1_y>
+		<Data1>9</Data1>
+
+		<Data2_x>11.5</Data2_x>
+		<Data2_y>4.5</Data2_y>
+		<Data2>8</Data2>
+
+		<Data3_x>6.5</Data3_x>
+		<Data3_y>4.5</Data3_y>
+		<Data3>6</Data3>
+	</item>
+</items>

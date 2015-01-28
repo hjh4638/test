@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN" "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+
+	<settings 
+		cacheModelsEnabled="true" 
+		enhancementEnabled="true"
+		lazyLoadingEnabled="true" 
+		maxRequests="512" 
+		maxSessions="512"
+		maxTransactions="512" 
+		useStatementNamespaces="true" 
+	/>
+	<transactionManager type="JDBC">
+		<dataSource type="SIMPLE">
+			<property name="JDBC.Driver" value="oracle.jdbc.driver.OracleDriver"/>
+			<property name="JDBC.ConnectionURL" value="jdbc:oracle:thin:@48.2.1.61:1622:SHQ1212"/>
+			<property name="JDBC.Username" value="ojt"/>
+			<property name="JDBC.Password" value="ojt#0901"/>
+		</dataSource>
+	</transactionManager>
+	
+	<sqlMap resource="mil/af/hq/orma/test/hjh/test.xml"/>
+	
+	
+</sqlMapConfig>

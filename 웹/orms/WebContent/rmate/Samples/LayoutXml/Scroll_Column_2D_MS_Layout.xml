@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="스크롤 2D 칼럼 차트"/>
+	</Options>
+	<Column2DChart showDataTips="true" selectionMode="single" gutterRight="10" fontFamily="Myriad"> 
+	     <series>
+	     <!-- Scroll_Column_2D Multi-Sereis 를 생성시에는 Column2DSeries labelPosition="both"여러 개 정의합니다  --> 
+	         <Column2DSeries labelPosition="inside" id="cs1" yField="Data1" showLabelVertically="true" displayName="Data1" />
+	         <Column2DSeries labelPosition="inside" id="cs2" yField="Data2" showLabelVertically="true" displayName="Data2" />
+	         <Column2DSeries labelPosition="inside" id="cs3" yField="Data3" showLabelVertically="true" displayName="Data3" />
+	     </series>
+	     <horizontalAxis>
+	     	<CategoryLinearAxis id="hAxis" categoryField="Gu"/>
+	     </horizontalAxis>
+	     <horizontalAxisRenderers>
+	     	<ScrollableAxisRenderer axis="{hAxis}" visibleItemSize="7" scrollSensitivity="1"/>
+	     </horizontalAxisRenderers>   
+	</Column2DChart>
+</rMateChart>

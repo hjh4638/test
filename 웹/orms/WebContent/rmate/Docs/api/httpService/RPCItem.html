@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../print.css" type="text/css" media="print">
+<meta content="RPCItem,httpService.RPCItem" name="keywords">
+<title>httpService.RPCItem</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../asdoc.js"></script><script type="text/javascript" language="javascript" src="../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'RPCItem - rMateChart 4.0 Flash Version Reference By RiaMore Soft.';
+				var baseRef = '../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">rMateChart 4.0 Flash Version Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../all-classes.html')" href="../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../all-classes.html')" href="../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../index-list.html')" href="../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../index.html?httpService/RPCItem.html&amp;httpService/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;RPCItem</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#styleSummary">Styles</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class RPCItem"); titleBar_setSubNav(false,false,true,false,false,false,false,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">httpService</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class RPCItem</td>
+</tr>
+</table>
+<p></p>
+  이 클래스는 플래시 차트를 위한 클래스입니다.<br>
+  HttpMultiServiceRepeater 의 RPCList 속성의 Array 엘리먼트를 위한 것입니다.<br>
+  실제적으로 Flex 상에선 Object를 사용해도 무방합니다.
+  
+  <p><code>&lt;RPCItem</code></p>
+  <p></p>
+<br>
+<hr>
+</div>
+<a name="styleSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Styles</div>
+<table id="summaryTableStyle" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Style</th><th>Description</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:concurrency"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">concurrency</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>String<br>
+  HTTP 동일 서비스 발생 시 처리 방법을 나타냅니다. multiple, single, last 3개 유효값이 존재<br>
+  -multiple : 기존 요구 취소하지 않고 모두 요청을 보냅니다.<br>
+  -single : 한 번에 1 개의 요청만 가능, 복수의 요청 발생 시 실패 경고창이 뜹니다.<br>
+  -last : 기존의 요청을 모두 취소하고 마지막 요청만을 보냅니다.<br>
+   The default value is <code>multiple</code>.</td><td class="summaryTableOwnerCol">RPCItem</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:interval"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">interval</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number<br>
+  RPC 요청 interval 입니다. 최초 차트 구동 후 부터 적용됩니다. (단위 : 초)
+  </td><td class="summaryTableOwnerCol">RPCItem</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:method"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">method</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>String<br>
+  HTTP프로토콜 메소드입니다. get,post를 결정합니다.   
+  </td><td class="summaryTableOwnerCol">RPCItem</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:name"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">name</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>String<br>
+  RPC 의 이름(ID) 입니다.
+  </td><td class="summaryTableOwnerCol">RPCItem</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:retryCount"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">retryCount</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number<br>
+  요청 실패 시 재시도 횟수를 나타냅니다.
+   The default value is <code>3</code>.</td><td class="summaryTableOwnerCol">RPCItem</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:target"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">target</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Object<br>
+  RPC 요청 후 응답으로 받은 데이터를 출력시킬 차트의 시리즈(series)를 설정해주세요.
+  </td><td class="summaryTableOwnerCol">RPCItem</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:url"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">url</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>String<br>
+  데이터를 가져욜 url입니다.
+  </td><td class="summaryTableOwnerCol">RPCItem</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->

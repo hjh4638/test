@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xEEEEEE" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="게이지"/>
+	</Options>
+	<NumberFormatter id="numFmt" precision="0"/>
+	<HalfCircularGauge valueChangeFunction="valueChangeFunc"
+				frameType="flat"
+				minimumAngle="185" maximumAngle="355"
+				minimum="0" maximum="500" value="250"
+				interval="100" minorInterval="25"
+				formatter="{numFmt}"
+				padding="10"
+				tickGap="10"
+				labelGap="5"
+				valueXOffset="0" valueYOffset="-80"
+				tickLabelStyleName="tickText"
+				valueLabelStyleName="valueLabelStyle"
+				editMode="true" liveDragging="true"
+				showDataTip="true"
+				needleCoverRadius="5"
+				needleThickness="10"
+				pointThickness="0"
+				needleLengthRatio="0.75"
+				needlePointStyle="steeple"
+				needleBackLengthRatio="0.12"
+				tickLabelPlacement="inside"
+				showTrackColor="false">
+		<frameStroke>
+			<Stroke color="0x232323" weight="6"/>
+		</frameStroke>
+		<tickFill>
+			<SolidColor color="0xCCCCCC"/>
+		</tickFill>
+		<minorTickFill>
+			<SolidColor color="0xFF9900"/>
+		</minorTickFill>
+	</HalfCircularGauge>
+	<Style>
+		.tickText
+		{
+			fontFamily:tahoma;
+			fontFamily:Myriad;
+			fontSize:15;
+			color:#FFFFFF;
+		}
+		.valueLabelStyle
+		{
+			fontFamily:Myriad;
+			fontSize:15;
+			paddingTop:4;
+			textAlign:center;
+		}
+	</Style>
+</rMateChart>

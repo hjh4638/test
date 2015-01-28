@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="스크롤 2D 영역 차트"/>
+	</Options>
+	<Area2DChart showDataTips="true" gutterRight="10"> 
+	     <series>
+	     <!-- Scroll_Area_2D Multi-Sereis 를 생성시에는 Area2DSeries를 여러 개 정의합니다  --> 
+			<Area2DSeries labelPosition="up" yField="Data1" form="curve" displayName="Profit" color="0xE48701">
+				<areaStroke>
+					<Stroke weight="1" color="0xE48701"/>
+				</areaStroke>
+				<areaFill>
+					<SolidColor color="0xE48701" alpha="0.25"/>
+				</areaFill>
+			</Area2DSeries>
+			<Area2DSeries labelPosition="up" yField="Data2" form="curve" displayName="Cost" color="0xA5BC4E">
+				<areaStroke>
+					<Stroke weight="1" color="0xA5BC4E"/>
+				</areaStroke>
+				<areaFill>
+					<SolidColor color="0xA5BC4E" alpha="0.25"/>
+				</areaFill>
+			</Area2DSeries>
+			<Area2DSeries labelPosition="up" yField="Data3" form="curve" displayName="Revenue" color="0x1B95D9">
+				<areaStroke>
+					<Stroke weight="1" color="0x1B95D9"/>
+				</areaStroke>
+				<areaFill>
+					<SolidColor color="0x1B95D9" alpha="0.25"/>
+				</areaFill>
+			</Area2DSeries>
+	     </series>
+	     <horizontalAxis>
+	     	<CategoryLinearAxis id="hAxis" categoryField="Gu"/>
+	     </horizontalAxis>
+	     <horizontalAxisRenderers>
+	     	<ScrollableAxisRenderer axis="{hAxis}" visibleItemSize="7"/>
+	     </horizontalAxisRenderers>   
+	</Area2DChart>
+</rMateChart>

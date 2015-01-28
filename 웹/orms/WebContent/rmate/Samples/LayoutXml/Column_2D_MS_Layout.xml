@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report"/>
+	</Options>
+	<Column2DChart showDataTips="true">
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month" /> 
+		</horizontalAxis>
+		<series>
+		<!-- Coumn2D Multi-Sereis 를 생성시에는 Column2DSeries 여러 개 정의합니다 -->
+			<Column2DSeries labelPosition="inside" yField="Profit" itemRenderer="SemiCircleColumnItemRenderer">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Column2DSeries>
+			<Column2DSeries labelPosition="inside" yField="Cost" itemRenderer="SemiCircleColumnItemRenderer">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Column2DSeries>
+			<Column2DSeries labelPosition="inside" yField="Revenue" itemRenderer="SemiCircleColumnItemRenderer">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Column2DSeries>
+		</series>
+	</Column2DChart>
+</rMateChart>

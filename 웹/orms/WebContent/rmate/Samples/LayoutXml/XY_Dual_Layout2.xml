@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report"/>
+		<SubCaption text="Profit, Revenue 는 왼쪽 축을, Cost 는 오른쪽 축을 참조합니다." fontSize="11" textAlign="right" paddingTop="5" paddingBottom="10"/>
+		<Legend useVisibleCheck="true"/>
+	</Options>
+	<NumberFormatter id="fmt"/>
+	<Line2DChart id="chart" showDataTips="true">
+		<horizontalAxis>
+			<CategoryAxis id="hAxis" categoryField="Month" padding="0"/>
+		</horizontalAxis>
+		<series>
+			<Line2DSeries yField="Profit" displayName="Profit">
+				<verticalAxis>
+					<LinearAxis id="vAxis1" formatter="{fmt}" />
+				</verticalAxis>
+				<lineStroke>
+					<Stroke color="0xE48701" weight="2"/> 
+				</lineStroke>
+				<showDataEffect>
+					<SeriesSlide direction="up" duration="1000"/>
+				</showDataEffect>
+			</Line2DSeries>
+			<Line2DSeries yField="Cost" displayName="Cost">
+				<verticalAxis>
+					<LinearAxis id="vAxis2" formatter="{fmt}" />
+				</verticalAxis>
+				<lineStroke>
+					<Stroke color="0xA5BC4E" weight="2"/> 
+				</lineStroke>
+				<showDataEffect>
+					<SeriesSlide direction="up" duration="1000"/>
+				</showDataEffect>
+			</Line2DSeries>
+			<Line2DSeries yField="Revenue" displayName="Revenue" verticalAxis="{vAxis1}">
+				<lineStroke>
+					<Stroke color="0x1B95D9" weight="2"/> 
+				</lineStroke>
+				<showDataEffect>
+					<SeriesSlide direction="up" duration="1000"/>
+				</showDataEffect>
+			</Line2DSeries>
+		</series>
+		<verticalAxisRenderers>
+			<Axis2DRenderer axis="{vAxis1}" placement="left"/>
+			<Axis2DRenderer axis="{vAxis2}" placement="right">
+				<axisStroke>
+				<!-- 축을 그리는 선 -->
+					<Stroke color="0xA5BC4E" weight="2" caps="none" />
+					<!-- color:색깔 weight:굵기 -->
+				</axisStroke>
+			</Axis2DRenderer>
+		</verticalAxisRenderers>
+	</Line2DChart>
+</rMateChart>

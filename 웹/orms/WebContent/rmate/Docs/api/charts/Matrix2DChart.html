@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../print.css" type="text/css" media="print">
+<meta content="Matrix2DChart,charts.Matrix2DChart" name="keywords">
+<title>charts.Matrix2DChart</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../asdoc.js"></script><script type="text/javascript" language="javascript" src="../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'Matrix2DChart - rMateChart 4.0 Flash Version Reference By RiaMore Soft.';
+				var baseRef = '../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">rMateChart 4.0 Flash Version Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../all-classes.html')" href="../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../all-classes.html')" href="../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../index-list.html')" href="../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../index.html?charts/Matrix2DChart.html&amp;charts/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;Matrix2DChart</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#styleSummary">Styles</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class Matrix2DChart"); titleBar_setSubNav(false,false,true,false,false,false,false,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">charts</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class Matrix2DChart</td>
+</tr>
+</table>
+<p></p>
+  Matrix2DChart는 각각의 데이터 표현을 x,y,z로 하게 됩니다.<br> 
+  각 데이터는 수평 축을 따르는 x, 수직 축을 따르는 y, 크기를 결정하는 z로 구분됩니다.
+  
+  <p>레이아웃은 아래와 같이 작성합니다.</p>
+  <pre>
+  &lt;rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid"&gt;
+  &lt;Options&gt;
+   &lt;Caption text="Matrix Chart"/&gt;
+   &lt;Legend/&gt;
+  &lt;/Options&gt;
+  &lt;SeriesSlide id="ss"/&gt;
+  &lt;Matrix2DChart showDataTips="true" type="renderer" drawType="radius" selectionMode="single" dataTipJsFunction="tipFunc"&gt;
+   &lt;backgroundElements&gt;
+    &lt;GridLines direction="horizontal" horizontalChangeCount="2"&gt;
+     &lt;horizontalStroke&gt;
+      &lt;Stroke color="0x000000"/&gt;
+     &lt;/horizontalStroke&gt;
+    &lt;/GridLines&gt;
+   &lt;/backgroundElements&gt;
+   &lt;verticalAxis&gt;
+    &lt;LinearAxis id="vAxis" interval="0.5" maximum="6" labelJsFunction="vertiJsFunc"/&gt;
+   &lt;/verticalAxis&gt;
+   &lt;horizontalAxis&gt;
+    &lt;LinearAxis id="hAxis" interval="0.5" maximum="12" labelJsFunction="horiJsFunc"/&gt;
+   &lt;/horizontalAxis&gt;
+   &lt;series&gt;
+    &lt;Matrix2DSeries  xField="Data1_x" yField="Data1_y" zField="Data1" renderer="rectangle" showDataEffect="{ss}" labelPosition="inside" displayName="A 시" insideLabelJsFunction="labelJsFunc" fontSize="11"/&gt;
+    &lt;Matrix2DSeries xField="Data2_x" yField="Data2_y" zField="Data2" renderer="rectangle" showDataEffect="{ss}" labelPosition="inside" displayName="B 시" insideLabelJsFunction="labelJsFunc" fontSize="11"/&gt;
+    &lt;Matrix2DSeries  xField="Data3_x" yField="Data3_y" zField="Data3" renderer="rectangle" showDataEffect="{ss}" labelPosition="inside" displayName="C 시" insideLabelJsFunction="labelJsFunc" fontSize="11"/&gt;
+   &lt;/series&gt;
+   &lt;verticalAxisRenderers&gt;
+    &lt;Axis2DRenderer axis="{vAxis}" tickPlacement="none" styleName="font" minorTickPlacement="none"/&gt;
+   &lt;/verticalAxisRenderers&gt;
+   &lt;horizontalAxisRenderers&gt;
+    &lt;Axis2DRenderer axis="{hAxis}" tickPlacement="none" styleName="font" minorTickPlacement="none"/&gt;
+   &lt;/horizontalAxisRenderers&gt;
+  &lt;/Matrix2DChart&gt;
+  &lt;Style&gt;
+   .font{
+    fontSize:11;
+   }
+  &lt;/Style&gt;
+  &lt;/rMateChart&gt;
+  </pre>
+  <p></p>
+<br>
+<hr>
+</div>
+<a name="styleSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Styles</div>
+<table id="summaryTableStyle" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Style</th><th>Description</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:drawType"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">drawType</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>String<br>
+  Matrix2DChart의 type이 renderer,image일 때 유효합니다.
+  - radius : 반지름을 기준으로 표현합니다.
+  - area : 면적을 기준으로 표현합니다.
+  </td><td class="summaryTableOwnerCol">Matrix2DChart</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:legendOver"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">legendOver</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Boolean<br>
+  범례 마우스 오버시 해당 Series강조 
+  </td><td class="summaryTableOwnerCol">Matrix2DChart</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:radiusAxis"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">radiusAxis</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Object<br>
+  매트릭스 반경의 매핑 대상 축입니다. 
+  매트릭스 차트에서 개개의 도형 크기가 데이터의 3 번째 영역으로 다른 두개의 영역인 x, y 위치에 따라 표현됩니다. 
+  디폴트에서는 <code>radiusAxis</code> 는 <code>autoAdjust</code>가 <code>false</code> 로 설정된 LinearAxis 입니다. 
+  </td><td class="summaryTableOwnerCol">Matrix2DChart</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:secondRadiusAxis"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">secondRadiusAxis</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Object<br>
+  secondary series 매트릭스 반경의 매핑 대상 축입니다. 
+  매트릭스 차트에서 개개의 도형의 크기가 데이터의 3 번째 영역으로 다른 두개의 영역인 x, y 위치에 따라 표현됩니다. 
+  디폴트에서는 <code>radiusAxis</code> 는 <code>autoAdjust</code>가 <code>false</code> 로 설정된 LinearAxis 입니다. 
+  </td><td class="summaryTableOwnerCol">Matrix2DChart</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:type"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">type</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>String<br>
+  Matrix2DChart의 그리기 타입입니다.<br>
+  - renderer : 도형<br>
+  - fill : 색 채우기<br>
+  - image : 이미지<br>
+  - plot : 작은 도형
+  </td><td class="summaryTableOwnerCol">Matrix2DChart</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->

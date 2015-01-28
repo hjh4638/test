@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="대용량(데이터 3000개) 라인 차트" /> 
+	</Options>
+	<Line2DChart showDataTips="true">	
+			<horizontalAxis>
+				<CategoryAxis id="hAxis" categoryField="index" />
+			</horizontalAxis>
+			<horizontalAxisRenderers>
+				<Axis2DRenderer axis="{hAxis}" canDropLabels="true"/>
+			</horizontalAxisRenderers>
+			<!-- 차트 데이터의 min/max 값을 개발자가 알고 있는 경우 min/max 를 지정하면 차트 출력이 더 빠릅니다. -->
+			<verticalAxis>
+				<LinearAxis id="vAxis" minimum="0" maximum="10000"/>
+			</verticalAxis>
+			<series>
+				<Line2DSeries yField="Profit" displayName="Profit">
+					<lineStroke>
+						<Stroke color="0xeca614" weight="1"/>
+					</lineStroke>
+					<showDataEffect>
+						<SeriesSlide duration="700" elementOffset="0" direction="up"/>
+					</showDataEffect>
+				</Line2DSeries>
+			</series>
+	</Line2DChart>
+</rMateChart>

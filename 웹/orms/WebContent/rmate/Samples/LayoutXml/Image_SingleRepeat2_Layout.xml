@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="연도별 자동차 판매대수"/>
+	</Options>
+	<NumberFormatter id="numFmt" /> 
+	<ImageChart id="chart" showDataTips="true" gutterLeft="20" gutterRight="20" showLabelVertically="true">
+<!--  
+Image 차트 생성시에 필요한 ImageChart 정의합니다 
+showDataTips : 데이터에 마우스를 가져갔을 때 나오는 Tip을 보이기/안보이기 속성입니다  
+--> 
+		<horizontalAxis>
+			<CategoryAxis id="hAxis" categoryField="Year"/>
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis id="vAxis"/>
+		</verticalAxis>
+		<series>
+			<ImageSeries yField="Data1" imageDisplayType="singleRepeat" styleName="seriesStyle" formatter="{numFmt}">
+<!-- 
+ImageChart 정의 후 ImageSeries 정의합니다 
+imageDisplayType ┬ single : 이미지 한개
+		 ├ singleRepeat : 이미지 한개 반복
+		 └ multiple : 다중 이미지
+ -->
+				<imgSource>
+            		<ImageSourceItem url="../Samples/Images/4-3.png"/>
+            	</imgSource>
+            	<showDataEffect>
+            		<SeriesSlide duration="1000" direction="up"/>
+            	</showDataEffect>
+			</ImageSeries>
+		</series>
+		<verticalAxisRenderers>
+			<Axis2DRenderer axis="{vAxis}" visible="false" includeInLayout="false"/>
+		</verticalAxisRenderers>
+	</ImageChart>
+	<Style>
+		.seriesStyle
+		{
+			labelPosition:outside;
+			fontFamily:Myriad;
+			color:0x00CC99;
+			fontSize:11;
+		}
+	</Style>
+</rMateChart>

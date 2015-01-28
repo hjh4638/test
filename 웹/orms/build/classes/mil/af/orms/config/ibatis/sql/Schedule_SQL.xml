@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Schedule">
+<typeAlias alias="ScheduleForModifyVO" type="mil.af.orms.model.ScheduleForModifyVO" />
+<typeAlias alias="ScheduleVO" type="mil.af.orms.model.ScheduleVO" />
+<typeAlias alias="ResultCountByDateAndResultVO" type="mil.af.orms.model.ResultCountByDateAndResultVO" />
+<typeAlias alias="DiagnosisStatusParamVO" type="mil.af.orms.model.DiagnosisStatusParamVO" />
+<!--
+<sql id="getScheduleAllPositionList">
+	SELECT A.SEQ,A.CS,A.POSITION,POSITION.CODENAME AS POSITION_CODENAME,
+    A.SN,INSA.RANKNAME||' '||INSA.NAME AS RANKNAME,
+    A.FLIGHT_DATE,A.PERIOD,PERIOD.CODENAME AS PERIOD_CODENAME,
+    A.UNIT_CODE,UNIT.UNIT_NAME UNIT_CODENAME,
+    A.RESULT,RESULT.CODENAME AS RESULT_CODENAME,
+    A.SECTION,SECTION.CODENAME AS SECTION_CODENAME,
+    A.WEATHER,A.ID,CONFIRM.SN AS CONFIRM_SN,CONFIRM.RESULT_FIX AS CONFIRM_RESULT_FIX,
+    CONFIRM.OPINION AS CONFIRM_OPINION,TO_CHAR(CONFIRM.CONFIRM_TIME,'YYYY/MM/DD HH24:MI:SS') AS CONFIRM_TIME,CONFIRMER.FULLASS CONFIRM_SOSOKCODE
+    FROM ORMS_SCHEDULE A,ORMS_SYS_CODE POSITION,
+    ORMS_SYS_CODE PERIOD,ORMS_SYS_CODE SECTION,
+    ORMS_CONFIRM CONFIRM,AVS11U0T CONFIRMER,
+    (SELECT * FROM ORMS_SYS_CODE WHERE M_CODE='ORM001') RESULT,
+    AVS11U0T INSA,ORMS_UNIT UNIT
+    WHERE (A.POSITION=POSITION.CODE AND POSITION.M_CODE='ORM002')
+    AND (A.PERIOD=PERIOD.CODE AND PERIOD.M_CODE='ORM006')
+    AND (A.RESULT=RESULT.CODE(+) ) 
+    AND (A.SECTION=SECTION.CODE AND (SECTION.M_CODE=DECODE(POSITION,'01','ORM004','02','ORM005')))
+    AND A.SN=INSA.USERID
+    AND A.UNIT_CODE=UNIT.UNIT_CODE
+    AND A.SEQ=CONFIRM.SEQ(+)
+    AND CONFIRM.SN=CONFIRMER.USERID(+)
+</sql>
+-->
+<sql id="getScheduleAllPositionList">
+	SELECT distinct /*+ INDEX(a IDX_ORMS_SCHEDULE99) */ 
+	A.SEQ,
+	A.CS,
+	A.POSITION,
+	POSITION.CODENAME AS POSITION_CODENAME,
+    A.SN,
+    (SELECT rankname||' ' ||name
+    FROM avs11u0t
+    WHERE userid = a.sn) AS rankname,
+    A.FLIGHT_DATE,
+    A.PERIOD,
+    PERIOD.CODENAME AS PERIOD_CODENAME,
+    A.UNIT_CODE,
+    UNIT.UNIT_NAME UNIT_CODENAME,
+    A.RESULT,
+    RESULT.CODENAME AS RESULT_CODENAME,
+    A.SECTION,
+    SECTION.CODENAME AS SECTION_CODENAME,
+    A.WEATHER,
+    A.ID,
+    A.CANCELREASON,
+    A.CANCELORNOT,
+    CONFIRM.SN AS CONFIRM_SN,
+    CONFIRM.RESULT_FIX AS CONFIRM_RESULT_FIX,
+    CONFIRM.OPINION AS CONFIRM_OPINION,
+    TO_CHAR(CONFIRM.CONFIRM_TIME,'YYYY/MM/DD HH24:MI:SS') AS CONFIRM_TIME,
+    (SELECT fullass
+    FROM avs11u0t
+    WHERE userid = confirm.sn) confirm_sosokcode
+    FROM ORMS_SCHEDULE A,
+    ORMS_SYS_CODE POSITION,
+    ORMS_SYS_CODE PERIOD,
+    ORMS_SYS_CODE SECTION,
+    ORMS_CONFIRM CONFIRM,
+    (SELECT * FROM ORMS_SYS_CODE WHERE M_CODE='ORM001') RESULT,
+    ORMS_UNIT UNIT
+    WHERE (A.POSITION=POSITION.CODE AND POSITION.M_CODE='ORM002')
+    AND (A.PERIOD=PERIOD.CODE AND PERIOD.M_CODE='ORM006')
+    AND (A.RESULT=RESULT.CODE(+) ) 
+    AND (A.SECTION=SECTION.CODE AND (SECTION.M_CODE=DECODE(POSITION,'01','ORM004','02','ORM005')))
+    AND A.UNIT_CODE=UNIT.UNIT_CODE
+    AND A.SEQ=CONFIRM.SEQ(+)
+</sql>
+<select id="getRecentScheduleWithResult" parameterClass="String" resultClass="ScheduleVO">
+SELECT SEQ,CS,POSITION,SN,FLIGHT_DATE,PERIOD,UNIT_CODE,RESULT,SECTION,WEATHER,ID
+FROM (SELECT SEQ,CS,POSITION,SN,FLIGHT_DATE,PERIOD,UNIT_CODE,RESULT,SECTION,WEATHER,ID
+FROM ORMS_SCHEDULE 
+WHERE SN=#sn#
+AND RESULT IS NOT NULL
+AND CANCELORNOT IS NULL
+ORDER BY SEQ DESC)
+WHERE ROWNUM=1
+</select>
+<select id="getScheduleBySeq" parameterClass="String" resultClass="ScheduleVO">
+	SELECT SCHEDULE.*,CONFIRM.RESULT_FIX CONFIRM_RESULT_FIX FROM (
+	<include refid="getScheduleAllPositionList"/>
+	AND A.SEQ=#seq#) SCHEDULE,
+	ORMS_CONFIRM CONFIRM
+	WHERE SCHEDULE.SEQ=CONFIRM.SEQ(+)
+	
+</select>
+
+<select id="getAllScheduleByFlightGroup" parameterClass="Map" resultClass="ScheduleVO">
+	SELECT S.SEQ,S.CS,S.POSITION,S.SN,  
+	(SELECT RANKNAME||' ' ||NAME
+    FROM AVS11U0T
+    WHERE USERID = S.SN) AS RANKNAME ,
+	S.FLIGHT_DATE,S.PERIOD,S.UNIT_CODE,S.RESULT,S.SECTION,S.WEATHER,S.ID,
+	C.SN CONFIRM_SN,C.CONFIRM_TIME,C.OPINION CONFIRM_OPINION,
+	C.RESULT_FIX CONFIRM_RESULT_FIX
+	FROM ORMS_SCHEDULE S,ORMS_CONFIRM C
+	WHERE S.FLIGHT_DATE=#flight_date#
+	<dynamic>
+	<isNull property="squadron" prepend=" AND">
+	S.UNIT_CODE LIKE #flightGroup#||'%'
+	</isNull>
+	<isNotNull property="squadron" prepend=" AND">
+	S.UNIT_CODE LIKE #squadron#||'%'
+	</isNotNull>
+	</dynamic>
+	AND S.SEQ=C.SEQ(+)
+	AND EXISTS (
+	SELECT /*+ NO_UNNEST */1
+    FROM avs11u0t a
+    WHERE USERID = s.SN)
+	ORDER BY S.UNIT_CODE,S.SEQ
+</select>
+
+<select id="getDignosisResultCount" parameterClass="Map" resultClass="ScheduleVO">
+SELECT
+   C.code result, count(S.result) count
+FROM
+    (
+    SELECT
+        result
+    FROM
+        ORMS_SCHEDULE
+    WHERE
+    	FLIGHT_DATE=#flight_date#
+    <dynamic>
+	<isNull property="squadron" prepend=" AND">
+		UNIT_CODE LIKE #flightGroup#||'%'
+	</isNull>
+	<isNotNull property="squadron" prepend=" AND">
+		UNIT_CODE LIKE #squadron#||'%'
+	</isNotNull>
+	</dynamic>
+    ) S,
+    (SELECT 
+              code
+     FROM 
+            ORMS_SYS_CODE
+     WHERE 
+            M_CODE ='ORM001') C
+WHERE
+    C.code=S.result(+)
+GROUP BY
+    C.code
+</select>
+<select id="getScheduleWithResultList" parameterClass="Map" resultClass="ScheduleVO">
+	SELECT SCHEDULE.*,CONFIRM.RESULT_FIX CONFIRM_RESULT_FIX FROM (
+		<include refid="getScheduleAllPositionList"/>
+		AND RESULT IS NOT NULL 
+		AND CANCELORNOT IS NULL
+	    <dynamic>
+	    	<isNotNull property="flight_date" prepend=" AND ">
+    			A.FLIGHT_DATE=#flight_date#
+    		</isNotNull>
+    		<!-- 넘어온 군번으로 편대원 전체 조회 일반 사용자~~ -->
+    		<isNotNull property="sn" prepend=" AND ">
+    			A.UNIT_CODE=(
+        			SELECT distinct (UNIT_CODE) UNIT_CODE FROM ORMS_SCHEDULE 
+        			WHERE ID = (SELECT MAX(TO_NUMBER(ID)) FROM ORMS_SCHEDULE WHERE SN=#sn#)
+    			)
+    		</isNotNull>
+<!--     		관리자일때~~ -->
+    		<isNotNull property="unit_code" prepend=" AND ">
+    			A.UNIT_CODE like #unit_code#||'%'
+    		</isNotNull>
+    		<isNotNull property="period" prepend=" AND ">
+    			A.PERIOD = #period#
+    		</isNotNull>
+    		<isNotNull property="snOnly" prepend=" AND">
+    			A.SN=#snOnly#
+    		</isNotNull>
+    		<isNotNull property="start_date">
+    			<isNotNull property="end_date" prepend=" AND">
+    				A.FLIGHT_DATE BETWEEN #start_date# AND #end_date#
+    			</isNotNull>
+    		</isNotNull>
+    	</dynamic>
+    	  AND EXISTS (
+    SELECT /*+ NO_UNNEST */1
+    FROM avs11u0t a
+    WHERE USERID = a.SN)
+    	
+    	ORDER BY SEQ
+	) SCHEDULE,
+	ORMS_CONFIRM CONFIRM
+	WHERE SCHEDULE.SEQ=CONFIRM.SEQ(+)
+	ORDER BY FLIGHT_DATE,PERIOD,POSITION
+	
+</select>
+
+<select id="getScheduleByDate"  parameterClass="Map" resultClass="ScheduleVO">
+	select RANKNAME, FLIGHT_DATE, UNIT_CODE, RESULT from (
+	<include refid="getScheduleAllPositionList"/>
+    )
+    where FLIGHT_DATE = #flight_date#
+    and '%'||UNIT_CODE||'%' like '%'||#unit_code#||'%'
+	
+</select>
+
+<select id="getScheduleForViewList" parameterClass="Map" resultClass="ScheduleForModifyVO">
+<!-- 
+SELECT ROWNUM AS NUM,SCHEDULE.* FROM (SELECT A.UNIT_CODENAME,A.PERIOD_CODENAME,A.CS,A.RANKNAME AS NAME1,
+A.SECTION_CODENAME AS SECTION1, A.WEATHER AS WEATHER1,B.RANKNAME AS NAME2,
+B.SECTION_CODENAME AS SECTION2, B.WEATHER AS WEATHER2 FROM 
+(
+    <include refid="getScheduleAllPositionList" />
+    <dynamic>
+    	<isNotNull property="unit_code" prepend=" AND ">
+    		A.UNIT_CODE like '%'||#unit_code#||'%'
+    	</isNotNull>
+    	<isNotNull property="period" prepend=" AND ">
+    		A.PERIOD=#period#
+    	</isNotNull>
+    	<isNotNull property="flight_date" prepend=" AND ">
+    		A.FLIGHT_DATE=#flight_date#
+    	</isNotNull>
+    </dynamic>
+    AND A.POSITION='01'
+)A, (
+    <include refid="getScheduleAllPositionList" />
+    <dynamic>
+    	<isNotNull property="unit_code" prepend=" AND ">
+    		A.UNIT_CODE like '%'||#unit_code#||'%'
+    	</isNotNull>
+    	<isNotNull property="period" prepend=" AND ">
+    		A.PERIOD=#period#
+    	</isNotNull>
+    	<isNotNull property="flight_date" prepend=" AND ">
+    		A.FLIGHT_DATE=#flight_date#
+    	</isNotNull>
+    </dynamic>
+    AND A.POSITION='02'
+    
+)B
+WHERE A.ID=B.ID(+)
+ORDER BY A.PERIOD,TO_NUMBER(A.ID)) SCHEDULE
+     -->
+
+
+ SELECT ROWNUM AS num,
+  SCHEDULE.*
+FROM (
+    SELECT distinct
+      ID, 
+      UNIT_NAME AS UNIT_CODENAME,
+      PERIOD_CODENAME,
+      CS,
+      NAME1,
+      SECTION1,
+      WEATHER1,
+      NAME2,
+      SECTION2,
+      replace(WEATHER2,'0','') as WEATHER2
+    FROM (
+        SELECT ID,
+          UNIT_NAME,
+          PERIOD_CODENAME,
+          CS,
+          NAME1,
+          WEATHER1,
+          SECTION1.SECTION1,
+          NAME2,
+          WEATHER2 ,
+          SECTION2.SECTION2
+        FROM (
+            SELECT ID,
+              UNIT_NAME,
+              PERIOD_CODENAME,
+              CS,
+              NAME1,
+              WEATHER1,
+              SECTION1.SECTION1,
+              NAME2,
+              WEATHER2 ,
+              SECTION2
+            FROM (
+                SELECT *
+                FROM (
+                    SELECT ID,
+                      PERIOD,
+                      UNIT_NAME,
+                      CS,
+                      NAME1,
+                      WEATHER1,
+                      SECTION1,
+                      NAME2,
+                      WEATHER2,
+                      SECTION2
+                    FROM (
+                        select A.ID AS ID ,
+                          A.UNIT_CODE ,
+                          A.PERIOD ,
+                          A.CS ,
+                          A.SN AS SN1 ,
+                          A.NAME AS NAME1 ,
+                          A.SECTION AS SECTION1 ,
+                          A.WEATHER AS WEATHER1 ,
+                          B.SN AS SN2 ,
+                          B.NAME AS NAME2 ,
+                          B.SECTION AS SECTION2 ,
+                          B.WEATHER AS WEATHER2
+                        from (
+                            SELECT A.*,
+                              U0T.RANKNAME ||' '|| U0T.NAME AS NAME
+                            FROM ORMS_SCHEDULE A,
+                              AVS11U0T U0T
+                            WHERE A.SN = U0T.USERID(+)
+                              AND POSITION = '01'
+						    <dynamic>
+						    	<isNotNull property="unit_code" prepend=" AND ">
+						    		UNIT_CODE like '%'||#unit_code#||'%'
+						    	</isNotNull>
+						    	<isNotNull property="period" prepend=" AND ">
+						    		PERIOD=#period#
+						    	</isNotNull>
+						    	<isNotNull property="flight_date" prepend=" AND ">
+						    		FLIGHT_DATE=#flight_date#
+						    	</isNotNull>
+						    </dynamic>
+                              )A, 
+                          (
+                            SELECT A.*,
+                              U0T.RANKNAME ||' '|| U0T.NAME AS NAME
+                            FROM ORMS_SCHEDULE A,
+                              AVS11U0T U0T
+                            WHERE A.SN = U0T.USERID(+)
+                              AND POSITION = '02'
+						    <dynamic>
+						    	<isNotNull property="unit_code" prepend=" AND ">
+						    		UNIT_CODE like '%'||#unit_code#||'%'
+						    	</isNotNull>
+						    	<isNotNull property="period" prepend=" AND ">
+						    		PERIOD=#period#
+						    	</isNotNull>
+						    	<isNotNull property="flight_date" prepend=" AND ">
+						    		FLIGHT_DATE=#flight_date#
+						    	</isNotNull>
+						    </dynamic>
+                               )B
+                        where A.ID = B.ID ) C,
+                      (
+                        SELECT UNIT_NAME,
+                          UNIT_CODE
+                        FROM ORMS_UNIT) UNIT
+                    WHERE C.UNIT_CODE = UNIT.UNIT_CODE ) UNIT ,
+                  (
+                    SELECT CODE,
+                      CODENAME AS PERIOD_CODENAME
+                    FROM ORMS_SYS_CODE
+                    WHERE M_CODE = 'ORM006' ) PERIOD
+                WHERE UNIT.PERIOD = PERIOD.CODE ) PERIOD ,
+              (
+                SELECT CODE,
+                  CODENAME AS SECTION1
+                FROM ORMS_SYS_CODE
+                WHERE M_CODE = 'ORM004' ) SECTION1
+            WHERE PERIOD.SECTION1 = SECTION1.CODE ) SECTION1 ,
+          (
+            SELECT CODE,
+              CODENAME AS SECTION2
+            FROM ORMS_SYS_CODE
+            WHERE M_CODE = 'ORM005' ) SECTION2
+        WHERE SECTION1.SECTION2 = SECTION2.CODE(+) ) SECTION2 
+    ORDER BY ID) SCHEDULE
+
+</select>
+
+ 
+ 	
+<select id="getScheduleForModifyList" parameterClass="Map" resultClass="ScheduleForModifyVO">
+<!--SELECT ROWNUM AS NUM,SCHEDULE.* FROM (
+SELECT A.UNIT_CODE,A.UNIT_CODENAME,A.PERIOD,A.PERIOD_CODENAME,A.CS,
+A.SEQ SEQ1,A.SN SN1,
+A.SECTION AS SECTION1, A.WEATHER AS WEATHER1,
+B.SEQ SEQ2,B.SN AS SN2,
+B.SECTION AS SECTION2, B.WEATHER AS WEATHER2,A.ID FROM 
+(
+    <include refid="getScheduleAllPositionList" />
+    <dynamic>
+    	<isNotNull property="unit_code" prepend=" AND ">
+    		A.UNIT_CODE like '%'||#unit_code#||'%'
+    	</isNotNull>
+    	<isNotNull property="period" prepend=" AND ">
+    		A.PERIOD=#period#
+    	</isNotNull>
+    	<isNotNull property="flight_date" prepend=" AND ">
+    		A.FLIGHT_DATE=#flight_date#
+    	</isNotNull>
+    </dynamic>
+     AND A.POSITION='01'
+)A, (
+    <include refid="getScheduleAllPositionList" />
+    <dynamic>
+    	<isNotNull property="unit_code" prepend=" AND ">
+    		A.UNIT_CODE like '%'||#unit_code#||'%'
+    	</isNotNull>
+    	<isNotNull property="period" prepend=" AND ">
+    		A.PERIOD=#period#
+    	</isNotNull>
+    	<isNotNull property="flight_date" prepend=" AND ">
+    		A.FLIGHT_DATE=#flight_date#
+    	</isNotNull>
+    </dynamic>
+    AND A.POSITION='02'
+)B
+WHERE A.ID=B.ID(+)
+ORDER BY A.PERIOD,TO_NUMBER(A.ID)) SCHEDULE
+-->
+SELECT ROWNUM AS num,
+  SCHEDULE.*
+FROM (
+    SELECT 
+      UNIT_CODE,
+      UNIT_NAME AS UNIT_CODENAME,
+      PERIOD,
+      PERIOD_CODENAME,
+      CS,
+      SEQ1, 
+      SN1,
+      SECTION1,
+      WEATHER1,
+      SEQ2, 
+      SN2,
+      SECTION2,
+      WEATHER2,
+      ID
+    FROM (
+        SELECT ID,
+          UNIT_CODE,
+          UNIT_NAME,
+          PERIOD,
+          PERIOD_CODENAME,
+          CS,
+          SEQ1, 
+          SN1,
+          NAME1,
+          WEATHER1,
+          SECTION1,
+          SEQ2, 
+          SN2,
+          NAME2,
+          WEATHER2 ,
+          SECTION2
+        FROM (
+            SELECT ID,
+              PERIOD.UNIT_CODE,
+              UNIT_NAME,
+              PERIOD.PERIOD,
+              PERIOD_CODENAME,
+              CS,
+              PERIOD.SEQ1, 
+              PERIOD.SN1,
+              NAME1,
+              WEATHER1,
+              SECTION1,
+              PERIOD.SEQ2, 
+              PERIOD.SN2,
+              NAME2,
+              WEATHER2 ,
+              SECTION2
+            FROM (
+                SELECT *
+                FROM (
+                    SELECT ID,
+                      PERIOD,
+                      UNIT_NAME,
+                      UNIT.UNIT_CODE,
+                      CS,
+                      SEQ1,
+                      SN1,
+                      NAME1,
+                      WEATHER1,
+                      SECTION1,
+                      SEQ2,
+                      SN2,
+                      NAME2,
+                      WEATHER2,
+                      SECTION2
+                    FROM (
+                        select A.ID AS ID ,
+                          A.UNIT_CODE ,
+                          A.PERIOD ,
+                          A.CS ,
+                          A.SEQ AS SEQ1,
+                          A.SN AS SN1 ,
+                          A.NAME AS NAME1 ,
+                          A.SECTION AS SECTION1 ,
+                          A.WEATHER AS WEATHER1 ,
+                          B.SEQ AS SEQ2,
+                          B.SN AS SN2 ,
+                          B.NAME AS NAME2 ,
+                          B.SECTION AS SECTION2 ,
+                          B.WEATHER AS WEATHER2
+                        from (
+                            SELECT A.*,
+                              U0T.RANKNAME ||' '|| U0T.NAME AS NAME
+                            FROM ORMS_SCHEDULE A,
+                              AVS11U0T U0T
+                            WHERE A.SN = U0T.USERID(+)
+                              AND POSITION = '01'
+    <dynamic>
+    	<isNotNull property="unit_code" prepend=" AND ">
+    		UNIT_CODE like '%'||#unit_code#||'%'
+    	</isNotNull>
+    	<isNotNull property="period" prepend=" AND ">
+    		PERIOD=#period#
+    	</isNotNull>
+    	<isNotNull property="flight_date" prepend=" AND ">
+    		FLIGHT_DATE=#flight_date#
+    	</isNotNull>
+    </dynamic>
+                              )A, 
+                          (
+                            SELECT A.*,
+                              U0T.RANKNAME ||''|| U0T.NAME AS NAME
+                            FROM ORMS_SCHEDULE A,
+                              AVS11U0T U0T
+                            WHERE A.SN = U0T.USERID(+)
+                              AND POSITION = '02'
+    <dynamic>
+    	<isNotNull property="unit_code" prepend=" AND ">
+    		UNIT_CODE like '%'||#unit_code#||'%'
+    	</isNotNull>
+    	<isNotNull property="period" prepend=" AND ">
+    		PERIOD=#period#
+    	</isNotNull>
+    	<isNotNull property="flight_date" prepend=" AND ">
+    		FLIGHT_DATE=#flight_date#
+    	</isNotNull>
+    </dynamic>
+                               )B 
+                        where A.ID = B.ID ) C,
+                      (
+                        SELECT UNIT_NAME,
+                          UNIT_CODE
+                        FROM ORMS_UNIT) UNIT
+                    WHERE C.UNIT_CODE = UNIT.UNIT_CODE ) UNIT ,
+                  (
+                    SELECT CODE,
+                      CODENAME AS PERIOD_CODENAME
+                    FROM ORMS_SYS_CODE
+                    WHERE M_CODE = 'ORM006' ) PERIOD
+                WHERE UNIT.PERIOD = PERIOD.CODE ) PERIOD) )          
+             ORDER BY ID) SCHEDULE
+</select> 
+<!-- 진단표 작성 -->
+<select id="getMyUnitScheduleList" parameterClass="Map" resultClass="ScheduleVO">
+	<include refid="getScheduleAllPositionList"/>
+    AND A.UNIT_CODE LIKE #sosokcode#||'%'
+    AND A.FLIGHT_DATE=#flight_date#
+    <dynamic>
+    	<isNotNull property="period" prepend="AND ">
+    	A.PERIOD=#period#
+    	</isNotNull>
+    	<isNotNull property="sn" prepend="AND ">
+     A.SN=#sn# 
+    	</isNotNull>
+    </dynamic>
+      AND EXISTS (
+    SELECT /*+ NO_UNNEST */1
+    FROM avs11u0t a
+    WHERE USERID = a.SN)
+    
+    ORDER BY A.ID
+</select>	
+
+<!-- 메인화면 20120216 -->
+<select id="getMainScheduleList" parameterClass="Map" resultClass="ScheduleVO">
+	<include refid="getScheduleAllPositionList"/>
+    AND (A.UNIT_CODE LIKE #sosokcode#||'%' or A.SN =#sn# )
+    AND A.FLIGHT_DATE=#flight_date#
+    <dynamic>
+    </dynamic>
+      AND EXISTS (
+    SELECT /*+ NO_UNNEST */1
+    FROM avs11u0t a
+    WHERE USERID = a.SN)
+    
+    ORDER BY A.ID
+</select>	
+
+<select id="getSchedule" parameterClass="String" resultClass="ScheduleVO">
+SELECT
+S.SEQ,S.CS,S.POSITION,S.SN,S.FLIGHT_DATE,
+S.PERIOD,S.UNIT_CODE,S.RESULT,S.SECTION,S.WEATHER,S.ID ,
+C.SN CONFIRM_SN,C.OPINION CONFIRM_OPINION,
+C.RESULT_FIX CONFIRM_RESULT_FIX
+FROM ORMS_SCHEDULE S,ORMS_CONFIRM C
+WHERE S.SEQ=#value#
+AND S.SEQ=C.SEQ(+)
+</select>
+
+<select id="getScheduleWithResultByDate" parameterClass="Map" resultClass="ScheduleVO">
+SELECT SEQ,CS,POSITION,SN,FLIGHT_DATE,PERIOD,UNIT_CODE,RESULT,SECTION,WEATHER,ID 
+FROM ORMS_SCHEDULE
+WHERE RESULT IS NOT NULL
+AND CANCELORNOT IS NULL
+<dynamic>
+	<isNotNull property="unit_code" prepend="AND">
+		UNIT_CODE LIKE #unit_code#||'%'
+	</isNotNull>
+	<isNotNull property="start_date">
+		<isNotNull property="end_date" prepend=" AND">
+			FLIGHT_DATE BETWEEN #start_date# AND #end_date#
+		</isNotNull>
+	</isNotNull>
+</dynamic>
+ORDER BY SN,FLIGHT_DATE,PERIOD,SEQ
+</select>
+
+<select id="getScheduleWithResultByMonth" parameterClass="DiagnosisStatusParamVO" resultClass="ScheduleVO">
+SELECT SEQ,CS,POSITION,SN,SUBSTR(FLIGHT_DATE,5,2) AS FLIGHT_DATE,PERIOD,UNIT_CODE,RESULT,SECTION,WEATHER,ID 
+FROM ORMS_SCHEDULE
+WHERE CANCELORNOT IS NULL
+AND SUBSTR(FLIGHT_DATE,5,2) = #month#
+AND SUBSTR(FLIGHT_DATE,1,4) = #year#
+<dynamic>
+	<isNotNull property="squadron" prepend="AND">
+		UNIT_CODE LIKE #squadron#||'%'
+	</isNotNull>
+</dynamic>
+ORDER BY SN,FLIGHT_DATE,PERIOD,SEQ
+</select>
+
+
+<select id="getResultWithCountByDate" parameterClass="Map" resultClass="ResultCountByDateAndResultVO">
+SELECT S.FLIGHT_DATE,CODENAME,CODE,NVL(COUNT,0) AS COUNT FROM
+(SELECT * FROM (SELECT TO_CHAR(TO_DATE(#end_date#,'YYYYMMDD')-
+(to_date(#end_date#,'YYYYMMDD')-to_date(#start_date#,'YYYYMMDD')+1)+ROWNUM,'YYYYMMDD') AS FLIGHT_DATE
+FROM DUAL CONNECT BY LEVEL &lt;= (to_date(#end_date#,'YYYYMMDD')-to_date(#start_date#,'YYYYMMDD')+1)) A
+,(SELECT CODENAME,CODE FROM ORMS_SYS_CODE WHERE M_CODE='ORM001'
+ORDER BY ORDER_CD) B) S,
+(
+SELECT FLIGHT_DATE,RESULT,COUNT(*) COUNT FROM 
+(SELECT SEQ,CS,POSITION,SN,FLIGHT_DATE,PERIOD,UNIT_CODE,RESULT,SECTION,WEATHER,ID
+FROM ORMS_SCHEDULE
+WHERE UNIT_CODE LIKE #unit_code#||'%'
+AND FLIGHT_DATE BETWEEN #start_date# AND #end_date#
+AND RESULT IS NOT NULL
+AND CANCELORNOT IS NULL
+ORDER BY SEQ)
+GROUP BY FLIGHT_DATE,RESULT
+) C
+WHERE S.FLIGHT_DATE=C.FLIGHT_DATE(+)
+AND S.CODE=C.RESULT(+)
+ORDER BY S.FLIGHT_DATE DESC,S.CODE DESC
+</select>
+
+<select id="getAvailNewId" resultClass="Integer">
+SELECT NVL(MAX(TO_NUMBER(ID)),0)+1 FROM ORMS_SCHEDULE
+</select>
+
+<update id="setResultToSchedule" parameterClass="Map">
+UPDATE ORMS_SCHEDULE
+SET RESULT=#result#
+WHERE SEQ=#seq#
+</update>
+
+<update id="updateSchedule" parameterClass="ScheduleVO">
+UPDATE ORMS_SCHEDULE
+SET 
+	CS = #cs#,
+	SN = #sn#,
+	SECTION = #section#,
+	WEATHER = #weather#
+WHERE seq=#seq#
+</update>
+
+<insert id="insertResultToSchedule" parameterClass="ScheduleVO">
+insert into ORMS_SCHEDULE
+values
+(ORMS_SCHEDULE_SEQ.nextval,#cs#,#position#,#sn#,#flight_date#,#period#,#unit_code#,'',#section#,#weather#,#id#,'','')
+</insert>
+
+
+<delete id="deleteSchedule"  parameterClass="Map">
+DELETE FROM ORMS_SCHEDULE
+WHERE ID = #num#
+</delete>
+<delete id="deleteAnswers"  parameterClass="Map">
+DELETE FROM ORMS_ANSWER
+WHERE ID = #num#
+</delete>
+
+<update id="insertReason" parameterClass="Map">
+	UPDATE
+		ORMS_SCHEDULE
+	SET
+		CANCELORNOT='cancel',
+		CANCELREASON=#cancelReason#
+	WHERE
+		seq=#seq#
+</update>	
+
+<select id="getLastflight_date" parameterClass="String" resultClass="String">
+	SELECT flight_date
+	FROM   (SELECT A.*, ROWNUM as row_n
+			FROM ORMS_SCHEDULE A
+			WHERE 
+				sn = #value#
+			AND 	
+				cancelornot IS NULL
+			ORDER BY flight_date DESC
+			)
+	WHERE  row_n = 2
+</select>
+
+<select id="getVOforFlight_date" parameterClass="ScheduleVO" resultClass="ScheduleVO">
+	SELECT *
+	FROM
+		ORMS_SCHEDULE
+	WHERE
+		sn = #sn#
+	AND
+		flight_date = #flight_date#
+	AND
+		cancelornot IS NULL
+	ORDER BY
+		period DESC
+</select>
+</sqlMap>

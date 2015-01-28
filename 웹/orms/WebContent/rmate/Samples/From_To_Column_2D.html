@@ -1,0 +1,275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title></title>
+<script src="./JS/AC_OETags.js" language="javascript"></script>
+<script src="./JS/rMateChart.js" language="javascript"></script>
+<script src="./JS/rMateChartLicense.js" language="javascript"></script>
+
+<style type="text/css">
+
+body
+{ 
+	margin: 0px; 
+	overflow:hidden 
+}
+
+.wrap
+{
+	position:absolute;
+	top:40px;
+	left:50%;
+	width:600px;
+	height:450px;
+	margin: 0 0 0 -300px;
+}
+
+.header
+{
+	position:absolute;
+	width:100%;
+}
+
+.header_title
+{
+	font-family:verdana;
+	text-align:center;
+}
+
+.header_description
+{
+	font-family:arial;
+}
+
+.content
+{
+	position:absolute;
+	top:70px;
+}
+
+.footer
+{
+	position:absolute;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	text-align:center;
+}
+
+.footer_button{}
+
+.footer_description
+{
+	border:2px solid #b7babc;
+	position:relative;
+	top:10px;
+	font-family:arial;
+}
+
+</style>
+
+<!-- 사용자 정의 설정 시작 -->
+<script language="JavaScript" type="text/javascript">
+
+window.onload = function()
+{
+	rMateChartInit();
+}
+
+// -----------------------1번 차트 flashVars 설정 시작-----------------------
+// 차트 레이아웃 URL 경로. 반드시 설정하십시오.
+
+var flashVars;
+
+var rMateOnLoadCallFunction = "rMateChartOnLoad";
+
+ flashVars += "&rMateOnLoadCallFunction="+rMateOnLoadCallFunction;
+
+ function rMateChartOnLoad()
+ {
+	 document.getElementById("chart1").setData(data);
+	 document.getElementById("chart1").setLayout(layout);
+ }
+
+var layout = "<rMateChart cornerRadius='12' borderStyle='solid'>"
+			+"<Options>"
+			+"<Caption text='2009 월별 매출액 증감 비교 (Waterfall)'/>"
+			+"<SubCaption text='단위 : 만원' textAlign='right' fontSize='11' paddingRight='20'/>"
+			+"</Options>"
+			+"<NumberFormatter id='fmt'/>"
+			+"<Column2DChart showDataTips='true' dataTipJsFunction='dataTipFunc' fontSize='11'>"
+			+"<seriesFilters>"
+			+"<DropShadowFilter alpha='0'/>"
+			+"</seriesFilters>"
+			+"<horizontalAxis>"
+			+"<CategoryAxis categoryField='cat'/>"
+			+"</horizontalAxis>"
+			+"<verticalAxis>"
+			+"<LinearAxis formatter='{fmt}'/>"
+			+"</verticalAxis>"
+			+"<series>"
+			+"<Column2DSeries id='series1' minField='from' labelPosition='inside' insideLabelJsFunction='labelFunc' yField='to' fillJsFunction='fillFunc' itemRenderer='BoxItemRenderer'>"
+			+"<showDataEffect><SeriesSlide direction='up' duration='1000'/></showDataEffect>"
+			+"<stroke><Stroke weight='1' color='0x999999' alpha='0.7'/></stroke>"
+			+"</Column2DSeries>"
+			+"</series>"
+			+"</Column2DChart>"
+			+"</rMateChart>";
+
+var data= [
+			{"cat":"1월", "from":1000, "to":5000},
+            {"cat":"2월", "from":5000, "to":12000},
+        	{"cat":"3월", "from":12000, "to":16000},
+        	{"cat":"4월","from":16000, "to":10000},
+			{"cat":"5월", "from":10000, "to":100},
+			{"cat":"6월", "from":100, "to":-1000},
+			{"cat":"7월", "from":-1000, "to":3000},
+			{"cat":"8월", "from":3000, "to":8000},
+			{"cat":"9월", "from":8000, "to":12000},
+			{"cat":"10월", "from":12000, "to":14000},
+			{"cat":"11월", "from":14000, "to":7500},
+			{"cat":"12월", "from":7500, "to":2500},
+			{"cat":"내년 목표", "from":0, "to":20000}
+			];
+
+/*
+// ------------------------- 데이터팁 사용자 정의 함수 -----------------------------------------------------
+// 챠트에서 showDataTips="true" 설정 후 마우스 오버 시 보이는 데이터팁 정의
+// layout XML 에서 Chart 속성을 넣을때 dataTipJsFunction를 주고, 만든 javascript 함수명을 넣어줍니다
+// 예) <Column3DChart showDataTips="true" dataTipJsFunction를="dataTipFunc">
+//
+// 파라메터 설명
+// seriesId : layout XML에서 부여한 series의 id가 있을 경우, 해당 id를 보내줍니다.
+// seriesName : 시리즈의 displayName 으로 정의한 시리즈 이름을 보내줍니다.
+// xName : X 축에 displayName 을 정의하였다면 X축의 displayName을 보내줍니다.
+// yName : Y 축에 displayName 을 정의하였다면 Y축의 displayName을 보내줍니다.
+// data : 해당 item의 값을 표현하기 위해 입력된 data(row값에 해당 - data로 입력된 종류에 따라 XML의 내용 또는 배열이 됩니다)
+// values : 해당 item의 값 (배열로 전달되며, 챠트 종류에 따라 아래와 같이 들어옵니다.)
+            BarSeries     0:x축값 1:y축값
+            ColumnSeries  0:x축값 1:y축값
+            AreaSeries    0:x축값 1:y축값
+            BubbleSeries  0:x축값 1:y축값 2:radius값
+            LineSeries    0:x축값 1:y축값
+            HLOCSeries    0:x축값 1:open값 2:low값 3:high값 4:close값
+            PieSeries     0:값 1:퍼센트값 2:nameFiled명
+
+			**
+			* From-To Chart 에서 minField 를 지정했다면 values 의 마지막 인덱스 값에 minField 값이 들어옵니다.
+*/
+function dataTipFunc(seriesId, seriesName, index, xName, yName, data, values)
+{
+	// data 파라메터를 이용한 예제.
+	// values 파라메터를 이용한 예제는 아래의 fillFunc 함수 참고.
+
+	var fromVal = data['from'];
+	var toVal = data['to'];
+
+	if(index >=12)
+		return "<font color='#0000FF'>"+values[0]+"</font>"
+				+"<br>"+ insertComma(toVal) + " 만원 초과 달성";
+	
+	return "<font color='#0000FF'>"+values[0]+"</font>"
+			+"<br>증가액 : " + insertComma((toVal - fromVal)) + " 만원";
+}
+
+
+/*
+// -------------------- 채우기 색 사용자 정의 함수 ----------------------------------------------------------------
+// 차트의 채우기 색을 특정 조건에 따라 지정하는 사용자 정의 함수입니다.
+// layout XML 에서 Series 속성을 넣을 때 fillJsFunction 을 주고, 만든 javascript 함수명을 넣어줍니다.
+//
+// 예) <Pie2DSeries field="Profit" fillJsFunction="fillJsFunc">
+//
+// 파라메터 설명
+// index : 해당 아이템의 인덱스.
+// data : 해당 item의 값을 표현하기 위해 입력된 data(row값에 해당 - data로 입력된 종류에 따라 XML의 내용 또는 배열이 됩니다)
+// values : 해당 item의 값 (배열로 전달되며, 차트 종류에 따라 아래와 같이 들어옵니다.)
+            BarSeries     0:x축값 1:y축값
+            ColumnSeries  0:x축값 1:y축값
+            AreaSeries    0:x축값 1:y축값
+            BubbleSeries  0:x축값 1:y축값 2:radius값
+            LineSeries    0:x축값 1:y축값
+            HLOCSeries    0:x축값 1:open값 2:low값 3:high값 4:close값
+            PieSeries     0:값 1:퍼센트값 2:nameField명
+
+			**
+			* From-To Chart 에서 minField 를 지정했다면 values 의 마지막 인덱스 값에 minField 값이 들어옵니다.
+*/
+function fillFunc(seriesId, index, values)
+{
+	if(index >=12)
+		return "0x3366FF";
+
+	else if(values[1] < values[2])
+		return "0xFF3366";
+
+	else
+		return "0x33FF66";	
+}
+
+
+/*
+// ------------------------- 수치 필드 사용자 정의 함수 -----------------------------------------------------
+// 챠트의 시리즈에서 labelPosition 속성을 설정한 경우 수치 필드를 사용자 정의하는 함수입니다.
+// layout XML 에서 Series 속성을 넣을때 라벨펑션을 설정하고 속성 값으로 javascript 함수명을 넣어줍니다
+//
+// 예) <Column2DSeries yField="Profit" labelPosition="outside" outsideLabelJsFunction="seriesLabelFunc">
+//
+// 파라메터 설명
+// seriesID : 해당 시리즈의 ID.
+// index : 해당 시리즈 아이템의 인덱스.
+// data : 해당 item의 값을 표현하기 위해 입력된 data(row값에 해당 - data로 입력된 종류에 따라 XML의 내용 또는 배열이 됩니다)
+// values : 해당 item의 값 (배열로 전달되며, 챠트 종류에 따라 아래와 같이 들어옵니다.)
+
+            Pie2DSeries,Pie3DSeries			0:값 1:퍼센트값
+			Bubble3DSeries,Matrix2DSeries   0:x축값 1:y축값 2:z값
+
+			Pie,Bubble시리즈를 제외한 모든 시리즈   0:x축값 1:y축값 2:min값
+			* min값은 type을 '100%' 또는 'stacked' 인 경우만 유효합니다. 쌓아올릴 경우 해당 데이터의 시작값을 의미합니다.
+//
+*/
+function labelFunc(seriesID, index, data, values)
+{
+	// 차트 데이터를 배열로 삽입했기 때문에 data 는 배열 형태임.
+	return insertComma(Number(data["to"]) - Number(data["from"]));
+}
+
+//숫자에 천단위 콤마 찍어 반환하는 함수.
+function insertComma(n) {
+  var reg = /(^[+-]?\d+)(\d{3})/;   // 정규식
+  n+=""; // 숫자를 String 형으로 변환.
+  while (reg.test(n))
+    n = n.replace(reg, '$1' + "," + '$2');
+
+  return n;
+}
+
+<!-- 사용자 정의 설정 끝  -->
+</script>
+</head>
+
+<body>
+	<div class="wrap">
+		<div class="header">
+			<div class="header_title">
+				<p>From-To Column 2D Chart</p>
+			</div>
+			<div class="header_description">
+				<p>레이아웃 설정 및 데이터 삽입은 각각 스트링형태와 배열입니다.(소스보기 참고)</p>
+			</div>
+		</div>
+		<div class="content">
+			<script language="javascript">
+				<!--
+					rMateChartCreate("chart1","../Component/rMateChart",flashVars, 600, 400, "#FFFFFF");
+				// -->
+			</script>
+		</div>
+	</div>
+</body>
+</html>

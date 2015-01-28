@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Pie Chart Monitoring" />
+		<SubCaption text="매 3초 단위로 12개의 데이터를 업데이트 합니다.(데이터는 랜덤)" fontSize="11" textAlign="right"/>
+	</Options>
+ 	<Pie3DChart id="chart" showDataTips="true">
+		<series>
+			<Pie3DSeries field="Profit" nameField="Name" explodable="false">
+				<showDataEffect>
+					<SeriesInterpolate/>
+				</showDataEffect>
+			</Pie3DSeries>
+		</series>
+	</Pie3DChart>
+	<HttpServiceRepeater url="http://demo.riamore.net/realtimeSample/realtimeVariableData.jsp" target="{chart}" interval="3" method="get"/>
+</rMateChart>

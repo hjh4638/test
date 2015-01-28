@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items>
+	<item>
+		<Profit>600</Profit>
+		<Cost>700</Cost>
+		<Revenue>1300</Revenue>
+	</item>
+	<item>
+		<Profit>1400</Profit>
+		<Cost>2400</Cost>
+		<Revenue>1900</Revenue>
+	</item>
+	<item>
+		<Profit>1500</Profit>
+		<Cost>1200</Cost>
+		<Revenue>1600</Revenue>
+	</item>
+	<item>
+		<Profit>1900</Profit>
+		<Cost>1300</Cost>
+		<Revenue>2300</Revenue>
+	</item>
+	<item>
+		<Profit>1400</Profit>
+		<Cost>900</Cost>
+		<Revenue>1000</Revenue>
+	</item>
+	<item>
+		<Profit>2000</Profit>
+		<Cost>500</Cost>
+		<Revenue>2700</Revenue>
+	</item>
+	<item>
+		<Profit>1800</Profit>
+		<Cost>1400</Cost>
+		<Revenue>1000</Revenue>
+	</item>
+	<item>
+		<Profit>2500</Profit>
+		<Cost>800</Cost>
+		<Revenue>1600</Revenue>	
+	</item>
+</items>

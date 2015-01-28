@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<!-- 한글 오류로 인한 문제 encoding="utf-8"을 encoding="euc-kr"로 변경합니다 -->
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="요약보고"/>
+		<SubCaption text="EUC-KR 인코딩 형식으로 출력한 차트입니다." fontSize="11" textAlign="right" paddingRight="10"/>
+		<Legend fontSize="11" fontWeight="normal" textDecoration="underline"/>
+	</Options>
+	<NumberFormatter id="numfmt" useThousandsSeparator="true"/>
+	<Combination3DChart showDataTips="true">
+		<horizontalAxis>
+			<CategoryAxis id="hAxis" categoryField="Month"/>
+		</horizontalAxis>
+		<series>
+			<Column3DSeries yField="Revenue" displayName="매출">
+				<verticalAxis>
+					<LinearAxis id="axis1" formatter="{numfmt}"/>
+				</verticalAxis>
+				<fill>
+					<SolidColor color="0x66CC66" />
+				</fill>
+				<showDataEffect>
+					<SeriesSlide direction="up" duration="1000"/>
+				</showDataEffect>
+			</Column3DSeries>
+			<Line2DSeries yField="Cost" displayName="비용">
+				<verticalAxis>
+					<LinearAxis id="axis2"  formatter="{numfmt}"/>
+				</verticalAxis>
+				<filters>
+					<DropShadowFilter distance="3" color="0x666666" alpha=".8"/>
+				</filters>
+				<lineStroke>
+					<Stroke color="0xFFCC00" weight="3" />
+				</lineStroke>
+				<showDataEffect>
+					<SeriesSlide direction="down" duration="1000"/>
+				</showDataEffect>
+			</Line2DSeries>
+		</series>
+		<verticalAxisRenderers>
+			<Axis3DRenderer axis="{axis1}"/>
+			<Axis3DRenderer axis="{axis2}"/>
+		</verticalAxisRenderers>
+	</Combination3DChart>
+</rMateChart>

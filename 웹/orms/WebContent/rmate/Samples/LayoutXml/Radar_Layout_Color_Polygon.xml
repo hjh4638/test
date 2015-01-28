@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="연도별 가계 지출 품목 분석"/>
+		<SubCaption text="(2005~2008)"/>
+		<Legend useVisibleCheck="true"/>
+	</Options>
+	<RadarChart id="chart1"
+	            isSeriesOnAxis="true"
+	            type="polygon"
+				paddingTop="20"
+				paddingBottom="20"
+	            showDataTips="true">
+				
+				<!-- 필터 제거 -->
+				<seriesFilters>
+					<DropShadowFilter alpha="0"/>
+				</seriesFilters>
+				
+				<!-- 뒷 배경 격자 무늬 정의 -->
+				<backgroundElements>
+
+					<RadarGridLines direction='both' radarChangeCount='1'
+								radarFill='0xEFFFFF' radarAlternateFill='0xFFFFFC'> <!--radarFill 과 radarAlternateFill 색이 차례로 나옵니다.-->
+						 <radialStroke> <!-- radial 선 정의 -->
+								<Stroke color='0x000000' alpha='1' weight='1'/>
+						</radialStroke>
+						 <angularStroke> <!-- angular 선 정의 -->
+								<Stroke color='0xFF0000' alpha='1' weight='1'/>
+						</angularStroke>
+					 </RadarGridLines>
+
+				</backgroundElements>
+	            <radialAxisRenderers>
+					
+					<!--세로축 스타일 정의 -->
+	            	<Axis2DRenderer horizontal="true" visible="true">
+						<!-- 세로 축 선 스타일 -->
+						<axisStroke>
+							<Stroke weight="4" color="0xFF6666"/>
+						</axisStroke>
+						<!-- 틱 선 스타일 -->
+						<tickStroke>
+							<Stroke weight="1" color="0xFF6666" alpha="0.2"/>
+						</tickStroke>
+	            	</Axis2DRenderer>
+	            	<Axis2DRenderer horizontal="false" visible="true">
+						<axisStroke>
+							<Stroke weight="4" color="0xFF6666"/>
+						</axisStroke>
+						<tickStroke>
+							<Stroke weight="1" color="0xFF6666" alpha="0.2"/>
+						</tickStroke>
+	            	</Axis2DRenderer>
+	            </radialAxisRenderers>
+	            <radialAxis>
+	            	<LinearAxis/>
+	            </radialAxis>
+	            <angularAxis>
+					<CategoryAxis id="aAxis" categoryField="catName" displayName="Category" />
+				</angularAxis>
+	            <angularAxisRenderers>
+	            	<AngularAxisRenderer axis="{aAxis}" axisTitleStyleName="axisTitle">
+						<axisStroke>
+							<Stroke weight="4" color="0xFF3366"/>
+						</axisStroke>
+					</AngularAxisRenderer>
+	            </angularAxisRenderers>
+	          <series>
+	          	<RadarSeries field="year2005" 
+	          				displayName="2005년" radius="6">
+	          				<showDataEffect>
+	          					<SeriesInterpolate/>
+	          				</showDataEffect>
+	          				<stroke> <!-- 데이터 포인트에 찍힌 도형의 외곽 테두리 선 스타일  -->
+	          					<Stroke color="0xE48701" weight="4"/>
+	          				</stroke>
+	          				<lineStroke> <!-- 레이더 라인 스타일 -->
+	          					<Stroke color="0xE48701" weight="4"/>
+	          				</lineStroke>
+	          				<areaFill> <!--  레이더 안쪽 영역 채우기 색  -->
+	          					<SolidColor color="0xE48701" alpha="0.2"/>
+	          				</areaFill>
+	          				<fill> <!--  데이터 포인트에 찍힌 도형의 안쪽 채우기 색 -->
+	          					<SolidColor color="0xFFFFFF"/>
+	          				</fill>
+	          	</RadarSeries>
+	          						
+	          	<RadarSeries field="year2006" 
+	          				displayName="2006년"  radius="6">
+	          				<showDataEffect>
+	          					<SeriesInterpolate/>
+	          				</showDataEffect>
+	          				<stroke>
+	          					<Stroke color="0xB0C759" weight="4"/>
+	          				</stroke>
+	          				<lineStroke>
+	          					<Stroke color="0xB0C759" weight="4"/>
+	          				</lineStroke>
+	          				<areaFill>
+	          					<SolidColor color="0xB0C759" alpha="0.2"/>
+	          				</areaFill>
+	          				<fill>
+	          					<SolidColor color="0xFFFFFF"/>
+	          				</fill>
+	          	</RadarSeries>
+	          	<RadarSeries field="year2007" 
+	          				displayName="2007년"  radius="6">
+	          				<showDataEffect>
+	          					<SeriesInterpolate/>
+	          				</showDataEffect>
+	          				<stroke>
+	          					<Stroke color="0x0A80C4" weight="4"/>
+	          				</stroke>
+	          				<lineStroke>
+	          					<Stroke color="0x0A80C4" weight="4"/>
+	          				</lineStroke>
+	          				<areaFill>
+	          					<SolidColor color="0x0A80C4" alpha="0.2"/>
+	          				</areaFill>
+	          				<fill>
+	          					<SolidColor color="0xFFFFFF"/>
+	          				</fill>
+	          	</RadarSeries>
+	          	<RadarSeries field="year2008" 
+	          				displayName="2008년"  radius="6">
+	          				<showDataEffect>
+	          					<SeriesInterpolate/>
+	          				</showDataEffect>
+	          				<stroke>
+	          					<Stroke color="0xCC99CC" weight="4"/>
+	          				</stroke>
+	          				<lineStroke>
+	          					<Stroke color="0xCC99CC" weight="4"/>
+	          				</lineStroke>
+	          				<areaFill>
+	          					<SolidColor color="0xCC99CC" alpha="0.2"/>
+	          				</areaFill>
+	          				<fill>
+	          					<SolidColor color="0xFFFFFF"/>
+	          				</fill>
+	          	</RadarSeries>
+	          </series>
+		</RadarChart>
+</rMateChart>

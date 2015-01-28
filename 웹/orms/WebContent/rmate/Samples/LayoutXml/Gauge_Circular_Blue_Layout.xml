@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xEEEEEE" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="게이지 예제 - Blue" /> 
+		<SubCaption text="게이지, 색상, 그라데이션 등을 변경 할 수 있습니다." textAlign="right" paddingRight="10" fontSize="11" /> 
+	</Options>
+	<CurrencyFormatter id="numFmt" precision="0" currencySymbol="%" alignSymbol="right"/>
+	<CircularGauge width="300" height="300" valueChangeFunction="valueChangeFunc"
+				startAngle="90" minimumAngle="0" maximumAngle="270"
+				minimum="0" maximum="100" value="50"
+				interval="10" minorInterval="2"
+				formatter="{numFmt}"
+				needleLengthRatio="0.8"
+				needleBackLengthRatio="0.2"
+				valueXOffset="65" valueYOffset="60"
+				tickLabelStyleName="tickText"
+				valueLabelStyleName="valueText"
+				dataTipJsFunction="dataTipFunction"
+				editMode="true" liveDragging="true"
+				bounceAnimating="true"
+				labelGap="10"
+				showDataTip="true">
+	</CircularGauge>
+	<Style>
+		.valueText
+		{
+			fontSize:18;
+			fontFamily:Myriad;
+			textAlign:center;
+			borderColor:#999999;
+			backgroundColor:#FFFFFF;
+			paddingTop:4;
+			borderThickness:1;
+			borderAlpha:1;
+			borderStyle:solid;
+		}
+
+		.tickText
+		{
+			fontFamily:Myriad;
+			fontSize:15;
+			color:#FFFFFF
+		}
+	</Style>
+</rMateChart>

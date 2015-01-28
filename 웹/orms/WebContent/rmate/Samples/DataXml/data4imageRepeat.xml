@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items>
+	<item>
+		<Year>2002</Year>
+		<Data1>1500</Data1>
+	</item>
+	<item>
+		<Year>2003</Year>
+		<Data1>1000</Data1>
+	</item>
+	<item>
+		<Year>2004</Year>
+		<Data1>1400</Data1>
+	</item>
+	<item>
+		<Year>2005</Year>
+		<Data1>1500</Data1>
+	</item>
+	<item>
+		<Year>2006</Year>
+		<Data1>1900</Data1>
+	</item>
+	<item>
+		<Year>2007</Year>
+		<Data1>1400</Data1>
+	</item>
+	<item>
+		<Year>2008</Year>
+		<Data1>1000</Data1>
+	</item>
+	<item>
+		<Year>2009</Year>
+		<Data1>1400</Data1>
+	</item>
+</items>

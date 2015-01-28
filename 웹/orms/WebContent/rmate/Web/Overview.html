@@ -1,0 +1,905 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+<title>rMate Flash Chart</title>
+<link rel="stylesheet" href="Style.css" type="text/css" />
+
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+-->
+</style>
+
+<style type="text/css">
+<!--
+.f-font{color: #000000; FONT-SIZE: 12px;font-family:돋움; line-height:1.7em; text-align:left; padding-left:10px; background-image: url();background-position: top right;   background-repeat: repeat-y;background-position: top left;HEIGHT: 20px;letter-spacing:-0.2pt;}
+.f-bofont{color: #DF6E14; FONT-SIZE: 12px;font-family:돋움;  font-weight:bold; }
+.f-bfont{color: #DF4E4C; FONT-SIZE: 12px;font-family:돋움;  font-weight:bold; }
+.f-bpfont{color: #A20000; FONT-SIZE: 12px;font-family:돋움;  font-weight:bold; }
+.style7 {color: #927769; font-weight: bold;FONT-SIZE: 12px;font-family:돋움; }
+-->
+</style>
+</head>
+
+<body>
+<table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
+
+	<tr>
+		<td height="40"></td>
+	</tr>
+	
+	<tr>
+  	<td height="40" align="center" valign="top"><img src="./Images/overview-title.gif" /></td>
+  </tr>	
+
+	<tr>
+  	<td><img src="./Images/flash-tt1.gif" /></td>
+  </tr>
+	
+	<tr>
+		<td style="padding-top:10px">
+			<table width="100%" height="2" border="0" cellpadding="0" cellspacing="0" bgcolor="9F0200">
+		  	<tr>
+		    	<td></td>
+		   	</tr>
+			</table>
+	
+		  <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="F3D5D4">
+		  	<tr>
+		    	<td width="15%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bofont">Line<br/>Chart</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> Line Segment<br />
+		        	                   <img src="./Images/dot.gif"/> Line Curve <br />
+		        	                   <img src="./Images/dot.gif"/> Line Step <br/>
+		        	                   <img src="./Images/dot.gif"/> Line Item Renderer<br/>		        	                   
+		        	</td>
+		        </tr>
+	        </table></td>
+		    	<td width="15%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bofont">Column<br/>Chart</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> Column 2D / Column 3D<br />
+		        	                   <img src="./Images/dot.gif"/> Multi-Series Column 2D / Column 3D<br />
+																 <img src="./Images/dot.gif"/> Stacked Column 2D / Column 3D<br />
+																				  &nbsp;&nbsp;&nbsp;(stacked, overlaid, 100%)<br />
+																 <img src="./Images/dot.gif"/> Stacked - 연결선잇기
+		        	</td>
+		        </tr>
+	        </table></td>
+				</tr>
+
+		  	<tr>
+		    	<td width="15%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bofont">Bar<br/>Chart </td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> Bar 2D / 3D<br />
+		        	                   <img src="./Images/dot.gif"/> Multi-Series Bar 2D / Bar 3D<br />
+																 <img src="./Images/dot.gif"/> Stacked Bar 2D / Bar 3D<br />
+																				  &nbsp;&nbsp;(stacked, overlaid, 100%)
+		        	</td>
+		        </tr>
+	        </table></td>
+		    	<td width="15%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bofont">Area<br/>Chart</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> Area 2D<br />
+		        	                   <img src="./Images/dot.gif"/> Area Stacked 2D<br />
+		        	                   <img src="./Images/dot.gif"/> Area Multi-Series 2D
+		        	</td>
+		        </tr>
+	        </table></td>
+	      </tr>
+
+	      <tr>
+		    	<td width="15%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bofont">Pie<br/>Chart</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> Pie 2D / Pie 3D<br />
+		        	                   <img src="./Images/dot.gif"/> Stacked Pie 3D<br />
+		        	                   <img src="./Images/dot.gif"/> Pie with Wedge
+		        	</td>
+		        </tr>
+	        </table></td>
+		    	<td width="15%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bofont">Doughnut<br/>Chart</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> Doughnut 2D<br />
+		        	                   <img src="./Images/dot.gif"/> Doughnut 3D
+		        	</td>
+		        </tr>
+	        </table></td>
+				</tr>
+
+				<tr>
+		    	<td width="15%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bofont">Bubble<br/>Chart</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> Bubble 3D <br/>
+		        										 <img src="./Images/dot.gif"/> Bubble Multi-Series 3D
+		        	</td>
+		        </tr>
+	        </table></td>
+		    	<td width="15%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bofont">Plot<br/>Chart</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> Plot(Scatter) Chart (산개챠트)<br />
+																 <img src="./Images/dot.gif"/> Plot Chart-중심선긋기
+		        	</td>
+		        </tr>
+	        </table></td>
+				</tr>
+
+				<tr>
+		    	<td width="15%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bofont">Combination<br/>Chart</td>
+		        </tr>
+		      </table></td>
+		      <td colspan="3" bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> Line + Column2D &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		        										 <img src="./Images/dot.gif"/> Line + Column3D &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ 																 <img src="./Images/dot.gif"/> Line + Stacked Column3D<br />
+ 																 <img src="./Images/dot.gif"/> Line + Multi-Series Column3D &nbsp;&nbsp;
+ 																 <img src="./Images/dot.gif"/> Line + Multi-Series + Stacked Column3D<br/>
+ 																 <img src="./Images/dot.gif"/> Area + Line + Column2D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ 																 <img src="./Images/dot.gif"/> Area + Line + Multi-Series Column2D<br />
+ 																 <img src="./Images/dot.gif"/> Area + Line + Column3D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ 																 <img src="./Images/dot.gif"/> Area + Line + Multi-Series Column3D<br/>
+ 																 <img src="./Images/dot.gif"/> Area + Line + Stacked Column3D
+		        	</td>
+		        </tr>
+	        </table></td>
+				</tr>
+
+				<tr>
+		    	<td width="15%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">Dashed Line<br/>Chart</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> Dashed Lines<br />
+		        	                   <img src="./Images/dot.gif"/> Line + Dashed Line<br />
+		        	                   <img src="./Images/dot.gif"/> Dashed Line + Line
+		        	</td>
+		        </tr>
+	        </table></td>
+		    	<td width="15%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">Cylinder<br/>Chart</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> Cylinder 3D<br />
+		        	                   <img src="./Images/dot.gif"/> Multi-Series Cylinder 3D<br />
+		        	                   <img src="./Images/dot.gif"/> Stacked Cylinder 3D<br />
+		        	                   <img src="./Images/dot.gif"/> Cylinder Bar 3D<br />
+		        	                   <img src="./Images/dot.gif"/> Stacked Cylinder Bar 3D
+		        	</td>
+		        </tr>
+	        </table></td>
+	      </tr>
+
+		  	<tr>
+		    	<td width="15%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">From-To<br/>Chart</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> Bar(2D/3D) Steps<br />
+		        	                   <img src="./Images/dot.gif"/> Bar(2D/3D) From-To<br />
+		        	                   <img src="./Images/dot.gif"/> Column(2D/3D) Waterfall<br />
+		        	                   <img src="./Images/dot.gif"/> Column(2D/3D) From-To<br />
+																 <img src="./Images/dot.gif"/> Area From-To, Multi From-To
+		        	</td>
+		        </tr>
+	        </table></td>
+		    	<td width="15%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">Radar<br/>Chart</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> Radar Polygon-Fill Type <br />
+		        										 <img src="./Images/dot.gif"/> Radar Polygon Type<br />
+		        										 <img src="./Images/dot.gif"/> Radar Circle-Fill Type<br />
+		        										 <img src="./Images/dot.gif"/> Radar Circle Type
+		        	</td>
+		        </tr>
+	        </table></td>
+	      </tr>
+
+		  	<tr>
+		    	<td width="15%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">목표 대비 실적<br/>Chart</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> Cylinder 3D Type<br />
+		        		                 <img src="./Images/dot.gif"/> Cylinder Bar 3D Type<br />
+		        										 <img src="./Images/dot.gif"/> Linear 2D Type
+		        	</td>
+		        </tr>
+	        </table></td>
+		    	<td width="15%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">History<br/>Chart</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> History Column<br />
+		        										 <img src="./Images/dot.gif"/> History Line<br />
+ 																 <img src="./Images/dot.gif"/> History Column&Line
+		        	</td>
+		        </tr>
+	        </table></td>
+	      </tr>
+
+	      <tr>
+		    	<td width="15%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">Real-Time<br/>(실시간 챠트)<br/>Chart</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> 데이터갯수기준(Category Axis)<br />
+		        	                   <img src="./Images/dot.gif"/> 시간(초,분,시간)기준(DateTimeAxis)<br />
+		        	                   <img src="./Images/dot.gif"/> 실시간 파이차트
+		        	</td>
+		        </tr>
+	        </table></td>
+		    	<td width="15%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">Scroll<br/>Chart</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> Column Scroll Chart<br />
+		        	                   <img src="./Images/dot.gif"/> Column Multi-Series Scroll<br />
+		        	                   <img src="./Images/dot.gif"/> Column Stacked Scroll<br />
+		        	                   <img src="./Images/dot.gif"/> Bar Multi-Series Scroll(Bottom Up)<br />
+		        	                   <img src="./Images/dot.gif"/> Bar Multi-Series Scroll(Top-Down)<br />		        	                   
+		        	                   <img src="./Images/dot.gif"/> Line Multi-Series Scroll<br />
+		        	                   <img src="./Images/dot.gif"/> Area Scroll <img src="./Images/dot.gif"/> Area Multi-Series Scroll<br />
+		        	                   <img src="./Images/dot.gif"/> Combination Scroll
+		        	</td>
+		        </tr>
+	        </table></td>
+	      </tr>
+
+	      <tr>
+		    	<td width="15%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bpfont">Matrix<br/>Chart</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> Matrix 기본형<br />
+		        	                   <img src="./Images/dot.gif"/> Matrix Fill Type(Multi Series)<br />
+		        	                   <img src="./Images/dot.gif"/> Matrix Fill Type(Single Series)<br />
+		        	                   <img src="./Images/dot.gif"/> Matrix Plot<br />
+		        	                   <img src="./Images/dot.gif"/> Matrix Image<br />
+		        	                   <img src="./Images/dot.gif"/> Matrix Renders
+		        	</td>
+		        </tr>
+	        </table></td>
+		    	<td width="15%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bpfont">Image<br/>Chart<br/></td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> 정배율-단일이미지<br/>
+		        	                  <img src="./Images/dot.gif"/> 차등배율-단일이미지</br>
+		        	                  <img src="./Images/dot.gif"/> 정배율-반복이미지</br>
+		        	                  <img src="./Images/dot.gif"/> 차등배율-복수이미지
+		        	</td>
+		        </tr>
+	        </table></td>
+	      </tr>
+
+	      <tr>
+		    	<td width="15%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bpfont">Slides<br/>Chart</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> 기본형<br />
+		        	                   <img src="./Images/dot.gif"/> 효과를 준 슬라이드
+		        	</td>
+		        </tr>
+	        </table></td>
+		    	<td width="15%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bpfont">Real-Time</br>Premium Chart</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font">Real-Time Chart는 단일주기만</br>
+		        										 표현가능하나 Premium Real-Time은</br>
+		        										 서로다른 주기를 하나의 화면에 표현</br>
+																 가능함. 즉 전일(24시간주기)과 금일</br>
+																 (초당,분당주기)의 데이터를 상호비교</br>
+																 하면서 표현가능함.
+
+		        	</td>
+		        </tr>
+	        </table></td>
+	      </tr>
+
+				<tr>
+		    	<td width="15%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bpfont">게이지<br/>(Gauge)</td>
+		        </tr>
+		      </table></td>
+		      <td colspan="3" bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> Circular &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		        										 <img src="./Images/dot.gif"/> Half Circular &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		        										 <img src="./Images/dot.gif"/> Cylinder &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		        										 <img src="./Images/dot.gif"/> Linear		        										 
+		        	</td>
+		        </tr>
+	        </table></td>
+				</tr>
+
+
+      </table>
+    </td>
+  </tr>
+</table>  
+
+<table width="700" border="0" align="center" cellpadding="0" cellspacing="0">  
+	<tr>
+		<td align="center">
+			&nbsp;<p><p><p>
+		</td>
+	</tr>
+</table>
+
+
+<table width="700" border="0" align="center" cellpadding="0" cellspacing="0">  
+	<tr>
+  	<td><img src="./Images/flash-tt2.gif" /></td>
+  </tr>
+	
+	<tr>
+		<td style="padding-top:10px">
+			<table width="100%" height="2" border="0" cellpadding="0" cellspacing="0" bgcolor="9F0200">
+		  	<tr>
+		    	<td></td>
+		   	</tr>
+			</table>
+	
+		  <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="F3D5D4">
+				<tr>
+        	<td width="18%" align="center" bgcolor="#F9F7EE"><span class="style7">기능구분</span></td>
+          <td width="82%" align="center" bgcolor="#F9F7EE"><span class="style7">설    명</span></td>
+        </tr>
+
+		  	<tr>
+		    	<td width="18%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">차트의 외형설정<br/>및<br>데이터 연동방식</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> xml 파일이나, String을 통하여 차트의 외형을 정의할 수 있습니다.</br>
+																 <img src="./Images/dot.gif"/> 차트에 담겨질 데이터는 Xml 파일을 통하여 클라이언트에게 전달될 수 있습니다.</br>
+																 <img src="./Images/dot.gif"/> Array (배열사용) : 차트의 외형과 데이터를 파일을 사용하지 않고 직접 배열객체를 넘겨서<br/>
+																 															 &nbsp;&nbsp;&nbsp;데이터를 전송할 수도
+   있습니다.
+
+		        	</td>
+		        </tr>
+	        </table></td>
+				</tr>
+
+		  	<tr>
+		    	<td width="18%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-bfont">챠트의 제목</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font">	기본은 챠트영역의 최상단에 한줄로 제목을 보여줍니다<br/>
+																<img src="./Images/dot.gif"/> 챠트영역의 상단에 두줄이상으로 제목을 보여줄 수 있습니다.</br>
+																<img src="./Images/dot.gif"/> 챠트의 하단에 한줄 혹은 두줄이상으로 제목을 보여줄 수 있습니다.<br/>
+																<img src="./Images/dot.gif"/> 차트의 제목에 CSS Style을 적용하여, 폰트의 컬러, 크기, 밑줄 등의 다양한 Style을 적용할 수<br/>
+																 															&nbsp;&nbsp;&nbsp;있습니다.
+
+		        	</td>
+		        </tr>
+	        </table></td>
+				</tr>
+
+		  	<tr>
+		    	<td width="18%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">챠트의 컬러</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> 막대나 원등의 컬러를 지정할 수 있으며, 그라데이션을 기본으로 합니다.<br/>
+																 <img src="./Images/dot.gif"/> 막대의 테두리 색은 없는 것이 기본입니다.<br/>
+																 <img src="./Images/dot.gif"/> 막대의 그라데이션을 없앨 수 있으며, 테두리선에 색깔을 줄 수 있습니다.<br/>
+																 <img src="./Images/dot.gif"/> 막대의 그라데이션의 방향을 변형할 수 있습니다.(조명이 우측, 중앙, 상단,하단에 있는 것처럼)<br/>
+																 <img src="./Images/dot.gif"/> 막대별로 서로다른 색을 컬러를 지정할 수 있습니다.<br/>
+																 <img src="./Images/dot.gif"/> 특정조건에 맞게 색을 결정하여 채울 수 있습니다.(가령 값이 100이상인 막대에 대하여는 파란색깔..)</br>
+   																														 &nbsp;&nbsp;&nbsp;(레이더 차트를 제외한 모든 차트에 적용가능)
+		        	</td>
+		        </tr>
+	        </table></td>
+				</tr>
+
+		  	<tr>
+		    	<td width="18%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">차트내<br/>수치표시</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> 차트의 상단이나, 차트의 내부에 해당값의 수치를 표시할 수 있습니다.<br/>
+															   <img src="./Images/dot.gif"/> 표시되는 수치에 밑줄을 긋거나, 천단위의 분리콤마넣기 등이 기본으로 제공됩니다.<br/>
+																 <img src="./Images/dot.gif"/> 막대차트에서 수치필드를 세로로 표시할 수 있습니다.<br/>
+																 <img src="./Images/dot.gif"/> 수치필드의 포맷을 사용자정의 방식으로 재가공 가능합니다.<br/>
+   																														 &nbsp;&nbsp;&nbsp;(가령, $표시 삽입, %삽입, 날짜 표시 포맷, 소수점 자리수지정 등의 다양한 사용자 정의 방식의<br/> 
+   																														 &nbsp;&nbsp;&nbsp;&nbsp;표시)<br/>
+																 <img src="./Images/dot.gif"/> 파이나 도넛차트에서 수치는 차트의 내부에 표시할 수도 있고, 선연결을 통해 외부에 표시할 수도<br/>
+																 															 &nbsp;&nbsp;&nbsp;있습니다.
+		        	</td>
+		        </tr>
+	        </table></td>
+				</tr>
+
+		  	<tr>
+		    	<td width="18%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">차트의<br/>데이터팁(툴팁)</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> 차트의 데이터팁(툴팁)은 마우스 over시에 나타나는 것이 기본이며, 형식은 자동이 기본입니다.<br/>
+																 <img src="./Images/dot.gif"/> 데이터팁(툴팁)은 나타나지 않게 할 수 있습니다.<br/>
+																 <img src="./Images/dot.gif"/> 데이터팁에 나타나는 자동형식을, 사용자가 정의하여 원하는 모양의 문구가 나타나게 할 수 있습<br/>
+																 															 &nbsp;&nbsp;&nbsp;니다.
+		        	</td>
+		        </tr>
+	        </table></td>
+				</tr>
+
+		  	<tr>
+		    	<td width="18%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">차트 Type별<br>요긴한 기능팁</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font">- 라인차트에서의 꼭지점의 표시<br/>
+  																	 &nbsp;&nbsp;&nbsp;라인챠트에서는 기본적으로 X축과 Y축이 만나는 지점의 값들을 smooth line이나 직선라인으로<br/>
+  																	 &nbsp;&nbsp;&nbsp;연결을 합니다. 그리고 해당 점에 대하여 특별한 표시는 하지는 않습니다.<br/>
+																		 <img src="./Images/dot.gif"/> X축과 Y축이 만나는 지점의 각 꼭지점에 사각형/원형/x자형/삼각형 등의 모양의 꼭지점보이기를<br/>
+																																	 &nbsp;&nbsp;&nbsp;할 수 있습니다.<br/><br/>
+																 - Stacked Column Chart에서 선긋기<br/>
+																		 <img src="./Images/dot.gif"/> Stacked Column 2D, Stacked Column 3D 차트에서 Stack의 각 구간별로 X축을 따라 선을 연결할<br/>
+																		 															 &nbsp;&nbsp;&nbsp;수 있습니다.
+		        	</td>
+		        </tr>
+	        </table></td>
+				</tr>
+
+		  	<tr>
+		    	<td width="18%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">챠트 배경화면</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> 챠트 바탕화면에 가로격자 혹은 세로격자 혹은 가로/세로격자를 color를 구분하여 넣을 수 있습니다.</br>
+																 <img src="./Images/dot.gif"/> 바탕화면에 그라데이션을 주어서 바탕화면에 빛을 쪼인 효과를 줄 수도 있습니다.<br/>
+																 														  &nbsp;&nbsp;&nbsp;(다종의 그라데이션 가능)</br>
+																 <img src="./Images/dot.gif"/> 바탕화면에 배경이미지 삽입이 가능합니다. URL을 통해 원하는 배경이미지를 넣을 수 있습니다.<br/>
+																 <img src="./Images/dot.gif"/> 바탕화면에 로고를 삽입할 수 있으며,  이미지와 그리드라인을 같이 삽입할 수도 있습니다.<br/>
+																 <img src="./Images/dot.gif"/> 차트의 외형에 CSS Style을 적용하여 외곽에 테두리선을 긋거나, 바탕화면의 컬러등을 변경할 수<br/>
+																 													    &nbsp;&nbsp;&nbsp;있습니다.<br/>
+																 <img src="./Images/dot.gif"/> 차트의 배경화면 정 중앙에 X축과 Y축으로 중앙선을 그을 수 있습니다.<br/>
+																 <img src="./Images/dot.gif"/> 차트전체를 투명하게 표현할 수 있습니다. 가령 html 바탕화면에 투명한 차트를 올리고자 할 경우<br/>
+																 															&nbsp;&nbsp;&nbsp;투명차트가 가능합니다.
+		        	</td>
+		        </tr>
+	        </table></td>
+				</tr>
+
+		  	<tr>
+		    	<td width="18%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">차트의 확대/축소</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> 많은 데이터를 한 화면에 표시할 경우에는 확대/축소 기능을 통해 보고자 하는 부분을 좀 더<br/>
+		        																									 &nbsp;&nbsp;&nbsp;상세하게 조회할 수 있습니다.</br>
+																 <img src="./Images/dot.gif"/> 확대/축소는 마우스를 click 한 상태에서 드래그하여 범위를 지정하면, 해당 영역만 확대되어<br/>
+																 															 &nbsp;&nbsp;&nbsp;표시됩니다.<br/>
+																 <img src="./Images/dot.gif"/> 확대/축소는 일부의 차트에서는 지원되지 않을 수 있습니다.
+		        	</td>
+		        </tr>
+	        </table></td>
+				</tr>	        
+
+		  	<tr>
+		    	<td width="18%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">차트에 메모넣기</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> 차트 바탕화면의 특정영역에 메모를 삽입할 수 있습니다.<br/>
+																 <img src="./Images/dot.gif"/> 메모는 텍스트만 넣기, 메모박스형태로넣기가 가능하며, 폰트의 크기, 색깔등을 지정할 수<br/>
+																 															 &nbsp;&nbsp;&nbsp;있습니다.<br/>
+																 <img src="./Images/dot.gif"/> 외부폰트를 이용하여 기울어진 메모박스를 삽입할 수도 있습니다. 외부폰트를 사용할 경우<br/>
+																 															 &nbsp;&nbsp;&nbsp; 폰트파일의 크기에 따라 성능에 영향을 끼칠 수 있습니다.
+		        	</td>
+		        </tr>
+	        </table></td>
+				</tr>
+
+		  	<tr>
+		    	<td width="18%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">사이드바 기능</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> 사이드바는 차트영역내에 마우스를 over시에 오른쪽 상단에 사이드바 아이콘이 나타나고<br/>
+		        																									 &nbsp;&nbsp;&nbsp;이를 click시에 각종 기능들이 포함된 메뉴가 나타납니다.<br/>
+																 <img src="./Images/dot.gif"/> 사이드바내에 들어가는 메뉴는 첨삭이 가능하며, 첨가할 수 있는 메뉴의 종류는 아래와 같습니다.<br/>
+																 															 &nbsp;&nbsp;&nbsp;-	확대/축소기능<br/>
+																 															 &nbsp;&nbsp;&nbsp;-	마우스 십자가 표시<br/>
+																 															 &nbsp;&nbsp;&nbsp;-	드로잉 기능 (펜으로 그리기 기능)<br/>
+																 															 &nbsp;&nbsp;&nbsp;-	데이터 에디터 보이기/숨기기 기능<br/>
+																 															 &nbsp;&nbsp;&nbsp;-	차트를 이미지로 저장 기능<br/>
+																 															 &nbsp;&nbsp;&nbsp;-	차트의 인쇄기능
+		        	</td>
+		        </tr>
+	        </table></td>
+				</tr>
+
+		  	<tr>
+		    	<td width="18%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">축(X,Y)</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> 기본은 하단에 X축, 좌측에 Y축이 있는 모양입니다.<br/>
+																 <img src="./Images/dot.gif"/> X축, Y축은 2D축과 3D축으로 구분되며, 축의 두께, 축의 컬러 등을 지정할 수 있습니다.<br/>
+																 <img src="./Images/dot.gif"/> 축은 Category축(일반문자형식), DateTime축(날짜표시용), Linear축(숫자표시용), Log축(로그함수)<br/>
+																 													     &nbsp;&nbsp;&nbsp;이 있습니다.<br/>
+																 <img src="./Images/dot.gif"/> Y축을 보이지 않고, X축만 나타나게 할 수 있으며,<br/>
+																 <img src="./Images/dot.gif"/> 양축(X축+좌측Y축+우측Y축)으로 나타나게 할 수 있으며,<br/>
+																 <img src="./Images/dot.gif"/> 180도 회전된축(x축이 상단, y축이 오른쪽)이 가능하며<br/>
+																 <img src="./Images/dot.gif"/> 모든 축이 안보이게끔 할 수도 있습니다.<br/>
+																 <img src="./Images/dot.gif"/> 또한 트리플축(축3개)이 가능하며, 축은 무한대까지 만들 수 있습니다.<br/>
+																 <img src="./Images/dot.gif"/> 축의 제목에는 스타일을 지정하여, 컬러, 폰트, 크기등을 조정할 수 있습니다.<br/>
+																 <img src="./Images/dot.gif"/> 축에 Target 라인을 그을 수 있습니다. (한계선, 상.하한선 등의 Target라인)<br/></br>
+
+																 - 축의 두께 및 컬러 tick, minor tick과 관련된 기능<br/>
+																 축에는 눈금선을 긋게 되는데, 이 눈금선을 tick라고 합니다. 그리고 눈금선과 눈금선의 사이에 작은눈금선을 minortick이라고 합니다.<br/>
+																 <img src="./Images/dot.gif"/> 이 tick과 minortick에 대한 간격과 color와 길이등을 설정할 수 있으며,<br/>
+																 <img src="./Images/dot.gif"/> tick이나 minortick을 보이지 않게 할 수도 있습니다.<br/>
+																 &nbsp;&nbsp;&nbsp;(용어설명을 위해서 tick의 속성중 color, 눈금선의 두께 등의 속성을 설정하는 것을 stroke라고<br/>
+ 																 &nbsp;&nbsp;&nbsp;  합니다.   이 stroke는 축자체도 적용할 수 있습니다. 즉 축의 두께나 color를 설정할 수 있습니다.)
+
+		        	</td>
+		        </tr>
+	        </table></td>
+				</tr>
+
+		  	<tr>
+		    	<td width="18%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">축에 범위/선긋기</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> 축을 기준으로 가로 / 세로로 한계선을 그을 수 있습니다.<br/>
+																 <img src="./Images/dot.gif"/> 축을 기준으로 가로 / 세로로 상.하한선을 그을 수 있습니다.<br/>
+																 <img src="./Images/dot.gif"/> X축/Y축에 다수의 선을 가로/세로로 그을 수 있습니다.<br/>
+
+																 <img src="./Images/dot.gif"/> 축을 기준으로 가로 / 세로로 범위를 지정하여 해당 범위의 컬러를 변경할 수 있습니다.<br/>
+																 <img src="./Images/dot.gif"/> 축을 기준으로 가로 / 세로로 다수의 범위를 지정하여 해당 범위의 컬러를 변경할 수 있습니다.<br/>
+																 <img src="./Images/dot.gif"/> 축상에 범위와 선긋기를 동시에 표현할 수 있습니다.
+		        	</td>
+		        </tr>
+	        </table></td>
+				</tr>
+
+		  	<tr>
+		    	<td width="18%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">축의 라벨과<br/>관련된 기능</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font">- x축에는 숫자,문자,날짜등을 기입할 수 있으며, Y축 또한 마찬가지입니다.<br/>
+																<img src="./Images/dot.gif"/> 라벨에는 컴머, 원, 달러표시 및 사용자 정의를 통해 다양한 포맷의 표현이 가능합니다.<br/>
+																<img src="./Images/dot.gif"/> 모든 라벨들에는 스타일을 적용할 수 있어 폰트크기, 폰트컬러등을 지정할 수 있으며,<br/>
+																&nbsp;&nbsp;&nbsp;숫자에는 기호(가령 \, $)들을 같이 붙여서 나타낼 수도 있습니다.<br/>
+																<img src="./Images/dot.gif"/>	내장폰트를 통한 사선방향의 수치표시기능이 가능합니다. 이는 주로 X축을 표기할때 칸이 좁아서<br/>
+																&nbsp;&nbsp;&nbsp;세로나 사선방향으로 표기해야 할 경우가 있습니다. 사선방향의 표기는 시스템폰트로는 구현이<br/>
+																&nbsp;&nbsp;&nbsp;불가하나, 간단한 수치표기용 내장폰트를 통해 사선방향의 표기가 가능합니다.<br/><br/>
+																- 파이와 도넛챠트에서의 라벨은 기본적으로 그래프의 안쪽(inside)에 위치합니다.<br/>
+																<img src="./Images/dot.gif"/> 그래프의 안쪽에 라벨글씨가 들어가기 힘든경우 라벨을 그래프의 바깥에 표시하거나(outside)<br/>
+																<img src="./Images/dot.gif"/> 연결선을 그어서 표시(call out)하거나,<br/>
+																<img src="./Images/dot.gif"/> inside와 outside를 라벨 글씨의 길이에 따라 자동적으로 조정하는 방법(inside with callout)<br/>
+																&nbsp;&nbsp;&nbsp;등을 설정할 수 있습니다.<br/><br/>
+																- 축의 라벨을 회전하여 표현하는 기능<br/>
+																<img src="./Images/dot.gif"/> 숫자만 표현할 경우에는 차트내에 내장된 폰트를 이용하여 회전하여 표현이 가능합니다.<br/>
+																<img src="./Images/dot.gif"/> 한글출력의 경우 시스템 내장폰트를 통해, 세로로 내려쓰기 표현이 가능하나, 회전하여 기울어지게<br/>
+																&nbsp;&nbsp;&nbsp;글을 표현하고자 할 경우에는 외부폰트를 사용하여야 합니다.<br/>
+																<img src="./Images/dot.gif"/> 영문의 경우도 한글과 마찬가지로 외부폰트를 사용하여 회전된 라벨표현이 가능합니다.
+		        	</td>
+		        </tr>
+	        </table></td>
+				</tr>
+
+		  	<tr>
+		    	<td width="18%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">범례</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> 범례의 위치는 상단/우측/좌측/하단/보이지 않기 등의 자유로운 설정이 가능합니다.<br/>
+																 <img src="./Images/dot.gif"/> 범례의 배열은 가로로 배열/세로로 배열등을 지원합니다.<br/>
+																 <img src="./Images/dot.gif"/> 특수기능중의 하나로 범례의 앞에 마크(▣)를 click하면 해당 범례의 그래프가 보이기/안보이기를<br/>
+																	                             &nbsp;&nbsp;&nbsp;할 수 있습니다.
+
+		        	</td>
+		        </tr>
+	        </table></td>
+				</tr>
+
+		  	<tr>
+		    	<td width="18%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">데이터에디터</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"> 데이터에디터는 차트를 그리는데 사용된 데이터를 엑셀형식의 그리드로 보여주고, 이의 수치값을<br/>
+		        										  조정하면서 차트 시뮬레이션을 할 수 있도록 하는 기능입니다.<br/>
+																 <img src="./Images/dot.gif"/> 데이터에디터는 사이드바를 통해서 ON/OFF를 할 수도 있으며,  초기 로딩시에 차트와 함께 표시되게<br/>
+																 &nbsp;&nbsp;&nbsp;할 수 있습니다.<br/>
+																 <img src="./Images/dot.gif"/> 데이터에디터는 더블클릭을 통해 편집이 가능합니다.<br/>
+																 <img src="./Images/dot.gif"/> 현재 데이터에디터의 컬럼갯수는 100개 이상을 초과할 수 없습니다.<br/>
+																 <img src="./Images/dot.gif"/> 데이터에디터의 로우별로 배경색상을 지정할 수 있습니다.<br/>
+																 <img src="./Images/dot.gif"/> 데이터에디터의 폰트색상/폰트크기/폰트종류 등을 지정할 수 있습니다.
+		        	</td>
+		        </tr>
+	        </table></td>
+				</tr>
+
+		  	<tr>
+		    	<td width="18%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">마우스 이벤트</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font">	- 챠트의 그래프 위에 마우스를 over할 경우 해당 그래프의 컬러는 변함이 없고,<br/>
+																	<img src="./Images/dot.gif"/> 툴팁(값을 나타내는 조그만 박스)은 보여주는 것이 기본입니다.<br/>
+																	<img src="./Images/dot.gif"/> 마우스 over시에 해당 그래프의 컬러는 다르게 표현할 수도 있으며,<br/>
+																	<img src="./Images/dot.gif"/> 툴팁을 보여주지 않을 수도 있습니다.<br/><br/>
+																	- 챠트위의 그래프를 클릭시에는 아무런 동작을 하지 않는 것이 기본입니다.<br/>
+																	<img src="./Images/dot.gif"/> 원챠트/도넛챠트 등의 경우에는 클릭시에 해당 영역만 삐져나오게 하는 기능을 설정할 수 있습니다.<br/>
+																	<img src="./Images/dot.gif"/> 마우스클릭시 클릭한 그래프의 정보를 넘겨 받을 수 있습니다.<br/>
+																	<img src="./Images/dot.gif"/> 마우스 클릭시 URL 이동이 가능합니다.<br/>
+																	<img src="./Images/dot.gif"/> 마우스 클릭시의 정보를 바탕으로 다른차트를 그리거나, depth가 있는 형태의 차트구성이 가능합니<br/>
+																	&nbsp;&nbsp;&nbsp;다. (차트클릭시 next 차트 그리기기능)
+
+		        	</td>
+		        </tr>
+	        </table></td>
+				</tr>
+
+		  	<tr>
+		    	<td width="18%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">Effect(이펙트)와<br/>관련한 기능</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font">	기본적으로 챠트를 화면에 디스플레이 할 때 그려지는 모양은 챠트의 기점(컬럼챠트의 경우 X축,<br/>
+		        											원챠트일 경우 원의 중심)에서 솟아올라오는 형태로 보여집니다.<br/>
+																	<img src="./Images/dot.gif"/> Slide type => 위에서 떨어지는 모양 / 왼쪽에서 나타나는 모양 / 오른쪽에서 나타나는 모양<br/>
+																	<img src="./Images/dot.gif"/> Zoom Type => 중앙/상단/좌측/우측에서 점차적으로 크져나가는 형태의 모양<br/>
+																	&nbsp;&nbsp;&nbsp;등을 설정할 수 있습니다.
+		        	</td>
+		        </tr>
+	        </table></td>
+				</tr>
+
+		  	<tr>
+		    	<td width="18%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">챠트의 동적변경</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> 실시간으로 챠트의 type을 다르게 보여줄 수 있습니다.<br/>
+															   <img src="./Images/dot.gif"/> 가령 막대챠트로 나타난 그래프를 원챠트로 바꾸거나, 원챠트를 바챠트로 바꾸거나 할 수 있습니다.<br/>
+																 <img src="./Images/dot.gif"/> 데이터의 type에 따라 실시간으로 다르게 챠트가 나타나야 할 경우 아주 유용하게 사용할 수<br/>&nbsp;&nbsp;&nbsp;있습니다.
+		        	</td>
+		        </tr>
+	        </table></td>
+				</tr>
+				
+		  	<tr>
+		    	<td width="18%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">서버로<br>이미지 전송</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> 화면에 보여지는 차트의 이미지를 서버로 전송할 수 있습니다.<br/>
+															   <img src="./Images/dot.gif"/> 전송되는 이미지는 화면에 보이는 그대로(펜으로 쓴 글씨도 포함) 저장이 됩니다.<br/>
+																 <img src="./Images/dot.gif"/> 이 기능은 자바스크립트를 통해 연동이 됩니다.
+		        	</td>
+		        </tr>
+	        </table></td>
+				</tr>				
+
+		  	<tr>
+		    	<td width="18%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">여러차트의<br/>삽입</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> 하나의 화면에 여러 개의 차트를 삽입할 수 있습니다.<br/>
+																 <img src="./Images/dot.gif"/> 동일한 데이터를 서로 다른 type의 차트로 표현이 가능하며<br/>
+																 <img src="./Images/dot.gif"/> 서로 다른 데이터를 동일한 Type의 차트로 표현할 수 있습니다.
+		        	</td>
+		        </tr>
+	        </table></td>
+				</tr>
+
+		  	<tr>
+		    	<td width="18%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">차트로딩시<br/>외부함수호출</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> 차트가 로딩되어 화면에 뿌려주기전에 특정 자바스크립트를 호출하도록 할 수 있습니다.<br/>
+																 &nbsp;&nbsp;&nbsp;이를 통해 차트가 그려지기전에 원하시는 액션을 취할 수 있습니다.
+		        	</td>
+		        </tr>
+	        </table></td>
+				</tr>
+
+		  	<tr>
+		    	<td width="18%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">이미지 저장 및<br/>인쇄</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> 차트내에 마우스 오른쪽 버튼을 통해 화면에 보여지는 차트를 이미지로 저장할 수 있습니다.<br/>
+																 <img src="./Images/dot.gif"/> 차트내에 마우스 오른쪽 버튼을 통해 화면에 보여지는 차트를 인쇄할 수 있습니다.<br/>
+																 <img src="./Images/dot.gif"/> 프린터 되는 차트의 인쇄사이즈는 화면에 보여진 차트의 가로/세로 픽셀 (초기 차트 생성시의 값)<br/>&nbsp;&nbsp;&nbsp;사이즈를 기준으로 출력이 됩니다.<br/>
+																 <img src="./Images/dot.gif"/> 인쇄사이즈를 키우거나/줄이실려면, 화면에 보여지는 차트의 가로/세로 픽셀 수를 조정하시면<br/>&nbsp;&nbsp;&nbsp;됩니다.
+		        	</td>
+		        </tr>
+	        </table></td>
+				</tr>
+
+		  	<tr>
+		    	<td width="18%" align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td align="center" class="f-bfont">한글처리</td>
+		        </tr>
+		      </table></td>
+		      <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		      	<tr>
+		        	<td class="f-font"><img src="./Images/dot.gif"/> utf-8 및 euc-kr 인코딩으로도 한국어를 표현할 수 있습니다.
+		        	</td>
+		        </tr>
+	        </table></td>
+				</tr>
+      </table>
+    </td>
+    
+  </tr>  
+</table>
+
+<table width="700" border="0" align="center" cellpadding="0" cellspacing="0">  
+	<tr>
+		<td align="center">
+			&nbsp;<p><p><p>
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>

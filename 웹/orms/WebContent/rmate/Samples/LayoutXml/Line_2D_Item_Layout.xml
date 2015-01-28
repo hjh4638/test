@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rMateChart cornerRadius="12" backgroundColor="0xffffff" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report" />
+		<Legend useVisibleCheck="true"/> 
+	</Options>
+	<NumberFormatter id="numFmt" precision="0"/>
+	<Line2DChart showDataTips="true">
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month"/>
+		</horizontalAxis>
+		<series>
+			<Line2DSeries labelPosition="up" yField="Profit"  radius="5" fill="0xFFFFFF"
+			color="0xff6654" displayName="Profit"  itemRenderer="DiamondItemRenderer" fontFamily="Myriad" fontSize="12">
+<!-- 
+itemRenderer는 Tip이 보여지는 영역차트 부분에 ItemRenderer에서 제공하는 모양을 그려줍니다
+이 예제에서는 Diamond입니다
+-->
+				<!-- 아이템렌더러(데이터 마커) 테두리 색상 -->
+				<stroke>
+					<Stroke color="0x0066FF" weight="1"/>
+				</stroke>
+				<showDataEffect>
+					<SeriesInterpolate/>
+				</showDataEffect>
+			</Line2DSeries>
+													 
+			<Line2DSeries labelPosition="up" yField="Cost"  radius="5" fill="0xFFFFFF" 
+			color="0x6a8fa0" displayName="Cost" itemRenderer="CircleItemRenderer" fontFamily="Myriad" fontSize="12">
+			<!-- itemRenderer는 Circle입니다 -->
+				<stroke>
+					<Stroke color="0x0066FF" weight="1"/>
+				</stroke>
+				<showDataEffect>
+					<SeriesInterpolate/>
+				</showDataEffect>
+			</Line2DSeries>
+
+			<Line2DSeries labelPosition="up" yField="Revenue"  radius="5" fill="0xFFFFFF" 
+			color="0xc5607e" displayName="Revenue" itemRenderer="TriangleItemRenderer" fontFamily="Myriad" fontSize="12">
+			<!-- itemRenderer는 Triangle입니다 -->
+				<stroke>
+					<Stroke color="0x0066FF" weight="1"/>
+				</stroke>
+				<showDataEffect>
+					<SeriesInterpolate/>
+				</showDataEffect>
+			</Line2DSeries>
+		</series>
+		<annotationElements>
+			<CrossRangeZoomer zoomType="horizontal" fontSize="11" color="0x0066FF"
+							horizontalLabelFormatter="{numFmt}"
+							verticalLabelPlacement="bottom" horizontalLabelPlacement="left"
+							enableZooming="false" enableCrossHair="true">
+			</CrossRangeZoomer>
+		</annotationElements>
+	</Line2DChart>
+</rMateChart>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Annual Report"/>
+	</Options>
+	<Column3DChart paddingLeft="10" paddingRight="10" showDataTips="true">
+	<!-- showDataTips : 데이터에 마우스를 가져갔을 때 나오는 Tip을 보이기/안보이기 속성입니다 -->
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month" title="Month"/>
+		</horizontalAxis>
+		
+		<verticalAxis>
+			<LinearAxis title="Profit"/>
+		</verticalAxis>
+	<series>
+		<Column3DSeries yField="Profit">
+			<showDataEffect>
+	  			<SeriesInterpolate/> 
+	  		</showDataEffect>
+		</Column3DSeries>
+		<Column3DSeries yField="Cost">
+			<showDataEffect>
+	  			<SeriesInterpolate/> 
+	  		</showDataEffect>
+		</Column3DSeries>
+	</series>
+</Column3DChart>
+
+</rMateChart>

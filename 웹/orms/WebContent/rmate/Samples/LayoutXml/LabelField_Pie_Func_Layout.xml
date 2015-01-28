@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report" /> 
+	</Options>
+	<Pie2DChart showDataTips="true">
+		<series>
+			<Pie2DSeries field="Profit" nameField="Month" displayName="Profit" labelPosition="inside" labelJsFunction="pieSeriesLabelFunc">
+<!-- 
+labelJsFunction : Pie2DSeries에서 실행되는 Javascript함수로
+		  html 내에 정의한 Javascript함수로 데이터를 보냅니다
+		  이 예제에서는 보낸 데이터의 Month 필드명과 수치뒤에 %를 붙였습니다
+-->
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Pie2DSeries>
+		</series>
+	</Pie2DChart>
+</rMateChart>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report" /> 
+	</Options>
+	<NumberFormatter id="numFmt"/>
+	<Column2DChart showDataTips="true">
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month"/> 
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis formatter="{numFmt}"/>
+		</verticalAxis>
+		<series>
+		<!--
+	totalLabelFunc는 스택시리즈로 묶인 컬럼들의 총 합을 구하여
+	사용자 정의로 표현 할 수 있게 해주는 function입니다.
+	이 xml을 불러오는 html파일안에 totalLabelFunc로 된
+	function을 정의하십시오.
+		-->
+			<Column2DSet type="stacked" showTotalLabel="true" totalLabelJsFunction="totalLabelFunc">
+				<series>
+					<!-- seriesLabelFunc 는 자바스크립트 함수명 입니다. 
+labelPosition의 값에 따라 (inside, outside)
+insideLabelJsFunction,
+outsideLabelJsFunction 을 사용하십시오.
+-->
+					<Column2DSeries id="s1" yField="Profit" displayName="Profit" labelPosition="inside" styleName="seriesStyle"				insideLabelJsFunction="seriesLabelFunc">
+						<showDataEffect>
+							<SeriesInterpolate/> 
+						</showDataEffect>
+					</Column2DSeries>
+					<Column2DSeries id="s2" yField="Cost" displayName="Cost" labelPosition="inside" styleName="seriesStyle"					insideLabelJsFunction="seriesLabelFunc">
+						<showDataEffect>
+							<SeriesInterpolate/> 
+						</showDataEffect>
+					</Column2DSeries>
+					<!-- seriesLabelFunc 는 자바스크립트 함수명 입니다. -->
+					<Column2DSeries id="s3" yField="Revenue" displayName="Revenue" labelPosition="inside" styleName="seriesStyle"				insideLabelJsFunction="seriesLabelFunc">
+						<showDataEffect>
+							<SeriesInterpolate/> 
+						</showDataEffect>
+					</Column2DSeries>
+				</series>
+			</Column2DSet>
+		</series>
+	</Column2DChart>
+	<Style>
+		.seriesStyle{
+			fontFamily:Myriad;
+			fontSize:10;
+			color:0x0000FF;
+		}
+	</Style>
+</rMateChart>

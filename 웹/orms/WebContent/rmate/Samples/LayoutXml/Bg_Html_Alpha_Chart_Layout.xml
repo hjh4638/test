@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart  backgroundAlpha="0.1" cornerRadius="12" borderStyle="none">
+	<Column3DChart showDataTips="true">
+		<horizontalAxis>
+			<CategoryAxis id="hAxis" categoryField="Month"/>
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis id="vAxis"/>
+		</verticalAxis>
+		<series>
+			<Column3DSeries yField="Profit">
+				<showDataEffect>
+		  			<SeriesInterpolate/> 
+		  		</showDataEffect>
+			</Column3DSeries>
+		</series>
+		<verticalAxisRenderers>
+			<Axis3DRenderer axis="{vAxis}" styleName="axisStyle"/>
+		</verticalAxisRenderers>
+		<horizontalAxisRenderers>
+			<Axis3DRenderer axis="{hAxis}" styleName="axisStyle"/>
+		</horizontalAxisRenderers>
+	</Column3DChart>
+	<Style>
+		.axisStyle{
+			color:0xff0000;
+			fontSize:12;
+		}
+	</Style>
+</rMateChart>

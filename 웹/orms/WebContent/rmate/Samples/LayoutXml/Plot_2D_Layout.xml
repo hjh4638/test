@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="마우스 드래그로 영역을 설정하면 확대/축소를 할 수 있습니다." color="0xff0000"/>
+	</Options>
+	<NumberFormatter id="numFmt" precision="0"/>
+	<Plot2DChart showDataTips="true" selectionMode="single">
+<!-- 
+Plot2D 차트 생성시에 필요한 Plot2DChart 정의합니다 
+showDataTips : 데이터에 마우스를 가져갔을 때 나오는 Tip을 보이기/안보이기 속성입니다  
+-->
+		<verticalAxis>
+			<LinearAxis maximum="3500"/>
+		</verticalAxis>
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month"/>
+		</horizontalAxis>
+		<backgroundElements>
+			<GridLines direction="both"/>
+		</backgroundElements>
+		<series>
+			<Plot2DSeries yField="Profit" radius="5" displayName="Profit">
+			<!-- Plot2DChart 정의 후 Plot2DSeries labelPosition="both"정의합니다 -->
+				<showDataEffect>
+				<!-- 차트 생성시에 Effect를 주고 싶을 때 shoDataEffect정의합니다 -->
+					<SeriesZoom   relativeTo="series"/>
+<!-- 
+SeriesZoom은 시리즈 데이터가 새로운 시리즈 데이터로 표시될 때 줌 효과를 적용합니다 
+- 공통속성 -						
+elementOffset : effect를 지연시키는 시간을 지정합니다 default:20
+minimumElementDuration : 각 엘리먼트의 최소 지속 시간을 설정합니다 default:0
+			 이 값보다 짧은 시간에 effect가 실행되지 않습니다
+offset : effect개시의 지연시간을 설정합니다 default:0
+perElementOffset : 각 엘리먼트의 개시 지연시간을 설정합니다
+- SeriesZoom속성 -
+horizontalFocus - center,left,right : 줌을 시작하는 수평의 초점을 정합니다 default:center
+verticalFocus - center,top,bottom : 줌을 시작하는 수직의 초점을 정합니다 default:center
+relativeTo - chart,series : 줌의 초점을 위한 경계를 정합니다 default:chart
+-->
+				</showDataEffect>
+			</Plot2DSeries>
+			<Plot2DSeries yField="Cost" radius="5" displayName="Cost">
+				<showDataEffect>
+					<SeriesZoom   relativeTo="series"/>
+				</showDataEffect>
+			</Plot2DSeries>
+			<Plot2DSeries yField="Revenue" radius="5" displayName="Revenue">
+				<showDataEffect>
+					<SeriesZoom   relativeTo="series"/>
+				</showDataEffect>
+			</Plot2DSeries>
+		</series>
+		<annotationElements>
+			<CrossRangeZoomer zoomType="both" verticalLabelFormatter="{numFmt}" horizontalLabelFormatter="{numFmt}"/>
+		</annotationElements>
+	</Plot2DChart>
+</rMateChart>

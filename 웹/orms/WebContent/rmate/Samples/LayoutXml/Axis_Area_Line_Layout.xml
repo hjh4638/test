@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" borderStyle="solid" cornerRadius="12">
+	<Options>
+		<DataEditor/>
+	</Options>
+	<Stroke id="stroke1" color="0xff0000" weight="1"/>
+	<NumberFormatter id="numFmt" useThousandsSeparator="true" precision="1"/> 
+	<Stroke id="stroke2" color="0x0000ff" weight="1"/>
+
+	<Line2DChart showDataTips="true" selectionMode="single">
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month" ticksBetweenLabels="false" padding="0"/> 
+		</horizontalAxis>
+		<series>
+			<Line2DSeries labelPosition="up" yField="Profit" raidus="4" displayName="Revenue" itemRenderer="CircleItemRenderer"
+			itemRollOverColor="0x0066FF"  itemSelectionColor="0x0099FF">
+				<showDataEffect>
+					<SeriesInterpolate/>
+				</showDataEffect>
+			</Line2DSeries>
+		</series>
+		<backgroundElements>
+			<GridLines/>
+			<AxisMarker>
+				<lines>
+					<AxisLine value="2000" stroke="{stroke1}" labelAlign="left" label="1/4분기 최대 실적" labelUpDown="down" fontSize="12" color="0xff0000"/>
+					<AxisLine value="3000" stroke="{stroke2}" labelAlign="right" label="2/4분기 최대 실적" labelUpDown="down" fontSize="12" color="0x0000ff"/>
+				</lines>
+               	<ranges>
+					<AxisRange startValue="Jan" endValue="May" horizontal="false">
+						<fill>
+							<SolidColor color="0x0066FF" alpha="0.2"/>
+						</fill>
+					</AxisRange>
+					<AxisRange startValue="Aug" endValue="Dec" horizontal="false">
+						<fill>
+							<SolidColor color="0xcc34ee" alpha="0.2"/>
+						</fill>
+					</AxisRange>
+				</ranges>
+			</AxisMarker>
+		</backgroundElements>
+	</Line2DChart>
+</rMateChart>

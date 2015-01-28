@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<script src="AC_OETags.js" language="javascript"></script>
+<script src="rMateChart.js" language="javascript"></script>
+<script src="./JS/rMateChartLicense.js" language="javascript"></script>
+
+<!-- 사용자 정의 설정 시작 -->
+<script language="JavaScript" type="text/javascript">
+
+window.onload = function()
+{
+	rMateChartInit();
+}
+
+// -----------------------첫번째 차트  flashVars 설정 시작----------------------
+// 1번차트는 rMate 차트와 스크립트 간의 동기화가 완료된 후 호출되는 함수를 지시하여
+// 이 함수를 통하여 레이아웃과 데이터를 차트에 입력합니다.
+var flashVars; 
+
+var rMateOnLoadCallFunction = "rMateChartOnLoad";
+flashVars += "&rMateOnLoadCallFunction="+rMateOnLoadCallFunction;
+// -----------------------첫번째 차트  flashVars 설정 끝-----------------------
+
+
+// -----------------------두번째 차트  flashVars 설정 시작-----------------------
+// 2번차트는 rMate 차트와 스크립트 간의 동기화가 완료된 후 호출되는 함수를 지시하여
+// 이 함수를 통하여 레이아웃과 데이터를 차트에 입력합니다.
+var flashVars2; 
+
+var rMateOnLoadCallFunction2 = "rMateChartOnLoad2";
+flashVars2 += "&rMateOnLoadCallFunction="+rMateOnLoadCallFunction2;
+// -----------------------두번째 차트  flashVars 설정 끝-----------------------
+
+
+// rMate 차트와  스크립트 간의 동기화가 완료되면 호출하는 함수입니다. 
+// 사용자는 이 함수를 flashVars에 반드시 등록해야 합니다. 
+// 여기서 작업을 하십시오.
+// 차트 콜백함수 4개 존재합니다.
+// 1. setLayout - 스트링으로 작성된 레이아웃 XML을 삽입합니다.
+// 2. setData - 배열로 작성된 데이터를 삽입합니다.
+// 3. setLayoutURL - 레이아웃 XML 경로를 지시합니다.
+// 4. setDataURL - 데이터 XML 경로를 지시합니다.
+// 아래 예제는 가능한 방법을 제시한 것 입니다.
+// 현재 1번 차트는 레이아웃을 스트링 형태로 받아들이고 데이터는 배열 형태로 받아들입니다.
+function rMateChartOnLoad()
+{
+	//예제1. 레이아웃 스트링 형태,데이터 배열 형태 
+	document.getElementById("chart1").setLayout(layoutStr);
+	document.getElementById("chart1").setData(chartData);
+	
+	//예제2. 레이아웃 XML URL경로, 데이터 배열 형태
+	//document.getElementById("chart1").setLayoutURL(layoutURL2);
+	//document.getElementById("chart1").setData(chartData2);
+	
+	//예제3. 레이아웃 스트링 형태, 데이터 XML URL경로
+	//document.getElementById("chart1").setLayout(layoutStr2);
+	//document.getElementById("chart1").setDataURL(dataURL2);
+	
+	//예제4. 레이아웃 URL, 데이터 URL
+	//document.getElementById("chart1").setLayoutURL(layoutURL);
+	//document.getElementById("chart1").setDataURL(dataURL);
+}
+
+// 2번 차트에서 동기화가 완료되면 호출하는 함수(사용자에 의해 정의됨)
+function rMateChartOnLoad2()
+{
+		
+	//예제2. 레이아웃 XML URL경로, 데이터 배열 형태
+	document.getElementById("chart2").setLayoutURL(layoutURL2);
+	document.getElementById("chart2").setData(chartData2);
+	
+}
+// 동적으로 할당할 레이아웃 정의.
+var layoutURL2 = encodeURIComponent("chartLayout.xml");
+var layoutStr = "<rMateChart cornerRadius='12' borderStyle='solid'>"
+	+"<Options><Caption text='Annual Report'/></Options>"
+	+"<LineChart showDataTips='true'>"
+	+"<horizontalAxis><CategoryAxis categoryField='Month'/></horizontalAxis>"
+	+"<series><LineSeries yField='Profit' displayName='Profit'>"
+	+"<showDataEffect><SeriesInterpolate/></showDataEffect>"
+	+"<lineStroke><Stroke color='0xFF0000'weight='4'/>"
+	+"</lineStroke></LineSeries>"
+	+"</series></LineChart></rMateChart>";
+
+
+// 동적으로 할당할 데이터 정의.
+var chartData = [{"Month":"Jan", "Revenue":10000, "Cost":5000, "Profit":5000},
+	{"Month":"Feb", "Revenue":15000, "Cost":7000, "Profit":8000},
+	{"Month":"Mar", "Revenue":12000 , "Cost":6000, "Profit":6000},
+	{"Month":"Apr", "Revenue":30200, "Cost":4000, "Profit":26200},
+	{"Month":"May", "Revenue":28000, "Cost":10000, "Profit":18000},
+	{"Month":"Jun", "Revenue":12000, "Cost":5000, "Profit":7000},
+	{"Month":"Jul", "Revenue":22000, "Cost":10000, "Profit":12000},
+	{"Month":"Aug", "Revenue":13000, "Cost":6000, "Profit":7000},
+	{"Month":"Sep", "Revenue":22000, "Cost":10000, "Profit":12000},
+	{"Month":"Oct", "Revenue":29000, "Cost":8000, "Profit":21000},
+	{"Month":"Nov", "Revenue":18000, "Cost":7500, "Profit":10500},
+	{"Month":"Dec", "Revenue":30000, "Cost":12000, "Profit":18000} ];
+
+var chartData2 = [{"Month":"Jan", "Revenue":1000, "Cost":500, "Profit":500},
+	{"Month":"Feb", "Revenue":1500, "Cost":700, "Profit":800},
+	{"Month":"Mar", "Revenue":1200 , "Cost":600, "Profit":600},
+	{"Month":"Apr", "Revenue":3020, "Cost":400, "Profit":2620},
+	{"Month":"May", "Revenue":2800, "Cost":1000, "Profit":1800},
+	{"Month":"Jun", "Revenue":1200, "Cost":500, "Profit":700},
+	{"Month":"Jul", "Revenue":2200, "Cost":1000, "Profit":1200},
+	{"Month":"Aug", "Revenue":1300, "Cost":600, "Profit":700},
+	{"Month":"Sep", "Revenue":2200, "Cost":1000, "Profit":1200},
+	{"Month":"Oct", "Revenue":2900, "Cost":800, "Profit":2100},
+	{"Month":"Nov", "Revenue":1800, "Cost":750, "Profit":1050},
+	{"Month":"Dec", "Revenue":3000, "Cost":1200, "Profit":1800} ];
+
+
+
+</script>
+<!-- 사용자 정의 설정 끝  -->
+</head>
+
+<body>
+	<div class="wrap">
+		<div class="header">
+			<div class="header_title">
+			Chart 
+		</div>
+	<div class="chart">
+				<script language="javascript">
+						<!--
+							rMateChartCreate("chart1","../Component/rMateChart",flashVars, 300, 200, "#FFFFFF");
+						// -->
+						</script>
+					</td>
+					<td align="center">
+						<script>
+						<!--
+							rMateChartCreate("chart2","../Component/rMateChart",flashVars2, 300, 200, "#FFFFFF");
+						// -->
+						</script>
+		</div>
+		<div class="footer">
+			<div class="footer_button">
+			<a href="#" onclick="javascript:window.open('./LayoutXml/Formatter_Date_Layout.xml', '_blank', 'width=1024 height=768 scrollbars=yes')">
+			<img src="./Images/viewLayout.png" width="100" height="22" border="0"/></a>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="#" onclick="javascript:window.open('./DataXml/singleData.xml', '_blank', 'width=1024 height=768 scrollbars=yes')">
+			<img src="./Images/viewData.png" width="100" height="22" border="0"/></a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

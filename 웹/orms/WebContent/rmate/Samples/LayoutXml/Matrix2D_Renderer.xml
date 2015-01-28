@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="시 별 제품 판매 현황"/>
+		<Legend/>
+	</Options>
+	<SeriesSlide id="ss"/>
+	<Matrix2DChart showDataTips="true" type="renderer" drawType="radius" selectionMode="single" dataTipJsFunction="tipFunc">
+		<backgroundElements>
+			<GridLines direction="horizontal" horizontalChangeCount="2">
+				<horizontalStroke>
+					<Stroke color="0x000000"/>
+				</horizontalStroke>
+			</GridLines>
+		</backgroundElements>
+		<verticalAxis>
+			<LinearAxis id="vAxis" interval="0.5" maximum="6" labelJsFunction="vertiJsFunc"/>
+		</verticalAxis>
+		<horizontalAxis>
+			<LinearAxis id="hAxis" interval="0.5" maximum="12" labelJsFunction="horiJsFunc"/>
+		</horizontalAxis>
+		<series>
+			<Matrix2DSeries  xField="Data1_x" yField="Data1_y" zField="Data1" renderer="rectangle" showDataEffect="{ss}" labelPosition="inside" displayName="A 시" insideLabelJsFunction="labelJsFunc" fontSize="11"/>
+			<Matrix2DSeries xField="Data2_x" yField="Data2_y" zField="Data2" renderer="rectangle" showDataEffect="{ss}" labelPosition="inside" displayName="B 시" insideLabelJsFunction="labelJsFunc" fontSize="11"/>
+			<Matrix2DSeries  xField="Data3_x" yField="Data3_y" zField="Data3" renderer="rectangle" showDataEffect="{ss}" labelPosition="inside" displayName="C 시" insideLabelJsFunction="labelJsFunc" fontSize="11"/>
+		</series>
+		<verticalAxisRenderers>
+			<Axis2DRenderer axis="{vAxis}" tickPlacement="none" styleName="font" minorTickPlacement="none"/>
+		</verticalAxisRenderers>
+		<horizontalAxisRenderers>
+			<Axis2DRenderer axis="{hAxis}" tickPlacement="none" styleName="font" minorTickPlacement="none"/>
+		</horizontalAxisRenderers>
+	</Matrix2DChart>
+	<Style>
+		.font{
+			fontSize:11;
+		}
+	</Style>
+</rMateChart>

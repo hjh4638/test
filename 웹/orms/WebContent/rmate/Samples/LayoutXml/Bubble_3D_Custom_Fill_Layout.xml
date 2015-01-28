@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="조건에 따라 색상 결정 사용자 정의 예제"/>
+		<SubCaption text="데이터 값을 기준으로 채우기 색을 결정합니다." textAlign="right" fontSize="11"/>
+	</Options>
+	<NumberFormatter id="numFmt"/>
+	<Bubble3DChart showDataTips="true" showLabelVertically="true">
+		
+		<!-- maximum 을 지정한 경우 좀 더 부드러운 애니매이션과 속도 향상 이점을 볼 수 있습니다. -->
+		<horizontalAxis>
+			<LinearAxis id="hAxis" maximum="3500"/>
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis id="vAxis" maximum="3500"/>
+		</verticalAxis>
+		<series>
+			<Bubble3DSeries yField="A_Profit" xField="A_Cost" radiusField="A_Revenue" formatter="{numFmt}"
+			fillJsFunction="fillJsFunc"  styleName="seriesStyle">
+<!-- 
+fillJsFunction : Series의 채우기 Javascript함수로 html에 보내는 데이터값의 범위에 따라
+		 html내의 Javascript함수에서 데이터를 판단하고 데이터값에 맞는 색을 return합니다  
+-->
+				<showDataEffect>
+					<SeriesZoom/>
+				</showDataEffect>
+			</Bubble3DSeries>
+			<Bubble3DSeries yField="B_Profit" xField="B_Cost" radiusField="B_Revenue" formatter="{numFmt}"
+			fillJsFunction="fillJsFunc"  styleName="seriesStyle">
+				<showDataEffect>
+					<SeriesZoom/>
+				</showDataEffect>
+			</Bubble3DSeries>
+			<Bubble3DSeries yField="C_Profit" xField="C_Cost" radiusField="C_Revenue" formatter="{numFmt}"
+			fillJsFunction="fillJsFunc"  styleName="seriesStyle">
+				<showDataEffect>
+					<SeriesZoom/>
+				</showDataEffect>
+			</Bubble3DSeries>
+		</series>
+		<backgroundElements>
+  <GridLines horizontalShowOrigin="false" /> 
+  </backgroundElements>
+
+	</Bubble3DChart>
+	<Box horizontalAlign="center" width="100%">
+		<SubLegend direction="horizontal" borderStyle="solid">
+	        <LegendItem label="More than 2,000" fontWeight="bold">
+   				<stroke>
+   					<Stroke weight="1" color="0x000000"/>
+   				</stroke>
+   				<fill>
+   					<SolidColor color="0xFF3366"/>
+   				</fill>
+	        </LegendItem>
+	        <LegendItem label="More than 1,000" fontWeight="bold">
+	        	<stroke>
+   					<Stroke weight="1" color="0x000000"/>
+   				</stroke>
+   				<fill>
+   					<SolidColor color="0xFFFF33"/>
+   				</fill>
+	        </LegendItem>
+	        <LegendItem label="Less than 1,000" fontWeight="bold">
+   				<stroke>
+   					<Stroke weight="1" color="0x000000"/>
+   				</stroke>
+   				<fill>
+   					<SolidColor color="0xFF9999"/>
+   				</fill>
+	        </LegendItem>
+	     </SubLegend>
+	</Box>
+	<Style>
+	.seriesStyle 
+	{ 
+		fontFamily:Myriad;
+		labelPosition:inside;
+		fontSize:11;
+		paddingTop:4;
+		color:0x000099;
+	}
+	</Style>
+</rMateChart>

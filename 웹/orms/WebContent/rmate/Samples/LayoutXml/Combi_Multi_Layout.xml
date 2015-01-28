@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report"/>
+		<SubCaption text="2008"/>
+		<Legend/>
+	</Options>
+	<Combination3DChart showDataTips="true" selectionMode="single">
+<!--  
+Combination3D 차트 생성시에 필요한 Combination3DChart 정의합니다 
+showDataTips : 데이터에 마우스를 가져갔을 때 나오는 Tip을 보이기/안보이기 속성입니다  
+selectionMode : 해당 차트 아이템을 선택 할 수 있게 합니다 
+	  ├ none : 선택 못함
+	  ├ single : 하나 선택
+	  └ multiple : 여러개 선택
+--> 
+		<horizontalAxis>
+           <CategoryAxis categoryField="Month"/>
+        </horizontalAxis>
+        <series>
+		<!-- Colum3D Multi-Sereis 를 생성시에는 넣고자 하는 series를 여러개 정의합니다   -->
+        	<Area2DSeries yField="Profit" form="curve" displayName="Profit">
+			<showDataEffect>
+				<SeriesInterpolate/> 
+			</showDataEffect>
+		</Area2DSeries>
+        	<Column3DSet type="clustered">
+<!-- 
+Combination 차트에서는 Column차트와 Bar차트를 사용할때 Column3DSet(Colum2DSet),Bar3DSet(Bar2DSet)을 사용합니다
+예제로 Column3DSeries를 사용하려 할 때는 Column3DSet을 정의 후 <series>와<Column3DSet>을 정의합니다
+Column3DSet(Colum2DSet),Bar3DSet(Bar2DSet)의 Type은 일반 Type과 동일 합니다
+그러나 기본 Type은 overlaid입니다
+-->
+        		<series>
+					<Column3DSeries yField="Revenue" displayName="Revenue">
+						<showDataEffect>
+		  					<SeriesInterpolate/> 
+		  				</showDataEffect>
+		  			</Column3DSeries>
+		  			<Column3DSeries yField="Cost" displayName="Cost">
+						<showDataEffect>
+		  					<SeriesInterpolate/> 
+		  				</showDataEffect>
+		  			</Column3DSeries>
+	  			</series>
+	  		</Column3DSet>
+			<Line2DSeries yField="Revenue" displayName="Revenue">
+				<showDataEffect>
+  					<SeriesInterpolate/> 
+  				</showDataEffect>
+				<filters>
+  					<DropShadowFilter distance="3" color="0x666666" alpha=".8" /> 
+  				</filters>
+				<lineStroke>
+  					<Stroke color="0x7aa371" weight="4" /> 
+  				</lineStroke>
+				<fill>
+  					<SolidColor color="0xFFCC00" /> 
+  				</fill>
+  			</Line2DSeries>
+  		</series>
+	</Combination3DChart>
+</rMateChart>

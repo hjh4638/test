@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="Common">
+	<typeAlias alias="UserVO" type="mil.af.orms.model.UserVO" />
+	<typeAlias alias="UnitVO" type="mil.af.orms.model.UnitVO" />
+	<typeAlias alias="UserAuthVO" type="mil.af.orms.model.UserAuthVO" />
+	<typeAlias alias="SysCodeVO" type="mil.af.orms.model.SysCodeVO" />
+	<select id="getIntraUser" parameterClass="String" resultClass="UserVO">
+		SELECT * FROM AVS11U0T WHERE USERID = #userid#
+	</select>
+	<select id="getSearchedUserList" resultClass="UserVO">
+		SELECT * FROM AVS11U0T
+		WHERE NAME LIKE '%'||#value#||'%'
+	</select>
+	<select id="getUserRole" parameterClass="String" resultClass="UserAuthVO">
+		SELECT SOSOKCODE,UNIT_CODE,SN,ROLE_CODE
+		FROM ORMS_USER_INFO
+		WHERE SN=#sn#
+	</select>
+	<select id="getUnitCodeList" parameterClass="String"
+		resultClass="UnitVO">
+		SELECT A.UNIT_CODE SOSOKCODE,C.UNIT_NAME||' '||A.UNIT_NAME
+		FULLASS,A.UNIT_NAME ASS
+		FROM ORMS_UNIT A,ORMS_UNIT B,ORMS_UNIT C WHERE A.UNIT_CODE LIKE
+		'%'||#value#||'-%'
+		AND A.UPPER_ID=B.ID
+		AND B.UPPER_ID=C.ID
+		AND B.STATE='Y'
+		ORDER BY C.ORDER_CD,B.ORDER_CD,A.ORDER_CD
+	</select>
+	<select id="getAllSquadronList" resultClass="UnitVO">
+		SELECT UNIT_CODE SOSOKCODE,UNIT_NAME FULLASS,UNIT_NAME ASS
+		FROM ORMS_UNIT
+		WHERE LEV=2 AND STATE='Y'
+	</select>
+	<select id="getFormationPilotList" parameterClass="String"
+		resultClass="UserVO">
+		SELECT USERID,SOSOKCODE,RANKNAME,NAME FROM AVS11U0T
+		WHERE SOSOKCODE LIKE #value#||'%'
+		AND (MSPCCODE = '0002' or MSPCCODE like '14%' or MSPCCODE='91C02')
+		AND USERID NOT LIKE '%-0'
+		AND USERID NOT LIKE '%-1'
+		ORDER BY RANKCODE, NAME
+	</select>
+	<select id="getAllFlightGroupList"  resultClass="UnitVO">
+		SELECT UNIT_CODE SOSOKCODE,UNIT_NAME FULLASS FROM ORMS_UNIT
+		WHERE LEV='1'
+		AND STATE='Y'
+		ORDER BY ORDER_CD
+	</select>
+	
+	<select id="getFlightGroup" resultClass="UnitVO">
+		SELECT UNIT_CODE SOSOKCODE,UNIT_NAME FULLASS FROM ORMS_UNIT
+		WHERE LEV='1'
+		AND STATE='Y'
+		AND unit_code = substr(#sosokcode#,1,4)
+		ORDER BY ORDER_CD
+	</select>
+	<select id="getSquadronList" parameterClass="String" resultClass="UnitVO">
+		SELECT UNIT_CODE SOSOKCODE,UNIT_NAME FULLASS 
+		FROM 
+			ORMS_UNIT
+		WHERE 
+			LEV='2' 
+		AND 
+			STATE='Y'
+		AND	
+			unit_code 
+		LIKE 
+			#flightGroupCode#||'%'
+		ORDER BY 
+			ORDER_CD
+	</select>
+	
+	<select id="getFlightGroupWithSquadronListByLevel" resultClass="UnitVO">
+		SELECT ID,UPPER_ID,LEV,UNIT_NAME,UNIT_CODE,AIRPLANE,ORDER_CD,STATE
+		FROM (SELECT * FROM ORMS_UNIT WHERE LEV&lt;3)
+		START WITH UPPER_ID IS NULL CONNECT BY PRIOR ID=UPPER_ID
+		ORDER SIBLINGS BY ORDER_CD
+	</select>
+	<select id="getUserPlane" parameterClass="String" resultClass="String">
+		SELECT CODE from ORMS.ORMS_SYS_CODE
+		where CODE in (SELECT AIRPLANE FROM ORMS_UNIT WHERE UNIT_CODE like #value#)
+		and M_CODE = 'ORM007'
+	</select>
+	<select id="getUnitName" parameterClass="String" resultClass="String">
+		SELECT UNIT_NAME FROM ORMS_UNIT WHERE UNIT_CODE=#value#
+	</select>
+
+	<select id="getUnitCode" parameterClass="String" resultClass="String">
+		SELECT unit_code
+		FROM orms_unit
+		WHERE lev = '2'
+		AND #value# LIKE unit_code||'%'
+	</select>
+	
+	<select id="getPeriod" resultClass="SysCodeVO">
+		SELECT code, codename
+		FROM ORMS.ORMS_SYS_CODE 
+		WHERE m_code='ORM006'
+	</select>
+	
+	<select id="getToday" resultClass="String">
+		SELECT to_char(sysdate,'YYYYMMDD')
+		FROM dual
+	</select>
+	
+	<select id="getSquadron" parameterClass="String" resultClass="UnitVO">
+		SELECT	U.unit_code sosokcode,U.unit_name fullass 
+		FROM 	orms.orms_user_info UI,
+				orms.orms_unit U
+		WHERE	
+				UI.unit_code = U.unit_code
+		AND 	
+				UI.sn = #value#
+	</select>
+</sqlMap>

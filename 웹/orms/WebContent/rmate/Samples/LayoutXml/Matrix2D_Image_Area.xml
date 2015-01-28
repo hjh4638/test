@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12">
+	<Options>
+		<Legend markerWidth="15" markerHeight="15"/>
+	</Options>
+	<SeriesSlide id="ss"/>
+	<Matrix2DChart showDataTips="true" type="image" drawType="area" selectionMode="single">
+		<backgroundElements>
+			<GridLines direction="horizontal">
+				<horizontalStroke>
+					<Stroke color="0x000000"/>
+				</horizontalStroke>
+			</GridLines>
+		</backgroundElements>
+		<verticalAxis>
+			<LinearAxis maximum="5"/>
+		</verticalAxis>
+		<horizontalAxis>
+			<LinearAxis maximum="5"/>
+		</horizontalAxis>
+		<series>
+			<Matrix2DSeries  xField="Data1_x" yField="Data1_y" zField="Data1" imageSource="./Images/icon1.png" showDataEffect="{ss}" labelPosition="inside" displayName="Data1" insideLabelJsFunction="labelJsFunc"/>
+			<Matrix2DSeries xField="Data2_x" yField="Data2_y" zField="Data2" imageSource="./Images/icon2.png" showDataEffect="{ss}" labelPosition="inside" displayName="Data2" insideLabelJsFunction="labelJsFunc"/>
+			<Matrix2DSeries  xField="Data3_x" yField="Data3_y" zField="Data3" imageSource="./Images/icon3.png" showDataEffect="{ss}" labelPosition="inside" displayName="Data3" insideLabelJsFunction="labelJsFunc"/>
+		</series>
+	</Matrix2DChart>
+</rMateChart>

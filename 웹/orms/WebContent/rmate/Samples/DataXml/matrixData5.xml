@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items>
+	<item>
+		<Data1_x>0.5</Data1_x>
+		<Data1_y>5.5</Data1_y>
+		<Data1>1</Data1>
+
+		<Data2_x>0.5</Data2_x>
+		<Data2_y>4.5</Data2_y>
+		<Data2>1</Data2>
+
+		<Data3_x>0.5</Data3_x>
+		<Data3_y>3.5</Data3_y>
+		<Data3>1</Data3>
+	
+		<Data4_x>0.5</Data4_x>
+		<Data4_y>2.5</Data4_y>
+		<Data4>1</Data4>
+
+		<Data5_x>0.5</Data5_x>
+		<Data5_y>1.5</Data5_y>
+		<Data5>1</Data5>
+
+		<Data6_x>0.5</Data6_x>
+		<Data6_y>0.5</Data6_y>
+		<Data6>1</Data6>
+	</item>
+	<item>	
+		<Data1_x>1.5</Data1_x>
+		<Data1_y>5.5</Data1_y>
+		<Data1>2</Data1>
+		
+		<Data2_x>1.5</Data2_x>
+		<Data2_y>4.5</Data2_y>
+		<Data2>2</Data2>
+
+		<Data3_x>1.5</Data3_x>
+		<Data3_y>3.5</Data3_y>
+		<Data3>2</Data3>
+	
+		<Data4_x>1.5</Data4_x>
+		<Data4_y>2.5</Data4_y>
+		<Data4>2</Data4>
+
+		<Data5_x>1.5</Data5_x>
+		<Data5_y>1.5</Data5_y>
+		<Data5>2</Data5>
+
+		<Data6_x>1.5</Data6_x>
+		<Data6_y>0.5</Data6_y>
+		<Data6>2</Data6>
+	</item>
+	<item>
+		<Data1_x>2.5</Data1_x>
+		<Data1_y>5.5</Data1_y>
+		<Data1>3</Data1>
+
+		<Data2_x>2.5</Data2_x>
+		<Data2_y>4.5</Data2_y>
+		<Data2>3</Data2>
+
+		<Data3_x>2.5</Data3_x>
+		<Data3_y>3.5</Data3_y>
+		<Data3>3</Data3>
+
+		<Data4_x>2.5</Data4_x>
+		<Data4_y>2.5</Data4_y>
+		<Data4>3</Data4>
+
+		<Data5_x>2.5</Data5_x>
+		<Data5_y>1.5</Data5_y>
+		<Data5>3</Data5>
+
+		<Data6_x>2.5</Data6_x>
+		<Data6_y>0.5</Data6_y>
+		<Data6>3</Data6>
+	</item>
+</items>

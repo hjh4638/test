@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="스크롤 2D 라인 차트"/>
+	</Options>
+	<Line2DChart showDataTips="true" gutterRight="10"> 
+<!--  
+Scroll_Line_2D 차트 생성시에 필요한 Line2DChart 정의합니다 
+showDataTips : 데이터에 마우스를 가져갔을 때 나오는 Tip을 보이기/안보이기 속성입니다  
+-->	
+	     <series>
+	     <!-- Scroll_Line_2D Multi-Sereis 를 생성시에는 Line2DSeries labelPosition="both"여러 개 정의합니다  --> 
+	        <Line2DSeries labelPosition="up" id="cs1" yField="Data1"
+			displayName="Data1" interpolateValues="true"/>
+			<Line2DSeries labelPosition="up" id="cs2" yField="Data2" form="curve" 
+			displayName="Data2" interpolateValues="true"/>
+			<Line2DSeries labelPosition="up" id="cs3" yField="Data3"
+			displayName="Data3" interpolateValues="true"/>
+	     </series>
+	     <horizontalAxis>
+	     	<CategoryLinearAxis id="hAxis" categoryField="Gu"/>
+	     	<!-- Scroll_Line_2D챠트 생성시엔 horizontalAxis에 CategoryLinearAxis를 정의해야합니다 -->
+	     </horizontalAxis>
+	     <horizontalAxisRenderers>
+	     	<ScrollableAxisRenderer axis="{hAxis}" visibleItemSize="7" />
+<!-- 
+Scroll_Line_2D챠트 생성시엔 horizontalAxisRenderers ScrollableAxisRenderer를 정의해야 합니다 
+visibleItemSize : 스크롤 차트가 한번에 표시할 데이터의 개수입니다
+scrollSensitivity : 스크롤의 민감도를 나타냅니다. 값이 작을수록 스크롤의 이동 폭이 커집니다	
+-->
+	     </horizontalAxisRenderers>   
+	</Line2DChart>
+</rMateChart>

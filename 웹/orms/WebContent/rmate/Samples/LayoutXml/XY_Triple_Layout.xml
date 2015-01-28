@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report"/>
+		<SubCaption text="2008"/>
+		<Legend useVisibleCheck="true"/>
+	</Options>
+	<NumberFormatter id="fmt"/>
+	<Line2DChart id="chart" showDataTips="true">
+		<horizontalAxis>
+			<CategoryAxis id="hAxis" categoryField="Month" padding="0"/>
+		</horizontalAxis>
+		<series>
+			<Line2DSeries yField="Profit" displayName="Profit">
+				<verticalAxis>
+					<LinearAxis id="vAxis1" formatter="{fmt}" />
+				</verticalAxis>
+				<lineStroke>
+					<Stroke color="0xE48701" weight="2"/> 
+				</lineStroke>
+				<showDataEffect>
+					<SeriesSlide direction="up" duration="1000"/>
+				</showDataEffect>
+			</Line2DSeries>
+			<Line2DSeries yField="Cost" displayName="Cost">
+				<verticalAxis>
+					<LinearAxis id="vAxis2" formatter="{fmt}" />
+				</verticalAxis>
+				<lineStroke>
+					<Stroke color="0xA5BC4E" weight="2"/> 
+				</lineStroke>
+				<showDataEffect>
+					<SeriesSlide direction="up" duration="1000"/>
+				</showDataEffect>
+			</Line2DSeries>
+			<Line2DSeries yField="Revenue" displayName="Revenue">
+				<verticalAxis>
+					<LinearAxis id="vAxis3" formatter="{fmt}" />
+				</verticalAxis>
+				<lineStroke>
+					<Stroke color="0x1B95D9" weight="2"/> 
+				</lineStroke>
+				<showDataEffect>
+					<SeriesSlide direction="up" duration="1000"/>
+				</showDataEffect>
+			</Line2DSeries>
+		</series>
+		<verticalAxisRenderers>
+		<!-- 각 시리즈 마다 각각의 y축을 참조합니다 -->
+			<Axis2DRenderer axis="{vAxis1}" placement="left">
+			<!-- vAxis1을 참조 -->
+				<axisStroke>
+					<Stroke color="0xE48701" weight="2" caps="none" />
+				</axisStroke>
+			</Axis2DRenderer>
+			<Axis2DRenderer axis="{vAxis2}" placement="left">
+			<!-- vAxis2를 참조 -->
+				<axisStroke>
+					<Stroke color="0xA5BC4E" weight="2" caps="none" />
+				</axisStroke>
+			</Axis2DRenderer>
+			<Axis2DRenderer axis="{vAxis3}" placement="right">
+			<!-- vAxis3을 참조 -->
+				<axisStroke>
+					<Stroke color="0x1B95D9" weight="2" caps="none" />
+				</axisStroke>
+			</Axis2DRenderer>
+		</verticalAxisRenderers>
+	</Line2DChart>
+</rMateChart>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="스크롤 2D 라인 차트"/>
+	</Options>
+	<Line2DChart showDataTips="true" gutterRight="10"> 
+	     <series>
+	        <Line2DSeries id="cs1" yField="Data1"
+			displayName="Data1" interpolateValues="true"/>
+			<Line2DSeries id="cs2" yField="Data2" form="curve" 
+			displayName="Data2" interpolateValues="true"/>
+			<Line2DSeries id="cs3" yField="Data3"
+			displayName="Data3" interpolateValues="true"/>
+	     </series>
+	     <horizontalAxis>
+	     	<CategoryLinearAxis id="hAxis" categoryField="Gu"/>
+	     </horizontalAxis>
+	     <horizontalAxisRenderers>
+			<!-- axisLabelFunc 는 자바스크립트 함수명 입니다. -->
+	     	<ScrollableAxisRenderer axis="{hAxis}" visibleItemSize="7" labelJsFunction="axisLabelFunc"/>
+	     </horizontalAxisRenderers>   
+	</Line2DChart>
+</rMateChart>

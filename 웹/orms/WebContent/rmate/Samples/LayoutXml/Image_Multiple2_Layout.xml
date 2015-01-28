@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="연도별 수출액"/>
+		<SubCaption text="(이미지별로 단위가 할당됨)" textAlign="right" fontSize="12" paddingRight="20"/>
+	</Options>
+	<NumberFormatter id="numFmt" /> 
+	<ImageChart id="chart" showDataTips="true" gutterLeft="20" gutterRight="20" showLabelVertically="true">
+<!--  
+Image 차트 생성시에 필요한 ImageChart 정의합니다 
+showDataTips : 데이터에 마우스를 가져갔을 때 나오는 Tip을 보이기/안보이기 속성입니다  
+-->
+		<horizontalAxis>
+			<CategoryAxis id="hAxis" categoryField="Year"/>
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis id="vAxis"/>
+		</verticalAxis>
+		<series>
+			<ImageSeries yField="Data1" imageDisplayType="multiple" styleName="seriesStyle" formatter="{numFmt}">
+<!-- 
+ImageChart 정의 후 ImageSeries 정의합니다 
+imageDisplayType ┬ single : 이미지 한개
+		 ├ singleRepeat : 이미지 한개 반복
+		 └ multiple : 다중 이미지
+ -->
+				<imgSource>
+<!--  
+Image Multi-Sereis 를 생성시에는 ImgSource안에 ImageSourceItem 여러 개 정의합니다  
+이 예제는 한개의 ImageSeries안의 imgSource에 다중 이미지를 넣은 것으로
+yField의 수치값에 맞춰 이미지가 가지고 있는 고유 value를 적용하여 이미지가 바뀌는 형태입니다
+-->
+            		<ImageSourceItem maintainAspectRatio="false" url="../Samples/Images/4-4-3.png" value="300"/>
+					<ImageSourceItem maintainAspectRatio="false" url="../Samples/Images/3-2-2.png" value="200"/>
+            	</imgSource>
+            	<showDataEffect>
+            		<SeriesSlide duration="1000" direction="up"/>
+            	</showDataEffect>
+			</ImageSeries>
+		</series>
+		<verticalAxisRenderers>
+			<Axis2DRenderer axis="{vAxis}" visible="false" includeInLayout="false"/>
+		</verticalAxisRenderers>
+	</ImageChart>
+	<Box width="100%" horizontalAlign="center">
+		<SubLegend markerWidth="25" markerHeight="25" direction="horizontal" borderStyle="solid" borderColor="0x999999" backgroundColor="0xFFFFFF">
+			<filters>
+				<DropShadowFilter distance="2" angle="45" color="0x000000" alpha="0.75"/>
+			</filters>
+			<LegendItem label="300">
+				<marker>
+					<Image maintainAspectRatio="false" source="../Samples/Images/4-4-3.png"/>
+				</marker>
+			</LegendItem>
+			<LegendItem label="200">
+				<marker>
+					<Image  maintainAspectRatio="false" source="../Samples/Images/3-2-2.png"/>
+				</marker>
+			</LegendItem>
+		</SubLegend>
+	</Box>
+	<Style>
+		.seriesStyle
+		{
+			labelPosition:outside;
+			fontFamily:Myriad;
+			color:0x00CC99;
+			fontSize:11;
+		}
+	</Style>
+</rMateChart>

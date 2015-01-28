@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report"/>
+	</Options>
+	<Column3DChart showDataTips="true">
+		<horizontalAxis>
+			<!-- axisLabelFunc 는 자바스크립트 함수명 입니다. -->
+			<CategoryAxis categoryField="Month" displayName="날짜" labelJsFunction="axisLabelFunc"/> 
+<!-- 
+labelJsFunction : Column3DChart의 CategoryAxis에서 Javascript함수로
+		  html 내에 정의한 Javascript함수를 실행합니다
+		  이 예제에서는 Javascript가 return한 색깔을 지정합니다
+-->
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis displayName="금액"/>
+		</verticalAxis>
+		<series>
+			<Column3DSeries id="series1" yField="Profit" displayName="Profit">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Column3DSeries>
+			<Column3DSeries id="series2" yField="Cost" displayName="Cost">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Column3DSeries>
+			<Column3DSeries id="series3" yField="Revenue" displayName="Revenue">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Column3DSeries>
+		</series>
+	</Column3DChart>
+</rMateChart>

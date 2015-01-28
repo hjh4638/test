@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="" /> 
+		<SubCaption paddingTop="25" textAlign="right" fontSize="11" text="차트 아이템 클릭하세요"/>
+	</Options>
+	<Pie3DChart showDataTips="true" itemClickJsFunction="chartClick">
+<!-- 
+itemClickJsFunction : Pie3DChart 시리즈를 클릭 하였을 때 실행되는 Javascript함수로
+		       html 내에 정의한 Javascript함수로 데이터를 보냅니다
+		       이 예제에서는 Pie3DSeries 클릭 될 경우 새로운 데이터로 
+		       Column3DChart를 생성하게 합니다
+-->
+		<series>
+			<Pie3DSeries id="pie3DSeries" nameField="Month" field="Output"/>
+		</series>
+	</Pie3DChart>
+</rMateChart>

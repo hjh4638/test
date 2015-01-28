@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" paddingTop="50" horizontalAlign="center" verticalScrollPolicy="off" verticalAlign="middle" cornerRadius="12" borderStyle="solid">
+	<HLinearGauge
+		width="400"
+		height="150"
+		minimum="0"
+		maximum="200"
+		labels="[0,20,40,60,80,100,120,140,160,180,200]"
+		tickInterval="20"
+		value="160"
+		targetMark="120"
+		snapInterval="1"
+		labelJsFunction="labelFunc"
+		valueLabelStyleName="valueLabel"
+		valueChangeFunction="changeFunction"
+	/>
+	<Style>
+		.valueLabel{
+			fontSize:11;
+			fontWeight:bold;
+		}
+	</Style>
+</rMateChart>

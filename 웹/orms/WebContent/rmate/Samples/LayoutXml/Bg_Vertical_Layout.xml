@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Bar3DChart>
+		<verticalAxis>
+           <CategoryAxis categoryField="Month"/>
+        </verticalAxis>
+		<series>
+			<Bar3DSeries xField="Profit">
+				<showDataEffect>
+		  			<SeriesInterpolate/> 
+		  		</showDataEffect>
+			</Bar3DSeries>
+		</series>
+		<backgroundElements>
+<!-- 
+backgroundElements는 축을 기준으로 안쪽에 해당되는 영역의 배경을 의미합니다 
+이 영역을 꾸미기 위해 backgroundElements를 정의합니다 
+-->
+			<GridLines direction="vertical" verticalChangeCount="1" horizontalShowOrigin="false">
+<!-- 
+GridLine의 속성으로는
+direction - direction : 수평선 , vertical:수직선, both:수평선&수직선 을 그립니다
+horizontalChangeCount : 정의하는 숫자 만큼 줄 단위로 horizontalFill과 horizontalAlternateFill이
+			번갈아가며 색을 채웁니다.
+horizontalStroke : horizontalFill과 horizontalAlternateFill사이의 선을 정의합니다
+horizontalFill : 최초 시작하는 채우기 색깔 입니다
+horizontalAlternateFill : horizontalFill의 상대적인 채우기 색깔 입니다
+-->
+				<verticalStroke>
+					<Stroke color="0x999999" alpha="0.5" weight="1"/>
+					<!-- color:색깔 alpha:투명도 weight:굵기 -->
+				</verticalStroke>
+				<verticalFill>
+					<SolidColor color="0xffffcc" alpha="0.5"/>
+					<!-- color:색깔 alpha:투명도 -->
+				</verticalFill> 
+				<verticalAlternateFill>
+					<SolidColor color="0xEEEEFF" alpha="0.5"/>
+					<!-- color:색깔 alpha:투명도 -->
+				</verticalAlternateFill> 
+			
+			</GridLines>
+		</backgroundElements>
+	</Bar3DChart>
+</rMateChart>

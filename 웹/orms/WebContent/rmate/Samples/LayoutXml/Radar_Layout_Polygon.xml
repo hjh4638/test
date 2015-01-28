@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="연도별 가계 지출 품목 분석"/>
+		<SubCaption text="(2005~2008)"/>
+		<Legend useVisibleCheck="true"/>
+		<DataEditor showOnInit="false"/>
+	</Options>
+	<RadarChart id="chart1"
+	            isSeriesOnAxis="true"
+	            type="polygon"
+				paddingTop="20"
+				paddingBottom="20"
+	            showDataTips="true">
+<!--  
+Radar 차트 생성시에 필요한 RadarChart 정의합니다 
+showDataTips : 데이터에 마우스를 가져갔을 때 나오는 Tip을 보이기/안보이기 속성입니다.
+isSeriesOnAxis : 차트 시리즈가 radialAxis위에 표현될지 여부를 나타냅니다
+type - circle, polygon : Rader차트의 타입(원형, 다각형)입니다 
+이 예제에서는 polygon입니다
+--> 
+				<seriesFilters></seriesFilters>
+	            <radialAxis>
+	            	<LinearAxis id="rAxis"/>
+	            </radialAxis>
+
+	            <angularAxis>
+					<CategoryAxis id="aAxis" categoryField="catName" displayName="Category" />
+				</angularAxis>
+
+				 <radialAxisRenderers>
+	             <!-- radialAxis렌더러 정의 -->
+				 <!-- 가로, 세로축 모두 표시 -->
+	            	<Axis2DRenderer axis="{rAxis}" horizontal="true" visible="true"/>
+	            	<Axis2DRenderer axis="{rAxis}" horizontal="false" visible="true"/>
+	            </radialAxisRenderers>
+
+	            <angularAxisRenderers>
+	            	<AngularAxisRenderer axis="{aAxis}"/>
+	            </angularAxisRenderers>
+	          <series>
+	          	<RadarSeries field="year2005" 
+	          				displayName="2005년">
+				<!-- RadarChart 정의 후 RadarSeries 정의합니다 --> 
+	          				<showDataEffect>
+	          				<!--  차트 생성시에 Effect를 주고 싶을 때 shoDataEffect정의합니다 -->
+	          					<SeriesInterpolate/>
+<!--  
+SeriesInterpolate는 시리즈 데이터가 새로운 시리즈 데이터로 표시될 때 이동하는 효과를 적용합니다 
+- 공통속성 -						
+elementOffset : effect를 지연시키는 시간을 지정합니다 default:20
+minimumElementDuration : 각 엘리먼트의 최소 지속 시간을 설정합니다 default:0
+			 이 값보다 짧은 시간에 effect가 실행되지 않습니다
+offset : effect개시의 지연시간을 설정합니다 default:0
+perElementOffset : 각 엘리먼트의 개시 지연시간을 설정합니다
+--> 
+	          				</showDataEffect>
+	          				<stroke> <!-- 데이터 포인트에 찍힌 도형의 외곽 테두리 선 스타일  -->
+	          					<Stroke color="0xE48701" weight="2"/>
+	          				</stroke>
+	          				<lineStroke> <!-- 레이더 라인 스타일 -->
+	          					<Stroke color="0xE48701" weight="2"/>
+	          				</lineStroke>
+	          				<areaFill> <!--  레이더 안쪽 영역 채우기 색  -->
+	          					<SolidColor color="0xE48701" alpha="0.1"/>
+	          				</areaFill>
+	          				<fill> <!--  데이터 포인트에 찍힌 도형의 안쪽 채우기 색 -->
+	          					<SolidColor color="0xFFFFFF"/>
+	          				</fill>
+	          	</RadarSeries>
+	          						
+	          	<RadarSeries field="year2006" 
+	          				displayName="2006년">
+	          				<showDataEffect>
+	          					<SeriesInterpolate/>
+	          				</showDataEffect>
+	          				<stroke>
+	          					<Stroke color="0xB0C759" weight="2"/>
+	          				</stroke>
+	          				<lineStroke>
+	          					<Stroke color="0xB0C759" weight="2"/>
+	          				</lineStroke>
+	          				<areaFill>
+	          					<SolidColor color="0xB0C759" alpha="0.1"/>
+	          				</areaFill>
+	          				<fill>
+	          					<SolidColor color="0xFFFFFF"/>
+	          				</fill>
+	          	</RadarSeries>
+	          	<RadarSeries field="year2007" 
+	          				displayName="2007년">
+	          				<showDataEffect>
+	          					<SeriesInterpolate/>
+	          				</showDataEffect>
+	          				<stroke>
+	          					<Stroke color="0x0A80C4" weight="2"/>
+	          				</stroke>
+	          				<lineStroke>
+	          					<Stroke color="0x0A80C4" weight="2"/>
+	          				</lineStroke>
+	          				<areaFill>
+	          					<SolidColor color="0x0A80C4" alpha="0.1"/>
+	          				</areaFill>
+	          				<fill>
+	          					<SolidColor color="0xFFFFFF"/>
+	          				</fill>
+	          	</RadarSeries>
+	          	<RadarSeries field="year2008" 
+	          				displayName="2008년">
+	          				<showDataEffect>
+	          					<SeriesInterpolate/>
+	          				</showDataEffect>
+	          				<stroke>
+	          					<Stroke color="0xCC99CC" weight="2"/>
+	          				</stroke>
+	          				<lineStroke>
+	          					<Stroke color="0xCC99CC" weight="2"/>
+	          				</lineStroke>
+	          				<areaFill>
+	          					<SolidColor color="0xCC99CC" alpha="0.1"/>
+	          				</areaFill>
+	          				<fill>
+	          					<SolidColor color="0xFFFFFF"/>
+	          				</fill>
+	          	</RadarSeries>
+	          </series>
+		</RadarChart>
+</rMateChart>

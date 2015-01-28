@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" paddingTop="40" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="마우스 드래그로 영역을 설정하면 확대/축소를 할 수 있습니다." color="0xff0000"/>
+	</Options>
+	<NumberFormatter id="numFmt" precision="0"/>
+	<Bubble3DChart showDataTips="true" minRadius="5" maxRadius="30">
+<!-- 
+Bubble 차트 생성시에 필요한 Bubble3DChart 정의합니다 
+showDataTips : 데이터에 마우스를 가져갔을 때 나오는 Tip을 보이기/안보이기 속성입니다
+minRadius : Bubble의 최소 크기 값 입니다
+maxRadius : Bubble의 최대 크기 값 입니다
+-->
+		<horizontalAxis>
+			<LinearAxis maximum="2800" title="Profit"/>
+			<!-- maximum:최대값 -->
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis maximum="3000" title="Cost"/>
+		</verticalAxis>
+		<series>
+			<Bubble3DSeries labelPosition="inside" displayName="Profit/Cost/Revenue" xField="Profit" yField="Cost" radiusField="Revenue">
+<!-- 
+Bubble3DChart 정의 후 Bubble3DSeries labelPosition="both"정의합니다.
+Bubble차트는 xField, yField 를 정의하고 Bubble의 크기를 정의하는 radiusField까지 총 세개의 속성에 데이터를
+입력해야 올바른 차트를 생성하게 됩니다.
+-->
+				<showDataEffect>
+				<!-- 차트 생성시에 Effect를 주고 싶을 때 shoDataEffect정의합니다 -->
+					<SeriesInterpolate/> 
+<!-- 
+SeriesInterpolate는 시리즈 데이터가 새로운 시리즈 데이터로 표시될 때 이동하는 효과를 적용합니다 
+- 공통속성 -						
+elementOffset : effect를 지연시키는 시간을 지정합니다 default:20
+minimumElementDuration : 각 엘리먼트의 최소 지속 시간을 설정합니다 default:0
+			 이 값보다 짧은 시간에 effect가 실행되지 않습니다
+offset : effect개시의 지연시간을 설정합니다 default:0
+perElementOffset : 각 엘리먼트의 개시 지연시간을 설정합니다
+-->
+				</showDataEffect>
+			</Bubble3DSeries>
+		</series>
+		<annotationElements>
+			<CrossRangeZoomer zoomType="both" verticalLabelFormatter="{numFmt}" horizontalLabelFormatter="{numFmt}"/>
+		</annotationElements>
+	</Bubble3DChart>
+</rMateChart>

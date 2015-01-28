@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="대용량(데이터 1000개) 스크롤 차트" /> 
+	</Options>
+	<Column2DChart showDataTips="true" gutterRight="10">
+		<horizontalAxis>
+			<CategoryLinearAxis id="hAxis" categoryField="index" />
+		</horizontalAxis>
+		<series>
+			<Column2DSeries yField="Profit" displayName="Profit"/>
+		</series>
+		<horizontalAxisRenderers>
+			<ScrollableAxisRenderer axis="{hAxis}" visibleItemSize="50"/>
+		</horizontalAxisRenderers>
+	</Column2DChart>
+</rMateChart>

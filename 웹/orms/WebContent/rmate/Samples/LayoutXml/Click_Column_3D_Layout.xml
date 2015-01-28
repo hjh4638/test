@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report" /> 
+	</Options>
+	<NumberFormatter id="numFmt"/>
+	<Column3DChart showDataTips="true" itemClickJsFunction="chartClick">
+<!-- 
+itemClickJsFunction : Column3DChart 시리즈를 클릭 하였을 때 실행되는 Javascript함수로
+		       html 내에 정의한 Javascript함수로 데이터를 보냅니다
+		       이 예제에서는 클릭 된 시리즈의 URL로 이동하고 있습니다
+-->
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month"/> 
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis formatter="{numFmt}"/>
+		</verticalAxis>
+		<series>
+		<!-- buttonMode : 마우스 오버 시 커서를 손가락으로 바꾸는 속성입니다. -->
+			<Column3DSeries yField="Profit" displayName="Revenue" buttonMode="true">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Column3DSeries>
+		</series>
+	</Column3DChart>
+</rMateChart>

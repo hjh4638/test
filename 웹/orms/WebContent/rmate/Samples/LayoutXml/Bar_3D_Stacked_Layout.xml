@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report"/>
+	</Options>
+	<Bar3DChart showDataTips="true">
+		<verticalAxis>
+			<CategoryAxis categoryField="Month"/> 
+		</verticalAxis>
+		<series>
+			<!-- 
+			type 속성을 stacked로 변경	
+			type속성으로는
+			clustered : 일반적인 다중데이터(차트의 멀티시리즈)방식으로 데이터를 표현합니다.(Default)
+			stacked : 데이터를 위에 쌓아 올린 방식으로 표현 합니다.
+			overlaid : 수치 데이터 값을 겹쳐서 표현 합니다. 주로 목표 위치와 현재 위치를 나타낼 때 많이 쓰입니다.
+			100% : 차트의 수치 데이터를 퍼센티지로 계산 후 값을 퍼센티지로 나타냅니다. 
+			-->
+			<Bar3DSet type="stacked" showTotalLabel="true" totalLabelJsFunction="totalFunc">
+				<series>
+				<!-- Bar3D Stacked 를 생성시에는 Bar3DSeries를 최소 2개 정의합니다 -->
+					<Bar3DSeries labelPosition="inside" xField="Profit" diplayName="Profit">
+						<showDataEffect>
+							<SeriesInterpolate/> 
+						</showDataEffect>
+					</Bar3DSeries>
+					<Bar3DSeries labelPosition="inside" xField="Cost" diplayName="Cost">
+						<showDataEffect>
+							<SeriesInterpolate/> 
+						</showDataEffect>
+					</Bar3DSeries>
+					<Bar3DSeries labelPosition="inside" xField="Revenue" displayName="Revenue">
+						<showDataEffect>
+							<SeriesInterpolate/> 
+						</showDataEffect>
+					</Bar3DSeries>
+				</series>
+			</Bar3DSet>
+		</series>
+	</Bar3DChart>
+</rMateChart>

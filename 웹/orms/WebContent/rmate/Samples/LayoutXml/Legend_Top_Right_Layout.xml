@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid" paddingRight="10">
+	<Options>
+		<Caption text="Annual Report" paddingBottom="10"/>
+		<Legend position="top" direction="horizontal" hAlign="right" useVisibleCheck="true"/>
+<!-- 
+position : 차트를 기준으로 위쪽에 범례를 표시합니다
+direction : 범례 방향을 수평으로 표시합니다
+hAlign : position에 의해 정해진 범례의 위치를 오른쪽에 표시합니다
+useVisibleCheck : 범례 옆에 체크박스를 표시합니다
+- Legend의 속성 -
+position - bottom, left, right, top : 차트를 기준으로 범례가 위치할 곳을 정합니다
+direction - horizontal, vertical : 범례의 방향을 정합니다
+hAlign - center, left, right : position에 의해 정해진 범례의 위치에서 구체적으로 수평방향으로 정렬합니다 default:center
+vAlign - middle, top, bottom : position에 의해 정해진 범례의 위치에서 구체적으로 수직방향으로 정렬합니다 default:middle
+labelPlacement - right, left, top, bottom : 범례에서 색을 나타내는 도형을 기준으로 텍스트 글자의 구체적인 위치를 정합니다
+backgorundColor : 배경색입니다
+color : 글자색을 나타냅니다
+fontSize : 글자 크기
+fontWeight - bold,normal : bold체를 결정합니다 default:normal
+fontStyle - italic,noraml : italic을 결정합니다 default:noraml
+textDecoration - none, undeerline : underline을 결정합니다 default:normal
+useVisibleCheck - True,False : 범례 옆에 체크박스를 표시합니다
+paddingLeft : 왼쪽 여백 default:0
+paddingRight : 왼쪽 여백 default:0
+paddingTop : 왼쪽 여백 default:0
+paddingBottom : 왼쪽 여백 default:0
+verticalGap : 범례 아이템들의 세로 간격 사이 여백을 나타냅니다 default:6
+horizontalGap : 범례 아이템들의 가로 간격 사이 여백을 나타냅니다 default:8
+-->
+	</Options>
+	<Column3DChart paddingLeft="10" showDataTips="true" selectionMode="single">
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month" title="Month"/>
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis title="Profit"/>
+		</verticalAxis>
+	<series>
+		<Column3DSeries yField="Profit" displayName="Profit">
+			<showDataEffect>
+	  			<SeriesInterpolate/> 
+	  		</showDataEffect>
+		</Column3DSeries>
+		<Column3DSeries yField="Cost" displayName="Cost">
+			<showDataEffect>
+	  			<SeriesInterpolate/> 
+	  		</showDataEffect>
+		</Column3DSeries>
+		<Column3DSeries yField="Revenue" displayName="Revenue">
+			<showDataEffect>
+	  			<SeriesInterpolate/> 
+	  		</showDataEffect>
+		</Column3DSeries>
+	</series>
+</Column3DChart>
+
+</rMateChart>

@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../print.css" type="text/css" media="print">
+<meta content="RadarGridLines,elements.RadarGridLines" name="keywords">
+<title>elements.RadarGridLines</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../asdoc.js"></script><script type="text/javascript" language="javascript" src="../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'RadarGridLines - rMateChart 4.0 Flash Version Reference By RiaMore Soft.';
+				var baseRef = '../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">rMateChart 4.0 Flash Version Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../all-classes.html')" href="../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../all-classes.html')" href="../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../index-list.html')" href="../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../index.html?elements/RadarGridLines.html&amp;elements/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;RadarGridLines</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#styleSummary">Styles</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class RadarGridLines"); titleBar_setSubNav(false,false,true,false,false,false,false,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">elements</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class RadarGridLines</td>
+</tr>
+</table>
+<p></p> 
+  RadarGridLines 클래스는 레이더 차트의 배경에 그리드 라인을 그리는 역할을 합니다.
+   기본적으로 레이더의 중심에서 angularAxis 까지 일직선으로 그리는 radial 선과 radialAxis 라벨 간격을 서로 잇는 angular 선을 그립니다. 
+   선 속성은 radial, angular, both 형태가 있습니다. 
+   이 클래스를 사용하기 위해서는 RadarChart 의    <code>backgroundElements</code> property 에 이 클래스의 인스턴스를 할당하십시오.
+ 
+  <p><code>&lt;rmate:RadarGridLines&gt;</code> 는 기본적으로 parent classes 의 모든 properties
+  를 상속받으며 아래의 properties 를 추가로 갖습니다. </p>
+  
+  <pre>
+ &lt;rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid"&gt;
+ ...
+ &lt;RadarChart id="chart1" isSeriesOnAxis="true" type="polygon" paddingTop="20" paddingBottom="20" showDataTips="true"&gt;
+  ...
+  &lt;backgroundElements&gt;
+   &lt;RadarGridLines direction='both' radarChangeCount='1' radarFill='0xEFFFFF' radarAlternateFill='0xFFFFFC'&gt; &lt;!--radarFill 과 radarAlternateFill 색이 차례로 나옵니다.--&gt;
+     &lt;radialStroke&gt; &lt;!-- radial 선 정의 --&gt;
+     &lt;Stroke color='0x000000' alpha='1' weight='1'/&gt;
+    &lt;/radialStroke&gt;
+     &lt;angularStroke&gt; &lt;!-- angular 선 정의 --&gt;
+     &lt;Stroke color='0xFF0000' alpha='1' weight='1'/&gt;
+    &lt;/angularStroke&gt;
+    &lt;/RadarGridLines&gt;
+  &lt;/backgroundElements&gt;
+ ...
+ &lt;/RadarChart&gt;
+ &lt;/rMateChart&gt;
+  </pre>
+ <p></p>
+<br>
+<hr>
+</div>
+<a name="styleSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Styles</div>
+<table id="summaryTableStyle" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Style</th><th>Description</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:angularStroke"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">angularStroke</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>mx.graphics.IStroke<br>
+  레이더 배경의 angular 선 형태를 결정합니다.
+  </td><td class="summaryTableOwnerCol">RadarGridLines</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:gridLines"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">gridLines</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>String<br>
+  레이더 차트의 배경에 표시할 선 형태를 결정합니다. 
+  radial 은 중심에서 AngularAxis 축까지의 직선형태를 그립니다.
+  angular 는 축 라벨들을 서로 잇는 선을 그립니다. 레이더 차트 type 이 circle 인 경우 원형태로 그리고
+  polygon 인 경우 다각형 형태로 그립니다.
+   The default value is <code>both</code>.</td><td class="summaryTableOwnerCol">RadarGridLines</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:radarAlternateFill"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">radarAlternateFill</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>mx.graphics.IFill<br>
+  레이더 차트 배경의 채우기 색의 상대 색을 결정합니다.
+   The default value is <code>0xFCFCFC</code>.</td><td class="summaryTableOwnerCol">RadarGridLines</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:radarChangeCount"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">radarChangeCount</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>Number<br>
+  radarFill 과 radarAlternateFill 간의 차이를 결정합니다.
+  이 차이 간격은 radialAxis의 tick interval 과 관련이 있습니다.
+   The default value is <code>1</code>.</td><td class="summaryTableOwnerCol">RadarGridLines</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:radarFill"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">radarFill</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>mx.graphics.IFill<br>
+  레이더 차트 배경의 채우기 색을 결정합니다.
+   The default value is <code>0xFFFFFF</code>.</td><td class="summaryTableOwnerCol">RadarGridLines</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol"><a name="style:radialStroke"></a>&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">radialStroke</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type: </span>mx.graphics.IStroke<br>
+  레이더 배경의  radial 선 형태를 결정합니다.
+  </td><td class="summaryTableOwnerCol">RadarGridLines</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->

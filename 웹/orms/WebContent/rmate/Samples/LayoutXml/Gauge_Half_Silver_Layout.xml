@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rMateChart frameColor="0xEEEEEE" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="게이지"/>
+	</Options>
+	<NumberFormatter id="numFmt" precision="0"/>
+	<HalfCircularGauge valueChangeFunction="valueChangeFunc"
+				frameType="flat"
+				minimumAngle="195" maximumAngle="345"
+				minimum="0" maximum="500" value="250"
+				interval="100" minorInterval="25"
+				formatter="{numFmt}"
+				padding="10"
+				tickGap="10"
+				labelGap="10"
+				showValueLabel="false"
+				enableFilter="false"
+				tickLabelStyleName="tickText"
+				valueLabelStyleName="valueText"
+				dataTipJsFunction="dataTipFunction"
+				editMode="true" liveDragging="true"
+				showDataTip="true"
+				needleThickness="10"
+				pointThickness="0"
+				needleLengthRatio="0.75"
+				needlePointStyle="steeple"
+				needleBackLengthRatio="0.12"
+				tickLabelPosition="outside"
+				showTrackColor="true"
+				trackColors="[0xFF0000,0xFF7700,0xFFFF00,0x77FF00,0x0077FF]"
+				trackAlphas="[1,1,1,1,1]"
+				trackValues="[0,100,200,300,400,500]"
+				trackOuterRadius="0.75"
+				trackInnerRadius="0"
+				bounceAnimating="true">
+		<stroke>
+			<Stroke color="0xCCCCCC" weight="1" alpha="0.5"/>
+		</stroke>
+		<frameStroke>
+			<Stroke color="0x232323" weight="6"/>
+		</frameStroke>
+		<frameFill>
+				<RadialGradient focalPointRatio="-0.4" angle="45">
+				<entries>
+					<GradientEntry color="0xEFEFEF" ratio="0" alpha="1"/>
+					<GradientEntry color="0xCCCCCC" ratio="0.8" alpha="1"/>
+					<GradientEntry color="0xEEEEEE" ratio="1" alpha="1"/>
+				</entries>
+			</RadialGradient>
+		</frameFill>
+		<needleFill>
+			<LinearGradient angle="90">
+				<entries>
+					<GradientEntry color="0xaaaaaa" ratio="0" alpha="1" /> 
+					<GradientEntry color="0x4c4c4c" ratio="0.8" alpha="1" /> 
+					<GradientEntry color="0x232323" ratio="1" alpha="1" /> 
+				</entries>
+			</LinearGradient>
+		</needleFill>
+		<needleCoverFill>
+			<SolidColor color="0xB0B0B0"/>
+		</needleCoverFill>
+
+	</HalfCircularGauge>
+	<Style>
+		.tickText
+		{
+			fontFamily:Myriad;
+			fontSize:15;
+			color:0xFF6600;
+		}
+	</Style>
+</rMateChart>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="다른 주기를 갖는 데이터 실시간 표현"/>
+		<SubCaption text="본 샘플은 랜덤 데이터입니다." textAlign="right" fontSize="11"/>
+		<Legend fontSize="11" useVisibleCheck="true"/>
+	</Options>
+
+	<DateFormatter id="dateOrgFmt" formatString="YYYY/MM/DD HH:NN:SS"/> 
+	<DateFormatter id="dateFmt" formatString="HH:NN:SS"/>
+	<DateFormatter id="dateFmt2" formatString="HH:NN"/>
+	<NumberFormatter id="numFmt"/>
+	<NumberFormatter id="numFmt2" precision="2"/>
+
+	<Combination2DChart id="chart" showDataTips="true" dataTipMode="multiple">
+		<series>
+		
+			<!-- 5 초 주기 라인 시리즈  -->
+			<Line2DSeries id="lineSeries" xField="date" yField="data5"  displayName="Data(5 Sec)">
+				<lineStroke>
+					<Stroke color="0xFF6666" weight="2" alpha="1"/>
+				</lineStroke>
+				<horizontalAxis>
+					<DateTimeAxis id="hAxis2" displayLocalTime="true" labelUnits="minutes" dataUnits="seconds" interval="1" formatter="{dateOrgFmt}" displayName="Time"/>
+				</horizontalAxis>
+				<verticalAxis>
+					<LinearAxis id="vAxis2" minimum="0" maximum="150"/>
+				</verticalAxis>
+			</Line2DSeries>
+			
+			<!-- 3 초 주기 라인 시리즈  -->
+			<Line2DSeries id="lineSeries2" xField="date" yField="data3" displayName="Data(3 Sec)" verticalAxis="{vAxis2}" horizontalAxis="{hAxis2}">
+				<lineStroke>
+					<Stroke color="0x339966" weight="1" alpha="1"/>
+				</lineStroke>
+			</Line2DSeries>
+
+			<!-- 누적량 -->
+			<Column2DSeries id="columnSeries" xField="date" yField="data60" displayName="누적량" itemRenderer="BoxItemRenderer">
+				<horizontalAxis>
+					<DateTimeAxis id="hAxis" displayLocalTime="true" labelUnits="hours" dataUnits="minutes" interval="3" dataInterval="10" formatter="{dateOrgFmt}" displayName="Time"/>
+				</horizontalAxis>
+				<verticalAxis>
+					<LinearAxis id="vAxis" minimum="0" maximum="999"/>
+				</verticalAxis>
+				<fill>
+					<SolidColor color="0x6666FF"/>
+				</fill>
+			</Column2DSeries>
+
+		</series>
+
+		<horizontalAxisRenderers>
+			<Axis2DRenderer axis="{hAxis}" placement="bottom" formatter="{dateFmt2}"  tickLength="30" minorTickLength="0" tickPlacement="inside" showLine="false">
+				<axisStroke>
+					<Stroke weight="1" color="0x999999"/>
+				</axisStroke>
+				<tickStroke>
+					<Stroke weight="1" color="0x6666FF" alpha="0.5"/>
+				</tickStroke>
+			</Axis2DRenderer>
+			<Axis2DRenderer axis="{hAxis2}" placement="bottom" formatter="{dateFmt}">
+				<axisStroke>
+					<Stroke weight="1" color="0x999999"/>
+				</axisStroke>
+			</Axis2DRenderer>
+		</horizontalAxisRenderers>
+
+		<verticalAxisRenderers>
+			<Axis2DRenderer axis="{vAxis}" placement="right" formatter="{numFmt}"/>
+			<Axis2DRenderer axis="{vAxis2}" placement="left" formatter="{numFmt}"/>
+		</verticalAxisRenderers>
+	</Combination2DChart>
+	
+	<HttpMultiServiceRepeater baseURL="http://demo.riamore.net/realtimeSample/" targetController="{chart}" requestTimeout="30">
+<!-- 
+baseURL : RPCItem속성 "url"의 기본 URL에 해당됩니다. 즉 RPCItem의 url은 "baseURL + url"이 됩니다
+method - get, post : HTTP프로토콜 메소드입니다. get, post를 결정합니다
+requestTimeout : 요청 후 응답 대기 시간입니다
+targetController : RPCItem의 target의 컨트롤러에 해당됩니다. 즉 언제나 차트의 id가 되어야 합니다
+showErrorMessage - true, false : RPC요청 시 실패 또는 에러 발생 시 Alert메시지 창을 띄울지를 나타냅니다
+ -->
+		<RPCList>
+			<!-- 속성 설명  -->
+			<!-- name : RPC 의 이름(ID) 입니다. 반드시 정의하십시오.(임의의 스트링) -->
+			<!-- target : RPC 요청 후 응답으로 받은 데이터를 출력시킬 차트의 시리즈(series)를 설정해주세요. -->
+			<!-- interval : RPC 요청 interval 입니다. 최초 차트 구동 후 부터 적용됩니다. (단위 : 초)-->
+			<!-- concurrency : HTTP 동일 서비스 발생 시 처리 방법을 나타냅니다. multiple, single, last 3개 유효값이 존재 -->
+			<!-- ***multiple : 기존 요구 취소하지 않고 모두 요청을 보냅니다.-->
+			<!-- ***single : 한 번에 1 개의 요청만 가능, 복수의 요청 발생 시 실패 경고창이 뜹니다.-->
+			<!-- **last : 기존의 요청을 모두 취소하고 마지막 요청만을 보냅니다. -->
+			<!-- retryCount : 요청 실패 시 재시도 횟수를 나타냅니다. -->
+			<RPCItem name="rpc1" url="data3Interval.jsp" target="{lineSeries2}" interval="3" concurrency="last" retryCount="30"/>
+			<RPCItem name="rpc2" url="data5Interval.jsp" target="{lineSeries}" interval="5" concurrency="last" retryCount="30"/>
+			<RPCItem name="rpc3" url="data23ToCurrent2.jsp" target="{columnSeries}" interval="600" concurrency="last" retryCount="30"/>
+		</RPCList>
+	</HttpMultiServiceRepeater>
+</rMateChart>

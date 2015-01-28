@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+			http://www.springframework.org/schema/tx
+			http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	<bean id="propertyConfigurer"
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:/mil/af/orms/config/DBSetting.properties</value>
+            </list>
+        </property>
+    </bean>
+    
+	<!-- 로컬용 DB 세팅 -->
+	<bean id="dataSource-local" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" 	value="${driverClassName}"/>
+		<property name="url" 				value="${url}" />
+		<property name="username" 			value="${username}"/>
+		<property name="password" 			value="${password}"/>
+	</bean>
+	
+<!-- 	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/orms" resource-ref="true" /> -->
+	
+	
+	<!-- DataSource -->
+	<alias name="dataSource-local" alias="dataSource" />
+	
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	
+
+	<!-- Annotation 기반 트랜잭션 설정 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	
+	
+</beans>

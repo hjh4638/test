@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="스크롤 2D 콤비네이션 차트"/>
+	</Options>
+	<Combination2DChart showDataTips="true" gutterRight="10">
+<!--  
+Scroll_Combination_2D 차트 생성시에 필요한 Combination2DChart 정의합니다 
+showDataTips : 데이터에 마우스를 가져갔을 때 나오는 Tip을 보이기/안보이기 속성입니다  
+-->	
+	     <series>
+			<Column2DSet type="clustered" styleName="columnSeriesLabel">
+			<!-- Scroll_Combination_2D차트 안에 들어갈 시리즈로 Column2D를 정의 하였습니다 -->
+				<series>
+				  <Column2DSeries labelPosition="inside" id="cs1" yField="Data1" displayName="Data1" itemRenderer="SemiCircleColumnItemRenderer"/>
+				  <Column2DSeries labelPosition="inside" id="cs2" yField="Data2" displayName="Data2" itemRenderer="SemiCircleColumnItemRenderer"/>
+				  <Column2DSeries labelPosition="inside" id="cs3" yField="Data3" displayName="Data3" itemRenderer="SemiCircleColumnItemRenderer"/>
+				</series>
+			</Column2DSet>
+
+			<!-- Scroll_Combination_2D차트 안에 들어갈 시리즈로 Line2DSeries를 정의 하였습니다 -->
+			<Line2DSeries labelPosition="up" id="ls1" yField="Data1" displayName="Line Data1" interpolateValues="true" styleName="lineSeriesLabel">
+				<filters>
+					<DropShadowFilter distance="3" color="0x666666" alpha=".8"/> 
+			    </filters>
+			</Line2DSeries>
+	     </series>
+	     <horizontalAxis>
+	     	<CategoryLinearAxis id="hAxis" categoryField="Gu"/>
+	     	<!-- Scroll_Combinatioin_2D차트를 생성시엔 horizontalAxis에 CategoryLinearAxis를 정의해야합니다 -->
+	     </horizontalAxis>
+	     <horizontalAxisRenderers>
+	     	<ScrollableAxisRenderer axis="{hAxis}" visibleItemSize="5" scrollSensitivity="4"/>
+<!-- 
+Scroll_Combinatioin_2D차트를 생성시엔 horizontalAxisRenderers ScrollableAxisRenderer를 정의해야 합니다 
+visibleItemSize : 스크롤 차트가 한번에 표시할 데이터의 개수입니다
+scrollSensitivity : 스크롤의 민감도를 나타냅니다. 값이 작을수록 스크롤의 이동 폭이 커집니다	
+-->
+	     </horizontalAxisRenderers>   
+	</Combination2DChart>
+	<Style>
+		.lineSeriesLabel{
+			color:#ff0000;
+			fontFamily:Myriad;
+		}
+		.columnSeriesLabel
+		{
+			color:#000000;
+			fontFamily:Myriad;
+		}
+	</Style>
+</rMateChart>

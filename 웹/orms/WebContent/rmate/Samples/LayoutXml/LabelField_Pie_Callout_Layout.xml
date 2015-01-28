@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report" /> 
+	</Options>
+	<NumberFormatter id="numFmt"/>
+	<Pie2DChart showDataTips="true">
+		<series>
+			<Pie2DSeries field="Profit" nameField="Month" displayName="Profit" formatter="{numFmt}" calloutGap="5" labelPosition="callout">
+<!--
+
+PieChart에서 labelPosition은
+none : 데이터 값을 표시 하지 않습니다
+inside : 차트 안에 표시합니다
+outside : 차트 밖에 표시합니다
+callout : 차트 밖에 따로 선을 긋고 표시합니다
+insideWidthCallout : 기본적으로 안쪽에 표시하지만 크기가 작아 공간이 없을 때 는
+		      선을  따로 만들어 긋고 표시합니다  
+-->
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Pie2DSeries>
+		</series>
+	</Pie2DChart>
+</rMateChart>

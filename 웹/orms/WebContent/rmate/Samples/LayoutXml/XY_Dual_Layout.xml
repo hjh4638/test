@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report"/>
+		<SubCaption text="2008"/>
+		<Legend/>
+	</Options>
+	<NumberFormatter id="fmt"/>
+	<Combination3DChart showDataTips="true">
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month" /> 
+		</horizontalAxis>
+		<series>
+			<Column3DSeries yField="Profit" displayName="Profit">
+				<verticalAxis>  
+					<LinearAxis id="axis1"  formatter="{fmt}"/> 
+				</verticalAxis>
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+				<fill>
+					<SolidColor color="0x66CC66" /> 
+				</fill>
+			</Column3DSeries>
+			<Line2DSeries selectable="true" yField="Cost" displayName="Cost">
+				<verticalAxis>
+					<LinearAxis id="axis2"  formatter="{fmt}"/> 
+				</verticalAxis>
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+				<filters>
+					<DropShadowFilter distance="3" color="0x666666" alpha=".8" /> 
+				</filters>
+				<lineStroke>
+					<Stroke color="0xFFCC00" weight="4" /> 
+				</lineStroke>
+			</Line2DSeries>
+		</series>
+		<verticalAxisRenderers> 
+		<!-- 차트에서 각각의 시리즈가 만든 축을 참조하도록 합니다 -->
+			<Axis3DRenderer axis="{axis1}"/> 
+			<Axis3DRenderer axis="{axis2}"/> 
+		</verticalAxisRenderers>
+	</Combination3DChart>
+</rMateChart>

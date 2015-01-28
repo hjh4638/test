@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<NumberFormatter id="numFmt" /> 
+	<Column3DChart gutterLeft="0">
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month" title="MONTH" displayName="Month"/>
+		</horizontalAxis>
+		<horizontalAxisRenderer> 
+			<Axis3DRenderer>
+				<axisStroke>
+					<Stroke weight="10" color="0x66CCFF" caps="none"/>
+				</axisStroke>
+			</Axis3DRenderer>
+		</horizontalAxisRenderer>
+		<verticalAxisRenderer>
+			<Axis3DRenderer visible="false"/>
+			<!-- visible속성을 false로 하여 Chart에서는 보이지 않게 합니다 -->
+		</verticalAxisRenderer>
+	<series>
+		<Column3DSeries yField="Profit" labelPosition="outside" formatter="{numFmt}">
+			<showDataEffect>
+	  			<SeriesInterpolate/> 
+	  		</showDataEffect>
+		</Column3DSeries>
+	</series>
+</Column3DChart>
+</rMateChart>

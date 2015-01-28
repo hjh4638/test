@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<NumberFormatter id="numFmt" precision="0"/>
+	<Options>
+		<Caption text="Anual Report"/>
+		<SubCaption text="수치필드를 안쪽에 표시한 경우 top, middle, bottom 에 위치 시킬 수 있습니다." fontSize="11" textAlign="right" paddingRight="10"/>
+	</Options>
+	<Column3DChart showDataTips="true" selectionMode="true">
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month" /> 
+		</horizontalAxis>
+		<series>
+		<!-- Column3D Multi-Sereis 를 생성시에는 Column3DSeries 여러 개 정의합니다 -->
+			<Column3DSeries labelPosition="inside" labelAlign="top" fontFamily="Myriad" yField="Profit" displayName="Profit">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Column3DSeries>
+			<Column3DSeries labelPosition="inside" labelAlign="middle" fontFamily="Myriad" yField="Cost" displayName="Cost">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Column3DSeries>
+			<Column3DSeries labelPosition="inside" labelAlign="bottom" fontFamily="Myriad" yField="Revenue" displayName="Revenue">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Column3DSeries>
+		</series>
+	</Column3DChart>
+</rMateChart>

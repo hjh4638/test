@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+<Column3DChart  showDataTips="true" >
+        <horizontalAxis>
+           <CategoryAxis
+                categoryField="Month"
+           />
+        </horizontalAxis>
+       <series>
+			<Column3DSeries yField="Profit">
+			<fills>
+			<!-- Series안에 색을 채울 때(여러색) fills에 주목 -->
+				<SolidColor color="0x99ff99"/>
+				<!-- color:색깔 -->
+				<SolidColor color="0x66ff99"/>
+				<SolidColor color="0x00cc00"/>	
+				<SolidColor color="0x009900"/>
+				<SolidColor color="0x006600"/>
+				<SolidColor color="0x336633"/>
+			</fills>
+			<showDataEffect>
+				<SeriesInterpolate/> 
+			</showDataEffect>
+			</Column3DSeries>
+		</series>
+     </Column3DChart>
+</rMateChart>

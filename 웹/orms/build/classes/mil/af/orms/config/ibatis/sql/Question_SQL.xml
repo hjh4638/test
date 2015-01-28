@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="Question">
+	<typeAlias alias="QuestionVO" type="mil.af.orms.model.QuestionVO" />
+	<typeAlias alias="ScoreVO" type="mil.af.orms.model.ScoreVO" />
+	<typeAlias alias="QuestionWithAllScoreVO" type="mil.af.orms.model.QuestionWithAllScoreVO" />
+	
+	<select id="getFighterListByLevel" parameterClass="Map" resultClass="QuestionVO">
+	SELECT LEVEL AS LEV,ID,UPPER_ID,QUESTION_NAME,QUESTION_YN,QUESTION_GROUP,ORDER_CD, BIGO
+	FROM ORMS_QUESTION WHERE 1=1
+		<dynamic>
+			<isNotNull property="airplane" prepend=" AND">
+			(QUESTION_GROUP = #airplane# OR QUESTION_GROUP = '05')
+			</isNotNull>
+			<isNotNull property="level" prepend=" AND ">
+			LEVEL&lt;#level#
+			</isNotNull>
+		</dynamic>
+	START WITH UPPER_ID IS NULL CONNECT BY PRIOR ID = UPPER_ID
+    ORDER SIBLINGS BY ORDER_CD
+	</select>
+	
+	<select id="getNormalQuestionListByLevel" parameterClass="Map" resultClass="QuestionVO">
+	SELECT LEVEL AS LEV,ID,UPPER_ID,QUESTION_NAME,QUESTION_YN,QUESTION_GROUP,ORDER_CD, BIGO
+	FROM ORMS_QUESTION WHERE 1=1
+		<dynamic>
+			<isNotNull property="airplane" prepend=" AND">
+			QUESTION_GROUP = #airplane# 
+			</isNotNull>
+			<isNotNull property="level" prepend=" AND ">
+			LEVEL&lt;#level#
+			</isNotNull>
+		</dynamic>
+	START WITH UPPER_ID IS NULL CONNECT BY PRIOR ID = UPPER_ID
+    ORDER SIBLINGS BY ORDER_CD
+	</select>
+	
+	<select id="getQuestionListByOneLevel" parameterClass="Map" resultClass="QuestionVO">
+	SELECT LEVEL AS LEV,ID,UPPER_ID,QUESTION_NAME,QUESTION_YN,QUESTION_GROUP,ORDER_CD, BIGO
+	FROM ORMS_QUESTION WHERE 1=1
+	<dynamic>
+		<isNotNull property="level" prepend=" AND ">
+		LEVEL=#level#
+		</isNotNull>
+		<isNotNull property="airplane" prepend=" AND ">
+		(QUESTION_GROUP = #airplane# OR QUESTION_GROUP = '05')
+		</isNotNull>
+	</dynamic>
+	START WITH UPPER_ID IS NULL CONNECT BY PRIOR ID = UPPER_ID
+    ORDER SIBLINGS BY ORDER_CD
+	</select>
+	
+	<select id="getFighterListWithScoreByLevel" parameterClass="Map" resultClass="QuestionVO">
+	SELECT LEVEL AS LEV,ID,UPPER_ID,QUESTION_NAME,QUESTION_YN,QUESTION_GROUP,ORDER_CD,SCORE, BIGO
+	FROM (
+        (
+            SELECT LEV,Q.ID,UPPER_ID,QUESTION_NAME,QUESTION_YN,QUESTION_GROUP,ORDER_CD
+            ,SCORE, BIGO FROM ORMS_QUESTION Q,
+            (
+                SELECT * FROM ORMS_SCORE 
+                WHERE (SECTION_1='ORM003' AND SECTION_2=#day_period#)
+                OR (SECTION_1='ORM004' AND SECTION_2=#section#)
+             ) S
+            WHERE Q.ID=S.ID(+)
+            <dynamic>
+            	<isNotNull property="airplane" prepend =" AND">
+            	(Q.QUESTION_GROUP = #airplane# OR Q.QUESTION_GROUP='05')
+            	</isNotNull>
+            </dynamic>
+         )
+    )
+	START WITH UPPER_ID IS NULL CONNECT BY PRIOR ID = UPPER_ID
+    ORDER SIBLINGS BY ORDER_CD
+	</select>
+	
+	<select id="getNormalListWithScoreByLevel" parameterClass="Map" resultClass="QuestionVO">
+	SELECT LEVEL AS LEV,ID,UPPER_ID,QUESTION_NAME,QUESTION_YN,QUESTION_GROUP,ORDER_CD,SCORE, BIGO
+	FROM (
+        (
+            SELECT LEV,Q.ID,UPPER_ID,QUESTION_NAME,QUESTION_YN,QUESTION_GROUP,ORDER_CD
+            ,SCORE, BIGO FROM ORMS_QUESTION Q,
+            (
+                SELECT * FROM ORMS_SCORE 
+                WHERE (SECTION_1='ORM003' AND SECTION_2=#day_period#)
+                OR (SECTION_1='ORM004' AND SECTION_2=#section#)
+             ) S
+            WHERE Q.ID=S.ID(+)
+            <dynamic>
+            	<isNotNull property="airplane" prepend =" AND">
+            	Q.QUESTION_GROUP = #airplane# 
+            	</isNotNull>
+            </dynamic>
+         )
+    )
+	START WITH UPPER_ID IS NULL CONNECT BY PRIOR ID = UPPER_ID
+    ORDER SIBLINGS BY ORDER_CD
+	</select>
+	
+	<select id="getFighterHeadQuestionCount" parameterClass="String"  resultClass="Integer">
+	SELECT COUNT(*) FROM ORMS_QUESTION WHERE LEV=2
+	<dynamic>
+		<isNotNull property="value" prepend=" AND ">
+			(QUESTION_GROUP = #value# OR QUESTION_GROUP = '05')
+		</isNotNull>
+	</dynamic>
+	</select>
+	
+	<select id="getNormalHeadQuestionCount" parameterClass="String"  resultClass="Integer">
+	SELECT COUNT(*) FROM ORMS_QUESTION WHERE LEV=2
+	<dynamic>
+		<isNotNull property="value" prepend=" AND ">
+			QUESTION_GROUP = #value# 
+		</isNotNull>
+	</dynamic>
+	</select>
+	<!-- 비행기 뷰 -->
+	<select id="getFIGHTER_PLANE_QS" resultClass="QuestionWithAllScoreVO" parameterClass="String">
+	SELECT	 * FROM	 FIGHTER_PLANE_QS WHERE	 QUESTION_GROUP=#value#
+	</select>
+	<select id="getTRANSPORT_PLANE_QS" resultClass="QuestionWithAllScoreVO" parameterClass="String">
+	SELECT	 * FROM	 TRANSPORT_PLANE_QS WHERE QUESTION_GROUP=#value#
+	</select>
+	<select id="getHELICOPTER_QS" resultClass="QuestionWithAllScoreVO" parameterClass="String">
+	SELECT	 * FROM	 HELICOPTER_QS WHERE QUESTION_GROUP=#value#
+	</select>
+	<select id="getPLANECODE_09" resultClass="QuestionWithAllScoreVO" parameterClass="String">
+	SELECT	 * FROM	 PLANECODE_09 WHERE QUESTION_GROUP=#value#
+	</select>
+	<select id="getPLANECODE_10" resultClass="QuestionWithAllScoreVO" parameterClass="String">
+	SELECT	 * FROM	 PLANECODE_10 WHERE QUESTION_GROUP=#value#
+	</select>
+	<select id="getPLANECODE_11" resultClass="QuestionWithAllScoreVO" parameterClass="String">
+	SELECT	 * FROM	 PLANECODE_11 WHERE QUESTION_GROUP=#value#
+	</select>
+	<select id="getPLANECODE_12" resultClass="QuestionWithAllScoreVO" parameterClass="String">
+	SELECT	 * FROM	 PLANECODE_12 WHERE QUESTION_GROUP=#value#
+	</select>
+	<select id="getPLANECODE_13" resultClass="QuestionWithAllScoreVO" parameterClass="String">
+	SELECT	 * FROM	 PLANECODE_13 WHERE QUESTION_GROUP=#value#
+	</select>
+	<select id="getPLANECODE_14" resultClass="QuestionWithAllScoreVO" parameterClass="String">
+	SELECT	 * FROM	 PLANECODE_14 WHERE QUESTION_GROUP=#value#
+	</select>
+	<select id="getPLANECODE_15" resultClass="QuestionWithAllScoreVO" parameterClass="String">
+	SELECT	 * FROM	 PLANECODE_15 WHERE QUESTION_GROUP=#value#
+	</select>
+	<select id="getPLANECODE_16" resultClass="QuestionWithAllScoreVO" parameterClass="String">
+	SELECT	 * FROM	 PLANECODE_16 WHERE QUESTION_GROUP=#value#
+	</select>
+	<select id="getPLANECODE_17" resultClass="QuestionWithAllScoreVO" parameterClass="String">
+	SELECT	 * FROM	 PLANECODE_17 WHERE QUESTION_GROUP=#value#
+	</select>
+	<select id="getPLANECODE_18" resultClass="QuestionWithAllScoreVO" parameterClass="String">
+	SELECT	 * FROM	 PLANECODE_18 WHERE QUESTION_GROUP=#value#
+	</select>
+	<select id="getPLANECODE_19" resultClass="QuestionWithAllScoreVO" parameterClass="String">
+	SELECT	 * FROM	 PLANECODE_19 WHERE QUESTION_GROUP=#value#
+	</select>
+	<select id="getPLANECODE_20" resultClass="QuestionWithAllScoreVO" parameterClass="String">
+	SELECT	 * FROM	 PLANECODE_20 WHERE QUESTION_GROUP=#value#
+	</select>
+	<select id="getPLANECODE_21" resultClass="QuestionWithAllScoreVO" parameterClass="String">
+	SELECT	 * FROM	 PLANECODE_21 WHERE QUESTION_GROUP=#value#
+	</select>
+	<select id="getPLANECODE_22" resultClass="QuestionWithAllScoreVO" parameterClass="String">
+	SELECT	 * FROM	 PLANECODE_22 WHERE QUESTION_GROUP=#value#
+	</select>
+	<select id="getPLANECODE_23" resultClass="QuestionWithAllScoreVO" parameterClass="String">
+	SELECT	 * FROM	 PLANECODE_23 WHERE QUESTION_GROUP=#value#
+	</select>
+	<select id="getPLANECODE_24" resultClass="QuestionWithAllScoreVO" parameterClass="String">
+	SELECT	 * FROM	 PLANECODE_24 WHERE QUESTION_GROUP=#value#
+	</select>
+	<select id="getPLANECODE_25" resultClass="QuestionWithAllScoreVO" parameterClass="String">
+	SELECT	 * FROM	 PLANECODE_25 WHERE QUESTION_GROUP=#value#
+	</select>
+	<select id="getPLANECODE_26" resultClass="QuestionWithAllScoreVO" parameterClass="String">
+	SELECT	 * FROM	 PLANECODE_26 WHERE QUESTION_GROUP=#value#
+	</select>
+	
+	
+	
+	
+	<!-- SELECT LEVEL AS LEV,ID,UPPER_ID,QUESTION_NAME,QUESTION_YN,QUESTION_GROUP,ORDER_CD,DAY_PERIOD1,DAY_PERIOD2,
+	SECTION1,SECTION2,SECTION3,SECTION4
+	FROM (
+        (
+            SELECT LEV,Q.ID,UPPER_ID,QUESTION_NAME,QUESTION_YN,QUESTION_GROUP,ORDER_CD
+            ,A.SCORE DAY_PERIOD1,B.SCORE DAY_PERIOD2,
+            C.SCORE SECTION1,D.SCORE SECTION2,E.SCORE SECTION3,F.SCORE SECTION4 FROM ORMS_QUESTION Q,
+            (
+                SELECT * FROM ORMS_SCORE 
+                WHERE SECTION_1='ORM003' AND SECTION_2='01'
+             ) A,
+             (
+                SELECT * FROM ORMS_SCORE 
+                WHERE SECTION_1='ORM003' AND SECTION_2='02'
+             ) B,
+             (
+                SELECT * FROM ORMS_SCORE 
+                WHERE SECTION_1='ORM004' AND SECTION_2='01'
+             ) C,
+             (
+                SELECT * FROM ORMS_SCORE 
+                WHERE SECTION_1='ORM004' AND SECTION_2='02'
+             ) D,
+             (
+                SELECT * FROM ORMS_SCORE 
+                WHERE SECTION_1='ORM004' AND SECTION_2='03'
+             ) E,
+             (
+                SELECT * FROM ORMS_SCORE 
+                WHERE SECTION_1='ORM004' AND SECTION_2='04'
+             ) F
+            WHERE Q.ID=A.ID(+)
+            AND Q.ID=B.ID(+)
+            AND Q.ID=C.ID(+)
+            AND Q.ID=D.ID(+)
+            AND Q.ID=E.ID(+)
+            AND Q.ID=F.ID(+)
+            AND Q.QUESTION_GROUP=#value#
+            AND Q.USE_YN='1'
+         )
+    )
+	START WITH UPPER_ID IS NULL CONNECT BY PRIOR ID = UPPER_ID
+    ORDER SIBLINGS BY ORDER_CD -->
+	 <update id="updateQuestion" parameterClass="questionWithAllScoreVO">
+  	UPDATE ORMS.ORMS_QUESTION SET QUESTION_NAME=#question_name# , ORDER_CD=#order_cd#
+ 	where ID=#id#
+	</update>
+	<update id="updateScore" parameterClass="ScoreVO">
+	update ORMS.ORMS_SCORE                 
+	set SCORE=#score#
+	where id=#id# and section_1=#section_1#
+	and section_2=#section_2#
+	</update> 
+	<insert id="insertQuestion" parameterClass="questionWithAllScoreVO">
+	insert into ORMS.ORMS_QUESTION (ID, UPPER_ID, LEV, QUESTION_NAME, QUESTION_YN, QUESTION_GROUP, ORDER_CD, HEAD_QUESTION,USE_YN)
+	VALUES (ORMS_QUESTION_SEQ.NEXTVAL, #upper_id#, #lev#, #question_name#, #question_yn#,#question_group#,#order_cd#,#head_question#,#use_yn#)
+	</insert>
+	<insert id="insertScore" parameterClass="ScoreVO">
+	insert into ORMS.ORMS_SCORE (ID,SECTION_1,SECTION_2,SCORE)
+    values (#id#,#section_1#,#section_2#,#score#)
+	</insert>
+	<update id="changeUseYn" parameterClass="int">
+	update ORMS.ORMS_QUESTION set use_yn='2' where id=#id# 
+	</update>
+	
+	<select id="getQuestion_name" parameterClass="int" resultClass="String">
+		SELECT
+			QUESTION_NAME
+		FROM
+			orms_question
+		WHERE
+			upper_id = #value#
+		AND
+			rownum = 1
+	</select>
+	
+	<select id="getlastChecked_Date" parameterClass="HashMap" resultClass="String">
+		SELECT
+			TO_CHAR(write_date, 'yyyymmdd')
+		FROM
+			orms_answer
+		WHERE
+			sn = #sn#
+		AND
+			question_id = #subjectId#
+		AND 
+			rownum=1
+		ORDER BY
+			id DESC
+	</select>
+	
+	<select id="getnumberOfChecked" parameterClass="HashMap" resultClass="Integer">
+		SELECT
+			count(*)
+		FROM
+			orms_answer
+		WHERE
+			sn=#sn#
+		AND
+			question_id = #subjectId#
+	</select>
+</sqlMap>

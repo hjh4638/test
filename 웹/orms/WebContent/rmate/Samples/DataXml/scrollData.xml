@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items>
+	<item>
+		<Gu>A 구</Gu>
+		<Data1>1000</Data1>
+	</item>
+	<item>
+		<Gu>B 구</Gu>
+		<Data1>1400</Data1>
+	</item>
+	<item>
+		<Gu>C 구</Gu>
+		<Data1>1500</Data1>
+	</item>
+	<item>
+		<Gu>D 구</Gu>
+		<Data1>1900</Data1>
+	</item>
+	<item>
+		<Gu>E 구</Gu>
+		<Data1>1400</Data1>
+	</item>
+	<item>
+		<Gu>F 구</Gu>
+		<Data1>2000</Data1>
+	</item>
+	<item>
+		<Gu>G 구</Gu>
+		<Data1>1800</Data1>
+	</item>
+	<item>
+		<Gu>H 구</Gu>
+		<Data1>2500</Data1>
+	</item>
+	<item>
+		<Gu>I 구</Gu>
+		<Data1>3000</Data1>
+	</item>
+	<item>
+		<Gu>J 구</Gu>
+		<Data1>2000</Data1>
+	</item>
+	<item>
+		<Gu>K 구</Gu>
+		<Data1>2100</Data1>
+	</item>
+	<item>
+		<Gu>L 구</Gu>
+		<Data1>1700</Data1>
+	</item>
+		<item>
+		<Gu>M 구</Gu>
+		<Data1>1000</Data1>
+	</item>
+	<item>
+		<Gu>N 구</Gu>
+		<Data1>1400</Data1>
+	</item>
+	<item>
+		<Gu>O 구</Gu>
+		<Data1>1500</Data1>
+	</item>
+	<item>
+		<Gu>P 구</Gu>
+		<Data1>1900</Data1>
+	</item>
+	<item>
+		<Gu>Q 구</Gu>
+		<Data1>1400</Data1>
+	</item>
+	<item>
+		<Gu>R 구</Gu>
+		<Data1>2000</Data1>
+	</item>
+	<item>
+		<Gu>S 구</Gu>
+		<Data1>1800</Data1>
+	</item>
+	<item>
+		<Gu>T 구</Gu>
+		<Data1>2500</Data1>
+	</item>
+	<item>
+		<Gu>U 구</Gu>
+		<Data1>0</Data1>
+	</item>
+	<item>
+		<Gu>V 구</Gu>
+		<Data1>2000</Data1>
+	</item>
+	<item>
+		<Gu>W 구</Gu>
+		<Data1>2100</Data1>
+	</item>
+	<item>
+		<Gu>X 구</Gu>
+		<Data1>1700</Data1>
+	</item>
+</items>

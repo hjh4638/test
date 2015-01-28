@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items>
+	<item>
+		<Year>상반기</Year>
+		<Data1>1000</Data1>
+		<Data2>1500</Data2>
+		<Data3>2300</Data3>
+		<Data4>1200</Data4>
+		<Data5>1800</Data5>
+		<Data6>1800</Data6>
+	</item>
+	<item>
+		<Year>하반기</Year>
+		<Data1>1200</Data1>
+		<Data2>1500</Data2>
+		<Data3>2200</Data3>
+		<Data4>1600</Data4>
+		<Data5>1000</Data5>
+		<Data6>1500</Data6>
+	</item>
+</items>

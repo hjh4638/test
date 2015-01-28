@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="스크롤 2D 칼럼 차트"/>
+	</Options>
+	<Column2DChart showDataTips="true" gutterRight="10"> 
+		<series>
+			<!--  
+			type 속성을 stacked로 변경	
+			type속성으로는
+			clustered : 일반적인 다중데이터(차트의 멀티시리즈)방식으로 데이터를 표현합니다.(Default)
+			stacked : 데이터를 위에 쌓아 올린 방식으로 표현 합니다.
+			overlaid : 수치 데이터 값을 겹쳐서 표현 합니다. 주로 목표 위치와 현재 위치를 나타낼 때 많이 쓰입니다.
+			100% : 차트의 수치 데이터를 퍼센티지로 계산 후 값을 퍼센티지로 나타냅니다. 
+			--> 
+			<Column2DSet type="stacked" showTotalLabel="true" totalLabelJsFunction="totalFunc">
+				 <series>
+					 <Column2DSeries labelPosition="inside" id="cs1" yField="Data1" displayName="Data1"/>
+					 <Column2DSeries labelPosition="inside" id="cs2" yField="Data2" displayName="Data2"/>
+					 <Column2DSeries labelPosition="inside" id="cs3" yField="Data3" displayName="Data3" itemRenderer="SemiCircleColumnItemRenderer"/>
+				 </series>
+			</Column2DSet>
+		</series>
+	     <horizontalAxis>
+	     	<CategoryLinearAxis id="hAxis" categoryField="Gu"/>
+	     </horizontalAxis>
+	     <horizontalAxisRenderers>
+	     	<ScrollableAxisRenderer axis="{hAxis}" visibleItemSize="10" scrollSensitivity="4"/>
+	     </horizontalAxisRenderers>   
+	</Column2DChart>
+</rMateChart>

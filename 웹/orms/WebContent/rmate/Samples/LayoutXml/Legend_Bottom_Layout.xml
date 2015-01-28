@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart cornerRadius="12" backgroundColor="0xFFFFFF"  borderStyle="solid" horizontalScrollPolicy="false">
+	<Options>
+		<Caption text="Legend Sample" />
+		<SubCaption text="데이터 지점의 도형은 라인차트와 플롯차트의 itemRenderer 속성값으로 사용될 수 있습니다." textAlign="right" fontSize="11" paddingTop="5" paddingBottom="10"/>
+		<Legend useVisibleCheck="true" horizontalGap="0"/> 
+<!-- 
+useVisibleCheck : 범례 옆에 체크박스를 표시합니다
+horizontalGap : 범례 아이템들의 가로 간격 사이 여백을 0으로 지정합니다
+- Legend의 속성 -
+position - bottom, left, right, top : 차트를 기준으로 범례가 위치할 곳을 정합니다
+direction - horizontal, vertical : 범례의 방향을 정합니다
+hAlign - center, left, right : position에 의해 정해진 범례의 위치에서 구체적으로 수평방향으로 정렬합니다 default:center
+vAlign - middle, top, bottom : position에 의해 정해진 범례의 위치에서 구체적으로 수직방향으로 정렬합니다 default:middle
+labelPlacement - right, left, top, bottom : 범례에서 색을 나타내는 도형을 기준으로 텍스트 글자의 구체적인 위치를 정합니다
+backgorundColor : 배경색입니다
+color : 글자색을 나타냅니다
+fontSize : 글자 크기
+fontWeight - bold,normal : bold체를 결정합니다 default:normal
+fontStyle - italic,noraml : italic을 결정합니다 default:noraml
+textDecoration - none, undeerline : underline을 결정합니다 default:normal
+useVisibleCheck - True,False : 범례 옆에 체크박스를 표시합니다
+paddingLeft : 왼쪽 여백 default:0
+paddingRight : 왼쪽 여백 default:0
+paddingTop : 왼쪽 여백 default:0
+paddingBottom : 왼쪽 여백 default:0
+verticalGap : 범례 아이템들의 세로 간격 사이 여백을 나타냅니다 default:6
+horizontalGap : 범례 아이템들의 가로 간격 사이 여백을 나타냅니다 default:8
+-->
+	</Options>
+	<Line2DChart showDataTips="true">
+	<horizontalAxis>
+	<CategoryAxis categoryField="Month"/>
+    </horizontalAxis>
+    
+    <series>
+		<Line2DSeries yField="Data1"  radius="5" fill="0xEFEFEF" displayName="Data1"  itemRenderer="DiamondItemRenderer">
+			<stroke>
+				<Stroke color="0xE48701" weight="1"/>
+			</stroke>
+			<lineStroke>
+				<Stroke color="0xE48701" weight="2"/>
+			</lineStroke>
+			<showDataEffect>
+		        <SeriesInterpolate/>
+			</showDataEffect>
+		</Line2DSeries>
+                                     
+		<Line2DSeries yField="Data2"  radius="5" fill="0xEFEFEF" displayName="Data2" itemRenderer="CircleItemRenderer">
+			<stroke>
+				<Stroke color="0xA5BC4E" weight="1"/>
+			</stroke>
+			<lineStroke>
+				<Stroke color="0xA5BC4E" weight="2"/>
+			</lineStroke>
+			<showDataEffect>
+		        <SeriesInterpolate/>
+			</showDataEffect>
+		</Line2DSeries>
+
+		<Line2DSeries yField="Data3"  radius="5" fill="0xEFEFEF" displayName="Data3" itemRenderer="TriangleItemRenderer">
+			<stroke>
+				<Stroke color="0x1B95D9" weight="1"/>
+			</stroke>
+			<lineStroke>
+				<Stroke color="0x1B95D9" weight="2"/>
+			</lineStroke>
+			<showDataEffect>
+		        <SeriesInterpolate/>
+			</showDataEffect>
+		</Line2DSeries>
+		
+		<Line2DSeries yField="Data4"  radius="5" fill="0xEFEFEF" displayName="Data4" itemRenderer="CrossItemRenderer">
+			<stroke>
+				<Stroke color="0xCACA9E" weight="1"/>
+			</stroke>
+			<lineStroke>
+				<Stroke color="0xCACA9E" weight="2"/>
+			</lineStroke>
+			<showDataEffect>
+		        <SeriesInterpolate/>
+			</showDataEffect>
+		</Line2DSeries>
+		
+		<Line2DSeries yField="Data5"  radius="4" fill="0xEFEFEF" displayName="Data5" itemRenderer="XShapeItemRenderer">
+			<stroke>
+				<Stroke color="0x6693B0" weight="1"/>
+			</stroke>
+			<lineStroke>
+				<Stroke color="0x6693B0" weight="2"/>
+			</lineStroke>
+			<showDataEffect>
+		        <SeriesInterpolate/>
+			</showDataEffect>
+		</Line2DSeries>
+		
+		<Line2DSeries yField="Data6"  radius="5" fill="0xEFEFEF" displayName="Data6" itemRenderer="IShapeItemRenderer">
+			<stroke>
+				<Stroke color="0xF05E27" weight="1"/>
+			</stroke>
+			<lineStroke>
+				<Stroke color="0xF05E27" weight="2"/>
+			</lineStroke>
+			<showDataEffect>
+		        <SeriesInterpolate/>
+			</showDataEffect>
+		</Line2DSeries>
+			
+		<Line2DSeries yField="Data7"  radius="5" fill="0xEFEFEF" displayName="Data7" itemRenderer="RectangleItemRenderer">
+			<stroke>
+				<Stroke color="0x86D1E4 " weight="1"/>
+			</stroke>
+			<lineStroke>
+				<Stroke color="0x86D1E4 " weight="2"/>
+			</lineStroke>
+			<showDataEffect>
+		        <SeriesInterpolate/>
+			</showDataEffect>
+		</Line2DSeries>	
+    </series>
+</Line2DChart>
+</rMateChart>

@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<script src="./JS/AC_OETags.js" language="javascript"></script>
+<script src="./JS/rMateChart.js" language="javascript"></script>
+<script src="./JS/rMateChartLicense.js" language="javascript"></script>
+
+<style type="text/css">
+
+body
+{ 
+	margin: 0px; 
+	overflow:hidden 
+}
+
+.wrap
+{
+	position:absolute;
+	top:40px;
+	left:50%;
+	width:600px;
+	height:540px;
+	margin: 0 0 0 -300px;
+}
+
+.header
+{
+	position:absolute;
+	width:100%;
+}
+
+.header_title
+{
+	font-family:verdana;
+	text-align:center;
+}
+
+.header_description
+{
+	font-family:arial;
+}
+
+.content
+{
+	position:absolute;
+	top:80px;
+}
+
+.footer
+{
+	position:absolute;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	text-align:center;
+}
+
+</style>
+
+<!-- 사용자 정의 설정 시작 -->
+<script language="JavaScript" type="text/javascript">
+
+window.onload = function()
+{
+	rMateChartInit();
+}
+
+
+// -----------------------차트  flashVars 설정 시작-----------------------
+// rMate 차트와 스크립트 간의 동기화가 완료된 후 호출되는 함수를 지시하여
+// 이 함수를 통하여 레이아웃과 데이터를 차트에 입력합니다.
+// 따라서 레이아웃과 데이터의 XML 경로를 입력하지 않습니다.
+var flashVars; 
+
+//동기화가 완료 돼었을 때 호출 할 함수를 정의 하십시오.
+var rMateOnLoadCallFunction = "rMateChartOnLoad";
+flashVars += "&rMateOnLoadCallFunction="+rMateOnLoadCallFunction;
+
+// -----------------------차트  flashVars 설정 끝-----------------------
+
+
+// rMate 차트와  스크립트 간의 동기화가 완료되면 호출하는 함수입니다. 
+// 사용자는 이 함수를 flashVars에 반드시 등록해야 합니다.
+// 여기서 작업을 하십시오.
+// 차트 콜백함수 4개 존재합니다.
+// 1. setLayout - 스트링으로 작성된 레이아웃 XML을 삽입합니다.
+// 2. setData - 배열로 작성된 데이터를 삽입합니다.
+// 3. setLayoutURL - 레이아웃 XML 경로를 지시합니다.
+// 4. setDataURL - 데이터 XML 경로를 지시합니다.
+// 아래 예제는 가능한 방법을 제시한 것 입니다.
+// 현제 2번 차트는 레이아웃을 스트링 형태로 받아들이고 데이터는 배열 형태로 받아들입니다.
+function rMateChartOnLoad()
+{
+	//예제1. 레이아웃 스트링 형태,데이터 배열 형태 
+	document.getElementById("chart").setLayoutURL(layoutURL);
+	document.getElementById("chart").setData(chartData);
+	
+	//예제2. 레이아웃 XML URL경로, 데이터 배열 형태
+	//document.getElementById("chart").setLayoutURL(layoutURL);
+	//document.getElementById("chart").setData(chartData);
+	
+	//예제3. 레이아웃 스트링 형태, 데이터 XML URL경로
+	//document.getElementById("chart").setLayout(layoutStr);
+	//document.getElementById("chart").setDataURL(dataURL);
+	
+	//예제4. 레이아웃 URL, 데이터 URL
+	//document.getElementById("chart").setLayoutURL(layoutURL);
+	//document.getElementById("chart").setDataURL(dataURL);
+}
+
+// 동적으로 할당할 레이아웃 정의.
+var layoutURL = "./LayoutXml/Column_3D_Layout.xml";
+
+var layoutURL2 = "./LayoutXml/Bar_3D_Layout.xml";
+var layoutURL3 = "./LayoutXml/Pie_2D_Layout.xml";
+
+var dataURL ="./DataXml/singleData.xml";
+
+var chartData = [{"Month":"Jan", "Profit":10000, "Cost":5000, "Revenue":5000},
+	{"Month":"Feb", "Profit":15000, "Cost":7000, "Revenue":8000},
+	{"Month":"Mar", "Profit":12000 , "Cost":6000, "Revenue":6000},
+	{"Month":"Apr", "Profit":30200, "Cost":4000, "Revenue":26200},
+	{"Month":"May", "Profit":28000, "Cost":10000, "Revenue":18000},
+	{"Month":"Jun", "Profit":12000, "Cost":5000, "Revenue":7000},
+	{"Month":"Jul", "Profit":22000, "Cost":10000, "Revenue":12000},
+	{"Month":"Aug", "Profit":13000, "Cost":6000, "Revenue":7000},
+	{"Month":"Sep", "Profit":22000, "Cost":10000, "Revenue":12000},
+	{"Month":"Oct", "Profit":29000, "Cost":8000, "Revenue":21000},
+	{"Month":"Nov", "Profit":18000, "Cost":7500, "Revenue":10500},
+	{"Month":"Dec", "Profit":30000, "Cost":12000, "Revenue":18000} ];
+
+var chartData2 = [{"Month":"Jan", "Revenue":15000, "Cost":5000, "Profit":10000},
+	{"Month":"Feb", "Revenue":15000, "Cost":10000, "Profit":5000},
+	{"Month":"Mar", "Revenue":12000 , "Cost":7000, "Profit":5000},
+	{"Month":"Apr", "Revenue":30200, "Cost":20000, "Profit":10200},
+	{"Month":"May", "Revenue":28000, "Cost":18000, "Profit":10000},
+	{"Month":"Jun", "Revenue":12000, "Cost":3000, "Profit":9000},
+	{"Month":"Jul", "Revenue":22000, "Cost":12000, "Profit":10000},
+	{"Month":"Aug", "Revenue":13000, "Cost":5000, "Profit":8000},
+	{"Month":"Sep", "Revenue":22000, "Cost":12000, "Profit":10000},
+	{"Month":"Oct", "Revenue":29000, "Cost":18000, "Profit":11000},
+	{"Month":"Nov", "Revenue":18000, "Cost":9000, "Profit":9000},
+	{"Month":"Dec", "Revenue":30000, "Cost":15000, "Profit":15000} ];
+
+// 데이터 변경  함수
+function changeBoth()
+{
+	document.getElementById("chart").setLayoutURL(layoutURL2);
+    document.getElementById("chart").setData(chartData2);
+}
+// 데이터 변경  함수
+function changeBoth2()
+{
+	document.getElementById("chart").setLayoutURL(layoutURL3);
+    document.getElementById("chart").setDataURL(dataURL);
+}
+
+// 데이터 변경  함수
+function changeBoth3()
+{
+	document.getElementById("chart").setLayoutURL(layoutURL);
+	document.getElementById("chart").setData(chartData);
+}
+
+</script>
+<!-- 사용자 정의 설정 끝  -->
+</head>
+
+<body>
+	<div class="wrap">
+		<div class="header">
+			<div class="header_title">
+				<p><b>데이터, 레이아웃 모두 변경하기</b></p>
+			</div>
+			<div class="header_description">
+				<input type="button" value="데이터, 레이아웃 모두 변경1" onclick="changeBoth()"/>
+				<input type="button" value="데이터, 레이아웃 모두 변경2" onclick="changeBoth2()"/>
+				<input type="button" value="데이터, 레이아웃 모두 변경3" onclick="changeBoth3()"/>
+			</div>
+		</div>
+		<div class="content">
+			<script>
+				<!--  //여러 차트를 동적으로 표현하기 위해서 콤비네이션 차트 swf 파일 활용
+					rMateChartCreate("chart","../Component/rMateChart",flashVars, 600, 400, "#FFFFFF");
+				// -->
+			</script>
+		</div>
+	</div>
+</body>
+</html>

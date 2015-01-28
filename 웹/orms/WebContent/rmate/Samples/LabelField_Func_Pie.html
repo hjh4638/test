@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title></title>
+<script src="./JS/AC_OETags.js" language="javascript"></script>
+<script src="./JS/rMateChart.js" language="javascript"></script>
+<script src="./JS/rMateChartLicense.js" language="javascript"></script>
+<style type="text/css">
+
+
+.wrap
+{
+	position:absolute;
+	top:40px;
+	left:50%;
+	width:400px;
+	height:500px;
+	margin: 0 0 0 -230px;
+}
+
+.header
+{ 
+	position:absolute;
+	width:100%;
+}
+ 
+.header_title
+{
+	top:0px;
+	font-family:verdana;
+	text-align:center;
+}
+
+.content
+{
+	position:absolute;
+	top:36px;
+
+}
+
+.footer
+{
+	position:absolute;
+	left:0px;
+	right:0px;
+	bottom:2px; 
+	text-align:center;
+}
+
+</style>
+
+
+<!-- 사용자 정의 설정 시작 -->
+<script language="JavaScript" type="text/javascript">
+
+window.onload = function()
+{
+	rMateChartInit();
+}
+
+// -----------------------1번 차트 flashVars 설정 시작-----------------------
+// 차트 레이아웃 URL 경로. 반드시 설정하십시오.
+var layoutURL = encodeURIComponent("./LayoutXml/LabelField_Pie_Func_Layout.xml");	
+var flashVars = "layoutURL="+layoutURL;
+
+
+// 데이타를 URL 경로를 통해 가져올 경우 설정하십시오.
+// 배열형태로 데이터를 삽입할 경우 주석처리나 삭제하십시오.
+// 배열형태와 같이 사용할 경우, 우선순위는 배열형태 데이터 삽입입니다.
+var dataURL =encodeURIComponent("./DataXml/multiData.xml");	
+flashVars += "&dataURL="+dataURL;
+
+/*
+// ------------------------- 폴라계열 수치 필드 사용자 정의 함수 -----------------------------------------------------
+// 칼럼, 파이, 바 챠트에서 labelPosition 속성을 설정한 경우 수치 필드를 사용자 정의하는 함수입니다.
+// layout XML 에서 Series 속성을 넣을때 labelJsFunction 주고, 만든 javascript 함수명을 넣어줍니다
+//
+// 예) <Pie2DSeries field="Profit" nameField="Month" labelPosition="inside" labelJsFunction="pieSeriesLabelFunc">
+//
+// 파라메터 설명
+// index : 해당 아이템의 인덱스.
+// data : 해당 item의 값을 표현하기 위해 입력된 data(row값에 해당 - data로 입력된 종류에 따라 XML의 내용 또는 배열이 됩니다)
+// values : 해당 item의 값 (배열로 전달되며, 챠트 종류에 따라 아래와 같이 들어옵니다.)
+            PieSeries     0:값 1:퍼센트값
+//
+// 참고 : 수치필드 사용자 정의 시엔 <br>태그와 같은 html형식의 코딩 삽입이 불가능합니다.
+*/
+
+function pieSeriesLabelFunc(index, data, values)
+{
+var name = navigator.appName;
+	var percentVal = (Math.round(values[1]*100)) / 100;
+	// 차트 데이터가 XML 로 정의되어 data는 XML Dom 객체.
+	var month;
+	var xmlDoc;
+
+	if(name == "Microsoft Internet Explorer")
+	{
+		xmlDoc = new ActiveXObject("Msxml2.DOMDocument.3.0");
+		xmlDoc.loadXML(data);
+		month = xmlDoc.selectSingleNode("/item/Month");
+		return month.text+", "+percentVal + "%";
+	}else{
+		var parser = new DOMParser();
+		xmlDoc = parser.parseFromString(data,"text/xml");
+		var item = xmlDoc.getElementsByTagName("item")[0];
+		month = item.getElementsByTagName("Month")[0].childNodes[0].nodeValue;
+		return month+", "+percentVal + "%";
+	}
+	return "";
+}
+
+<!-- 사용자 정의 설정 끝  -->
+</script>
+</head>
+
+<body>
+	<div class="wrap">
+		<div class="header">
+			<div class="header_title">
+				<p>Pie Chart</p>
+			</div>
+		</div>
+		<div class="content">
+			<script language="javascript">
+				<!--
+					rMateChartCreate("chart1","../Component/rMateChart",flashVars, 400, 400, "#FFFFFF");
+				// -->
+			</script>
+		</div>
+		<div class="footer">
+			<div class="footer_button">
+				<a href="#" onclick="javascript:window.open('./LayoutXml/LabelField_Pie_Func_Layout.xml', '_blank', 'width=1024 height=768 scrollbars=yes')">
+				<img src="./Images/viewLayout.png" width="100" height="22" border="0"/></a>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="#" onclick="javascript:window.open('./DataXml/multiData.xml', '_blank', 'width=1024 height=768 scrollbars=yes')">
+				<img src="./Images/viewData.png" width="100" height="22" border="0"/></a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

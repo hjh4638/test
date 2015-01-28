@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report"/>
+		<SubCaption text="2008"/>
+		<Legend useVisibleCheck="true"/>
+	</Options>
+	<Combination3DChart showDataTips="true" selectionMode="single">
+<!-- 
+Combination3D 차트 생성시에 필요한 Combination3DChart 정의합니다 
+showDataTips : 데이터에 마우스를 가져갔을 때 나오는 Tip을 보이기/안보이기 속성입니다  
+selectionMode : 해당 차트 아이템을 선택 할 수 있게 합니다 
+	  ├ none : 선택 못함
+	  ├ single : 하나 선택
+	  └ multiple : 여러개 선택
+-->
+		<horizontalAxis>
+           <CategoryAxis categoryField="Month"/>
+        </horizontalAxis>
+        <series>
+        	<Area2DSeries yField="Profit" form="curve" displayName="Profit"/>
+           	<Column3DSet>
+        		<series>
+					<Column3DSeries labelPosition="inside" yField="Cost" displayName="Cost">
+						<showDataEffect>
+		  					<SeriesInterpolate/> 
+		  				</showDataEffect>
+		  			</Column3DSeries>
+	  			</series>
+	  		</Column3DSet>
+			<Line2DSeries labelPosition="up" yField="Revenue" displayName="Revenue" styleName="lineSeriesLabel">
+				<showDataEffect>
+  					<SeriesInterpolate/> 
+  				</showDataEffect>
+				<filters>
+  					<DropShadowFilter distance="3" color="0x666666" alpha=".8" /> 
+  				</filters>
+				<lineStroke>
+  					<Stroke color="0x7aa371" weight="4" /> 
+  				</lineStroke>
+				<fill>
+  					<SolidColor color="0xFFCC00" /> 
+  				</fill>
+  			</Line2DSeries>
+  		</series>
+	</Combination3DChart>
+	<Style>
+		.lineSeriesLabel{
+			color:#0000ff;
+			fontWeight:bold;
+		}
+	</Style>
+</rMateChart>

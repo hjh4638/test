@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="연도별 남여 출생수 비교" />
+		<SubCaption text="(2004 ~ 2008)" textAlign="center"/>
+	</Options>
+	<NumberFormatter id="numFmt" /> 
+	<ImageChart id="chart" showDataTips="true" gutterLeft="20" gutterRight="20"  showLabelVertically="true">
+		<horizontalAxis>
+			<CategoryAxis id="hAxis" categoryField="Year"/>
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis id="vAxis"/>
+		</verticalAxis>
+		<series>
+<!--  
+Image Multi-Sereis 를 생성시에는 ImageSeries 여러 개 정의합니다  
+이 예제는 한개의 categoryField에 여러개의 imageSeries를 적용하는 예제입니다
+-->
+			<ImageSeries yField="Data1" imageDisplayType="single" styleName="seriesStyle" displayName="Male" formatter="{numFmt}">
+<!-- 
+ImageChart 정의 후 ImageSeries 정의합니다 
+imageDisplayType ┬ single : 이미지 한개
+		 ├ singleRepeat : 이미지 한개 반복
+		 └ multiple : 다중 이미지
+ -->
+				<imgSource>
+            				<ImageSourceItem maintainAspectRatio="true" url="../Samples/Images/1-1-1.png"/>
+<!--
+url : 이미지 파일의 주소입니다
+Value : 이미지가 갖을 고유의 value입니다(multiple에서만 해당합니다)
+maintainAspectRatio - true(정비율), false(차등비율) : 이미지의 고유 비율대로 표현할지 정의합니다
+		├ imageDisplayType의 singleRepeat에서는 false(차등비율)은 존재하지 않습니다
+		└ imageDisplayType의 multiple에서는 true(정비율)는 존재하지 않습니다	 
+이 예제에서는 true(정비율)를 정의 하였습니다
+-->
+            			</imgSource>
+		            	<showDataEffect>
+            				<SeriesSlide duration="1000" direction="up"/>
+		            	</showDataEffect>
+			</ImageSeries>
+			<ImageSeries yField="Data2" imageDisplayType="single" styleName="seriesStyle2" displayName="Female" formatter="{numFmt}">
+				<imgSource>
+          		  		<ImageSourceItem maintainAspectRatio="true" url="../Samples/Images/1-1-2.png"/>
+       		     		</imgSource>
+          		  	<showDataEffect>
+            				<SeriesSlide duration="1000" direction="up"/>
+            			</showDataEffect>
+			</ImageSeries>
+		</series>
+		<verticalAxisRenderers>
+			<Axis2DRenderer axis="{vAxis}" visible="false" includeInLayout="false"/>
+		</verticalAxisRenderers>
+	</ImageChart>
+	<Style>
+		.seriesStyle
+		{
+			labelPosition:outside;
+			fontFamily:Myriad;
+			color:0x0066FF;
+			fontSize:11;
+		}
+		.seriesStyle2
+		{
+			labelPosition:outside;
+			fontFamily:Myriad;
+			color:0xFF66FF;
+			fontSize:11;
+		}
+	</Style>
+</rMateChart>

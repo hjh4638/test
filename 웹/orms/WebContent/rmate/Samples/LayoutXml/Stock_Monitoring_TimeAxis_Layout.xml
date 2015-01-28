@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Stock Monitoring" />
+		<SubCaption text="매 3초 단위로 최근 1분의 데이터를 표현합니다.(데이터는 랜덤)" fontSize="11" textAlign="right"/>
+		<Legend/>
+	</Options>
+	<DateFormatter id="dateFmt" formatString="H:N:S"/> 
+	<RealTimeChart id="chart" dataDisplayType="time"  timePeriod="60" interval="3" showDataTips="true">
+		<backgroundElements>
+			<GridLines direction="both"/>
+		</backgroundElements> 
+		<horizontalAxis>
+			  <DateTimeAxis id="hAxis" dataUnits="seconds" labelUnits="seconds" formatter="{dateFmt}" dataInterval="3" interval="9"   displayLocalTime="true"/> 
+		</horizontalAxis>
+		<series>
+			<Column2DSeries yField="Volume" xField="Time" 
+				displayName="Trading Volume"
+				itemRenderer="GradientColumnItemRenderer">
+				 <filters>
+					   <DropShadowFilter distance="3" color="0x666666" alpha=".8"/>
+				 </filters>
+				 <fill>
+					<SolidColor color="0xB0C759"/>
+				 </fill>
+				<verticalAxis>
+				   <LinearAxis id="vAxis1"  title="Volume" minimum="0" maximum="10000"/>
+				</verticalAxis> 
+			</Column2DSeries>
+						  
+			<Line2DSeries xField="Time" yField="Price" displayName="Stock Price" interpolateValues="false"
+						itemRenderer="CircleItemRenderer"  radius="5" fill="0xFFFF00">
+				<filters>
+					<DropShadowFilter distance="3" color="0x666666" alpha="0.8"/>
+				</filters>
+				<stroke>
+					<Stroke color="0xE48701" weight="2"/>
+				</stroke>
+				<lineStroke>
+					<Stroke color="0xE48701" weight="4"/>
+				</lineStroke>
+				<verticalAxis>
+					<LinearAxis id="vAxis2" title="Price" minimum="0" maximum="1000"/>           
+				</verticalAxis>
+			</Line2DSeries>
+		</series>
+		<verticalAxisRenderers>
+			<Axis2DRenderer placement="left" axis="{vAxis1}">
+			</Axis2DRenderer>
+			<Axis2DRenderer placement="right" axis="{vAxis2}">
+			</Axis2DRenderer>
+	   </verticalAxisRenderers>
+	</RealTimeChart>
+	<HttpServiceRepeater url="http://demo.riamore.net/chartTest/data4.jsp" target="{chart}" interval="3"  method="get"/>
+</rMateChart>

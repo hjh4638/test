@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF" cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="히스토리 2D 차트"/>
+	</Options>
+	<HistoryChart>
+<!-- 
+History 차트 생성시에 필요한 HistoryChart 정의합니다 
+History 차트는 디스플레이어(Displayer), 네비게이터(Navigator), 셀렉터(Selector)로 구성되어 있습니다 
+-->
+		<displayerChart>
+<!-- 
+디스플레이어(Displayer)
+디스플레이어 차트는 사용자가 선택된 영역이 표시되는 차트 입니다. 실제로 사용자가 보고자 하는 부분의 데이터를 표시합니다
+ -->
+			<Displayer id="chart1" showDataTips="true" width="100%" height="100%">
+				<horizontalAxis>
+					<CategoryAxis id="mainHAxis" categoryField="Date"/>
+				</horizontalAxis>
+				<series>
+					<Column2DSeries labelPosition="inside" id="columnSeries" maxColumnWidth="20"
+						yField="Data1" fill="0xB0C759" fontFamily="Myriad" showLabelVertically="true"
+						displayName="Data1">
+					<!-- 디스플레이어 차트로 Column2DSeries를 정의 하였습니다 -->
+						<showDataEffect>
+							<SeriesInterpolate duration="1000"/>
+						</showDataEffect>
+					</Column2DSeries>
+			    </series>
+			</Displayer>
+		</displayerChart>
+		<navigator>
+<!-- 
+네비게이터(Navigator)
+네비게이터는 전체 데이터를 표현하여 데이터의 흐름을 전체적으로 볼 수 잇습니다
+ -->
+			<Navigator id="navi"  width="100%" height="80" gutterLeft="0" gutterRight="0" paddingLeft="30" paddingRight="10">
+				<!-- 수평 축 정의  -->
+				<horizontalAxis>
+					<CategoryAxis categoryField="Date" id="naviHAxis"  padding="0"/> 
+				</horizontalAxis>
+				<horizontalAxisRenderers>
+					<Axis2DRenderer axis="{naviHAxis}" visible="false"/>
+				</horizontalAxisRenderers>
+				<!-- 수직 축 정의  -->
+		        <verticalAxis>
+		        	<LinearAxis id="vAxis"/>
+		        </verticalAxis>
+		        <verticalAxisRenderers>
+		        	<Axis2DRenderer axis="{vAxis}" visible="false"/>
+		        </verticalAxisRenderers>
+		        <!-- 배경 정의 -->
+				 <backgroundElements>
+		        	<GridLines direction="horizontal"/>
+		        </backgroundElements>
+		        
+				<series>
+					<Area2DSeries name="A" yField="Data1"/>
+					<!-- 네비게이터(Navigator)차트로 Area2DSeries를 정의 하였습니다 -->
+			    </series>
+			</Navigator>
+		</navigator>
+		<selector>
+<!-- 
+셀렉터(Selector)
+셀렉터는 네비게이터에서 사용자가 틀정 영역을 선택하게끔 하는 역할을 합니다
+셀렉터에서 선택된 영역이 디스플레이어(Displayer)차트에 표현 됩니다 -->
+<!-- 시작 시 보여지는 차트는 총 데이터의 약 30%이며 센터 영역입니다. -->
+			<HistoryRangeSelector width="100%" startingRange="center" visibleItemSize="30"/>
+<!-- 
+startingRange - center, left, right : 히스토리 차트가 처음 로딩 시 표시할 데이터 영역
+visibleItemSize : 처음 로딩 시 디스플레이어 차트가 표시할 데이터의 양을 나타냅니다
+		   양은 전체 데이터의 퍼센티지 수치입니다. 유효값 1~100
+-->
+		</selector>
+	</HistoryChart>
+</rMateChart>

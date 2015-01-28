@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="Anual Report"/>
+	</Options>
+	<Column3DChart showDataTips="true">
+		<horizontalAxis>
+			<CategoryAxis categoryField="Month" displayName="날짜" /> 
+		</horizontalAxis>
+		<verticalAxis>
+			<!-- axisLabelFunc 는 자바스크립트 함수명 입니다. -->
+			<LinearAxis displayName="금액" labelJsFunction="axisLabelFunc"/>
+<!-- 
+labelJsFunction : Column3DChart의 LinearAxis에서 실행되는 Javascript함수로
+		  html 내에 정의한 Javascript함수를 실행합니다
+		  이 예제에서는 Javascript가 1000단위로,(콤마)를 찍고
+		  수치 마지막에 "원"을 붙였습니다
+-->
+		</verticalAxis>
+		<series>
+			<Column3DSeries id="series1" yField="Profit" displayName="Profit">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Column3DSeries>
+			<Column3DSeries id="series2" yField="Cost" displayName="Cost">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Column3DSeries>
+			<Column3DSeries id="series3" yField="Revenue" displayName="Revenue">
+				<showDataEffect>
+					<SeriesInterpolate/> 
+				</showDataEffect>
+			</Column3DSeries>
+		</series>
+	</Column3DChart>
+</rMateChart>

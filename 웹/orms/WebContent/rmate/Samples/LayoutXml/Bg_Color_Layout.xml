@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+<Column3DChart  showDataTips="true" paddingRight="10" paddingBottom="5" paddingTop="5" paddingLeft="5">
+	<fill>
+         <LinearGradient angle="0">           
+         <!-- LinearGradient는 가로에서 왼쪽(왼쪽에서 가로 등)같이 한쪽에서 반대편쪽으로 그라데이션을 넣는 속성입니다 -->
+            <entries>
+               <GradientEntry 
+                    color="0xFFFFFF" 
+                    ratio="0.125" 
+                    alpha="1"/>
+               <!-- color:색깔 ratio:그라데이션이 들어가는 범위 0~1 alpha:투명도 -->
+                <GradientEntry 
+                    color="0xFFFF99" 
+                    ratio="0.8" 
+                    alpha="0.65"/>
+                <GradientEntry 
+                    color="0xFFFF00" 
+                    ratio="1" 
+                    alpha="0.3"/>
+            </entries>
+          </LinearGradient>
+	</fill>
+        <horizontalAxis>
+           <CategoryAxis
+                categoryField="Month"
+           />
+        </horizontalAxis>
+        <series>
+           <Column3DSeries 
+                xField="Month" 
+                yField="Profit"
+                displayName="Profit">
+				<showDataEffect>
+		  			<SeriesInterpolate/> 
+		  		</showDataEffect>
+			</Column3DSeries>
+           <Column3DSeries 
+                xField="Month" 
+                yField="Cost"
+                displayName="Cost">
+				<showDataEffect>
+		  			<SeriesInterpolate/> 
+		  		</showDataEffect>
+			</Column3DSeries>
+        </series>
+     </Column3DChart>
+
+</rMateChart>

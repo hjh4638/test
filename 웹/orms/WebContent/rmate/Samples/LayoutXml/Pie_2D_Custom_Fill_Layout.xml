@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Caption text="조건에 따라 색상 결정 사용자 정의 예제"/>
+		<SubCaption text="데이터 값을 기준으로 채우기 색을 결정합니다." textAlign="right" fontSize="11"/>
+	</Options>
+	<Pie2DChart showDataTips="true">
+		<series>
+			<Pie2DSeries field="Profit" nameField="Month"
+			fillJsFunction="fillJsFunc" labelJsFunction="labelJsFunc" styleName="seriesStyle">
+<!-- 
+fillJsFunction : Series의 채우기 Javascript함수로 html에 보내는 데이터값의 범위에 따라
+		 html내의 Javascript함수에서 데이터를 판단하고 데이터값에 맞는 색을 return합니다  
+-->
+				<radialStroke>
+					<Stroke weight="1" color="0x000000" alpha=".3"/>
+				</radialStroke>
+				<showDataEffect>
+					<SeriesSlide direction="right" duration="1000"/>
+				</showDataEffect>
+			</Pie2DSeries>
+		</series>
+	</Pie2DChart>
+	<Box horizontalAlign="center" width="100%">
+		<SubLegend direction="horizontal" borderStyle="solid">
+	        <LegendItem label="More than 2,000" fontWeight="bold">
+   				<stroke>
+   					<Stroke weight="1" color="0x000000"/>
+   				</stroke>
+   				<fill>
+   					<SolidColor color="0x009900"/>
+   				</fill>
+	        </LegendItem>
+	        <LegendItem label="More than 1,000" fontWeight="bold">
+	        	<stroke>
+   					<Stroke weight="1" color="0x000000"/>
+   				</stroke>
+   				<fill>
+   					<SolidColor color="0xFF6600"/>
+   				</fill>
+	        </LegendItem>
+	        <LegendItem label="Less than 1,000" fontWeight="bold">
+   				<stroke>
+   					<Stroke weight="1" color="0x000000"/>
+   				</stroke>
+   				<fill>
+   					<SolidColor color="0xFFFF99"/>
+   				</fill>
+	        </LegendItem>
+	     </SubLegend>
+	</Box>
+	<Style>
+	.seriesStyle 
+	{ 
+		labelPosition:inside;
+		color:0x000099;
+	}
+	</Style>
+</rMateChart>

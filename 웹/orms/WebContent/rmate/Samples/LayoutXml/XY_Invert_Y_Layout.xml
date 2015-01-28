@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rMateChart backgroundColor="0xFFFFFF"  cornerRadius="12" borderStyle="solid">
+	<Options>
+		<Legend/>
+		<DataEditor/>
+	</Options>
+	<Line2DChart showDataTips="true">
+		<horizontalAxis>
+			<CategoryAxis id="hAxis" categoryField="Month" padding="0.5" /> 
+		</horizontalAxis>
+		<verticalAxis>
+			<LinearAxis direction="inverted"/>
+		</verticalAxis>
+		<series>
+			<Line2DSeries yField="Profit" labelPosition="up" displayName="Profit">
+				<showDataEffect>
+					<SeriesInterpolate/>
+				</showDataEffect>
+			</Line2DSeries>
+			<Line2DSeries yField="Cost" labelPosition="up" displayName="Cost">
+				<showDataEffect>
+					<SeriesInterpolate/>
+				</showDataEffect>
+			</Line2DSeries>
+			<Line2DSeries yField="Revenue" labelPosition="up" displayName="Revenue">
+				<showDataEffect>
+					<SeriesInterpolate/>
+				</showDataEffect>
+			</Line2DSeries>
+		</series>
+	</Line2DChart>
+</rMateChart>
