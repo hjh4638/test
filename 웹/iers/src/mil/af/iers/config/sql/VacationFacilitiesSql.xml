@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+
+<sqlMap namespace="VacationFacilitiesSql">
+<typeAlias alias="CodeDTO" type="mil.af.iers.model.CodeDTO"/>
+<typeAlias alias="ReservationDTO" type="mil.af.iers.model.ReservationDTO"/>
+<typeAlias alias="SettlementDTO" type="mil.af.iers.model.SettlementDTO" /> 
+<typeAlias alias="UserDTO" type="mil.af.iers.model.UserDTO"/>
+<typeAlias alias="VacationFacilitiesDTO" type="mil.af.iers.model.VacationFacilitiesDTO"/>
+<typeAlias alias="FacilitiesCodeDTO" type="mil.af.iers.model.FacilitiesCodeDTO"/>
+
+<statement id="mergeIntoFacilities" parameterClass="VacationFacilitiesDTO">
+	MERGE INTO 
+	    iers_vacation_facilities
+	USING 
+	    dual
+	ON
+	    (facilities_id = #facilities_id#)
+	WHEN MATCHED THEN UPDATE SET
+	  	facilities_name=#facilities_name#,
+		facilities_note=#facilities_note#,
+		facilities_type=#facilities_type#
+	WHEN NOT MATCHED THEN INSERT
+	    (
+	   	facilities_id,
+		facilities_name,
+		facilities_note,
+		facilities_type
+	    )
+	    VALUES 
+	    (
+	    #facilities_id#,
+		#facilities_name#,
+		#facilities_note#,
+		#facilities_type#
+		
+	    )
+	    
+	   
+</statement>
+<select id="getFacilitiesId" resultClass="Integer">
+	SELECT NVL(MAX(facilities_id),0)+1
+	FROM iers_vacation_facilities 
+</select>
+<select id="getFacilitiesList" resultClass="VacationFacilitiesDTO">
+	SELECT a.*,(select facilities_type_name from iers_facilities_code where facilities_type = a.facilities_type) facilities_type_name
+	FROM iers_vacation_facilities a
+	ORDER BY facilities_id
+</select>
+<select id="getOneOfFacilitiesById" resultClass="VacationFacilitiesDTO" parameterClass="Integer">
+	SELECT a.*,(select facilities_type_name from iers_facilities_code where facilities_type = a.facilities_type) facilities_type_name
+	FROM iers_vacation_facilities a
+	WHERE facilities_id = #facilities_id#
+</select>
+<delete id="resetFacilities">
+	DELETE FROM iers_vacation_facilities
+</delete>
+<delete id="delFacilData" parameterClass="Integer">
+	DELETE FROM iers_vacation_facilities
+	WHERE facilities_id = #facilities_id#
+</delete>
+<select id="getListOfFacilitiesByType" resultClass="VacationFacilitiesDTO" parameterClass="String">
+SELECT *
+FROM iers_vacation_facilities
+WHERE facilities_type=#type#
+ORDER BY facilities_id
+</select>
+</sqlMap>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+
+<sqlMap namespace="SettlementSql">
+<typeAlias alias="CodeDTO" type="mil.af.iers.model.CodeDTO"/>
+<typeAlias alias="ReservationDTO" type="mil.af.iers.model.ReservationDTO"/>
+<typeAlias alias="SettlementDTO" type="mil.af.iers.model.SettlementDTO" /> 
+<typeAlias alias="UserDTO" type="mil.af.iers.model.UserDTO"/>
+<typeAlias alias="VacationFacilitiesDTO" type="mil.af.iers.model.VacationFacilitiesDTO"/>
+<typeAlias alias="FacilitiesCodeDTO" type="mil.af.iers.model.FacilitiesCodeDTO"/>
+<typeAlias alias="SettlementOfReservationDTO" type="mil.af.iers.model.SettlementOfReservationDTO"/>
+
+<statement id="mergeIntoSettlement" parameterClass="SettlementDTO">
+	MERGE INTO 
+	    iers_settlement
+	USING 
+	    dual
+	ON
+	    (settlement_day = #settlement_day# AND facilities_id=#facilities_id#)
+	WHEN MATCHED THEN UPDATE SET
+	  	settlement_people_count=#settlement_people_count#,
+		settlement_price=#settlement_price#,
+		settlement_total_price=#settlement_total_price#,
+		settlement_note=#settlement_note#,
+		settlement_add_price=#settlement_add_price#,
+		settlement_reservation=#settlement_reservation#
+	WHEN NOT MATCHED THEN INSERT
+	    (
+	  	settlement_day,
+		facilities_id,
+		settlement_people_count,
+		settlement_price,
+		settlement_total_price,
+		settlement_note,
+		settlement_add_price,
+		settlement_reservation
+	    )
+	    VALUES 
+	    (
+	    to_date(#settlement_day#,'yyyy-mm-dd'),
+	    #facilities_id#,
+		#settlement_people_count#,
+		#settlement_price#,
+		#settlement_total_price#,
+		#settlement_note#,
+		#settlement_add_price#,
+		#settlement_reservation#
+	    )
+</statement>
+<delete id="resetSettlement">
+	DELETE FROM iers_settlement
+</delete>
+<select id="getSettleData">
+	SELECT *
+	FROM IERS_FACILITIES_CODE;
+</select>
+
+<!-- reservation 테이블도 같이 통계에 나타남. 나중에 where에 결재완료된것만 카운트되게 해야함 -->
+<select id="getSettleStatistics" parameterClass="String" resultClass="SettlementDTO">
+select to_char(settlement_day,'yyyy-mm-dd') settlement_day, sum(settlement_people_count) settlement_people_count,sum(settlement_total_price) settlement_total_price
+from(
+select settlement_day, settlement_people_count,settlement_total_price
+from 
+(iers_settlement join iers_vacation_facilities using(facilities_id) )
+join iers_facilities_code using(facilities_type)
+where settlement_day between to_date(#settlement_day#||'-01-01','yyyy-mm-dd') and last_day(to_date(#settlement_day#||'-12-01','yyyy-mm-dd'))
+union all
+select reservation_day,reservation_people_count,reservation_price
+from iers_reservation
+where reservation_day between to_date(#settlement_day#||'-01-01','yyyy-mm-dd') and last_day(to_date(#settlement_day#||'-12-01','yyyy-mm-dd'))
+AND reservation_state='C03'
+)
+group by settlement_day
+
+</select>
+<select id="getSettleStatisticsGroup" parameterClass="String" resultClass="SettlementDTO">
+
+select '최대' settlement_day, max(sum(settlement_people_count)) settlement_people_count,max(sum(settlement_total_price)) settlement_total_price
+from(
+select settlement_day, settlement_people_count,settlement_total_price
+from 
+(iers_settlement join iers_vacation_facilities using(facilities_id) )
+join iers_facilities_code using(facilities_type)
+where settlement_day between to_date(#settlement_day#||'-01-01','yyyy-mm-dd') and last_day(to_date(#settlement_day#||'-12-01','yyyy-mm-dd'))
+union all
+select reservation_day,reservation_people_count,reservation_price
+from iers_reservation
+where reservation_day between to_date(#settlement_day#||'-01-01','yyyy-mm-dd') and last_day(to_date(#settlement_day#||'-12-01','yyyy-mm-dd'))
+AND reservation_state='C03'
+)
+group by settlement_day
+
+union all
+select '최소', min(sum(settlement_people_count)),min(sum(settlement_total_price))
+from(
+select settlement_day, settlement_people_count,settlement_total_price
+from 
+(iers_settlement join iers_vacation_facilities using(facilities_id) )
+join iers_facilities_code using(facilities_type)
+where settlement_day between to_date(#settlement_day#||'-01-01','yyyy-mm-dd') and last_day(to_date(#settlement_day#||'-12-01','yyyy-mm-dd'))
+union all
+select reservation_day,reservation_people_count,reservation_price
+from iers_reservation
+where reservation_day between to_date(#settlement_day#||'-01-01','yyyy-mm-dd') and last_day(to_date(#settlement_day#||'-12-01','yyyy-mm-dd'))
+AND reservation_state='C03'
+)
+group by settlement_day
+
+union all
+select '평균', round(avg(sum(settlement_people_count)),0),round(avg(sum(settlement_total_price)),0)
+from(
+select settlement_day, settlement_people_count,settlement_total_price
+from 
+(iers_settlement join iers_vacation_facilities using(facilities_id) )
+join iers_facilities_code using(facilities_type)
+where settlement_day between to_date(#settlement_day#||'-01-01','yyyy-mm-dd') and last_day(to_date(#settlement_day#||'-12-01','yyyy-mm-dd'))
+union all
+select reservation_day,reservation_people_count,reservation_price
+from iers_reservation
+where reservation_day between to_date(#settlement_day#||'-01-01','yyyy-mm-dd') and last_day(to_date(#settlement_day#||'-12-01','yyyy-mm-dd'))
+AND reservation_state='C03'
+)
+group by settlement_day
+</select>
+<select id="getDetailSettlement" parameterClass="String" resultClass="SettlementDTO">
+select 
+facilities_name,
+to_char(settlement_day,'yyyy-mm-dd') settlement_day, 
+facilities_id,
+settlement_people_count,
+settlement_price,
+settlement_total_price,
+settlement_note,
+settlement_add_price,
+settlement_reservation 
+from 
+(iers_settlement join iers_vacation_facilities using(facilities_id) )
+join iers_facilities_code using(facilities_type)
+where settlement_day = to_date(#value#,'yyyy-mm-dd')
+</select>
+<select id="getDetailReservationSettlement" parameterClass="String" resultClass="SettlementOfReservationDTO">
+select 
+(select code_name from iers_code where code_id=user_rank) user_rank_name,
+user_name,
+to_char(reservation_day,'yyyy-mm-dd') reservation_day,
+reservation_period,
+(select code_name from iers_code where code_id=reservation_state) reservation_state_name,
+reservation_people_count,
+reservation_id,
+reservation_note,
+(select facilities_type_name from iers_facilities_code where facilities_type=a.facilities_type)facilities_type_name,
+reservation_price
+
+from iers_reservation a join iers_user b on(a.user_id=b.user_id and a.user_sosok=b.user_sosok)
+
+where reservation_day=to_date(#value#,'yyyy-mm-dd')
+AND reservation_state='C03'
+</select>
+</sqlMap>

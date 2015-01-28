@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+
+<sqlMap namespace="ReservationSql">
+<typeAlias alias="CodeDTO" type="mil.af.iers.model.CodeDTO"/>
+<typeAlias alias="ReservationDTO" type="mil.af.iers.model.ReservationDTO"/>
+<typeAlias alias="SettlementDTO" type="mil.af.iers.model.SettlementDTO" /> 
+<typeAlias alias="UserDTO" type="mil.af.iers.model.UserDTO"/>
+<typeAlias alias="VacationFacilitiesDTO" type="mil.af.iers.model.VacationFacilitiesDTO"/>
+<typeAlias alias="FacilitiesCodeDTO" type="mil.af.iers.model.FacilitiesCodeDTO"/>
+
+<resultMap class="mil.af.iers.model.ReservationCalendarDTO" id="ReservationCalendarDTO">
+	<result property="id" column="id"/>
+	<result property="title" column="reservation_state"/>
+	<result property="start" column="reservation_day"/>
+	<result property="className" column="className"/>
+</resultMap>
+
+<statement id="mergeIntoReservation" parameterClass="ReservationDTO">
+	MERGE INTO 
+	    iers_reservation
+	USING 
+	    dual
+	ON
+	    (reservation_id = #reservation_id#)
+	WHEN MATCHED THEN UPDATE SET
+	   	facilities_type=#facilities_type#,
+<!-- 		user_id=#user_id#, -->
+<!-- 		user_sosok=#user_sosok#, -->
+		reservation_day=to_date(#reservation_day#,'yyyy-mm-dd'),
+		reservation_period=#reservation_period#,
+<!-- 		reservation_register_date=#reservation_register_date#, -->
+		reservation_state=#reservation_state#,
+		reservation_people_count=#reservation_people_count#,
+		reservation_price=#reservation_price#
+	WHEN NOT MATCHED THEN INSERT
+	    (
+	   	facilities_type,
+		user_id,
+		user_sosok,
+		reservation_day,
+		reservation_period,
+		reservation_register_date,
+		reservation_state,
+		reservation_people_count,
+		reservation_id,
+		reservation_price
+	    )
+	    VALUES 
+	    (
+	    #facilities_type#,
+		#user_id#,
+		#user_sosok#,
+		to_date(#reservation_day#,'yyyy-mm-dd'),
+		#reservation_period#,
+		sysdate,
+		#reservation_state#,
+		#reservation_people_count#,
+		#reservation_id#,
+		#reservation_price#
+	    )
+</statement>
+<select id="getReservation_id" resultClass="Integer">
+	SELECT NVL(MAX(reservation_id),0)+1
+	FROM iers_reservation
+</select>
+<delete id="deleteOneApp" parameterClass="Integer">
+	DELETE FROM iers_reservation
+	WHERE reservation_id=#reservation_id#
+</delete>
+<update id="updateState" parameterClass="ReservationDTO">
+	UPDATE iers_reservation
+	SET reservation_state=#reservation_state#
+	WHERE reservation_id = #reservation_id#
+</update>
+<delete id="resetReservation">
+	DELETE FROM iers_reservation
+</delete>
+<select id="getMyReservation" parameterClass="ReservationDTO" resultClass="ReservationDTO">
+SELECT 
+	    user_id,
+	    user_sosok,
+	    to_char(reservation_day,'yyyy-mm-dd') reservation_day,
+	    reservation_period,
+	    reservation_register_date,
+	    reservation_state,
+        (select code_name from iers_code where code_id=reservation_state) reservation_state_name,
+	    reservation_people_count,
+	    reservation_id,
+	    reservation_note,
+	    facilities_type,
+        (select facilities_type_name from iers_facilities_code where facilities_type=a.facilities_type) facilities_type_name,
+	    reservation_price
+	FROM iers_reservation a
+	WHERE user_id=#user_id# 
+	AND user_sosok=#user_sosok#
+	ORDER BY reservation_day desc
+</select>
+<!-- 해당날짜 예약대기자들 점수 높은순으로 정렬 -->
+<select id="getWaitReserveList" parameterClass="ReservationDTO" resultClass="ReservationDTO">
+	SELECT
+		 user_id,
+		user_sosok,
+		to_char(reservation_day,'yyyy-mm-dd') reservation_day,
+		reservation_period,
+		reservation_register_date,
+		reservation_state,
+		reservation_people_count,
+		reservation_id,
+		reservation_note,
+		facilities_type,
+		reservation_price,
+           (
+           SELECT  	    
+                   (SELECT code_score FROM iers_code WHERE code_id = user_rank)+
+                   (SELECT code_score FROM iers_code WHERE code_id = user_sosok)+
+                   TO_CHAR(sysdate,'yyyy')-TO_CHAR(user_service_term,'yyyy')+
+                   NVL((SELECT 3 FROM avs11u0t WHERE userid =user_id AND sosokcode LIKE 'A250%'),0) 
+           from iers_user
+           where user_id = a.user_id
+           ) user_score,
+           (
+           select  	    
+                   (SELECT code_order FROM iers_code WHERE code_id = user_rank)
+           from iers_user
+           where user_id = a.user_id
+           ) code_order
+    FROM IERS.IERS_RESERVATION a
+    WHERE reservation_day=to_date(#reservation_day#,'yyyy-mm-dd')
+    AND facilities_type =#facilities_type#
+    AND reservation_state='C01'
+    ORDER BY user_score desc,code_order
+</select>
+
+<!-- 예약자 조회시 사용 -->
+<select id="getReservationofDay" parameterClass="ReservationDTO" resultClass="ReservationDTO">
+SELECT  user_id,
+		user_sosok,
+		to_char(reservation_day,'yyyy-mm-dd') reservation_day,
+		reservation_period,
+		reservation_register_date,
+		reservation_state,
+		reservation_people_count,
+		reservation_id,
+		reservation_note,
+		facilities_type,
+		(select user_auth from iers_user where user_id=a.user_id and user_sosok=a.user_sosok) user_auth,
+        nvl((select code_name from iers_code where code_id = 
+        (select user_auth from iers_user where user_id=a.user_id and user_sosok=a.user_sosok)),'미승인') user_auth_name,
+		(select facilities_type_name from iers_facilities_code where facilities_type=a.facilities_type) facilities_type_name,
+		reservation_price,
+           (
+           SELECT  	    
+                   (SELECT code_score FROM iers_code WHERE code_id = user_rank)+
+                   (SELECT code_score FROM iers_code WHERE code_id = user_sosok)+
+                   TO_CHAR(sysdate,'yyyy')-TO_CHAR(user_service_term,'yyyy')+
+                   NVL((SELECT 3 FROM avs11u0t WHERE userid =user_id AND sosokcode LIKE 'A250%'),0) 
+           from iers_user
+           where user_id = a.user_id
+           ) user_score,
+           (
+           select  	    
+                   (SELECT code_order FROM iers_code WHERE code_id = user_rank)
+           from iers_user
+           where user_id = a.user_id
+           ) code_order,
+           (
+           select user_name
+           from iers_user
+           where user_id = a.user_id
+           ) user_name,
+            (
+           select user_rank
+           from iers_user
+           where user_id = a.user_id
+           ) user_rank
+    FROM IERS.IERS_RESERVATION a
+    WHERE reservation_day=to_date(#reservation_day#,'yyyy-mm-dd')
+    <dynamic>
+    	<isNotEmpty prepend="and" property="facilities_type" >
+    	facilities_type =#facilities_type#
+    	</isNotEmpty>
+    </dynamic>
+    ORDER BY user_score desc,code_order
+</select>
+
+<!-- 그 날짜의 확정자수 가져옴 ReservationFixed에서 validate용도 -->
+<select id="getDecisionCountOneDay" parameterClass="ReservationDTO" resultClass="Integer">
+	<![CDATA[ 
+	SELECT count(*)
+	FROM iers_reservation 
+	WHERE reservation_day <= to_date(#reservation_day#,'yyyy-mm-dd')
+	AND
+	    to_date(#reservation_day#,'yyyy-mm-dd') between reservation_day and reservation_day+reservation_period-1
+    AND
+         (reservation_state = 'C02' OR reservation_state='C03')
+    AND
+        facilities_type = #facilities_type#
+    ]]>
+</select>
+<!-- 일자별 확정자 출력 -->
+<!-- select a.reservation_day, -->
+<!-- ( -->
+<!-- 	SELECT count(*) -->
+<!-- 	FROM iers_reservation  -->
+<!-- 	WHERE reservation_day <= a.reservation_day -->
+<!-- 	AND -->
+<!-- 	    a.reservation_day between reservation_day and reservation_day+reservation_period-1 -->
+<!--     AND -->
+<!--         reservation_state = 'C02' -->
+<!-- 	) -->
+<!-- from -->
+<!-- ( -->
+<!-- SELECT (to_date(to_char(sysdate,'yyyy-mm')||'-01','yyyy-mm-dd') +level-1) reservation_day -->
+<!-- FROM dual -->
+<!-- CONNECT BY LEVEL <=to_char(last_day(sysdate),'dd') -->
+<!-- ) a -->
+<!-- left outer join iers_reservation b -->
+<!-- on(a.reservation_day = b.reservation_day) -->
+<!-- group by a.reservation_day -->
+
+<!-- 캘린더에 쓸 용도 -->
+<select id="getDecisionListByTypeAndDate" parameterClass="Map" resultMap="ReservationCalendarDTO">
+<![CDATA[
+	SELECT 
+    1 as id,
+    to_char(a.reservation_day,'yyyy-mm-dd') reservation_day,
+    	(SELECT facilities_type_name
+        FROM iers_facilities_code
+        WHERE facilities_type=#facilities_type#
+        )||' '||
+	    (
+		SELECT count(*)
+		FROM iers_reservation 
+		WHERE reservation_day <= a.reservation_day
+		AND
+		    a.reservation_day between reservation_day and reservation_day+reservation_period-1
+	    AND
+	         (reservation_state = 'C02' OR reservation_state='C03')
+	    AND
+            facilities_type=#facilities_type#
+		) || '/' ||
+        (select count(*)
+        from iers_vacation_facilities
+        where facilities_type=#facilities_type#
+        ) reservation_state,
+        decode( 
+        (SELECT count(*) FROM iers_reservation 
+		WHERE reservation_day <= a.reservation_day
+		AND a.reservation_day between reservation_day and reservation_day+reservation_period-1
+	    AND  (reservation_state = 'C02' OR reservation_state='C03')
+	    AND facilities_type=#facilities_type#
+		) ,
+        (select count(*) from iers_vacation_facilities where facilities_type=#facilities_type#),
+        'full','less') className
+        
+	FROM
+	(
+	SELECT (trunc(sysdate,'ddd')+level) reservation_day
+	FROM dual
+	CONNECT BY LEVEL <=10
+	) a
+	left outer join iers_reservation b
+	ON(a.reservation_day = b.reservation_day)
+	GROUP BY a.reservation_day
+ ]]>
+</select>
+
+<select id="getMyReserveCount" parameterClass="Map" resultClass="Integer">
+SELECT count(reservation_id)
+FROM iers_reservation
+WHERE 
+	user_id = #user_id#
+AND user_sosok=#user_sosok#
+AND
+(
+reservation_day between trunc(sysdate,'yy')
+AND last_day(to_date(to_char(sysdate,'yyyy')||'/12/01','yyyy-mm-dd'))
+)
+</select>
+
+<!-- <select id="getYeardata" parameterClass="ReservationDTO" resultClass="ReservationDTO"> -->
+<!-- SELECT * -->
+<!-- FROM iers_reservation -->
+<!-- WHERE  -->
+<!-- ( -->
+<!-- reservation_day between to_date(#reservation_day#||'01-01','yyyy-mm-dd') -->
+<!-- AND last_day(#reservation_day#||'-12-01') -->
+<!-- ) -->
+<!-- AND user_id = #user_id# -->
+<!-- AND user_sosok=#user_sosok# -->
+<!-- </select> -->
+<!-- <select id="getYearCount" parameterClass="ReservationDTO" resultClass="Integer"> -->
+<!-- SELECT count(reservation_id) -->
+<!-- FROM iers_reservation -->
+<!-- WHERE  -->
+<!-- 	user_id = #user_id# -->
+<!-- AND user_sosok=#user_sosok# -->
+<!-- AND -->
+<!-- ( -->
+<!-- reservation_day between to_date(to_char(sysdate,'yyyy')||'-01-01','yyyy-mm-dd') -->
+<!-- AND last_day(to_char(sysdate,'yyyy')||' -12-01') -->
+<!-- ) -->
+<!-- </select> -->
+<!-- 7월부터 8월까지 뽑아낼때 -->
+<!-- 	SELECT (to_date(to_char(sysdate,'yyyy')||'-07-01','yyyy-mm-dd') +level-1) reservation_day -->
+<!-- 	FROM dual -->
+<!-- 	CONNECT BY LEVEL <=60 -->
+		
+<!-- 파라미터넘긴 값으로 뽑아낼때 -->
+<!-- 	SELECT (to_date(#beginDate#,'yyyy-mm-dd') +level-1) reservation_day -->
+<!-- 	FROM dual -->
+<!-- 	CONNECT BY LEVEL <=to_date(#endDate#)-to_date(#beginDate#) -->
+	
+<!-- 365일 뽑아낼때 -->
+<!-- 	SELECT (trunc(sysdate,'yy') +level-1) reservation_day -->
+<!-- 		FROM dual -->
+<!-- 		CONNECT BY LEVEL <=366 -->
+
+<!-- 그 달을 뽑아낼때 -->
+<!-- 	SELECT (trunc(to_date(#selectedDate#,'yyyy-mm-dd'),'mm') +level-1) reservation_day -->
+<!-- 	FROM dual -->
+<!-- 	CONNECT BY LEVEL <=to_char(last_day(to_date(#selectedDate#)),'dd') -->
+</sqlMap>

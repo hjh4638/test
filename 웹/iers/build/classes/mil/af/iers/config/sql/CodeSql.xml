@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+
+<sqlMap namespace="CodeSql">
+<typeAlias alias="CodeDTO" type="mil.af.iers.model.CodeDTO"/>
+<typeAlias alias="ReservationDTO" type="mil.af.iers.model.ReservationDTO"/>
+<typeAlias alias="SettlementDTO" type="mil.af.iers.model.SettlementDTO" /> 
+<typeAlias alias="UserDTO" type="mil.af.iers.model.UserDTO"/>
+<typeAlias alias="VacationFacilitiesDTO" type="mil.af.iers.model.VacationFacilitiesDTO"/>
+<typeAlias alias="FacilitiesCodeDTO" type="mil.af.iers.model.FacilitiesCodeDTO"/>
+
+<select id="getListOfCodeByType" resultClass="CodeDTO" parameterClass="String">
+	SELECT *
+	FROM iers_code
+	WHERE code_type =#code_type#
+	ORDER BY code_order
+</select>
+<select id="getOneOfCodeByName" resultClass="CodeDTO" parameterClass="String">
+	SELECT *
+	FROM iers_code
+	WHERE code_id =(SELECT distinct(first_value(code_id) OVER (ORDER BY code_score DESC))
+	                FROM iers_code
+	                WHERE code_name =#code_name#)
+</select>
+<select id="getFacilCodeBySectionInclude" parameterClass="String" resultClass="FacilitiesCodeDTO">
+	SELECT  * 
+	FROM iers_facilities_code
+	WHERE facilities_section =#value#
+	ORDER BY facilities_type
+</select>
+<select id="getFacilCodeBySectionExclude" parameterClass="String" resultClass="FacilitiesCodeDTO">
+	SELECT *
+	FROM iers_facilities_code
+	WHERE facilities_section !=#value#
+	ORDER BY facilities_type
+</select>
+<select id="getFacilCodeById" parameterClass="String" resultClass="FacilitiesCodeDTO">
+	SELECT *
+	FROM iers_facilities_code
+	WHERE facilities_type =#value#
+	ORDER BY facilities_type
+</select>
+<select id="getFacilCode" resultClass="FacilitiesCodeDTO">
+	select  * 
+	from IERS_VACATION_FACILITIES a,IERS_FACILITIES_CODE b
+	where a.facilities_type = b.facilities_type(+)
+	ORDER BY a.facilities_type,facilities_id
+</select>
+<statement id="mergeIntoFacilitiesCode" parameterClass="FacilitiesCodeDTO">
+	MERGE INTO 
+	    iers_facilities_code
+	USING 
+	    dual
+	ON
+	    (facilities_type=#facilities_type#)
+	WHEN MATCHED THEN UPDATE SET
+	  	facilities_area=#facilities_area#,
+		facilities_accommodation=#facilities_accommodation#,
+		facilities_max_accommodation=#facilities_max_accommodation#,
+		facilities_price=#facilities_price#,
+		facilities_max_reservation=#facilities_max_reservation#,
+		facilities_type_name=#facilities_type_name#,
+		facilities_section=#facilities_section#,
+		facilities_add_price=#facilities_add_price#
+	WHEN NOT MATCHED THEN INSERT
+	    (
+	  	facilities_type,
+		facilities_area,
+		facilities_accommodation,
+		facilities_max_accommodation,
+		facilities_price,
+		facilities_max_reservation,
+		facilities_type_name,
+		facilities_section,
+		facilities_add_price
+	    )
+	    VALUES 
+	    (
+	    (SELECT 'E'||ltrim(to_char(max(substr(facilities_type,2,2))+1,'09'))
+		FROM iers_facilities_code),
+		#facilities_area#,
+		#facilities_accommodation#,
+		#facilities_max_accommodation#,
+		#facilities_price#,
+		#facilities_max_reservation#,
+		#facilities_type_name#,
+		#facilities_section#,
+		#facilities_add_price#
+	    )
+</statement>
+<delete id="deleteFacilitiesCode" parameterClass="String">
+		DELETE FROM iers_facilities_code
+		WHERE facilities_type=#facilities_type#
+</delete>
+</sqlMap>

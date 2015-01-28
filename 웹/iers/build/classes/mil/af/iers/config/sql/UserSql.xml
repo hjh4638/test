@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+
+<sqlMap namespace="UserSql">
+<typeAlias alias="CodeDTO" type="mil.af.iers.model.CodeDTO"/>
+<typeAlias alias="ReservationDTO" type="mil.af.iers.model.ReservationDTO"/>
+<typeAlias alias="SettlementDTO" type="mil.af.iers.model.SettlementDTO" /> 
+<typeAlias alias="UserDTO" type="mil.af.iers.model.UserDTO"/>
+<typeAlias alias="VacationFacilitiesDTO" type="mil.af.iers.model.VacationFacilitiesDTO"/>
+<typeAlias alias="FacilitiesCodeDTO" type="mil.af.iers.model.FacilitiesCodeDTO"/>
+
+<statement id="mergeIntoUser" parameterClass="UserDTO">
+	MERGE INTO 
+	    iers_user
+	USING 
+	    dual
+	ON
+	    (user_id = #user_id# AND user_sosok = #user_sosok#)
+	WHEN MATCHED THEN UPDATE SET
+	   	user_rank=#user_rank#,
+		user_name=#user_name#,
+		user_cellular_phone=#user_cellular_phone#,
+		user_service_term=to_date(#user_service_term#,'yyyy-mm-dd'),
+		user_file_id=#user_file_id#,
+		user_file_name=#user_file_name#,
+		user_sosok_detail=#user_sosok_detail#,
+		user_password=#user_password#
+	WHEN NOT MATCHED THEN INSERT
+	    (
+	   	user_id,
+		user_sosok,
+		user_rank,
+		user_name,
+		user_cellular_phone,
+		user_service_term,
+		user_file_id,
+		user_file_name,
+		user_sosok_detail,
+		user_password
+	    )
+	    VALUES 
+	    (
+	    #user_id#,
+		#user_sosok#,
+		#user_rank#,
+		#user_name#,
+		#user_cellular_phone#,
+		to_date(#user_service_term#,'yyyy-mm-dd'),
+		#user_file_id#,
+		#user_file_name#,
+		#user_sosok_detail#,
+		#user_password#
+	    )
+</statement>
+<select id="getOneOfUser" parameterClass="UserDTO" resultClass="UserDTO">
+	SELECT
+	    user_id,
+		user_sosok,
+		user_rank,
+		user_name,
+		user_cellular_phone,
+		to_char(user_service_term,'yyyy-mm-dd') user_service_term,
+		user_file_id,
+		user_file_name,
+		user_sosok_detail,
+		user_password,
+		user_auth,
+	    (SELECT code_name FROM iers_code WHERE code_id = user_sosok) user_sosok_name,
+	    (SELECT code_name FROM iers_code WHERE code_id = user_rank) user_rank_name,
+	    (SELECT code_score FROM iers_code WHERE code_id = user_rank)+
+	    (SELECT code_score FROM iers_code WHERE code_id = user_sosok)+
+	    TO_CHAR(sysdate,'yyyy')-TO_CHAR(user_service_term,'yyyy')+
+	    NVL((SELECT 3 FROM avs11u0t WHERE userid =user_id AND sosokcode LIKE 'A250%'),0) user_score
+	FROM IERS_USER
+	WHERE user_id =#user_id#
+	AND user_sosok=#user_sosok#
+</select>
+<select id="getListOfUser" parameterClass="UserDTO" resultClass="UserDTO">
+	SELECT
+	    user_id,
+		user_sosok,
+		user_rank,
+		user_name,
+		user_cellular_phone,
+		to_char(user_service_term,'yyyy-mm-dd') user_service_term,
+		user_file_id,
+		user_file_name,
+		user_sosok_detail,
+		user_password,
+		user_auth,
+	    (SELECT code_name FROM iers_code WHERE code_id = user_sosok) user_sosok_name,
+	    (SELECT code_name FROM iers_code WHERE code_id = user_rank) user_rank_name,
+	    (SELECT code_score FROM iers_code WHERE code_id = user_rank)+
+	    (SELECT code_score FROM iers_code WHERE code_id = user_sosok)+
+	    TO_CHAR(sysdate,'yyyy')-TO_CHAR(user_service_term,'yyyy')+
+	    NVL((SELECT 3 FROM avs11u0t WHERE userid =user_id AND sosokcode LIKE 'A250%'),0) user_score
+	FROM IERS_USER
+	WHERE 1=1
+	<dynamic>
+		<isNotEmpty property="user_sosok" prepend="AND">
+		user_sosok=#user_sosok#
+		</isNotEmpty>
+		<isNotEmpty property="user_auth">
+			<isEqual property="user_auth" compareValue="D01" prepend="AND">
+				user_auth=#user_auth# 
+				or user_auth is null
+			</isEqual>
+			<isNotEqual property="user_auth" compareValue="D01" prepend="AND">
+			user_auth=#user_auth#
+			</isNotEqual>
+		</isNotEmpty>
+	</dynamic>
+	ORDER BY user_auth
+</select>
+<update id="updateAuthByAdmin" parameterClass="UserDTO">
+UPDATE iers_user
+SET user_auth=#user_auth#
+WHERE user_id = #user_id#
+AND user_sosok = #user_sosok#
+</update>
+<select id="getLoginData" resultClass="UserDTO" parameterClass="UserDTO">
+SELECT
+	    user_id,
+		user_sosok,
+		user_rank,
+		user_name,
+		user_cellular_phone,
+		to_char(user_service_term,'yyyy-mm-dd') user_service_term,
+		user_file_id,
+		user_file_name,
+		user_sosok_detail,
+		user_password,
+		user_auth,
+		(SELECT code_name from iers_code WHERE code_id = user_auth)user_auth_name,
+	    (SELECT code_name FROM iers_code WHERE code_id = user_sosok) user_sosok_name,
+	    (SELECT code_name FROM iers_code WHERE code_id = user_rank) user_rank_name,
+	    (SELECT code_score FROM iers_code WHERE code_id = user_rank)+
+	    (SELECT code_score FROM iers_code WHERE code_id = user_sosok)+
+	    TO_CHAR(sysdate,'yyyy')-TO_CHAR(user_service_term,'yyyy')+
+	    NVL((SELECT 3 FROM avs11u0t WHERE userid =user_id AND sosokcode LIKE 'A250%'),0) user_score
+FROM IERS_USER
+WHERE 
+    user_id =#user_id#
+AND
+	user_sosok = #user_sosok#
+AND
+    user_password=#user_password#
+</select>
+<delete id="resetUser">
+	DELETE FROM IERS_USER
+</delete>
+<select id="getFileName" parameterClass="String" resultClass="String">
+SELECT user_file_name
+FROM iers_user
+WHERE user_file_id=#user_file_id#
+</select>
+<update id="initPassword" parameterClass="Map">
+UPDATE
+    iers_user
+SET
+    user_password=#user_password#
+WHERE
+    user_id =#user_id#
+AND
+    user_sosok=#user_sosok#
+</update>
+<update id="initApproveKey" parameterClass="Map">
+UPDATE
+    iers_user
+SET
+    user_approve_key=#user_approve_key#
+WHERE
+    user_id =#user_id#
+AND
+    user_sosok=#user_sosok#
+</update>
+<select id="oneUserToChangePassword" resultClass="UserDTO" parameterClass="Map">
+SELECT *
+FROM iers_user
+WHERE user_id=#user_id#
+AND user_sosok=#user_sosok#
+AND user_approve_key=#user_approve_key#
+</select>
+<select id="getCellPhone" parameterClass="Map" resultClass="String">
+	SELECT user_cellular_phone
+	FROM IERS.IERS_USER 
+	WHERE user_id=#user_id#
+	AND user_sosok=#user_sosok#
+</select>
+</sqlMap>

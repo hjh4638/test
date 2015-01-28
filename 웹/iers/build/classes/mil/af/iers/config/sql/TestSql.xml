@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="TestSql">
+	<select id="test" resultClass="Integer">
+		select count(*)
+		from lsms_subject
+	</select>
+	
+	<insert id="insertAstiBoard" >
+	INSERT INTO asti_board
+	(
+	    board_id,
+	    board_title,
+	    board_content,
+	    board_writer,
+	    board_register_date
+	)
+	values(
+    	1,
+    	'test',
+    	'qnpfr',
+    	'함준혁',
+    	sysdate
+	)
+	
+	
+	</insert>
+</sqlMap>

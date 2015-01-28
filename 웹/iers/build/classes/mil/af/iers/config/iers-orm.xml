@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	
+	<!-- .properties 파일을 ${} 형태로 불러 쓸수 있게 해주는 빈 등록 --> 
+	<!-- L6S-bean.xml과 L6S-orm.xml의 devDataSource,UploadAndDownloadUtil 빈의-->
+	 <!--프로퍼티 주입시 사용 (개발에서 운영으로 서버가 바뀔시를 대비)-->
+	<bean id="propertyConfigurer"
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:/mil/af/iers/config/DBSetting.properties</value>
+            </list>
+        </property>
+    </bean>
+	<!-- dataSource Setting 개발-->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="${driverClassName}" />
+		<property name="url" value="${url}" />
+		<property name="username" value="${username}" />
+		<property name="password" value="${password}" />
+	</bean>
+
+	<!-- ibatis setting -->
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:/mil/af/iers/config/iers-sqlMapConfig.xml" />
+	</bean>
+
+	<!-- Spring ibatis Template Setting -->
+	<bean id="sqlMapClientTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	
+	<!-- Transaction Annotation Setting -->	
+	<tx:annotation-driven transaction-manager="transactionManage" />
+	
+	<bean id="transactionManage" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	
+	
+</beans>
