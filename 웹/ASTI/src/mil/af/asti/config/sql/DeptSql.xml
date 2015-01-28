@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="DeptSql">
+<!-- 	
+		연구센터
+		공군 716th.
+		일병 이승호 
+-->
+	<typeAlias alias="astiBoardDTO" type="mil.af.asti.model.AstiBoardDTO" /> 
+	<typeAlias alias="astiBoardAddtextDTO" type="mil.af.asti.model.AstiBoardAddtextDTO" /> 
+	<typeAlias alias="astiBoardFileDTO" type="mil.af.asti.model.AstiBoardFileDTO" /> 
+	<typeAlias alias="astiCodeDTO" type="mil.af.asti.model.AstiCodeDTO" /> 
+	<typeAlias alias="astiResearchWorkerDTO" type="mil.af.asti.model.AstiResearchWorkerDTO" /> 
+	<typeAlias alias="astiUserDTO" type="mil.af.asti.model.AstiUserDTO" /> 
+	<typeAlias alias="astiBoardSearchDTO" type="mil.af.asti.model.AstiBoardSearchDTO" /> 
+	<typeAlias alias="astiBoardPaginationDTO" type="mil.af.asti.model.AstiBoardPaginationDTO" /> 
+	
+	<!-- 센터에 따른 코드로 분류된 연구원 select -->
+	<select id="deptUserList" parameterClass="String" resultClass="astiResearchWorkerDTO">
+		SELECT *
+		FROM(
+			SELECT
+				a.code_id,
+				a.code_name,
+				b.worker_id,
+				b.worker_name,
+				b.worker_detail_info,
+				b.worker_picture_id,
+				b.worker_picture_name
+			FROM asti_code a, asti_research_worker b
+			WHERE a.code_id = b.worker_department
+		)
+		WHERE
+			code_id=#code#
+		ORDER BY
+			worker_id 
+	</select>
+	<select id="getMaxWorkerId" resultClass="Integer">
+	SELECT max(worker_id)
+	FROM asti_research_worker
+	</select>
+	<!-- 수정할시 picture_id와 picture_name도 꼭 같이 보내줘야함 -->
+	<statement id="mergeIntoWorker" parameterClass="astiResearchWorkerDTO">
+	MERGE INTO 
+	    asti_research_worker
+	USING 
+	    dual
+	ON
+	    (worker_id = #worker_id#)
+	WHEN MATCHED THEN UPDATE SET
+	    worker_name=#worker_name#,
+	    worker_department=#worker_department#,
+	    worker_detail_info=#worker_detail_info#,
+	    worker_picture_id=#worker_picture_id#,
+	    worker_picture_name=#worker_picture_name#,
+	    worker_major=#worker_major#,
+	    worker_phone_number=#worker_phone_number#,
+	    worker_fax_number=#worker_fax_number#,
+	    worker_email=#worker_email#
+	
+	WHEN NOT MATCHED THEN INSERT
+	(
+        worker_id,
+        worker_name,
+        worker_department,
+        worker_detail_info,
+        worker_picture_id,
+        worker_picture_name,
+        worker_major,
+        worker_phone_number,
+        worker_fax_number,
+        worker_email
+    )
+	VALUES
+	(
+        #worker_id#,
+        #worker_name#,
+        #worker_department#,
+        #worker_detail_info#,
+        #worker_picture_id#,
+        #worker_picture_name#,
+        #worker_major#,
+        #worker_phone_number#,
+        #worker_fax_number#,
+        #worker_email#
+    )
+	</statement>
+	<delete id="deleteWorker" parameterClass="astiBoardSearchDTO">
+	DELETE asti_research_worker
+	WHERE worker_id = #worker_id#
+	</delete>
+	<select id="getWorkerList" parameterClass="astiBoardSearchDTO" resultClass="astiResearchWorkerDTO">
+	SELECT *
+    FROM
+        (SELECT ROWNUM rnum,a.*
+            FROM
+                (SELECT 
+                row_number() over (order by worker_id) as row_number,
+                count(*) over() as row_count,
+                asti_research_worker.*,
+                (SELECT code_name FROM asti_code WHERE code_id =worker_department) worker_department_name
+                FROM asti_research_worker
+                <dynamic prepend="where">
+			    	<isNotEmpty property="worker_department">
+				    worker_department = #worker_department#
+			       	</isNotEmpty>
+				</dynamic>
+                ORDER BY worker_department,row_number desc
+                )a)
+    <dynamic prepend="where">
+    	<isNotEmpty property="astiBoardPaginationDTO.beginContentsPerPage">
+	    rnum BETWEEN #astiBoardPaginationDTO.beginContentsPerPage#  and #astiBoardPaginationDTO.lastContentsPerPage#
+       	</isNotEmpty>
+	</dynamic>
+   	</select>
+	<select id="getWorkerCount" parameterClass="astiBoardSearchDTO" resultClass="Integer">
+	SELECT count(*)
+	FROM asti_research_worker
+	<dynamic prepend="where">
+    	<isNotEmpty property="worker_department">
+	    worker_department = #worker_department#
+       	</isNotEmpty>
+	</dynamic>
+	</select>
+	<select id="getWorker" parameterClass="astiBoardSearchDTO" resultClass="astiResearchWorkerDTO">
+		SELECT 
+		    asti_research_worker.*,
+		    (select code_name from asti_code where code_id = worker_department) worker_department_name
+		FROM asti_research_worker
+		WHERE worker_id = #worker_id#
+	</select>
+	
+	<select id="getWorkerById" parameterClass="String" resultClass="astiResearchWorkerDTO">
+		SELECT 
+		    asti_research_worker.*,
+		    (select code_name from asti_code where code_id = worker_department) worker_department_name
+		FROM asti_research_worker
+		WHERE worker_id = #value#
+	</select>
+</sqlMap>

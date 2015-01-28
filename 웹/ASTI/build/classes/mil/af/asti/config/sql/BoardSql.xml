@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="BoardSql">
+	<typeAlias alias="astiBoardSearchDTO" type="mil.af.asti.model.AstiBoardSearchDTO" />
+	<typeAlias alias="astiBoardDTO"	type="mil.af.asti.model.AstiBoardDTO"/>
+	<typeAlias alias="astiBoardAddtextDTO" type="mil.af.asti.model.AstiBoardAddtextDTO" /> 
+	<typeAlias alias="astiBoardFileDTO" type="mil.af.asti.model.AstiBoardFileDTO" /> 
+	<typeAlias alias="astiCodeDTO" type="mil.af.asti.model.AstiCodeDTO" /> 
+	<typeAlias alias="astiResearchWorkerDTO" type="mil.af.asti.model.AstiResearchWorkerDTO" /> 
+	<typeAlias alias="astiUserDTO" type="mil.af.asti.model.AstiUserDTO" /> 
+	<typeAlias alias="astiBoardPaginationDTO" type="mil.af.asti.model.AstiBoardPaginationDTO" /> 
+	
+	<select id="getBoardContentsList" parameterClass="astiBoardSearchDTO" resultClass="astiBoardDTO">
+	SELECT *
+    FROM
+        (SELECT ROWNUM rnum,a.*
+            FROM
+                (SELECT 
+                row_number() over (order by board_id) as row_number,
+                count(*) over() as row_count,
+                board_id,
+                user_id,
+                board_title,
+                board_content,
+                board_writer,
+                to_char(board_register_date,'YYYY-MM-DD') board_register_date,
+                board_authority,
+                (select code_name from asti_code where code_id = board_authority) board_authority_name,
+                board_password,
+                board_type,
+                (select code_name from asti_code where code_id = board_type) board_type_name,
+                board_reference
+                FROM asti_board
+                WHERE BOARD_TYPE = #board_type#
+                 <dynamic prepend="and">
+		    	<isNotEmpty property="searchDetail">
+		     		<isEqual property="searchType" compareValue="writer">
+		     			BOARD_WRITER = #searchDetail#
+		     		</isEqual>
+		     		<isEqual property="searchType" compareValue="title">
+		     			BOARD_TITLE LIKE '%' || #searchDetail# || '%'
+		     		</isEqual>
+		     		<isEqual property="searchType" compareValue="content">
+		     			BOARD_CONTENT LIKE '%' || #searchDetail# || '%'
+		     		</isEqual>
+		     	</isNotEmpty>
+     			</dynamic>
+                ORDER BY row_number desc
+                )a)
+         WHERE rnum BETWEEN #astiBoardPaginationDTO.beginContentsPerPage#  and #astiBoardPaginationDTO.lastContentsPerPage#
+    </select>
+	<!-- <select id="getBoardContentsList" 
+	parameterClass="astiBoardSearchDTO" resultClass="astiBoardDTO">
+	 SELECT RNUM , BOARD_ID , BOARD_TITLE , BOARD_WRITER , TO_CHAR(BOARD_REGISTER_DATE,'YYYY-MM-DD HH:MM:SS') 
+	    AS BOARD_REGISTER_DATE
+        FROM
+        (SELECT 
+         ROWNUM RNUM , BOARD_ID , BOARD_TITLE , BOARD_WRITER , BOARD_REGISTER_DATE
+         FROM
+            (SELECT 
+	            BOARD_ID id,ROWNUM BOARD_ID , BOARD_TITLE , BOARD_WRITER , BOARD_REGISTER_DATE , BOARD_CONTENT
+	         FROM 
+	            ASTI_BOARD
+	         WHERE
+	            BOARD_TYPE = #board_type#
+          	ORDER BY 
+          		id DESC)
+        	<dynamic prepend="WHERE">
+		    	<isNotEmpty property="searchDetail">
+		     		<isEqual property="searchType" compareValue="writer">
+		     			BOARD_WRITER = #searchDetail#
+		     		</isEqual>
+		     		<isEqual property="searchType" compareValue="title">
+		     			BOARD_TITLE LIKE '%' || #searchDetail# || '%'
+		     		</isEqual>
+		     		<isEqual property="searchType" compareValue="content">
+		     			BOARD_CONTENT LIKE '%' || #searchDetail# || '%'
+		     		</isEqual>
+		     	</isNotEmpty>
+     		</dynamic> )
+     	WHERE RNUM BETWEEN #astiBoardPaginationDTO.beginContentsPerPage# 
+		AND
+		#astiBoardPaginationDTO.lastContentsPerPage#
+	</select> -->
+	
+	<select id="getBoardContentsCount"
+	parameterClass="astiBoardSearchDTO" resultClass="Integer">
+	SELECT
+		COUNT(*)
+	FROM
+		ASTI_BOARD
+	WHERE
+     	BOARD_TYPE = #board_type#
+     	<dynamic prepend="AND">
+	     	<isNotEmpty property="searchDetail">
+	     		<isEqual property="searchType" compareValue="writer">
+	     			BOARD_WRITER = #searchDetail#
+	     		</isEqual>
+	     		<isEqual property="searchType" compareValue="title">
+	     			BOARD_TITLE LIKE '%' || #searchDetail# || '%'
+	     		</isEqual>
+	     		<isEqual property="searchType" compareValue="content">
+	     			BOARD_CONTENT LIKE '%' || #searchDetail# || '%'
+	     		</isEqual>
+	     	</isNotEmpty>
+     	</dynamic>
+   	</select>
+   	
+   	<select id="getBoardContent"
+   	parameterClass="astiBoardSearchDTO" resultClass="astiBoardDTO">
+   SELECT a.*
+	FROM
+	    (
+	        SELECT 
+	        row_number() over (order by board_id DESC) as row_number,
+	        count(*) over() as row_count,
+	        board_id,
+	        user_id,
+	        board_title,
+	        board_content,
+	        board_writer,
+	         to_char(board_register_date,'YYYY-MM-DD') board_register_date,
+	        board_authority,
+	        (select code_name from asti_code where code_id = board_authority) board_authority_name,
+	        board_password,
+	        board_type,
+	        (select code_name from asti_code where code_id = board_type) board_type_name,
+	        board_reference
+	        FROM asti_board
+	        <!--board_id가 숫자이면 board_id로 조회 아니면 -9999로 조회  -->
+	        where board_id = DECODE(nvl(length(translate(#board_id#,'+.0123456789',' ')),0),0,#board_id#,
+                                        -9999)
+        	<dynamic>
+		     	<isNotEmpty property="board_type" prepend="AND">
+		    		board_type = #board_type# 	     		
+		     	</isNotEmpty>
+		    </dynamic>
+	        ORDER BY board_id DESC
+	    ) a
+	</select>
+	<!-- 게시판 입력,수정 쿼리 -->
+	<statement id="mergeIntoBoard" parameterClass="astiBoardDTO">
+	MERGE INTO 
+	    asti_board
+	USING 
+	    dual
+	ON
+	    (board_id = #board_id#)
+	WHEN MATCHED THEN UPDATE SET
+	    board_title=#board_title#,
+	    board_content=#board_content#,
+	    board_writer=#board_writer#,
+	    board_register_date=#board_register_date#,
+	    board_authority=#board_authority#,
+	    board_reference=#board_reference#,
+	    board_password=#board_password#
+	
+	WHEN NOT MATCHED THEN INSERT
+	    (
+	    board_id,
+	    user_id,
+	    board_title,
+	    board_content,
+	    board_writer,
+	    board_register_date,
+	    board_authority,
+	    board_password,
+	    board_type,
+	    board_reference
+	    )
+	    VALUES 
+	    (
+	    #board_id#,
+	    #user_id#,
+	    #board_title#,
+	    #board_content#,
+	    #board_writer#,
+	    #board_register_date#,
+	    #board_authority#,
+	    #board_password#,
+	    #board_type#,
+	    #board_reference#
+	    )
+	</statement>
+	<!-- 난수 만들때 사용할 board_seq -->
+	<select id="getBoardFileSeq" resultClass="Integer">
+	SELECT 
+		asti_board_file_seq.nextval
+	fROM 
+		dual
+	</select>
+	<!-- 파일첨부 insert -->
+	<insert id="insertBoardFile" parameterClass="astiBoardFileDTO">
+	INSERT INTO asti_board_file
+	(
+	board_id,
+	file_id,
+	filename
+	)
+	VALUES
+	(
+	#board_id#,
+	#file_id#,
+	#filename#
+	)
+	</insert>
+	<!-- board_id에 해당하는 asti_board_file 삭제 -->
+	<delete id="deleteBoardFile" parameterClass="astiBoardSearchDTO">
+	DELETE FROM asti_board_file
+	WHERE board_id = #board_id#
+	</delete>
+	<delete id="deleteBoard" parameterClass="astiBoardSearchDTO">
+	Delete asti_board
+	WHERE board_id = #board_id#
+	</delete>
+	<delete id="deleteAdd" parameterClass="astiBoardSearchDTO">
+	Delete asti_board_addtext
+	WHERE board_id = #board_id#
+	</delete>
+	<!-- 데이터길이 유효성 체크할때 필요 쿼리, asti의 모든 컬럼정보 가져옴 -->
+	<select id="getColumnLength" resultClass="astiCodeDTO">
+	SELECT 
+    	distinct(column_name) code_id,data_length code_name
+	FROM 
+	    dba_tab_columns
+	WHERE 
+	    table_name like 'ASTI%'
+    AND data_type = 'VARCHAR2'
+	</select>
+	<select id="getMaxBoardId" resultClass="Integer">
+		SELECT max(board_id)
+		FROM asti_board
+	</select>
+	<select id="getBoardFile" parameterClass="astiBoardSearchDTO" resultClass="astiBoardFileDTO">
+	SELECT 
+    *
+	FROM
+	    asti_board_file
+    WHERE 1=1
+		<dynamic>
+	     	<isNotEmpty property="board_id" prepend="AND">
+	    		board_id = #board_id# 	     		
+	     	</isNotEmpty>
+	     	<isNotEmpty property="searchDetail" prepend="AND">
+	    		file_id = #searchDetail# 	     		
+	     	</isNotEmpty>
+	     	<isNotEmpty property="board_type" prepend="AND">
+			    board_id in (SELECT board_id 
+			                 FROM asti_board 
+			                 WHERE board_type = #board_type#)
+	        </isNotEmpty>
+	    </dynamic>
+    ORDER BY board_id desc, file_id desc
+	</select>
+	<insert id="insertComment" parameterClass="astiBoardAddtextDTO">
+	INSERT INTO
+   		ASTI_BOARD_ADDTEXT
+	VALUES
+    (#board_id#,
+    NVL((SELECT MAX(ADD_ID)+1 FROM ASTI_BOARD_ADDTEXT),1),null,
+    #add_writer#,#add_content#,sysdate)
+	</insert>
+	<select id="getBoardComments" parameterClass="astiBoardDTO" resultClass="astiBoardAddtextDTO">
+	SELECT 
+    	LEVEL lev, a.*
+	FROM 
+	    asti_board_addtext a 
+	WHERE
+		 board_ID = #board_id#    
+	START WITH add_upper_id IS NULL
+	CONNECT BY add_upper_id = PRIOR add_id
+	</select>
+	<insert id="insertReplyComment" parameterClass="astiBoardAddtextDTO">
+	INSERT INTO
+   		ASTI_BOARD_ADDTEXT
+	VALUES
+    (#board_id#,
+    NVL((SELECT MAX(ADD_ID)+1 FROM ASTI_BOARD_ADDTEXT),1),
+    #add_upper_id#,#add_writer#,#add_content#,sysdate)
+	</insert>
+	<select id="getBoardRnumByDTO" parameterClass="astiBoardDTO" resultClass="Integer">
+		SELECT rnum
+ 		FROM
+        (SELECT ROWNUM rnum,board_id
+            FROM
+                (SELECT 
+                row_number() over (order by board_id) as row_number,
+                board_id
+                FROM asti_board
+                WHERE BOARD_TYPE = #board_type#
+                ORDER BY row_number desc
+                )a)
+        WHERE BOARD_ID = #board_id#
+	</select>
+	
+	<select id="getBoardIdByRnum" parameterClass="astiBoardDTO" resultClass="Integer">
+		SELECT board_id
+ 		FROM
+        (SELECT ROWNUM rnum,board_id
+            FROM
+                (SELECT 
+                row_number() over (order by board_id) as row_number,
+                board_id
+                FROM asti_board
+                WHERE BOARD_TYPE = #board_type#
+                ORDER BY row_number desc
+                )a)
+        WHERE rnum = #board_id#
+	</select>
+	<select id="getCountByBoardType" parameterClass="astiBoardDTO" resultClass="Integer">
+		SELECT
+		COUNT(*)
+		FROM
+			ASTI_BOARD
+		WHERE
+			BOARD_TYPE=#board_type#
+	</select>
+	
+	<select id="getTitleByBoardId" parameterClass="Integer" resultClass="astiBoardDTO">
+		SELECT *
+		FROM ASTI_BOARD
+		WHERE board_id = #value#
+	</select>
+	<select id="getMainDeptImage" resultClass="astiBoardFileDTO">
+	SELECT 
+	    *
+	FROM
+	    (SELECT row_number() over(order by board_id desc) rnum, asti_board_file.*
+	    FROM asti_board_file
+	    WHERE file_id IN
+	                    (SELECT MAX(file_id)
+	                    FROM asti_board_file
+	                    WHERE board_id IN 
+	                                    (SELECT board_id 
+	                                     FROM asti_board 
+	                                     WHERE board_type = 'B05')
+	                    GROUP BY board_id)
+	    ORDER BY board_id desc)      
+	WHERE 
+	    rnum between 1 and 10
+	</select>
+</sqlMap>

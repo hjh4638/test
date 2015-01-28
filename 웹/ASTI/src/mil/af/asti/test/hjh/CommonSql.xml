@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="CommonSql">
+
+<typeAlias alias="astiBoardDTO" type="mil.af.asti.model.AstiBoardDTO" /> 
+<typeAlias alias="astiBoardAddtextDTO" type="mil.af.asti.model.AstiBoardAddtextDTO" /> 
+<typeAlias alias="astiBoardFileDTO" type="mil.af.asti.model.AstiBoardFileDTO" /> 
+<typeAlias alias="astiCodeDTO" type="mil.af.asti.model.AstiCodeDTO" /> 
+<typeAlias alias="astiResearchWorkerDTO" type="mil.af.asti.model.AstiResearchWorkerDTO" /> 
+<typeAlias alias="astiUserDTO" type="mil.af.asti.model.AstiUserDTO" /> 
+<typeAlias alias="astiBoardSearchDTO" type="mil.af.asti.model.AstiBoardSearchDTO" /> 
+<typeAlias alias="astiBoardPaginationDTO" type="mil.af.asti.model.AstiBoardPaginationDTO" /> 
+	
+<statement id="mergeIntoUser" parameterClass="astiUserDTO">
+	MERGE INTO 
+	    asti_user
+	USING 
+	    dual
+	ON
+	    (user_id = #user_id#)
+   	WHEN MATCHED THEN UPDATE SET
+        user_password=#user_password#,
+        user_name=#user_name#,
+        user_sex=#user_sex#,
+        user_birth_date=#user_birth_date#,
+        user_job=#user_job#,
+        user_authority=#user_authority#,
+        user_phone_number=#user_phone_number#
+   WHEN NOT MATCHED THEN INSERT
+	    (
+		    user_id,
+		    user_password,
+		    user_name,
+            user_sex,
+		    user_birth_date,
+            user_job,
+            user_authority,
+            user_phone_number,
+		    user_register_date
+		    
+		)
+		values(
+	    	#user_id#,
+		    #user_password#,
+		    #user_name#,
+            #user_sex#,
+		    #user_birth_date#,
+            #user_job#,
+            #user_authority#,
+            #user_phone_number#,
+		    sysdate
+		)
+</statement>
+<select id="getUserInfo" parameterClass="astiUserDTO" resultClass="astiUserDTO">
+SELECT 
+    user_id,
+    user_password,
+    user_name,
+    user_sex,
+    DECODE(user_sex, 'M', '남', '여') user_sex_name,
+    to_char(user_birth_date,'yyyy/mm/dd') user_birth_date,
+    user_job,
+    user_authority,
+    NVL((SELECT code_name FROM asti_code WHERE code_id = user_authority),'미승인') user_authority_name,
+    user_phone_number,
+    to_char(user_register_date,'yyyy/mm/dd') user_register_date
+FROM 
+    asti_user
+WHERE
+    user_id = #user_id#
+</select>
+<select id="getUserList" parameterClass="astiUserDTO" resultClass="astiUserDTO">
+SELECT 
+    user_id,
+    user_password,
+    user_name,
+    user_sex,
+    DECODE(user_sex, 'M', '남', '여') user_sex_name,
+    to_char(user_birth_date,'yyyy/mm/dd') user_birth_date,
+    user_job,
+    user_authority,
+    NVL((SELECT code_name FROM asti_code WHERE code_id = user_authority),'미승인') user_authority_name,
+    user_phone_number,
+    to_char(user_register_date,'yyyy/mm/dd') user_register_date
+FROM 
+    asti_user
+</select>
+<delete id="deleteUser" parameterClass="astiUserDTO">
+DELETE 
+	asti_user 
+WHERE 
+	user_id =#user_id#
+</delete>
+<select id="isDownAuth" parameterClass="Map" resultClass="String">
+	SELECT 
+	    CASE WHEN substr(board_authority,3,3) >= substr(#user_authority#,3,3) THEN 'true'
+	    ELSE 'false'
+	    END "boolean"
+	FROM 
+	    asti_board JOIN asti_board_file
+	USING(board_id)
+	WHERE file_id =#file_id#
+	</select>
+<statement id="mergeIntoCodeUserDept" parameterClass="astiCodeDTO">
+MERGE INTO 
+	    asti_code
+	USING 
+	    dual
+	ON
+	    (code_id = #code_id#)
+	WHEN MATCHED THEN UPDATE SET
+	    code_name = #code_name#
+	WHEN NOT MATCHED THEN INSERT
+    (
+        code_id,
+        code_type,
+        code_name
+    )
+    values
+    (
+        asti_board_file_seq.nextval,
+        'userDept',
+        #code_name#
+    )
+</statement>
+<delete id="deleteCodeUserDept" parameterClass="astiCodeDTO">
+	DELETE 
+		asti_code
+    WHERE 
+    	code_type = 'userDept'
+    AND 
+    	code_id = #code_id#
+</delete>	
+<select id="getCodeUserDetp" resultClass="astiCodeDTO">
+SELECT 
+    * 
+FROM 
+    asti_code
+WHERE
+    code_type = 'userDept'
+</select>
+
+</sqlMap>

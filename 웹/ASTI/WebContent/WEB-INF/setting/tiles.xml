@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "../dtd/tiles-config_2_1.dtd">
+<tiles-definitions>
+
+		
+	<!-- 로그인 백도어 페이지 -->
+	<definition name="layout" template="/WEB-INF/jsp/common/layout.jsp">
+		<put-attribute name="title" value="ASTI 체계에 오신걸 환영합니다." />
+		<put-attribute name="import" value="/WEB-INF/jsp/common/import.jsp" />
+		<put-attribute name="top" value="/WEB-INF/jsp/common/topmenu.jsp" />
+		<put-attribute name="main" value="" />
+		<put-attribute name="banner" value="/WEB-INF/jsp/common/banner.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/jsp/common/footer.jsp" />
+	</definition>
+<!-- 	<definition name="boardLayout" template="/WEB-INF/jsp/common/boardlayout.jsp"> -->
+<!-- 		<put-attribute name="title" value="ASTI 체계에 오신걸 환영합니다."/> -->
+<!-- 		<put-attribute name="import" value="/WEB-INF/jsp/common/import.jsp"/> -->
+<!-- 		<put-attribute name="top" value="/WEB-INF/jsp/common/topmenu.jsp"/> -->
+<!-- 		<put-attribute name="left" value="좌측메뉴"/>  -->
+<!-- 		<put-attribute name="main" value="" /> -->
+<!-- 		<put-attribute name="footer" value="푸터" /> -->
+<!-- 	</definition> -->
+	<definition name="menuLayout" template="/WEB-INF/jsp/common/boardlayout.jsp">
+		<put-attribute name="title" value="ASTI 체계에 오신걸 환영합니다."/>
+		<put-attribute name="import" value="/WEB-INF/jsp/common/import.jsp"/>
+		<put-attribute name="top" value="/WEB-INF/jsp/common/topmenu.jsp"/>
+		<put-attribute name="main" value=""/>
+		<put-attribute name="footer" value="/WEB-INF/jsp/common/footer.jsp" />
+	</definition>
+	<!-- 역할 및 와일드 카드 제작. by 이승호 -->
+	<!-- 	viewresolver 역할 -->
+	<definition name="deptworker" template="/WEB-INF/jsp/dept/deptworker.jsp"/>
+	
+	<!-- 	slideindex 역할 -->
+	<definition name="slideindex" template="/WEB-INF/jsp/common/slideindex.jsp"/>
+	
+	<!-- 	게시판 viewResolver 역할 -->
+	<definition name="board/*" template="/WEB-INF/jsp/board/{1}.jsp"/>
+	
+	<!-- 	admin 연구원 관리 역할 -->
+	<definition name="auth/*" template="/WEB-INF/jsp/admin/{1}.jsp"/>
+	
+	<!-- 	메인 화면 메뉴 viewResolver 역할 -->
+	<definition name="submenu/*" template="/WEB-INF/jsp/common/{1}.jsp"/>
+	<!-- 	와일드 카드@	 -->
+	<definition name="common/main" extends="layout">
+		<put-attribute name="main" value="/WEB-INF/jsp/common/main.jsp" />
+	</definition>
+	
+	<definition name="sign/*" extends="layout">
+		<put-attribute name="main" value="/WEB-INF/jsp/sign/{1}.jsp" />
+	</definition>
+	
+	<!-- 
+	<definition name="main" template="/WEB-INF/jsp/common/test.jsp">
+		<put-attribute name="menu1" value="메뉴1"/>
+		<put-attribute name="menu2" value="메뉴2"/>
+		<put-attribute name="menu3" value="메뉴3"/>
+	</definition> -->
+	<!-- 의견 한다현 : main자체는 와일드 카드로서 해결하기 보단 가장 메인이 되는 페이지이므로 단순히 layout에 main 페이지만 표기해줘도 됨 -->
+	<!-- 예시 
+	<definition name="layout" template="/WEB-INF/jsp/layout.jsp">
+		<put-attribute name="title" value="ASTI 체계에 오신걸 환영합니다." />
+		<put-attribute name="import" value="/WEB-INF/jsp/import.jsp" />
+		<put-attribute name="top" value="탑메뉴" />
+		<put-attribute name="main" value="/WEB-INF/jsp/main.jsp" />
+		<put-attribute name="menu1" value="메뉴1" />
+		<put-attribute name="menu2" value="메뉴2" />
+		<put-attribute name="menu3" value="메뉴3" />
+		<put-attribute name="footer" value="푸터" />
+	</definition>
+	
+	/* mil.af.asti.common.AstiController (Ctrl + 클릭하면 해당 소스로 넘어감)*/
+		@RequestMapping("/index.do")
+		public ModelAndView main() {
+			return new ModelAndView("layout");
+		}
+		
+		단순 의견 개진이므로 굳이 이렇게 안바꾸셔도 됩니다. 
+	-->
+	<definition name="error" template="/WEB-INF/jsp/common/error.jsp"/>
+	
+<!-- 아래 와일드 카드 부분은 지금 
+	
+	mapping 부분 뒤에 자신의 폴더에 잇는 jsp 를 불러와서 
+	
+	그걸 */* 식 패턴으로 바꿔 하나로 사용할 예정	*해결 -->
+	
+	<!-- 	와일드 카드 메인 부분에 jquery ui를 불러오는 것들의 통합 패턴 /WEB-INF/jsp/*/* -->
+	<definition name="menu/*" extends="menuLayout">
+		<put-attribute name="main" value="/WEB-INF/jsp/{1}/{1}.jsp"/>
+	</definition>
+	
+	<definition name="admin/*" extends="menuLayout">
+		<put-attribute name="main" value="/WEB-INF/jsp/admin/{1}.jsp"/>
+	</definition>
+	
+	<definition name="admin/pop/*" template="/WEB-INF/jsp/admin/{1}.jsp">
+	</definition>
+	
+	<!--  와일드 카드 /WEB-INF/jsp/소스 폴더{1}/소스 코드{2}.jsp  -->
+	<definition name="show/*/*" extends="layout">
+		<put-attribute name="main" value="/WEB-INF/jsp/{1}/{2}.jsp"/>
+	</definition>
+	
+	<!--  와일드 카드 소개 /WEB-INF/jsp/info/ -->
+<!-- 	<definition name="info/*" extends="deptLayout"> -->
+<!-- 		<put-attribute name="main" value="/WEB-INF/jsp/info/{1}.jsp"/> -->
+<!-- 	</definition> -->
+	<!--  와일드 카드 발간물 /WEB-INF/jsp/journal/ -->
+<!-- 	<definition name="jour/*" extends="deptLayout"> -->
+<!-- 		<put-attribute name="main" value="/WEB-INF/jsp/journal/{1}.jsp"/> -->
+<!-- 	</definition> -->
+		<!--  와일드 카드 발간물 /WEB-INF/jsp/journal/ -->
+<!-- 	<definition name="edu/*" extends="deptLayout"> -->
+<!-- 		<put-attribute name="main" value="/WEB-INF/jsp/edu/{1}.jsp"/> -->
+<!-- 	</definition> -->
+		<!--  와일드 카드 발간물 /WEB-INF/jsp/journal/ -->
+<!-- 	<definition name="notif/*" extends="deptLayout"> -->
+<!-- 		<put-attribute name="main" value="/WEB-INF/jsp/notif/{1}.jsp"/> -->
+<!-- 	</definition> -->
+	
+	<!--  와일드 카드 게시판 /WEB-INF/jsp/board/ -->
+<!-- 	<definition name="board/*" extends="boardLayout"> -->
+<!-- 		<put-attribute name="main" value="/WEB-INF/jsp/board/{1}.jsp"/> -->
+<!-- 	</definition> -->
+	
+	<!--  와일드 카드 연구센터 부분 /WEB-INF/jsp/dept/ -->
+<!-- 	<definition name="dept/*" extends="deptLayout"> -->
+<!-- 		<put-attribute name="main" value="/WEB-INF/jsp/dept/{1}.jsp"/> -->
+<!-- 	</definition> -->
+	
+
+</tiles-definitions>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="AdminSql">
+
+<typeAlias alias="astiBoardDTO" type="mil.af.asti.model.AstiBoardDTO" /> 
+<typeAlias alias="astiBoardAddtextDTO" type="mil.af.asti.model.AstiBoardAddtextDTO" /> 
+<typeAlias alias="astiBoardFileDTO" type="mil.af.asti.model.AstiBoardFileDTO" /> 
+<typeAlias alias="astiCodeDTO" type="mil.af.asti.model.AstiCodeDTO" /> 
+<typeAlias alias="astiResearchWorkerDTO" type="mil.af.asti.model.AstiResearchWorkerDTO" /> 
+<typeAlias alias="astiUserDTO" type="mil.af.asti.model.AstiUserDTO" /> 
+<typeAlias alias="astiBoardSearchDTO" type="mil.af.asti.model.AstiBoardSearchDTO" /> 
+<typeAlias alias="astiBoardPaginationDTO" type="mil.af.asti.model.AstiBoardPaginationDTO" />
+<typeAlias alias="astiPageDTO" type="mil.af.asti.model.AstiPageDTO" /> 
+
+<select id="getPageInfo" parameterClass="String" resultClass="astiPageDTO">
+SELECT 
+	*
+FROM 
+	asti_page
+WHERE
+	page_id = #page_id#
+</select>
+
+<update id="updatePageInfo" parameterClass="astiPageDTO">
+UPDATE
+	 asti_page
+SET 
+	page_picture_id = #page_picture_id#,
+	page_picture_name = #page_picture_name#
+WHERE
+	 page_id =#page_id#
+</update>
+<insert id="inserPageInfo" parameterClass="astiPageDTO">
+INSERT INTO asti_page
+(page_id,page_picture_id,page_picture_name,page_name)
+VALUES
+(#page_id#,#page_picture_id#,#page_picture_name#,#page_name#)
+</insert>
+<delete id="deletePage" parameterClass="String">
+DELETE asti_page
+WHERE page_id = #page_id#
+</delete>
+</sqlMap>

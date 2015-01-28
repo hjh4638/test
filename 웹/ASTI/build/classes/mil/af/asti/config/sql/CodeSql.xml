@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="CodeSql">
+	<typeAlias alias="astiBoardSearchDTO" type="mil.af.asti.model.AstiBoardSearchDTO" />
+	<typeAlias alias="astiBoardDTO"	type="mil.af.asti.model.AstiBoardDTO"/>
+	<typeAlias alias="astiBoardAddtextDTO" type="mil.af.asti.model.AstiBoardAddtextDTO" /> 
+	<typeAlias alias="astiBoardFileDTO" type="mil.af.asti.model.AstiBoardFileDTO" /> 
+	<typeAlias alias="astiCodeDTO" type="mil.af.asti.model.AstiCodeDTO" /> 
+	<typeAlias alias="astiResearchWorkerDTO" type="mil.af.asti.model.AstiResearchWorkerDTO" /> 
+	<typeAlias alias="astiUserDTO" type="mil.af.asti.model.AstiUserDTO" /> 
+	<typeAlias alias="astiBoardPaginationDTO" type="mil.af.asti.model.AstiBoardPaginationDTO" /> 
+	
+	<!-- 부정 URI 값 입력 방지용으로 사용 될 게시판 코드 List -->
+	<select id="getBoardCodeList" resultClass="String">
+		SELECT
+		    CODE_ID
+		FROM
+		    ASTI_CODE
+		WHERE
+		    CODE_TYPE = 'board'
+	</select>
+	
+	<select id="getBoardSign" parameterClass="astiBoardSearchDTO"
+		resultClass="String">
+		SELECT
+			CODE_NAME
+		FROM
+			ASTI_CODE
+		WHERE
+			CODE_ID = #board_type#
+	</select>
+	<select id="getAstiCodeByType" parameterClass="String" resultClass="astiCodeDTO">
+	SELECT
+    * 
+	FROM 
+	    asti_code
+	WHERE
+	    code_type = #code_type#
+	</select>
+	<select id="getAstiCodeById" parameterClass="String" resultClass="astiCodeDTO">
+	SELECT
+    * 
+	FROM 
+	    asti_code
+	WHERE
+	    code_id = #code_id#
+	</select>
+</sqlMap>

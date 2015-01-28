@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="hjhtest">
+
+<typeAlias alias="astiBoardDTO" type="mil.af.asti.model.AstiBoardDTO" /> 
+<typeAlias alias="astiBoardAddtextDTO" type="mil.af.asti.model.AstiBoardAddtextDTO" /> 
+<typeAlias alias="astiBoardFileDTO" type="mil.af.asti.model.AstiBoardFileDTO" /> 
+<typeAlias alias="astiCodeDTO" type="mil.af.asti.model.AstiCodeDTO" /> 
+<typeAlias alias="astiResearchWorkerDTO" type="mil.af.asti.model.AstiResearchWorkerDTO" /> 
+<typeAlias alias="astiUserDTO" type="mil.af.asti.model.AstiUserDTO" /> 
+<typeAlias alias="astiBoardSearchDTO" type="mil.af.asti.model.AstiBoardSearchDTO" /> 
+<typeAlias alias="astiBoardPaginationDTO" type="mil.af.asti.model.AstiBoardPaginationDTO" /> 
+	
+	<insert id="insertBoard" parameterClass="astiBoardDTO">
+		INSERT INTO asti_board
+		(
+		board_id,
+		user_id,
+		board_title,
+		board_content,
+		board_writer,
+		board_register_date,
+		board_authority,
+		board_password,
+		board_type,
+		board_reference
+		)
+		VALUES 
+		(
+		#board_id#,
+		#user_id#,
+		#board_title#,
+		#board_content#,
+		#board_writer#,
+		sysdate,
+		#board_authority#,
+		#board_password#,
+		#board_type#,
+		#board_reference#
+		)
+	</insert>
+	<select id="getMaxBoardId" resultClass="Integer">
+		SELECT max(board_id)
+		FROM asti_board
+	</select>
+	<select id="getMaxWorkerId" resultClass="Integer">
+		SELECT max(worker_id)
+		FROM asti_research_worker
+	</select>
+	<select id="getBoardList" parameterClass="astiBoardSearchDTO" resultClass="astiBoardDTO">
+	SELECT a.*
+	FROM
+	    (
+	        SELECT 
+	        row_number() over (order by board_id) as row_number,
+	        count(*) over() as row_count,
+	        board_id,
+	        user_id,
+	        board_title,
+	        board_content,
+	        board_writer,
+	        board_register_date,
+	        board_authority,
+	        (select code_name from asti_code where code_id = board_authority) board_authority_name,
+	        board_password,
+	        board_type,
+	        (select code_name from asti_code where code_id = board_type) board_type_name,
+	        board_reference
+	        FROM asti_board
+	        ORDER BY board_id
+	    ) a
+ 	 <![CDATA[
+	WHERE row_number >= #astiBoardPaginationDTO.beginContentsPerPage#  and row_number<= #astiBoardPaginationDTO.lastContentsPerPage#
+	]]>		
+	</select>
+	<select id="getBoardCount" resultClass="Integer">
+	SELECT count(*)
+	FROM asti_board
+	</select>
+	<select id="getColumnLength" resultClass="astiCodeDTO">
+	SELECT 
+    	distinct(column_name) code_id,data_length code_name
+	FROM 
+	    dba_tab_columns
+	WHERE 
+	    table_name like 'ASTI%'
+    AND data_type = 'VARCHAR2'
+	</select>
+	<insert id="insertBoardFile" parameterClass="astiBoardFileDTO">
+	INSERT INTO asti_board_file
+	(
+	board_id,
+	file_id,
+	filename
+	)
+	VALUES
+	(
+	#board_id#,
+	#file_id#,
+	#filename#
+	)
+	</insert>
+	<delete id="deleteBoardFile" parameterClass="astiBoardFileDTO">
+	DELETE FROM asti_board_file
+	WHERE board_id = #board_id#
+	</delete>
+	<select id="getBoardFileSeq" resultClass="Integer">
+	SELECT 
+		asti_board_file_seq.nextval
+	fROM 
+		dual
+	</select>
+	<statement id="mergeIntoBoard" parameterClass="astiBoardDTO">
+	MERGE INTO 
+	    asti_board
+	USING 
+	    dual
+	ON
+	    (board_id = #board_id#)
+	WHEN MATCHED THEN UPDATE SET
+	    board_title=#board_title#,
+	    board_content=#board_content#,
+	    board_writer=#board_writer#,
+	    board_authority=#board_authority#,
+	    board_reference=#board_reference#
+	
+	WHEN NOT MATCHED THEN INSERT
+	    (
+	    board_id,
+	    user_id,
+	    board_title,
+	    board_content,
+	    board_writer,
+	    board_register_date,
+	    board_authority,
+	    board_password,
+	    board_type,
+	    board_reference
+	    )
+	    VALUES 
+	    (
+	    #board_id#,
+	    #user_id#,
+	    #board_title#,
+	    #board_content#,
+	    #board_writer#,
+	    #board_register_date#,
+	    #board_authority#,
+	    #board_password#,
+	    #board_type#,
+	    #board_reference#
+	    )
+	</statement>
+	<select id="getAstiCodeByType" parameterClass="String" resultClass="astiCodeDTO">
+	SELECT
+    * 
+	FROM 
+	    asti_code
+	WHERE
+	    code_type = #code_type#
+	</select>
+	<insert id="insertREsearchWorker" parameterClass="astiResearchWorkerDTO">
+	INSERT INTO asti_research_worker
+	(worker_id,worker_name,worker_department,worker_detail_info,worker_picture_id,worker_picture_name)
+	VALUES
+	(#worker_id#,#worker_name#,#worker_department#,#worker_detail_info#,#worker_picture_id#,#worker_picture_name#)
+	</insert>
+	<delete id="deleteBoard">
+	Delete asti_board
+	</delete>
+	<delete id="deleteFile">
+	Delete asti_board_file
+	</delete>
+	<delete id="deleteAdd">
+	Delete asti_board_addtext
+	</delete>
+</sqlMap>

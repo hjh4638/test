@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+
+<sqlMap namespace="AdminSql">
+<typeAlias alias="astiUserDTO" type="mil.af.asti.model.AstiUserDTO"/>
+<typeAlias alias="astiCodeDTO" type="mil.af.asti.model.AstiCodeDTO"/>
+<typeAlias alias="astiPageDTO" type="mil.af.asti.model.AstiPageDTO" /> 
+<typeAlias alias="astiAdminSearchDTO" type="mil.af.asti.model.AstiAdminSearchDTO"/>
+<select id="getMemberList" parameterClass="astiAdminSearchDTO" resultClass="astiUserDTO">
+	SELECT *
+    FROM
+        (SELECT ROWNUM rnum , a.*
+        FROM
+            (SELECT *
+            FROM
+           	ASTI_USER
+           	WHERE
+        	(USER_AUTHORITY NOT IN ('Z00') OR
+        	USER_AUTHORITY is null)
+        	<dynamic prepend="AND">
+		     	<isNotEmpty property="searchDetail">
+		     		<isEqual property="searchType" compareValue="user_id">
+		     			USER_ID LIKE '%' || #searchDetail# || '%'
+		     		</isEqual>
+		     		<isEqual property="searchType" compareValue="user_authority">
+		     			<isEqual property="searchDetail" compareValue="미승인">
+		     			USER_AUTHORITY is null
+		     			</isEqual>
+		     			<isNotEqual property="searchDetail" compareValue="미승인">
+		     			USER_AUTHORITY LIKE '%' || #searchDetail# || '%'
+		     			</isNotEqual>
+		     		</isEqual>
+		     		<isEqual property="searchType" compareValue="user_name">
+		     			USER_NAME LIKE '%' || #searchDetail# || '%'
+		     		</isEqual>
+		     	</isNotEmpty>
+		     	</dynamic>
+            ORDER BY USER_AUTHORITY DESC) a)
+         WHERE rnum BETWEEN #astiBoardPaginationDTO.beginContentsPerPage#  and #astiBoardPaginationDTO.lastContentsPerPage#
+         ORDER BY rnum
+</select>
+<select id="getMemberCount" parameterClass="astiAdminSearchDTO" resultClass="Integer">
+	SELECT
+		COUNT(*)
+	FROM
+		ASTI_USER 
+	WHERE
+        	(USER_AUTHORITY NOT IN ('Z00') OR
+        	USER_AUTHORITY is null)
+		<dynamic prepend="AND">
+     	<isNotEmpty property="searchDetail">
+     		<isEqual property="searchType" compareValue="user_id">
+     			USER_ID LIKE '%' || #searchDetail# || '%'
+     		</isEqual>
+     		<isEqual property="searchType" compareValue="user_authority">
+     			<isEqual property="searchDetail" compareValue="미승인">
+     			USER_AUTHORITY is null
+     			</isEqual>
+     			<isNotEqual property="searchDetail" compareValue="미승인">
+     			USER_AUTHORITY LIKE '%' || #searchDetail# || '%'
+     			</isNotEqual>
+     		</isEqual>
+     		<isEqual property="searchType" compareValue="user_name">
+     			USER_NAME LIKE '%' || #searchDetail# || '%'
+     		</isEqual>
+     		
+     	</isNotEmpty>
+     	</dynamic>
+</select>
+<select id="getAuthorityCodeList" resultClass="astiCodeDTO">
+	SELECT
+		*
+	FROM
+		ASTI_CODE
+	WHERE
+		CODE_ID LIKE 'A' || '%'
+	ORDER BY
+		CODE_ID
+</select>
+<update id="changeAuthority" parameterClass="astiUserDTO">
+	UPDATE ASTI_USER
+	SET USER_AUTHORITY = #user_authority#
+	WHERE USER_ID = #user_id#
+	
+</update>
+
+<select id="getRemovedMember" resultClass="astiUserDTO">
+	SELECT
+		*
+	FROM
+		ASTI_REMOVED_USER 
+</select>
+<select id="getNewMemberList" resultClass="astiUserDTO">
+	SELECT
+		*
+	FROM
+		ASTI_USER
+	WHERE
+		USER_AUTHORITY is null
+</select>
+<select id="getValidatedAuthority" parameterClass="String" resultClass="String">
+	SELECT
+		CODE_ID
+	FROM
+		ASTI_CODE
+	WHERE
+		code_type = 'authority'
+		and
+		code_name = #value#
+</select>
+<delete id="deleteMember" parameterClass="String">
+	DELETE ASTI_USER
+	WHERE user_id=#value#
+
+</delete>
+
+<select id="getPageInfo" parameterClass="String" resultClass="astiPageDTO">
+SELECT 
+	*
+FROM 
+	asti_page
+WHERE
+	page_id = #page_id#
+ORDER BY page_order
+</select>
+
+<update id="updatePageInfo" parameterClass="astiPageDTO">
+UPDATE
+	 asti_page
+SET 
+	page_picture_id = #page_picture_id#,
+	page_picture_name = #page_picture_name#
+WHERE
+	 page_id =#page_id#
+</update>
+<insert id="insertPageInfo" parameterClass="astiPageDTO">
+INSERT INTO asti_page
+(page_id,page_picture_id,page_picture_name,page_name,page_order)
+VALUES
+(#page_id#,#page_picture_id#,#page_picture_name#,#page_name#,#page_order#)
+</insert>
+<delete id="deletePage" parameterClass="String">
+DELETE asti_page
+WHERE page_id = #page_id#
+</delete>
+<statement id="mergeIntoCodeUserDept" parameterClass="astiCodeDTO">
+MERGE INTO 
+	    asti_code
+	USING 
+	    dual
+	ON
+	    (code_id = #code_id#)
+	WHEN MATCHED THEN UPDATE SET
+	    code_name = #code_name#
+	WHEN NOT MATCHED THEN INSERT
+    (
+        code_id,
+        code_type,
+        code_name
+    )
+    values
+    (
+        asti_board_file_seq.nextval,
+        'userDept',
+        #code_name#
+    )
+</statement>
+<delete id="deleteCodeUserDept" parameterClass="astiCodeDTO">
+	DELETE 
+		asti_code
+    WHERE 
+    	code_type = 'userDept'
+    AND 
+    	code_id = #code_id#
+</delete>	
+<select id="getCodeUserDetp" resultClass="astiCodeDTO">
+SELECT 
+    * 
+FROM 
+    asti_code
+WHERE
+    code_type = 'userDept'
+</select>
+<update id="userPasswordChange" parameterClass="astiUserDTO">
+UPDATE 
+	asti_user
+SET 
+	user_password=#user_password#
+WHERE
+	 user_id=#user_id#
+
+</update>
+</sqlMap>

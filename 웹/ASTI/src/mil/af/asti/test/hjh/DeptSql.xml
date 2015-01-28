@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="DeptSql">
+
+<typeAlias alias="astiBoardDTO" type="mil.af.asti.model.AstiBoardDTO" /> 
+<typeAlias alias="astiBoardAddtextDTO" type="mil.af.asti.model.AstiBoardAddtextDTO" /> 
+<typeAlias alias="astiBoardFileDTO" type="mil.af.asti.model.AstiBoardFileDTO" /> 
+<typeAlias alias="astiCodeDTO" type="mil.af.asti.model.AstiCodeDTO" /> 
+<typeAlias alias="astiResearchWorkerDTO" type="mil.af.asti.model.AstiResearchWorkerDTO" /> 
+<typeAlias alias="astiUserDTO" type="mil.af.asti.model.AstiUserDTO" /> 
+<typeAlias alias="astiBoardSearchDTO" type="mil.af.asti.model.AstiBoardSearchDTO" /> 
+<typeAlias alias="astiBoardPaginationDTO" type="mil.af.asti.model.AstiBoardPaginationDTO" /> 
+	
+<select id="getMaxWorkerId" resultClass="Integer">
+	SELECT max(worker_id)
+	FROM asti_research_worker
+</select>
+<!-- 수정할시 picture_id와 picture_name도 꼭 같이 보내줘야함 -->
+<statement id="mergeIntoWorker" parameterClass="astiResearchWorkerDTO">
+	MERGE INTO 
+	    asti_research_worker
+	USING 
+	    dual
+	ON
+	    (worker_id = #worker_id#)
+	WHEN MATCHED THEN UPDATE SET
+	    worker_name=#worker_name#,
+	    worker_department=#worker_department#,
+	    worker_detail_info=#worker_detail_info#,
+	    worker_picture_id=#worker_picture_id#,
+	    worker_picture_name=#worker_picture_name#
+	
+	WHEN NOT MATCHED THEN INSERT
+	(
+        worker_id,
+        worker_name,
+        worker_department,
+        worker_detail_info,
+        worker_picture_id,
+        worker_picture_name
+    )
+	VALUES
+	(
+        #worker_id#,
+        #worker_name#,
+        #worker_department#,
+        #worker_detail_info#,
+        #worker_picture_id#,
+        #worker_picture_name#
+    )
+</statement>
+<delete id="deleteWorker" parameterClass="astiBoardSearchDTO">
+	DELETE asti_research_worker
+	WHERE worker_id = #worker_id#
+</delete>
+<select id="getWorkerList" parameterClass="astiBoardSearchDTO" resultClass="astiResearchWorkerDTO">
+	SELECT *
+    FROM
+        (SELECT ROWNUM rnum,a.*
+            FROM
+                (SELECT 
+                row_number() over (order by worker_id) as row_number,
+                count(*) over() as row_count,
+                asti_research_worker.*
+                FROM asti_research_worker
+                WHERE worker_department = #worker_department#
+                ORDER BY row_number desc
+                )a)
+        WHERE rnum BETWEEN #astiBoardPaginationDTO.beginContentsPerPage#  and #astiBoardPaginationDTO.lastContentsPerPage#
+</select>
+</sqlMap>
